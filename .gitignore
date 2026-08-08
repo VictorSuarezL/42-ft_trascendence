@@ -1,0 +1,25 @@
+# env
+.env
+
+# dependencies
+node_modules/
+
+# builds
+dist/
+build/
+coverage/
+.vite/
+.next/
+
+# editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# temporary files
+*.tmp
+*.temp
+*.bak
+*.backup

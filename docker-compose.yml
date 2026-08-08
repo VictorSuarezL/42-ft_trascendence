@@ -1,0 +1,35 @@
+services:
+  frontend:
+    build:
+      context: srcs/frontend
+    container_name: frontend
+    ports:
+      - "8000:80"
+      - "8443:443"
+    networks:
+      - ft_transcendence
+  backend:
+    build:
+      context: srcs/backend
+    container_name: backend
+    environment:
+      HOSTNAME: "${HOSTNAME}"
+    env_file:
+      - .env
+    networks:
+      - ft_transcendence
+  database:
+    build:
+      context: srcs/database
+    container_name: database
+    environment:
+      POSTGRESQL_ROOT_PASSWORD: "${POSTGRESQL_ROOT_PASSWORD}"
+      POSTGRESQL_DATABASE: "${POSTGRESQL_DATABASE}"
+      POSTGRESQL_USER: "${POSTGRESQL_USER}"
+      POSTGRESQL_PASSWORD: "${POSTGRESQL_PASSWORD}"
+    env_file:
+      - .env
+    networks:
+      - ft_transcendence
+networks:
+  ft_transcendence:

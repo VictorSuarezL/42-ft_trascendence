@@ -1,0 +1,40 @@
+services:
+  database:
+    image: postgres:16-alpine
+    container_name: transcendence-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: transcendence
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: transcendence-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@database:5432/transcendence
+      PORT: 3000
+    ports:
+      - '3000:3000'
+    depends_on:
+      - database
+
+  frontend:
+    build: ./frontend
+    container_name: transcendence-frontend
+    restart: unless-stopped
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

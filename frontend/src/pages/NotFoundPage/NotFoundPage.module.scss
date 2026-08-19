@@ -1,0 +1,10 @@
+.homeButton {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  padding: var(--size-xs);
+  border: 1px solid var(--accent-border);
+  &:hover {
+    background-color: var(--primary-color-hover);
+  }
+}

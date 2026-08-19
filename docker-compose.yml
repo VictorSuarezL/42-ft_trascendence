@@ -19,6 +19,9 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres:postgres@database:5432/transcendence
       PORT: 3000
+      FORTYTWO_CLIENT_ID: ${FORTYTWO_CLIENT_ID}
+      FORTYTWO_CLIENT_SECRET: ${FORTYTWO_CLIENT_SECRET}
+      FORTYTWO_REDIRECT_URI: ${FORTYTWO_REDIRECT_URI}
     ports:
       - '3000:3000'
     depends_on:

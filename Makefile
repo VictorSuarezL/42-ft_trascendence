@@ -2,7 +2,7 @@
 
 COMPOSE = docker compose
 
-all: build db migrate up
+all: build db db-push up
 
 build:
 	$(COMPOSE) build
@@ -35,9 +35,6 @@ db:
 	done
 	@echo "PostgreSQL is ready."
 
-migrate:
-	$(COMPOSE) run --rm backend npx prisma migrate deploy
-
 prisma-generate:
 	$(COMPOSE) run --rm backend npx prisma generate
 
@@ -49,6 +46,20 @@ db-tables:
 
 db-users:
 	$(COMPOSE) exec database psql -U postgres -d transcendence -c 'SELECT * FROM "User";'
+
+db-push:
+	$(COMPOSE) run --rm backend npx prisma db push
+
+reset-db:
+	$(COMPOSE) down -v --remove-orphans
+	$(COMPOSE) up -d database
+	@echo "Waiting for PostgreSQL..."
+	@until $(COMPOSE) exec -T database pg_isready -U postgres -d transcendence > /dev/null 2>&1; do \
+		sleep 1; \
+	done
+	@echo "PostgreSQL is ready."
+	$(COMPOSE) run --rm backend npx prisma db push
+	$(COMPOSE) run --rm backend npx prisma generate
 
 clean:
 	$(COMPOSE) down

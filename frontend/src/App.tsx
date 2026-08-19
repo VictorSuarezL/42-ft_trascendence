@@ -1,85 +1,42 @@
-import { FormEvent, useEffect, useState } from 'react';
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  createdAt: string;
-}
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import styles from './App.module.scss';
+import { LoginPage } from './pages/LoginPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { HomePage } from './pages/HomePage';
+import { UserProvider } from './contexts/UserContext';
+import { ProfilePage } from './pages/ProfilePage';
+import { ProtectedRoute } from './components/ProtectedRoutes';
+import { SignUpPage } from './pages/SignUpPage';
+import { SignUpConfirmation } from './pages/SignUpConfirmation';
+import { GuestRoute } from './components/GuestRoute';
+import { ComoJugar } from './pages/ComoJugar';
 
 function App() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [users, setUsers] = useState<User[]>([]);
-
-  const loadUsers = async () => {
-    const response = await fetch('http://localhost:3000/users');
-    const data = await response.json();
-
-    setUsers(data);
-  };
-
-  useEffect(() => {
-    loadUsers();
-  }, []);
-
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-
-    const response = await fetch('http://localhost:3000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        email,
-      }),
-    });
-
-    if (!response.ok) {
-      console.error('Error creating user');
-      return;
-    }
-
-    setName('');
-    setEmail('');
-
-    await loadUsers();
-  };
-
   return (
-    <main>
-      <h1>Transcendence</h1>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-
-        <button type="submit">Create user</button>
-      </form>
-
-      <h2>Users</h2>
-
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.name} — {user.email}
-          </li>
-        ))}
-      </ul>
-    </main>
+    <UserProvider>
+      <main>
+        <BrowserRouter>
+          <div className={styles.app}>
+            <Routes>
+              <Route element={<GuestRoute />}>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route
+                  path="/signup-confirmation"
+                  element={<SignUpConfirmation />}
+                />
+              </Route>
+              <Route element={<ProtectedRoute />}>
+                <Route path="/home" element={<HomePage />} />
+                <Route path="/comojugar" element={<ComoJugar />} />
+                <Route path="/profile" element={<ProfilePage />} />
+              </Route>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </main>
+    </UserProvider>
   );
 }
 

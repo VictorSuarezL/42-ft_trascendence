@@ -1,6 +1,7 @@
-.PHONY: all build up down restart logs logs-backend logs-frontend ps db migrate prisma-generate db-shell db-tables db-users clean fclean re
+.PHONY: all build up down restart logs logs-backend logs-frontend ps db migrate prisma-generate prisma-studio db-shell db-tables db-users clean fclean re
 
 COMPOSE = docker compose
+PRISMA_STUDIO_PORT ?= 5555
 
 all: build db db-push up
 
@@ -37,6 +38,12 @@ db:
 
 prisma-generate:
 	$(COMPOSE) run --rm backend npx prisma generate
+
+prisma-studio: db
+	$(COMPOSE) run --rm --build \
+		-p 127.0.0.1:$(PRISMA_STUDIO_PORT):5555 \
+		backend \
+		npx prisma studio --hostname 0.0.0.0 --port 5555
 
 db-shell:
 	$(COMPOSE) exec database psql -U postgres -d transcendence

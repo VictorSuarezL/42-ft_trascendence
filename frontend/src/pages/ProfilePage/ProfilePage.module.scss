@@ -1,0 +1,20 @@
+.profile {
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profileImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

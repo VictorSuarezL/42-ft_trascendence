@@ -24,6 +24,10 @@ services:
       FORTYTWO_REDIRECT_URI: ${FORTYTWO_REDIRECT_URI}
     ports:
       - '${PORT}:${PORT}'
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
     depends_on:
       - database
 

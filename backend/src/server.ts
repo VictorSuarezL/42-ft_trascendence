@@ -2,10 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
+import { resolve } from 'node:path';
 
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import createUserRoutes from './routes/createUser.routes';
+import howToPlayRoutes from './routes/howToPlay.routes';
 
 const app = express();
 
@@ -17,6 +19,7 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+app.use('/assets', express.static(resolve(process.cwd(), 'assets')));
 
 app.get('/health', (_req, res) => {
   res.json({
@@ -27,6 +30,7 @@ app.get('/health', (_req, res) => {
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/signup', createUserRoutes);
+app.use('/how-to-play', howToPlayRoutes);
 
 const PORT = Number(process.env.PORT) || 3000;
 

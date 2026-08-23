@@ -37,7 +37,7 @@ export function SignUpPage() {
 
       console.log('User created:', data);
 
-      navigate('/signup-confirmation');
+      navigate('/email-confirmation');
     } catch (error) {
       console.error('Signup error:', error);
     }

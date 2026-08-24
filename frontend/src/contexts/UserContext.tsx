@@ -2,10 +2,10 @@ import {
   createContext,
   useContext,
   useEffect,
+  useMemo,
   useState,
   type ReactNode,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export interface User {
   id: number;
@@ -22,6 +22,8 @@ interface UserContextValue {
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   loading: boolean;
   logout: () => Promise<void>;
+  language: string;
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const UserContext = createContext<UserContextValue | undefined>(undefined);
@@ -60,6 +62,8 @@ export function UserProvider({ children }: UserProviderProps) {
     fetchUser();
   }, []);
 
+  const [language, setLanguage] = useState('en');
+
   const logout = async () => {
     try {
       const response = await fetch('http://localhost:3000/auth/logout', {
@@ -76,12 +80,12 @@ export function UserProvider({ children }: UserProviderProps) {
       console.error('Could not logout:', error);
     }
   };
-
-  return (
-    <UserContext.Provider value={{ user, setUser, loading, logout }}>
-      {children}
-    </UserContext.Provider>
+  const value = useMemo(
+    () => ({ user, setUser, loading, logout, language, setLanguage }),
+    [user, loading, language],
   );
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
 
 export function useUser() {

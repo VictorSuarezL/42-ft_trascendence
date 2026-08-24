@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import createUserRoutes from './routes/createUser.routes';
+import translationsRoutes from './routes/translations.routes';
 
 const app = express();
 
@@ -18,15 +19,10 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/health', (_req, res) => {
-  res.json({
-    status: 'ok',
-  });
-});
-
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/signup', createUserRoutes);
+app.use('/translations', translationsRoutes);
 
 const PORT = Number(process.env.PORT) || 3000;
 

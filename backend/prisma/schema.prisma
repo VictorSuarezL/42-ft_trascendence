@@ -61,4 +61,12 @@ model PasswordResetToken {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+model Translation {
+  id       Int    @id @default(autoincrement())
+  key      String
+  language String
+  value    String
+
+  @@unique([key, language])
+  @@index([language])
 }

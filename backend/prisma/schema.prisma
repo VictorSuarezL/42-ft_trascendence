@@ -35,3 +35,13 @@ model Session {
 
   @@index([userId])
 }
+
+model Translation {
+  id       Int    @id @default(autoincrement())
+  key      String
+  language String
+  value    String
+
+  @@unique([key, language])
+  @@index([language])
+}

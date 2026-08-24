@@ -9,7 +9,8 @@ import { ProtectedRoute } from './components/ProtectedRoutes';
 import { SignUpPage } from './pages/SignUpPage';
 import { SignUpConfirmation } from './pages/SignUpConfirmation';
 import { GuestRoute } from './components/GuestRoute';
-import { ComoJugar } from './pages/ComoJugar';
+import { HowToPlay } from './pages/HowToPlay';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
       <main>
         <BrowserRouter>
           <div className={styles.app}>
+            <div className={styles.headerApp}>
+              <LanguageSwitcher />
+            </div>
             <Routes>
               <Route element={<GuestRoute />}>
                 <Route path="/" element={<LoginPage />} />
@@ -28,7 +32,7 @@ function App() {
               </Route>
               <Route element={<ProtectedRoute />}>
                 <Route path="/home" element={<HomePage />} />
-                <Route path="/comojugar" element={<ComoJugar />} />
+                <Route path="/howtoplay/:name?" element={<HowToPlay />} />
                 <Route path="/profile" element={<ProfilePage />} />
               </Route>
               <Route path="*" element={<NotFoundPage />} />

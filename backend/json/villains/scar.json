@@ -1,0 +1,729 @@
+{
+  "id": "scar",
+  "name": "Scar",
+  "game": "Disney Villainous",
+  "images": [
+    {
+      "id": "portrait",
+      "path": "/assets/scar/scar-portrait.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Scar.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c7/Scar.png/revision/latest?cb=20210503155351"
+    },
+    {
+      "id": "mover",
+      "path": "/assets/scar/scar-mover.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Scarmover.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/a/a0/Scarmover.png/revision/latest?cb=20210504143159"
+    },
+    {
+      "id": "realm",
+      "path": "/assets/scar/scar-realm.webp",
+      "width": 1800,
+      "height": 505,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Scarrealm.jpg",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/cc/Scarrealm.jpg/revision/latest?cb=20190729131404"
+    },
+    {
+      "id": "villainDeckBack",
+      "path": "/assets/scar/scar-villain-deck-back.webp",
+      "width": 1000,
+      "height": 1406,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Scar_Villain_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/a/a7/Scar_Villain_Back.png/revision/latest?cb=20190728220145"
+    },
+    {
+      "id": "fateDeckBack",
+      "path": "/assets/scar/scar-fate-deck-back.webp",
+      "width": 1000,
+      "height": 1402,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Scar_Fate_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/09/Scar_Fate_Back.png/revision/latest?cb=20190728222330"
+    }
+  ],
+  "realm": [
+    {
+      "id": "pride-rock",
+      "position": 1,
+      "topActions": [
+        {
+          "type": "GAIN_POWER",
+          "amount": 2
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
+      ]
+    },
+    {
+      "id": "the-savanna",
+      "position": 2,
+      "topActions": [
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "FATE"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "DISCARD_CARDS"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "elephant-graveyard",
+      "position": 3,
+      "topActions": [
+        {
+          "type": "DISCARD_CARDS"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "id": "the-gorge",
+      "position": 4,
+      "topActions": [
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "VANQUISH"
+        },
+        {
+          "type": "FATE"
+        }
+      ]
+    }
+  ],
+  "decks": {
+    "villain": {
+      "totalCards": 30,
+      "cards": [
+        {
+          "id": "hungry-hyena",
+          "pageTitle": "Hungry Hyena",
+          "quantity": 6,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 1,
+          "image": {
+            "path": "/assets/scar/cards/villain/hungry-hyena.webp",
+            "width": 1000,
+            "height": 1413,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hungry_Hyena.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/25/Hungry_Hyena.png/revision/latest?cb=20190729120754"
+          }
+        },
+        {
+          "id": "long-live-the-king",
+          "pageTitle": "Long Live the King",
+          "quantity": 4,
+          "type": "EFFECT",
+          "cost": 1,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/villain/long-live-the-king.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Long_Live_the_King.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/5/53/Long_Live_the_King.png/revision/latest?cb=20190729122738"
+          }
+        },
+        {
+          "id": "be-prepared",
+          "pageTitle": "Be Prepared",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": 1,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/villain/be-prepared.webp",
+            "width": 1000,
+            "height": 1415,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Be_Prepared.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c7/Be_Prepared.png/revision/latest?cb=20190729133032"
+          }
+        },
+        {
+          "id": "stick-with-me",
+          "pageTitle": "Stick with Me",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": 0,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/villain/stick-with-me.webp",
+            "width": 1000,
+            "height": 1413,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Stick_with_Me.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/6f/Stick_with_Me.png/revision/latest?cb=20190729134855"
+          }
+        },
+        {
+          "id": "whisper",
+          "pageTitle": "Whisper",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": 1,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/villain/whisper.webp",
+            "width": 1000,
+            "height": 1418,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Whisper.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/44/Whisper.png/revision/latest?cb=20190729142744"
+          }
+        },
+        {
+          "id": "feeding-frenzy",
+          "pageTitle": "Feeding Frenzy",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": 2,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/villain/feeding-frenzy.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Feeding_Frenzy.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/7/72/Feeding_Frenzy.png/revision/latest?cb=20190729143214"
+          }
+        },
+        {
+          "id": "injustice",
+          "pageTitle": "Injustice",
+          "quantity": 2,
+          "type": "CONDITION",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/villain/injustice.webp",
+            "width": 1000,
+            "height": 1419,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Injustice.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/28/Injustice.png/revision/latest?cb=20190729221929"
+          }
+        },
+        {
+          "id": "pride",
+          "pageTitle": "Pride",
+          "quantity": 2,
+          "type": "CONDITION",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/villain/pride.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Pride.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/b3/Pride.png/revision/latest?cb=20190729222418"
+          }
+        },
+        {
+          "id": "stampede",
+          "pageTitle": "Stampede",
+          "quantity": 2,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 3,
+          "image": {
+            "path": "/assets/scar/cards/villain/stampede.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Stampede.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/f/f8/Stampede.png/revision/latest?cb=20190729222728"
+          }
+        },
+        {
+          "id": "banzai-the-hyena",
+          "pageTitle": "Banzai the Hyena",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 2,
+          "image": {
+            "path": "/assets/scar/cards/villain/banzai-the-hyena.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Banzai_the_Hyena.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/0e/Banzai_the_Hyena.png/revision/latest?cb=20190729223158"
+          }
+        },
+        {
+          "id": "ed-the-hyena",
+          "pageTitle": "Ed the Hyena",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 2,
+          "image": {
+            "path": "/assets/scar/cards/villain/ed-the-hyena.webp",
+            "width": 1000,
+            "height": 1427,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Ed_the_Hyena.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/07/Ed_the_Hyena.png/revision/latest?cb=20190729234735"
+          }
+        },
+        {
+          "id": "shenzi-the-hyena",
+          "pageTitle": "Shenzi the Hyena",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 2,
+          "image": {
+            "path": "/assets/scar/cards/villain/shenzi-the-hyena.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Shenzi_the_Hyena.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/a/ad/Shenzi_the_Hyena.png/revision/latest?cb=20190729235204"
+          }
+        }
+      ]
+    },
+    "fate": {
+      "totalCards": 15,
+      "cards": [
+        {
+          "id": "hakuna-matata",
+          "pageTitle": "Hakuna Matata",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/fate/hakuna-matata.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hakuna_Matata.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/4e/Hakuna_Matata.png/revision/latest?cb=20190729235707"
+          }
+        },
+        {
+          "id": "prophecy",
+          "pageTitle": "Prophecy",
+          "quantity": 3,
+          "type": "ITEM",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/scar/cards/fate/prophecy.webp",
+            "width": 1000,
+            "height": 1419,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Prophecy.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/1/11/Prophecy.png/revision/latest?cb=20190730000011"
+          }
+        },
+        {
+          "id": "mufasa",
+          "pageTitle": "Mufasa",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 6,
+          "image": {
+            "path": "/assets/scar/cards/fate/mufasa.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Mufasa.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/e/e5/Mufasa.png/revision/latest?cb=20190730000320"
+          }
+        },
+        {
+          "id": "nala",
+          "pageTitle": "Nala",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/scar/cards/fate/nala.webp",
+            "width": 1000,
+            "height": 1427,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Nala.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/9/9e/Nala.png/revision/latest?cb=20190730000703"
+          }
+        },
+        {
+          "id": "pumbaa",
+          "pageTitle": "Pumbaa",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/scar/cards/fate/pumbaa.webp",
+            "width": 1000,
+            "height": 1414,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Pumbaa.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/9/91/Pumbaa.png/revision/latest?cb=20190730001033"
+          }
+        },
+        {
+          "id": "rafiki",
+          "pageTitle": "Rafiki",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/scar/cards/fate/rafiki.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Rafiki.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/3/3a/Rafiki.png/revision/latest?cb=20190730001836"
+          }
+        },
+        {
+          "id": "rafiki-s-stick",
+          "pageTitle": "Rafiki's Stick",
+          "quantity": 1,
+          "type": "ITEM",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/scar/cards/fate/rafiki-s-stick.webp",
+            "width": 1000,
+            "height": 1421,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Rafiki's_Stick.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/46/Rafiki%27s_Stick.png/revision/latest?cb=20190730002109"
+          }
+        },
+        {
+          "id": "sarabi",
+          "pageTitle": "Sarabi",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/scar/cards/fate/sarabi.webp",
+            "width": 1000,
+            "height": 1422,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Sarabi.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/06/Sarabi.png/revision/latest?cb=20190730002503"
+          }
+        },
+        {
+          "id": "simba",
+          "pageTitle": "Simba",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 5,
+          "image": {
+            "path": "/assets/scar/cards/fate/simba.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Simba.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/9/95/Simba.png/revision/latest?cb=20190730002922"
+          }
+        },
+        {
+          "id": "timon",
+          "pageTitle": "Timon",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 2,
+          "image": {
+            "path": "/assets/scar/cards/fate/timon.webp",
+            "width": 1000,
+            "height": 1427,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Timon.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/e/e8/Timon.png/revision/latest?cb=20190730003247"
+          }
+        },
+        {
+          "id": "zazu",
+          "pageTitle": "Zazu",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 2,
+          "image": {
+            "path": "/assets/scar/cards/fate/zazu.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Zazu.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/0e/Zazu.png/revision/latest?cb=20190730003627"
+          }
+        }
+      ]
+    }
+  },
+  "source": {
+    "article": "https://disney-villainous.fandom.com/wiki/Scar",
+    "sourceLanguage": "en"
+  },
+  "translations": {
+    "en": {
+      "objective": "Scar must find and defeat Mufasa, and then defeat other Heroes in order to have at least 15 Strength in the Succession pile. He can only win at the start of his turn.",
+      "locations": {
+        "pride-rock": "Pride Rock",
+        "the-savanna": "The Savanna",
+        "elephant-graveyard": "Elephant Graveyard",
+        "the-gorge": "The Gorge"
+      },
+      "cards": {
+        "hungry-hyena": {
+          "name": "Hungry Hyena",
+          "text": "Hungry Hyena gets +1 Strength for each other Hyena at her location."
+        },
+        "long-live-the-king": {
+          "name": "Long Live the King",
+          "text": "Reveal the top four cards of your Fate deck. You may play one Hero. Discard the rest."
+        },
+        "be-prepared": {
+          "name": "Be Prepared",
+          "text": "Discard the top three cards of your deck. You may choose one Effect or up to two Allies from your discard pile and put them into your hand."
+        },
+        "stick-with-me": {
+          "name": "Stick with Me",
+          "text": "Choose a Hyena who is not at Scar's location. You may perform one available action at that Hyena's location. You cannot use Stick with Me to perform Fate actions."
+        },
+        "whisper": {
+          "name": "Whisper",
+          "text": "Choose a card from your Fate discard pile and play it."
+        },
+        "feeding-frenzy": {
+          "name": "Feeding Frenzy",
+          "text": "Choose a location and move any number of Hyenas in your Realm to that location."
+        },
+        "injustice": {
+          "name": "Injustice",
+          "text": "During their turn, if another player targets you with a Fate action, you may play Injustice. Before they reveal cards, look at the top two cards of your Fate deck. Either discard or return each to the top of the deck."
+        },
+        "pride": {
+          "name": "Pride",
+          "text": "During their turn, if another player discards two or more cards, you may play Pride. Gain 3 Power."
+        },
+        "stampede": {
+          "name": "Stampede",
+          "text": "If Stampede is played to a location that has a Hero, move one Hero at that location to an adjacent location. Then you may perform a Vanquish action at the Hero's new location."
+        },
+        "banzai-the-hyena": {
+          "name": "Banzai the Hyena",
+          "text": "Gain 1 Power for each other Hyena discarded from Banzai's location."
+        },
+        "ed-the-hyena": {
+          "name": "Ed the Hyena",
+          "text": "The Cost to play Hyenas to Ed's location is reduced by 1 Power."
+        },
+        "shenzi-the-hyena": {
+          "name": "Shenzi the Hyena",
+          "text": "When Shenzi is played, you may play a Hyena from your hand for free."
+        },
+        "hakuna-matata": {
+          "name": "Hakuna Matata",
+          "text": "Either choose a Hero with a Strength of 3 or less from the Succession pile and play that Hero, or move a Hero to any location."
+        },
+        "prophecy": {
+          "name": "Prophecy",
+          "text": "When Prophecy is played, attach it to a Hero with no other attached Items. That Hero gets +3 Strength."
+        },
+        "mufasa": {
+          "name": "Mufasa",
+          "text": "When Mufasa is defeated, put him into the Succession pile. If Mufasa is in the Succession pile, all Heroes you defeat are put into the Succession pile."
+        },
+        "nala": {
+          "name": "Nala",
+          "text": "When Nala is played, you may move a Hero to any location."
+        },
+        "pumbaa": {
+          "name": "Pumbaa",
+          "text": "Pumbaa gets +2 Strength if Timon is in Scar's Realm."
+        },
+        "rafiki": {
+          "name": "Rafiki",
+          "text": "Scar must defeat Rafiki before defeating other Heroes."
+        },
+        "rafiki-s-stick": {
+          "name": "Rafiki's Stick",
+          "text": "When Rafiki's Stick is played, attach it to a Hero. When that Hero would be defeated, discard this Item instead."
+        },
+        "sarabi": {
+          "name": "Sarabi",
+          "text": "When Sarabi is played, you may discard a Hyena from her location."
+        },
+        "simba": {
+          "name": "Simba",
+          "text": "Hyenas cannot have a Strength of more than 2."
+        },
+        "timon": {
+          "name": "Timon",
+          "text": "Timon gets +2 Strength if Pumbaa is in Scar's Realm."
+        },
+        "zazu": {
+          "name": "Zazu",
+          "text": "All other Heroes at Zazu's location get -2 Strength. All Heroes at other locations get +1 Strength."
+        }
+      }
+    },
+    "es": {
+      "objective": "Scar debe encontrar y derrotar a Mufasa y, después, derrotar a otros Héroes hasta tener al menos 15 de Fuerza en la pila de Sucesión. Solo puede ganar al comienzo de su turno.",
+      "locations": {
+        "pride-rock": "Roca del Rey",
+        "the-savanna": "La Sabana",
+        "elephant-graveyard": "Cementerio de Elefantes",
+        "the-gorge": "El Desfiladero"
+      },
+      "cards": {
+        "hungry-hyena": {
+          "name": "Hiena hambrienta",
+          "text": "Hiena hambrienta obtiene +1 de Fuerza por cada otra Hiena que haya en su ubicación."
+        },
+        "long-live-the-king": {
+          "name": "Larga vida al rey",
+          "text": "Revela las cuatro primeras cartas de tu mazo de Destino. Puedes jugar un Héroe. Descarta el resto."
+        },
+        "be-prepared": {
+          "name": "Preparaos",
+          "text": "Descarta las tres primeras cartas de tu mazo. Puedes elegir un Efecto o hasta dos Aliados de tu pila de descartes y añadirlos a tu mano."
+        },
+        "stick-with-me": {
+          "name": "Seguid conmigo",
+          "text": "Elige una Hiena que no esté en la ubicación de Scar. Puedes realizar una acción disponible en la ubicación de esa Hiena. No puedes usar Seguid conmigo para realizar acciones de Destino."
+        },
+        "whisper": {
+          "name": "Susurro",
+          "text": "Elige una carta de tu pila de descartes de Destino y juégala."
+        },
+        "feeding-frenzy": {
+          "name": "Frenesí alimenticio",
+          "text": "Elige una ubicación y mueve hasta allí cualquier número de Hienas de tu Reino."
+        },
+        "injustice": {
+          "name": "Injusticia",
+          "text": "Durante el turno de otro jugador, si te elige como objetivo de una acción de Destino, puedes jugar Injusticia. Antes de que revele cartas, mira las dos primeras cartas de tu mazo de Destino. Descarta cada una o devuélvela a la parte superior del mazo."
+        },
+        "pride": {
+          "name": "Orgullo",
+          "text": "Durante el turno de otro jugador, si descarta dos o más cartas, puedes jugar Orgullo. Obtén 3 de Poder."
+        },
+        "stampede": {
+          "name": "Estampida",
+          "text": "Si juegas Estampida en una ubicación que contiene un Héroe, mueve un Héroe de esa ubicación a una ubicación adyacente. Después, puedes realizar una acción de Vencer en la nueva ubicación del Héroe."
+        },
+        "banzai-the-hyena": {
+          "name": "Banzai, la hiena",
+          "text": "Obtén 1 de Poder por cada otra Hiena descartada de la ubicación de Banzai."
+        },
+        "ed-the-hyena": {
+          "name": "Ed, la hiena",
+          "text": "El Coste de jugar Hienas en la ubicación de Ed se reduce en 1 de Poder."
+        },
+        "shenzi-the-hyena": {
+          "name": "Shenzi, la hiena",
+          "text": "Cuando juegues a Shenzi, puedes jugar gratis una Hiena de tu mano."
+        },
+        "hakuna-matata": {
+          "name": "Hakuna Matata",
+          "text": "Elige un Héroe con una Fuerza de 3 o menos de la pila de Sucesión y juégalo, o mueve un Héroe a cualquier ubicación."
+        },
+        "prophecy": {
+          "name": "Profecía",
+          "text": "Cuando juegues Profecía, vincúlala a un Héroe que no tenga otros Objetos vinculados. Ese Héroe obtiene +3 de Fuerza."
+        },
+        "mufasa": {
+          "name": "Mufasa",
+          "text": "Cuando Mufasa sea derrotado, colócalo en la pila de Sucesión. Si Mufasa está en la pila de Sucesión, todos los Héroes que derrotes se colocan en la pila de Sucesión."
+        },
+        "nala": {
+          "name": "Nala",
+          "text": "Cuando juegues a Nala, puedes mover un Héroe a cualquier ubicación."
+        },
+        "pumbaa": {
+          "name": "Pumba",
+          "text": "Pumba obtiene +2 de Fuerza si Timón está en el Reino de Scar."
+        },
+        "rafiki": {
+          "name": "Rafiki",
+          "text": "Scar debe derrotar a Rafiki antes de derrotar a otros Héroes."
+        },
+        "rafiki-s-stick": {
+          "name": "Bastón de Rafiki",
+          "text": "Cuando juegues Bastón de Rafiki, vincúlalo a un Héroe. Cuando ese Héroe fuera a ser derrotado, descarta este Objeto en su lugar."
+        },
+        "sarabi": {
+          "name": "Sarabi",
+          "text": "Cuando juegues a Sarabi, puedes descartar una Hiena de su ubicación."
+        },
+        "simba": {
+          "name": "Simba",
+          "text": "Las Hienas no pueden tener más de 2 de Fuerza."
+        },
+        "timon": {
+          "name": "Timón",
+          "text": "Timón obtiene +2 de Fuerza si Pumba está en el Reino de Scar."
+        },
+        "zazu": {
+          "name": "Zazú",
+          "text": "Todos los demás Héroes en la ubicación de Zazú obtienen -2 de Fuerza. Todos los Héroes en otras ubicaciones obtienen +1 de Fuerza."
+        }
+      }
+    }
+  }
+}

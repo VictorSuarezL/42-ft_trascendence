@@ -1,0 +1,22 @@
+{
+  "en": {
+    "PLAY_CARD": "Play a Card",
+    "GAIN_POWER": "Gain {amount} Power",
+    "FATE": "Fate",
+    "VANQUISH": "Vanquish",
+    "DISCARD_CARDS": "Discard Cards",
+    "MOVE_ITEM_OR_ALLY": "Move an Item or Ally",
+    "MOVE_HERO": "Move a Hero",
+    "ACTIVATE": "Activate"
+  },
+  "es": {
+    "PLAY_CARD": "Jugar una carta",
+    "GAIN_POWER": "Obtener {amount} de Poder",
+    "FATE": "Destino",
+    "VANQUISH": "Derrotar",
+    "DISCARD_CARDS": "Descartar cartas",
+    "MOVE_ITEM_OR_ALLY": "Mover un Objeto o Aliado",
+    "MOVE_HERO": "Mover un Héroe",
+    "ACTIVATE": "Activar"
+  }
+}

@@ -1,0 +1,778 @@
+{
+  "id": "captain-hook",
+  "name": "Captain Hook",
+  "game": "Disney Villainous",
+  "images": [
+    {
+      "id": "portrait",
+      "path": "/assets/captain-hook/captain-hook-portrait.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Captain_Hook.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/00/Captain_Hook.png/revision/latest?cb=20210503154529"
+    },
+    {
+      "id": "mover",
+      "path": "/assets/captain-hook/captain-hook-mover.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Captain_Hookmover.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/7/7d/Captain_Hookmover.png/revision/latest?cb=20210504142500"
+    },
+    {
+      "id": "realm",
+      "path": "/assets/captain-hook/captain-hook-realm.webp",
+      "width": 1800,
+      "height": 503,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hookrealm.jpg",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/1/1d/Hookrealm.jpg/revision/latest?cb=20190622020906"
+    },
+    {
+      "id": "villainDeckBack",
+      "path": "/assets/captain-hook/captain-hook-villain-deck-back.webp",
+      "width": 1000,
+      "height": 1411,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Captain_Hook_Villain_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/5/5e/Captain_Hook_Villain_Back.png/revision/latest?cb=20190804010910"
+    },
+    {
+      "id": "fateDeckBack",
+      "path": "/assets/captain-hook/captain-hook-fate-deck-back.webp",
+      "width": 1000,
+      "height": 1411,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Captain_Hook_Fate_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/4c/Captain_Hook_Fate_Back.png/revision/latest?cb=20190804012312"
+    }
+  ],
+  "realm": [
+    {
+      "id": "jolly-roger",
+      "position": 1,
+      "topActions": [
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "DISCARD_CARDS"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "VANQUISH"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ]
+    },
+    {
+      "id": "skull-rock",
+      "position": 2,
+      "topActions": [
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "DISCARD_CARDS"
+        }
+      ]
+    },
+    {
+      "id": "mermaid-lagoon",
+      "position": 3,
+      "topActions": [
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "GAIN_POWER",
+          "amount": 3
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ]
+    },
+    {
+      "id": "hangman-s-tree",
+      "position": 4,
+      "topActions": [
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 2
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "MOVE_HERO"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ]
+    }
+  ],
+  "decks": {
+    "villain": {
+      "totalCards": 30,
+      "cards": [
+        {
+          "id": "boarding-party",
+          "pageTitle": "Boarding Party",
+          "quantity": 3,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/boarding-party.webp",
+            "width": 1000,
+            "height": 1408,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Boarding_Party.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/3/33/Boarding_Party.png/revision/latest?cb=20190725011806"
+          }
+        },
+        {
+          "id": "give-them-a-scare",
+          "pageTitle": "Give Them a Scare",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": 1,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/give-them-a-scare.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Give_Them_a_Scare.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/b8/Give_Them_a_Scare.png/revision/latest?cb=20190811154614"
+          }
+        },
+        {
+          "id": "swashbuckler",
+          "pageTitle": "Swashbuckler",
+          "quantity": 3,
+          "type": "ALLY",
+          "cost": 1,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/swashbuckler.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Swashbuckler.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/8/88/Swashbuckler.png/revision/latest?cb=20190811155306"
+          }
+        },
+        {
+          "id": "worthy-opponent",
+          "pageTitle": "Worthy Opponent",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": 0,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/worthy-opponent.webp",
+            "width": 1000,
+            "height": 1408,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Worthy_Opponent.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/9/90/Worthy_Opponent.png/revision/latest?cb=20190724213739"
+          }
+        },
+        {
+          "id": "aye-aye-sir",
+          "pageTitle": "Aye, Aye, Sir!",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": 1,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/aye-aye-sir.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Aye_Aye_Sir.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/3/3c/Aye%2C_Aye%2C_Sir%21.png/revision/latest?cb=20190812015022"
+          }
+        },
+        {
+          "id": "cannon",
+          "pageTitle": "Cannon",
+          "quantity": 2,
+          "type": "ITEM",
+          "cost": 2,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/cannon.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Cannon.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/a/a6/Cannon.png/revision/latest?cb=20190812133241"
+          }
+        },
+        {
+          "id": "cunning",
+          "pageTitle": "Cunning",
+          "quantity": 2,
+          "type": "CONDITION",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/cunning.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Cunning.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/e/e3/Cunning.png/revision/latest?cb=20190814140016"
+          }
+        },
+        {
+          "id": "cutlass",
+          "pageTitle": "Cutlass",
+          "quantity": 2,
+          "type": "ITEM",
+          "cost": 1,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/cutlass.webp",
+            "width": 1000,
+            "height": 1403,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Cutlass.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/1/1e/Cutlass.png/revision/latest?cb=20190725010949"
+          }
+        },
+        {
+          "id": "hook-s-case",
+          "pageTitle": "Hook's Case",
+          "quantity": 2,
+          "type": "ITEM",
+          "cost": 2,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/hook-s-case.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hook's_Case.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/d/d4/Hook%27s_Case.png/revision/latest?cb=20190813020048"
+          }
+        },
+        {
+          "id": "obsession",
+          "pageTitle": "Obsession",
+          "quantity": 2,
+          "type": "CONDITION",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/obsession.webp",
+            "width": 1000,
+            "height": 1403,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Obsession.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/cc/Obsession.png/revision/latest?cb=20190725004340"
+          }
+        },
+        {
+          "id": "pirate-brute",
+          "pageTitle": "Pirate Brute",
+          "quantity": 2,
+          "type": "ALLY",
+          "cost": 3,
+          "strength": 4,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/pirate-brute.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Pirate_Brute.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c7/Pirate_Brute.png/revision/latest?cb=20190813020835"
+          }
+        },
+        {
+          "id": "ingenious-device",
+          "pageTitle": "Ingenious Device",
+          "quantity": 1,
+          "type": "ITEM",
+          "cost": 2,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/ingenious-device.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Ingenious_Device.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c1/Ingenious_Device.png/revision/latest?cb=20190814134035"
+          }
+        },
+        {
+          "id": "mr-starkey",
+          "pageTitle": "Mr. Starkey",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/mr-starkey.webp",
+            "width": 1000,
+            "height": 1404,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Mr._Starkey.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/7/76/Mr._Starkey.png/revision/latest?cb=20190725001705"
+          }
+        },
+        {
+          "id": "never-land-map",
+          "pageTitle": "Never Land Map",
+          "quantity": 1,
+          "type": "ITEM",
+          "cost": 4,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/never-land-map.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Never_Land_Map.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/00/Never_Land_Map.png/revision/latest?cb=20190725002501"
+          }
+        },
+        {
+          "id": "smee",
+          "pageTitle": "Smee",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/villain/smee.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Smee.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/09/Smee.png/revision/latest?cb=20190814135104"
+          }
+        }
+      ]
+    },
+    "fate": {
+      "totalCards": 15,
+      "cards": [
+        {
+          "id": "pixie-dust",
+          "pageTitle": "Pixie Dust",
+          "quantity": 3,
+          "type": "ITEM",
+          "cost": null,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/pixie-dust.webp",
+            "width": 1000,
+            "height": 1423,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Pixie_Dust.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/65/Pixie_Dust.png/revision/latest?cb=20190725031552"
+          }
+        },
+        {
+          "id": "lost-boys",
+          "pageTitle": "Lost Boys",
+          "quantity": 2,
+          "type": "HERO",
+          "cost": null,
+          "strength": 4,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/lost-boys.webp",
+            "width": 1000,
+            "height": 1421,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Lost_Boys.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/f/f6/Lost_Boys.png/revision/latest?cb=20190725032209"
+          }
+        },
+        {
+          "id": "splitting-headache",
+          "pageTitle": "Splitting Headache",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/splitting-headache.webp",
+            "width": 1000,
+            "height": 1402,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Splitting_Headache.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/d/da/Splitting_Headache.png/revision/latest?cb=20190220043106"
+          }
+        },
+        {
+          "id": "taunt",
+          "pageTitle": "Taunt",
+          "quantity": 2,
+          "type": "ITEM",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/taunt.webp",
+            "width": 1000,
+            "height": 1402,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Taunt.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/cc/Taunt.png/revision/latest?cb=20190725024816"
+          }
+        },
+        {
+          "id": "john",
+          "pageTitle": "John",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/john.webp",
+            "width": 1000,
+            "height": 1413,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:John.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/8/82/John.png/revision/latest?cb=20190220130455"
+          }
+        },
+        {
+          "id": "michael",
+          "pageTitle": "Michael",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 1,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/michael.webp",
+            "width": 1000,
+            "height": 1427,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Michael.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/f/f3/Michael.png/revision/latest?cb=20190220131001"
+          }
+        },
+        {
+          "id": "peter-pan",
+          "pageTitle": "Peter Pan",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 8,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/peter-pan.webp",
+            "width": 1000,
+            "height": 1414,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Peter_Pan.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/4f/Peter_Pan.png/revision/latest?cb=20190220040202"
+          }
+        },
+        {
+          "id": "tick-tock",
+          "pageTitle": "Tick Tock",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 5,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/tick-tock.webp",
+            "width": 1000,
+            "height": 1417,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Tick_Tock.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/00/Tick_Tock.png/revision/latest?cb=20190220131451"
+          }
+        },
+        {
+          "id": "tinker-bell",
+          "pageTitle": "Tinker Bell",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 2,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/tinker-bell.webp",
+            "width": 1000,
+            "height": 1419,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Tinker_Bell.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c5/Tinker_Bell.png/revision/latest?cb=20190725030422"
+          }
+        },
+        {
+          "id": "wendy",
+          "pageTitle": "Wendy",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/captain-hook/cards/fate/wendy.webp",
+            "width": 1000,
+            "height": 1399,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Wendy.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/2d/Wendy.png/revision/latest?cb=20190220133449"
+          }
+        }
+      ]
+    }
+  },
+  "source": {
+    "article": "https://disney-villainous.fandom.com/wiki/Captain_Hook",
+    "sourceLanguage": "en"
+  },
+  "translations": {
+    "en": {
+      "objective": "Captain Hook must defeat Peter Pan at the Jolly Roger.",
+      "locations": {
+        "jolly-roger": "Jolly Roger",
+        "skull-rock": "Skull Rock",
+        "mermaid-lagoon": "Mermaid Lagoon",
+        "hangman-s-tree": "Hangman's Tree"
+      },
+      "cards": {
+        "boarding-party": {
+          "name": "Boarding Party",
+          "text": "When performing a Vanquish action, Boarding Party may be used to defeat a Hero at their location or at an adjacent unlocked location."
+        },
+        "give-them-a-scare": {
+          "name": "Give Them a Scare",
+          "text": "Look at the top two cards of your Fate deck. Either discard both cards or return them to the top in any order."
+        },
+        "swashbuckler": {
+          "name": "Swashbuckler",
+          "text": "No additional Ability."
+        },
+        "worthy-opponent": {
+          "name": "Worthy Opponent",
+          "text": "Gain 2 Power. Reveal cards from the top of your Fate deck until you reveal a Hero. Play that Hero and discard the rest."
+        },
+        "aye-aye-sir": {
+          "name": "Aye, Aye, Sir!",
+          "text": "Move an Ally to an adjacent unlocked location. That Ally gets +2 Strength until the end of your turn."
+        },
+        "cannon": {
+          "name": "Cannon",
+          "text": "This location gains: Vanquish action."
+        },
+        "cunning": {
+          "name": "Cunning",
+          "text": "During their turn, if another player has an Ally with a Strength of 4 or more in their realm, you may play Cunning. Play an Ally from your hand for free."
+        },
+        "cutlass": {
+          "name": "Cutlass",
+          "text": "When Cutlass is played, attach it to an Ally. That Ally gets +2 Strength."
+        },
+        "hook-s-case": {
+          "name": "Hook's Case",
+          "text": "This location gains: Gain 1 Power action."
+        },
+        "obsession": {
+          "name": "Obsession",
+          "text": "During their turn, if another player defeats a Hero with a Strength of 4 or more, you may play Obsession. Reveal cards from the top of your Fate deck until you reveal a Hero. Either play or discard the Hero. Discard the rest."
+        },
+        "pirate-brute": {
+          "name": "Pirate Brute",
+          "text": "No additional Ability."
+        },
+        "ingenious-device": {
+          "name": "Ingenious Device",
+          "text": "This location gains: Move a Hero action."
+        },
+        "mr-starkey": {
+          "name": "Mr. Starkey",
+          "text": "When Mr. Starkey is played, you may move a Hero from his location to an adjacent unlocked location."
+        },
+        "never-land-map": {
+          "name": "Never Land Map",
+          "text": "When Never Land Map is played, unlock Hangman's Tree.When you play an Item, you may discard Never Land Map instead of paying the Item's cost."
+        },
+        "smee": {
+          "name": "Smee",
+          "text": "Smee gets +2 Strength if he is at the Jolly Roger."
+        },
+        "pixie-dust": {
+          "name": "Pixie Dust",
+          "text": "When Pixie Dust is played, attach it to a Hero. That Hero gets +2 Strength."
+        },
+        "lost-boys": {
+          "name": "Lost Boys",
+          "text": "When performing a Vanquish action to defeat Lost Boys, at least two Allies must be used."
+        },
+        "splitting-headache": {
+          "name": "Splitting Headache",
+          "text": "Discard an Item from Captain Hook's Realm."
+        },
+        "taunt": {
+          "name": "Taunt",
+          "text": "When Taunt is played, attach it to a Hero. Captain Hook must defeat Heroes with Taunt before defeating other Heroes."
+        },
+        "john": {
+          "name": "John",
+          "text": "John gets +1 Strength if he has any Items attached to him."
+        },
+        "michael": {
+          "name": "Michael",
+          "text": "Michael gets +1 Strength for each location in Captain Hook's Realm that has a Hero, including Michael's location."
+        },
+        "peter-pan": {
+          "name": "Peter Pan",
+          "text": "When Peter Pan is revealed, you MUST IMMEDIATELY PLAY HIM to Hangman's Tree, even if it is locked. Any other Fate cards revealed during this action are discarded."
+        },
+        "tick-tock": {
+          "name": "Tick Tock",
+          "text": "If Captain Hook moves to Tick Tock's location, Captain Hook must immediately discard his hand."
+        },
+        "tinker-bell": {
+          "name": "Tinker Bell",
+          "text": "When Tinker Bell is played, you may discard one Ally from her location."
+        },
+        "wendy": {
+          "name": "Wendy",
+          "text": "All other Heroes in Captain Hook's Realm get +1 Strength."
+        }
+      }
+    },
+    "es": {
+      "objective": "El Capitán Garfio debe derrotar a Peter Pan en el Jolly Roger.",
+      "locations": {
+        "jolly-roger": "Jolly Roger",
+        "skull-rock": "Roca Calavera",
+        "mermaid-lagoon": "Laguna de las Sirenas",
+        "hangman-s-tree": "Árbol del Ahorcado"
+      },
+      "cards": {
+        "boarding-party": {
+          "name": "Grupo de abordaje",
+          "text": "Al realizar una acción de Vencer, puedes usar Grupo de abordaje para derrotar a un Héroe en su ubicación o en una ubicación adyacente desbloqueada."
+        },
+        "give-them-a-scare": {
+          "name": "Dales un susto",
+          "text": "Mira las dos primeras cartas de tu mazo de Destino. Descarta ambas cartas o devuélvelas a la parte superior en cualquier orden."
+        },
+        "swashbuckler": {
+          "name": "Espadachín",
+          "text": "Sin Habilidad adicional."
+        },
+        "worthy-opponent": {
+          "name": "Digno oponente",
+          "text": "Obtén 2 de Poder. Revela cartas de la parte superior de tu mazo de Destino hasta revelar un Héroe. Juega ese Héroe y descarta el resto."
+        },
+        "aye-aye-sir": {
+          "name": "¡Sí, señor!",
+          "text": "Mueve un Aliado a una ubicación adyacente desbloqueada. Ese Aliado obtiene +2 de Fuerza hasta el final de tu turno."
+        },
+        "cannon": {
+          "name": "Cañón",
+          "text": "Esta ubicación obtiene una acción de Vencer."
+        },
+        "cunning": {
+          "name": "Astucia",
+          "text": "Durante el turno de otro jugador, si tiene un Aliado con una Fuerza de 4 o más en su Reino, puedes jugar Astucia. Juega gratis un Aliado de tu mano."
+        },
+        "cutlass": {
+          "name": "Alfanje",
+          "text": "Cuando juegues Alfanje, vincúlalo a un Aliado. Ese Aliado obtiene +2 de Fuerza."
+        },
+        "hook-s-case": {
+          "name": "Cofre de Garfio",
+          "text": "Esta ubicación obtiene una acción de Obtener 1 de Poder."
+        },
+        "obsession": {
+          "name": "Obsesión",
+          "text": "Durante el turno de otro jugador, si derrota a un Héroe con una Fuerza de 4 o más, puedes jugar Obsesión. Revela cartas de la parte superior de tu mazo de Destino hasta revelar un Héroe. Juega o descarta al Héroe. Descarta el resto."
+        },
+        "pirate-brute": {
+          "name": "Pirata bruto",
+          "text": "Sin Habilidad adicional."
+        },
+        "ingenious-device": {
+          "name": "Dispositivo ingenioso",
+          "text": "Esta ubicación obtiene una acción de Mover un Héroe."
+        },
+        "mr-starkey": {
+          "name": "Sr. Starkey",
+          "text": "Cuando juegues al Sr. Starkey, puedes mover un Héroe de su ubicación a una ubicación adyacente desbloqueada."
+        },
+        "never-land-map": {
+          "name": "Mapa de Nunca Jamás",
+          "text": "Cuando juegues Mapa de Nunca Jamás, desbloquea el Árbol del Ahorcado. Cuando juegues un Objeto, puedes descartar Mapa de Nunca Jamás en lugar de pagar el Coste del Objeto."
+        },
+        "smee": {
+          "name": "Smee",
+          "text": "Smee obtiene +2 de Fuerza si está en el Jolly Roger."
+        },
+        "pixie-dust": {
+          "name": "Polvo de hada",
+          "text": "Cuando juegues Polvo de hada, vincúlalo a un Héroe. Ese Héroe obtiene +2 de Fuerza."
+        },
+        "lost-boys": {
+          "name": "Niños Perdidos",
+          "text": "Al realizar una acción de Vencer para derrotar a los Niños Perdidos, debes usar al menos dos Aliados."
+        },
+        "splitting-headache": {
+          "name": "Dolor de cabeza",
+          "text": "Descarta un Objeto del Reino del Capitán Garfio."
+        },
+        "taunt": {
+          "name": "Provocación",
+          "text": "Cuando juegues Provocación, vincúlala a un Héroe. El Capitán Garfio debe derrotar a los Héroes con Provocación antes de derrotar a otros Héroes."
+        },
+        "john": {
+          "name": "Juan",
+          "text": "Juan obtiene +1 de Fuerza si tiene algún Objeto vinculado."
+        },
+        "michael": {
+          "name": "Miguel",
+          "text": "Miguel obtiene +1 de Fuerza por cada ubicación del Reino del Capitán Garfio que contenga un Héroe, incluida la ubicación de Miguel."
+        },
+        "peter-pan": {
+          "name": "Peter Pan",
+          "text": "Cuando reveles a Peter Pan, DEBES JUGARLO INMEDIATAMENTE en el Árbol del Ahorcado, aunque esté bloqueado. Descarta cualquier otra carta de Destino revelada durante esta acción."
+        },
+        "tick-tock": {
+          "name": "Tic Tac",
+          "text": "Si el Capitán Garfio se mueve a la ubicación de Tic Tac, debe descartar su mano inmediatamente."
+        },
+        "tinker-bell": {
+          "name": "Campanilla",
+          "text": "Cuando juegues a Campanilla, puedes descartar un Aliado de su ubicación."
+        },
+        "wendy": {
+          "name": "Wendy",
+          "text": "Todos los demás Héroes del Reino del Capitán Garfio obtienen +1 de Fuerza."
+        }
+      }
+    }
+  }
+}

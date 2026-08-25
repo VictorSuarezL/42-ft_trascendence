@@ -1,0 +1,898 @@
+{
+  "id": "hades",
+  "name": "Hades",
+  "game": "Disney Villainous",
+  "images": [
+    {
+      "id": "portrait",
+      "path": "/assets/hades/hades-portrait.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hades.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/64/Hades.png/revision/latest?cb=20210503155317"
+    },
+    {
+      "id": "mover",
+      "path": "/assets/hades/hades-mover.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hadesmover.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/7/7f/Hadesmover.png/revision/latest?cb=20210504143134"
+    },
+    {
+      "id": "realm",
+      "path": "/assets/hades/hades-realm.webp",
+      "width": 1800,
+      "height": 503,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hadesrealm.jpg",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/d/df/Hadesrealm.jpg/revision/latest?cb=20190623012733"
+    },
+    {
+      "id": "villainDeckBack",
+      "path": "/assets/hades/hades-villain-deck-back.webp",
+      "width": 1000,
+      "height": 1411,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hades_Villain_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/d/d1/Hades_Villain_Back.png/revision/latest?cb=20190806123839"
+    },
+    {
+      "id": "fateDeckBack",
+      "path": "/assets/hades/hades-fate-deck-back.webp",
+      "width": 1000,
+      "height": 1411,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hades_Fate_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/b4/Hades_Fate_Back.png/revision/latest?cb=20190807014344"
+    }
+  ],
+  "realm": [
+    {
+      "id": "the-underworld",
+      "position": 1,
+      "topActions": [
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 2
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "VANQUISH"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
+      ]
+    },
+    {
+      "id": "thebes",
+      "position": 2,
+      "topActions": [
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "DISCARD_CARDS"
+        }
+      ]
+    },
+    {
+      "id": "the-gardens",
+      "position": 3,
+      "topActions": [
+        {
+          "type": "DISCARD_CARDS"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "GAIN_POWER",
+          "amount": 3
+        },
+        {
+          "type": "PLAY_CARD"
+        }
+      ]
+    },
+    {
+      "id": "mount-olympus",
+      "position": 4,
+      "topActions": [
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
+      ],
+      "bottomActions": [
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        }
+      ]
+    }
+  ],
+  "decks": {
+    "villain": {
+      "totalCards": 30,
+      "cards": [
+        {
+          "id": "get-ready-to-rumble",
+          "pageTitle": "Get Ready to Rumble!",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/get-ready-to-rumble.webp",
+            "width": 1000,
+            "height": 1418,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Get_Ready_to_Rumble!.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/5/55/Get_Ready_to_Rumble%21.png/revision/latest?cb=20190310143514"
+          }
+        },
+        {
+          "id": "mortality-potion",
+          "pageTitle": "Mortality Potion",
+          "quantity": 3,
+          "type": "ITEM",
+          "cost": 2,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/mortality-potion.webp",
+            "width": 1000,
+            "height": 1414,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Mortality_Potion.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/03/Mortality_Potion.png/revision/latest?cb=20190310151631"
+          }
+        },
+        {
+          "id": "planets-align",
+          "pageTitle": "Planets Align",
+          "quantity": 3,
+          "type": "EFFECT",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/planets-align.webp",
+            "width": 1000,
+            "height": 1413,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Planets_Align.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/26/Planets_Align.png/revision/latest?cb=20190310154721"
+          }
+        },
+        {
+          "id": "achilles-heel",
+          "pageTitle": "Achilles' Heel",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": 1,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/achilles-heel.webp",
+            "width": 1000,
+            "height": 1426,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Achilles_Heel.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/3/3e/Achilles_Heel.png/revision/latest?cb=20190310213324"
+          }
+        },
+        {
+          "id": "eye-of-the-fates",
+          "pageTitle": "Eye of the Fates",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": 2,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/eye-of-the-fates.webp",
+            "width": 1000,
+            "height": 1426,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Eye_of_the_Fates.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/47/Eye_of_the_Fates.png/revision/latest?cb=20190310221752"
+          }
+        },
+        {
+          "id": "i-rule",
+          "pageTitle": "I Rule!",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": 0,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/i-rule.webp",
+            "width": 1000,
+            "height": 1425,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:I_Rule!.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/cd/I_Rule%21.png/revision/latest?cb=20190310223045"
+          }
+        },
+        {
+          "id": "rage",
+          "pageTitle": "Rage",
+          "quantity": 2,
+          "type": "CONDITION",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/rage.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Rage.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/27/Rage.png/revision/latest?cb=20190310232543"
+          }
+        },
+        {
+          "id": "ruthless",
+          "pageTitle": "Ruthless",
+          "quantity": 2,
+          "type": "CONDITION",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/ruthless.webp",
+            "width": 1000,
+            "height": 1419,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Ruthless.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/1/10/Ruthless.png/revision/latest?cb=20190310233431"
+          }
+        },
+        {
+          "id": "arges",
+          "pageTitle": "Arges",
+          "quantity": 1,
+          "type": "TITAN",
+          "cost": 3,
+          "strength": 4,
+          "image": {
+            "path": "/assets/hades/cards/villain/arges.webp",
+            "width": 1000,
+            "height": 1409,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Arges.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/6e/Arges.png/revision/latest?cb=20190310234315"
+          }
+        },
+        {
+          "id": "cerberus",
+          "pageTitle": "Cerberus",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 3,
+          "strength": 4,
+          "image": {
+            "path": "/assets/hades/cards/villain/cerberus.webp",
+            "width": 1000,
+            "height": 1406,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Cerberus.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/45/Cerberus.png/revision/latest?cb=20190311034858"
+          }
+        },
+        {
+          "id": "chariot",
+          "pageTitle": "Chariot",
+          "quantity": 1,
+          "type": "ITEM",
+          "cost": 3,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/villain/chariot.webp",
+            "width": 1000,
+            "height": 1413,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Chariot.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/be/Chariot.png/revision/latest?cb=20190311035815"
+          }
+        },
+        {
+          "id": "hydra",
+          "pageTitle": "Hydra",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 3,
+          "image": {
+            "path": "/assets/hades/cards/villain/hydra.webp",
+            "width": 1000,
+            "height": 1406,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hydra.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/9/9d/Hydra.png/revision/latest?cb=20190311123615"
+          }
+        },
+        {
+          "id": "hydros",
+          "pageTitle": "Hydros",
+          "quantity": 1,
+          "type": "TITAN",
+          "cost": 2,
+          "strength": 3,
+          "image": {
+            "path": "/assets/hades/cards/villain/hydros.webp",
+            "width": 1000,
+            "height": 1405,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hydros.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/1/14/Hydros.png/revision/latest?cb=20190311124053"
+          }
+        },
+        {
+          "id": "lythos",
+          "pageTitle": "Lythos",
+          "quantity": 1,
+          "type": "TITAN",
+          "cost": 3,
+          "strength": 4,
+          "image": {
+            "path": "/assets/hades/cards/villain/lythos.webp",
+            "width": 1000,
+            "height": 1406,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Lythos.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c0/Lythos.png/revision/latest?cb=20190312004142"
+          }
+        },
+        {
+          "id": "nessus",
+          "pageTitle": "Nessus",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 3,
+          "strength": 4,
+          "image": {
+            "path": "/assets/hades/cards/villain/nessus.webp",
+            "width": 1000,
+            "height": 1417,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Nessus.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/cb/Nessus.png/revision/latest?cb=20190312011408"
+          }
+        },
+        {
+          "id": "pain",
+          "pageTitle": "Pain",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 2,
+          "strength": 2,
+          "image": {
+            "path": "/assets/hades/cards/villain/pain.webp",
+            "width": 1000,
+            "height": 1413,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Pain.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/5/54/Pain.png/revision/latest?cb=20190312012534"
+          }
+        },
+        {
+          "id": "panic",
+          "pageTitle": "Panic",
+          "quantity": 1,
+          "type": "ALLY",
+          "cost": 1,
+          "strength": 2,
+          "image": {
+            "path": "/assets/hades/cards/villain/panic.webp",
+            "width": 1000,
+            "height": 1408,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Panic.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/4c/Panic.png/revision/latest?cb=20190312112556"
+          }
+        },
+        {
+          "id": "pyros",
+          "pageTitle": "Pyros",
+          "quantity": 1,
+          "type": "TITAN",
+          "cost": 3,
+          "strength": 4,
+          "image": {
+            "path": "/assets/hades/cards/villain/pyros.webp",
+            "width": 1000,
+            "height": 1410,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Pyros.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/a/a0/Pyros.png/revision/latest?cb=20190312235841"
+          }
+        },
+        {
+          "id": "stratos",
+          "pageTitle": "Stratos",
+          "quantity": 1,
+          "type": "TITAN",
+          "cost": 2,
+          "strength": 3,
+          "image": {
+            "path": "/assets/hades/cards/villain/stratos.webp",
+            "width": 1000,
+            "height": 1401,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Stratos.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/bd/Stratos.png/revision/latest?cb=20190313000720"
+          }
+        }
+      ]
+    },
+    "fate": {
+      "totalCards": 15,
+      "cards": [
+        {
+          "id": "go-the-distance",
+          "pageTitle": "Go the Distance",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/fate/go-the-distance.webp",
+            "width": 1000,
+            "height": 1411,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Go_the_Distance.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/e/e8/Go_the_Distance.png/revision/latest?cb=20190313012641"
+          }
+        },
+        {
+          "id": "lightning-bolt",
+          "pageTitle": "Lightning Bolt",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/fate/lightning-bolt.webp",
+            "width": 1000,
+            "height": 1426,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Lightning_Bolt.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/f/fd/Lightning_Bolt.png/revision/latest?cb=20190313020544"
+          }
+        },
+        {
+          "id": "medallion",
+          "pageTitle": "Medallion",
+          "quantity": 2,
+          "type": "ITEM",
+          "cost": null,
+          "strength": 2,
+          "image": {
+            "path": "/assets/hades/cards/fate/medallion.webp",
+            "width": 1000,
+            "height": 1407,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Medallion.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/2e/Medallion.png/revision/latest?cb=20190313023831"
+          }
+        },
+        {
+          "id": "the-gospel-truth",
+          "pageTitle": "The Gospel Truth",
+          "quantity": 2,
+          "type": "EFFECT",
+          "cost": null,
+          "strength": null,
+          "image": {
+            "path": "/assets/hades/cards/fate/the-gospel-truth.webp",
+            "width": 1000,
+            "height": 1418,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:The_Gospel_Truth.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/0b/The_Gospel_Truth.png/revision/latest?cb=20190313014601"
+          }
+        },
+        {
+          "id": "hera",
+          "pageTitle": "Hera",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 4,
+          "image": {
+            "path": "/assets/hades/cards/fate/hera.webp",
+            "width": 1000,
+            "height": 1402,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hera.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/5/56/Hera.png/revision/latest?cb=20190313025950"
+          }
+        },
+        {
+          "id": "hercules",
+          "pageTitle": "Hercules",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 5,
+          "image": {
+            "path": "/assets/hades/cards/fate/hercules.webp",
+            "width": 1000,
+            "height": 1414,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hercules.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/7/76/Hercules.png/revision/latest?cb=20190314033857"
+          }
+        },
+        {
+          "id": "hermes",
+          "pageTitle": "Hermes",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/hades/cards/fate/hermes.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Hermes.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/0d/Hermes.png/revision/latest?cb=20190314034618"
+          }
+        },
+        {
+          "id": "megara",
+          "pageTitle": "Megara",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/hades/cards/fate/megara.webp",
+            "width": 1000,
+            "height": 1410,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Megara.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/24/Megara.png/revision/latest?cb=20190314035457"
+          }
+        },
+        {
+          "id": "pegasus",
+          "pageTitle": "Pegasus",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 3,
+          "image": {
+            "path": "/assets/hades/cards/fate/pegasus.webp",
+            "width": 1000,
+            "height": 1417,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Pegasus.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/4/4a/Pegasus.png/revision/latest?cb=20190314123434"
+          }
+        },
+        {
+          "id": "phil",
+          "pageTitle": "Phil",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 2,
+          "image": {
+            "path": "/assets/hades/cards/fate/phil.webp",
+            "width": 1000,
+            "height": 1413,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Phil.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/21/Phil.png/revision/latest?cb=20190314123934"
+          }
+        },
+        {
+          "id": "zeus",
+          "pageTitle": "Zeus",
+          "quantity": 1,
+          "type": "HERO",
+          "cost": null,
+          "strength": 5,
+          "image": {
+            "path": "/assets/hades/cards/fate/zeus.webp",
+            "width": 1000,
+            "height": 1417,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Zeus.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/3/3c/Zeus.png/revision/latest?cb=20190314124449"
+          }
+        }
+      ]
+    }
+  },
+  "source": {
+    "article": "https://disney-villainous.fandom.com/wiki/Hades",
+    "sourceLanguage": "en"
+  },
+  "translations": {
+    "en": {
+      "objective": "Hades must play Titans and move them so he has at least three untrapped Titans at Mount Olympus. He can only win at the start of his turn.",
+      "locations": {
+        "the-underworld": "The Underworld",
+        "thebes": "Thebes",
+        "the-gardens": "The Gardens",
+        "mount-olympus": "Mount Olympus"
+      },
+      "cards": {
+        "get-ready-to-rumble": {
+          "name": "Get Ready to Rumble!",
+          "text": "Either pay 2 Power to move an untrapped Titan to an adjacent location, or pay 5 Power to move an untrapped Titan two locations away."
+        },
+        "mortality-potion": {
+          "name": "Mortality Potion",
+          "text": "When Mortality Potion is played, attach it to a Hero. Titans used to defeat that Hero are not discarded."
+        },
+        "planets-align": {
+          "name": "Planets Align",
+          "text": "Untrap one or more Titans in your Realm. The Cost to play Planets Align is equal to the number of Titans you untrap."
+        },
+        "achilles-heel": {
+          "name": "Achilles' Heel",
+          "text": "Choose a Hero. That Hero gets -2 Strength until the end of your turn."
+        },
+        "eye-of-the-fates": {
+          "name": "Eye of the Fates",
+          "text": "Reveal cards from the top of your deck until you reveal an Ally or Titan. Put that Ally or Titan into your hand. Discard the rest."
+        },
+        "i-rule": {
+          "name": "I Rule!",
+          "text": "Gain 1 Power for each Ally and Titan in your discard pile."
+        },
+        "rage": {
+          "name": "Rage",
+          "text": "During their turn, if another player defeats a Hero with a Strength of 3 or more, you may play Rage. Move a Hero in your Realm to any location."
+        },
+        "ruthless": {
+          "name": "Ruthless",
+          "text": "During their turn, if another player has 6 or more Power, you may play Ruthless. Play an Ally or Titan from your hand for free."
+        },
+        "arges": {
+          "name": "Arges",
+          "text": "Arges can only be played to The Underworld.When Arges is moved, gain 1 Power."
+        },
+        "cerberus": {
+          "name": "Cerberus",
+          "text": "When performing a Vanquish action, Cerberus may be used to defeat a Hero at his location or at an adjacent location."
+        },
+        "chariot": {
+          "name": "Chariot",
+          "text": "Once per turn, if Hades is as this location, you may move Hades and Chariot to any location and perform one available action at the new location. You cannot use Chariot to perform Fate actions."
+        },
+        "hydra": {
+          "name": "Hydra",
+          "text": "When Hydra is used to defeat a Hero, you may put Hydra into your hand instead of discarding him."
+        },
+        "hydros": {
+          "name": "Hydros",
+          "text": "Hydros can only be played to The Underworld.Heroes at Hydros' location get -1 Strength and cannot be moved by Fate cards."
+        },
+        "lythos": {
+          "name": "Lythos",
+          "text": "Lythos can only be played to The Underworld.When Lythos is moved, you may perform a Vanquish action at his new location. Lythos must be used in that action."
+        },
+        "nessus": {
+          "name": "Nessus",
+          "text": "If Nessus is used to defeat a Hero with a Strength of 3 or less, gain 2 Power."
+        },
+        "pain": {
+          "name": "Pain",
+          "text": "When Pain is moved, you may move a Hero from Pain's previous location to his new location."
+        },
+        "panic": {
+          "name": "Panic",
+          "text": "If Hades is at Panic's location, the Cost to play Items, Allies, and Titans is reduced by 1 Power."
+        },
+        "pyros": {
+          "name": "Pyros",
+          "text": "Pyros can only be played to The Underworld.When Pyros is moved, you may untrap one Titan at his new location."
+        },
+        "stratos": {
+          "name": "Stratos",
+          "text": "Stratos can only be played to The Underworld.When Stratos is moved, you may move a Hero from his new location to an adjacent location."
+        },
+        "go-the-distance": {
+          "name": "Go the Distance",
+          "text": "Either move an untrapped Titan up to two locations away, ignoring all Hero and Titan Abilities, or move a Hero to any location."
+        },
+        "lightning-bolt": {
+          "name": "Lightning Bolt",
+          "text": "Choose a location in Hades' Realm. All Titans in that location are trapped."
+        },
+        "medallion": {
+          "name": "Medallion",
+          "text": "When Medallion is played, attach it to a Hero. That Hero gets +2 Strength."
+        },
+        "the-gospel-truth": {
+          "name": "The Gospel Truth",
+          "text": "Discard an Item or Ally from Hades' Realm."
+        },
+        "hera": {
+          "name": "Hera",
+          "text": "When Hera is played or moved, you may choose a Titan at her new location. That Titan is trapped."
+        },
+        "hercules": {
+          "name": "Hercules",
+          "text": "Titans cannot be moved from Hercules' location."
+        },
+        "hermes": {
+          "name": "Hermes",
+          "text": "When Hermes is played, if Zeus is in Hades' Realm, you may move Zeus to any location. Otherwise, find Zeus and put him on the top of Hades' Fate deck."
+        },
+        "megara": {
+          "name": "Megara",
+          "text": "When Megara is played, you may move a Hero from her location to any location."
+        },
+        "pegasus": {
+          "name": "Pegasus",
+          "text": "When Pegasus is played, you may move an untrapped Titan from his location to an adjacent location."
+        },
+        "phil": {
+          "name": "Phil",
+          "text": "Phil and Hercules get +1 Strength if Hercules is in Hades' Realm."
+        },
+        "zeus": {
+          "name": "Zeus",
+          "text": "If a Titan moves to Zeus' location, that Titan is immediately trapped before the Titan's Ability is triggered."
+        }
+      }
+    },
+    "es": {
+      "objective": "Hades debe jugar Titanes y moverlos hasta tener al menos tres Titanes sin atrapar en el Monte Olimpo. Solo puede ganar al comienzo de su turno.",
+      "locations": {
+        "the-underworld": "El Inframundo",
+        "thebes": "Tebas",
+        "the-gardens": "Los Jardines",
+        "mount-olympus": "Monte Olimpo"
+      },
+      "cards": {
+        "get-ready-to-rumble": {
+          "name": "¡Prepárate para luchar!",
+          "text": "Paga 2 de Poder para mover un Titán sin atrapar a una ubicación adyacente o paga 5 de Poder para mover un Titán sin atrapar a una ubicación situada a dos espacios."
+        },
+        "mortality-potion": {
+          "name": "Poción de mortalidad",
+          "text": "Cuando juegues Poción de mortalidad, vincúlala a un Héroe. Los Titanes usados para derrotar a ese Héroe no se descartan."
+        },
+        "planets-align": {
+          "name": "Los planetas se alinean",
+          "text": "Libera uno o más Titanes de tu Reino. El Coste de jugar Los planetas se alinean es igual al número de Titanes que liberes."
+        },
+        "achilles-heel": {
+          "name": "Talón de Aquiles",
+          "text": "Elige un Héroe. Ese Héroe obtiene -2 de Fuerza hasta el final de tu turno."
+        },
+        "eye-of-the-fates": {
+          "name": "Ojo de las Moiras",
+          "text": "Revela cartas de la parte superior de tu mazo hasta revelar un Aliado o Titán. Añade ese Aliado o Titán a tu mano. Descarta el resto."
+        },
+        "i-rule": {
+          "name": "¡Yo mando!",
+          "text": "Obtén 1 de Poder por cada Aliado y Titán que haya en tu pila de descartes."
+        },
+        "rage": {
+          "name": "Ira",
+          "text": "Durante el turno de otro jugador, si derrota a un Héroe con una Fuerza de 3 o más, puedes jugar Ira. Mueve un Héroe de tu Reino a cualquier ubicación."
+        },
+        "ruthless": {
+          "name": "Despiadado",
+          "text": "Durante el turno de otro jugador, si tiene 6 o más de Poder, puedes jugar Despiadado. Juega gratis un Aliado o Titán de tu mano."
+        },
+        "arges": {
+          "name": "Arges",
+          "text": "Arges solo puede jugarse en el Inframundo. Cuando muevas a Arges, obtén 1 de Poder."
+        },
+        "cerberus": {
+          "name": "Cerbero",
+          "text": "Al realizar una acción de Vencer, puedes usar a Cerbero para derrotar a un Héroe en su ubicación o en una ubicación adyacente."
+        },
+        "chariot": {
+          "name": "Carro",
+          "text": "Una vez por turno, si Hades está en esta ubicación, puedes mover a Hades y al Carro a cualquier ubicación y realizar una acción disponible en la nueva ubicación. No puedes usar el Carro para realizar acciones de Destino."
+        },
+        "hydra": {
+          "name": "Hidra",
+          "text": "Cuando uses a Hidra para derrotar a un Héroe, puedes devolver a Hidra a tu mano en lugar de descartarla."
+        },
+        "hydros": {
+          "name": "Hydros",
+          "text": "Hydros solo puede jugarse en el Inframundo. Los Héroes en la ubicación de Hydros obtienen -1 de Fuerza y no pueden ser movidos por cartas de Destino."
+        },
+        "lythos": {
+          "name": "Lythos",
+          "text": "Lythos solo puede jugarse en el Inframundo. Cuando muevas a Lythos, puedes realizar una acción de Vencer en su nueva ubicación. Debes usar a Lythos en esa acción."
+        },
+        "nessus": {
+          "name": "Neso",
+          "text": "Si usas a Neso para derrotar a un Héroe con una Fuerza de 3 o menos, obtén 2 de Poder."
+        },
+        "pain": {
+          "name": "Pena",
+          "text": "Cuando muevas a Pena, puedes mover un Héroe de la ubicación anterior de Pena a su nueva ubicación."
+        },
+        "panic": {
+          "name": "Pánico",
+          "text": "Si Hades está en la ubicación de Pánico, el Coste de jugar Objetos, Aliados y Titanes se reduce en 1 de Poder."
+        },
+        "pyros": {
+          "name": "Pyros",
+          "text": "Pyros solo puede jugarse en el Inframundo. Cuando muevas a Pyros, puedes liberar un Titán en su nueva ubicación."
+        },
+        "stratos": {
+          "name": "Stratos",
+          "text": "Stratos solo puede jugarse en el Inframundo. Cuando muevas a Stratos, puedes mover un Héroe de su nueva ubicación a una ubicación adyacente."
+        },
+        "go-the-distance": {
+          "name": "No importa la distancia",
+          "text": "Mueve un Titán sin atrapar hasta dos ubicaciones, ignorando todas las Habilidades de Héroes y Titanes, o mueve un Héroe a cualquier ubicación."
+        },
+        "lightning-bolt": {
+          "name": "Rayo",
+          "text": "Elige una ubicación del Reino de Hades. Todos los Titanes de esa ubicación quedan atrapados."
+        },
+        "medallion": {
+          "name": "Medallón",
+          "text": "Cuando juegues Medallón, vincúlalo a un Héroe. Ese Héroe obtiene +2 de Fuerza."
+        },
+        "the-gospel-truth": {
+          "name": "La cruda realidad",
+          "text": "Descarta un Objeto o Aliado del Reino de Hades."
+        },
+        "hera": {
+          "name": "Hera",
+          "text": "Cuando juegues o muevas a Hera, puedes elegir un Titán en su nueva ubicación. Ese Titán queda atrapado."
+        },
+        "hercules": {
+          "name": "Hércules",
+          "text": "Los Titanes no pueden moverse de la ubicación de Hércules."
+        },
+        "hermes": {
+          "name": "Hermes",
+          "text": "Cuando juegues a Hermes, si Zeus está en el Reino de Hades, puedes mover a Zeus a cualquier ubicación. De lo contrario, busca a Zeus y colócalo en la parte superior del mazo de Destino de Hades."
+        },
+        "megara": {
+          "name": "Megara",
+          "text": "Cuando juegues a Megara, puedes mover un Héroe de su ubicación a cualquier ubicación."
+        },
+        "pegasus": {
+          "name": "Pegaso",
+          "text": "Cuando juegues a Pegaso, puedes mover un Titán sin atrapar de su ubicación a una ubicación adyacente."
+        },
+        "phil": {
+          "name": "Filoctetes",
+          "text": "Filoctetes y Hércules obtienen +1 de Fuerza si Hércules está en el Reino de Hades."
+        },
+        "zeus": {
+          "name": "Zeus",
+          "text": "Si un Titán se mueve a la ubicación de Zeus, ese Titán queda atrapado inmediatamente antes de que se active su Habilidad."
+        }
+      }
+    }
+  }
+}

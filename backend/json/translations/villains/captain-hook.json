@@ -1,0 +1,111 @@
+{
+  "objective": "El Capitán Garfio debe derrotar a Peter Pan en el Jolly Roger.",
+  "locations": {
+    "jolly-roger": "Jolly Roger",
+    "skull-rock": "Roca Calavera",
+    "mermaid-lagoon": "Laguna de las Sirenas",
+    "hangman-s-tree": "Árbol del Ahorcado"
+  },
+  "cards": {
+    "boarding-party": {
+      "name": "Grupo de abordaje",
+      "text": "Al realizar una acción de Vencer, puedes usar Grupo de abordaje para derrotar a un Héroe en su ubicación o en una ubicación adyacente desbloqueada."
+    },
+    "give-them-a-scare": {
+      "name": "Dales un susto",
+      "text": "Mira las dos primeras cartas de tu mazo de Destino. Descarta ambas cartas o devuélvelas a la parte superior en cualquier orden."
+    },
+    "swashbuckler": {
+      "name": "Espadachín",
+      "text": "Sin Habilidad adicional."
+    },
+    "worthy-opponent": {
+      "name": "Digno oponente",
+      "text": "Obtén 2 de Poder. Revela cartas de la parte superior de tu mazo de Destino hasta revelar un Héroe. Juega ese Héroe y descarta el resto."
+    },
+    "aye-aye-sir": {
+      "name": "¡Sí, señor!",
+      "text": "Mueve un Aliado a una ubicación adyacente desbloqueada. Ese Aliado obtiene +2 de Fuerza hasta el final de tu turno."
+    },
+    "cannon": {
+      "name": "Cañón",
+      "text": "Esta ubicación obtiene una acción de Vencer."
+    },
+    "cunning": {
+      "name": "Astucia",
+      "text": "Durante el turno de otro jugador, si tiene un Aliado con una Fuerza de 4 o más en su Reino, puedes jugar Astucia. Juega gratis un Aliado de tu mano."
+    },
+    "cutlass": {
+      "name": "Alfanje",
+      "text": "Cuando juegues Alfanje, vincúlalo a un Aliado. Ese Aliado obtiene +2 de Fuerza."
+    },
+    "hook-s-case": {
+      "name": "Cofre de Garfio",
+      "text": "Esta ubicación obtiene una acción de Obtener 1 de Poder."
+    },
+    "obsession": {
+      "name": "Obsesión",
+      "text": "Durante el turno de otro jugador, si derrota a un Héroe con una Fuerza de 4 o más, puedes jugar Obsesión. Revela cartas de la parte superior de tu mazo de Destino hasta revelar un Héroe. Juega o descarta al Héroe. Descarta el resto."
+    },
+    "pirate-brute": {
+      "name": "Pirata bruto",
+      "text": "Sin Habilidad adicional."
+    },
+    "ingenious-device": {
+      "name": "Dispositivo ingenioso",
+      "text": "Esta ubicación obtiene una acción de Mover un Héroe."
+    },
+    "mr-starkey": {
+      "name": "Sr. Starkey",
+      "text": "Cuando juegues al Sr. Starkey, puedes mover un Héroe de su ubicación a una ubicación adyacente desbloqueada."
+    },
+    "never-land-map": {
+      "name": "Mapa de Nunca Jamás",
+      "text": "Cuando juegues Mapa de Nunca Jamás, desbloquea el Árbol del Ahorcado. Cuando juegues un Objeto, puedes descartar Mapa de Nunca Jamás en lugar de pagar el Coste del Objeto."
+    },
+    "smee": {
+      "name": "Smee",
+      "text": "Smee obtiene +2 de Fuerza si está en el Jolly Roger."
+    },
+    "pixie-dust": {
+      "name": "Polvo de hada",
+      "text": "Cuando juegues Polvo de hada, vincúlalo a un Héroe. Ese Héroe obtiene +2 de Fuerza."
+    },
+    "lost-boys": {
+      "name": "Niños Perdidos",
+      "text": "Al realizar una acción de Vencer para derrotar a los Niños Perdidos, debes usar al menos dos Aliados."
+    },
+    "splitting-headache": {
+      "name": "Dolor de cabeza",
+      "text": "Descarta un Objeto del Reino del Capitán Garfio."
+    },
+    "taunt": {
+      "name": "Provocación",
+      "text": "Cuando juegues Provocación, vincúlala a un Héroe. El Capitán Garfio debe derrotar a los Héroes con Provocación antes de derrotar a otros Héroes."
+    },
+    "john": {
+      "name": "Juan",
+      "text": "Juan obtiene +1 de Fuerza si tiene algún Objeto vinculado."
+    },
+    "michael": {
+      "name": "Miguel",
+      "text": "Miguel obtiene +1 de Fuerza por cada ubicación del Reino del Capitán Garfio que contenga un Héroe, incluida la ubicación de Miguel."
+    },
+    "peter-pan": {
+      "name": "Peter Pan",
+      "text": "Cuando reveles a Peter Pan, DEBES JUGARLO INMEDIATAMENTE en el Árbol del Ahorcado, aunque esté bloqueado. Descarta cualquier otra carta de Destino revelada durante esta acción."
+    },
+    "tick-tock": {
+      "name": "Tic Tac",
+      "text": "Si el Capitán Garfio se mueve a la ubicación de Tic Tac, debe descartar su mano inmediatamente."
+    },
+    "tinker-bell": {
+      "name": "Campanilla",
+      "text": "Cuando juegues a Campanilla, puedes descartar un Aliado de su ubicación."
+    },
+    "wendy": {
+      "name": "Wendy",
+      "text": "Todos los demás Héroes del Reino del Capitán Garfio obtienen +1 de Fuerza."
+    }
+  }
+}

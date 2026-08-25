@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import { resolve } from 'node:path';
+import { resolve } from 'node:path';
 
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
@@ -21,6 +22,12 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 app.use('/assets', express.static(resolve(process.cwd(), 'assets')));
+
+app.get('/health', (_req, res) => {
+  res.json({
+    status: 'ok',
+  });
+});
 
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);

@@ -22,6 +22,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
+    "cheerio": "^1.2.0",
     "prisma": "^6.0.0",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0"
@@ -31,6 +32,7 @@
     "bcrypt@6.0.0": true,
     "esbuild@0.28.1": true,
     "@prisma/client@6.19.3": true,
-    "@prisma/engines@6.19.3": true
+    "@prisma/engines@6.19.3": true,
+    "cheerio@1.2.0": true
   }
 }

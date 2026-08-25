@@ -51,51 +51,87 @@
   ],
   "realm": [
     {
+      "id": "forbidden-mountains",
       "position": 1,
-      "location": "Forbidden Mountains",
       "topActions": [
-        "Move an Item or Ally",
-        "Play a Card"
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Gain 1 Power",
-        "Fate"
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "FATE"
+        }
       ]
     },
     {
+      "id": "briar-rose-s-cottage",
       "position": 2,
-      "location": "Briar Rose's Cottage",
       "topActions": [
-        "Gain 2 Power",
-        "Move an Item or Ally"
+        {
+          "type": "GAIN_POWER",
+          "amount": 2
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
       ],
       "bottomActions": [
-        "Play a Card",
-        "Discard Cards"
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "DISCARD_CARDS"
+        }
       ]
     },
     {
+      "id": "the-forest",
       "position": 3,
-      "location": "The Forest",
       "topActions": [
-        "Discard Cards",
-        "Play a Card"
+        {
+          "type": "DISCARD_CARDS"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Gain 3 Power",
-        "Play a Card"
+        {
+          "type": "GAIN_POWER",
+          "amount": 3
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ]
     },
     {
+      "id": "king-stefan-s-castle",
       "position": 4,
-      "location": "King Stefan's Castle",
       "topActions": [
-        "Gain 1 Power",
-        "Fate"
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "FATE"
+        }
       ],
       "bottomActions": [
-        "Vanquish",
-        "Play a Card"
+        {
+          "type": "VANQUISH"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ]
     }
   ],
@@ -104,14 +140,12 @@
       "totalCards": 30,
       "cards": [
         {
-          "name": "Cackling Goon",
+          "id": "cackling-goon",
           "pageTitle": "Cackling Goon",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 1,
           "strength": 1,
-          "text": "Cackling Goon gets +1 Strength for each Hero at his location.",
           "image": {
             "path": "/assets/maleficent/cards/villain/cackling-goon.webp",
             "width": 1000,
@@ -122,14 +156,12 @@
           }
         },
         {
-          "name": "Dragon Form",
+          "id": "dragon-form",
           "pageTitle": "Dragon Form",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 3,
           "strength": null,
-          "text": "Defeat a Hero with a Strength of 3 or less. If a Fate action targets you before your next turn, gain 3 Power.",
           "image": {
             "path": "/assets/maleficent/cards/villain/dragon-form.webp",
             "width": 1000,
@@ -140,14 +172,12 @@
           }
         },
         {
-          "name": "Forest of Thorns",
+          "id": "forest-of-thorns",
           "pageTitle": "Forest of Thorns",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Curse",
+          "type": "CURSE",
           "cost": 2,
           "strength": null,
-          "text": "Heroes must have a Strength of 4 or more to be played to this location.Discard this Curse when a Hero is played to this location.",
           "image": {
             "path": "/assets/maleficent/cards/villain/forest-of-thorns.webp",
             "width": 1000,
@@ -158,14 +188,12 @@
           }
         },
         {
-          "name": "Green Fire",
+          "id": "green-fire",
           "pageTitle": "Green Fire",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Curse",
+          "type": "CURSE",
           "cost": 3,
           "strength": null,
-          "text": "Heroes cannot be played to this location.Discard this Curse if Maleficent moves to this location.",
           "image": {
             "path": "/assets/maleficent/cards/villain/green-fire.webp",
             "width": 1000,
@@ -176,14 +204,12 @@
           }
         },
         {
-          "name": "Savage Goon",
+          "id": "savage-goon",
           "pageTitle": "Savage Goon",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 3,
           "strength": 4,
-          "text": "No additional Ability.",
           "image": {
             "path": "/assets/maleficent/cards/villain/savage-goon.webp",
             "width": 1000,
@@ -194,14 +220,12 @@
           }
         },
         {
-          "name": "Sinister Goon",
+          "id": "sinister-goon",
           "pageTitle": "Sinister Goon",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 3,
-          "text": "Sinister Goon gets +1 Strength if there are any Curses at his location.",
           "image": {
             "path": "/assets/maleficent/cards/villain/sinister-goon.webp",
             "width": 1000,
@@ -212,14 +236,12 @@
           }
         },
         {
-          "name": "Vanish",
+          "id": "vanish",
           "pageTitle": "Vanish",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 0,
           "strength": null,
-          "text": "At the start of your next turn, Maleficent does not have to move to a new location.",
           "image": {
             "path": "/assets/maleficent/cards/villain/vanish.webp",
             "width": 1000,
@@ -230,14 +252,12 @@
           }
         },
         {
-          "name": "Dreamless Sleep",
+          "id": "dreamless-sleep",
           "pageTitle": "Dreamless Sleep",
           "quantity": 2,
-          "villain": "Maleficent",
-          "type": "Curse",
+          "type": "CURSE",
           "cost": 3,
           "strength": null,
-          "text": "Heroes at this location get -2 Strength.Discard this Curse when an Ally is played to this location.",
           "image": {
             "path": "/assets/maleficent/cards/villain/dreamless-sleep.webp",
             "width": 1000,
@@ -248,14 +268,12 @@
           }
         },
         {
-          "name": "Malice",
+          "id": "malice",
           "pageTitle": "Malice",
           "quantity": 2,
-          "villain": "Maleficent",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player defeats a Hero with a Strength of 4 or more, you may play Malice. Defeat a Hero with a Strength of 4 or less.",
           "image": {
             "path": "/assets/maleficent/cards/villain/malice.webp",
             "width": 1000,
@@ -266,14 +284,12 @@
           }
         },
         {
-          "name": "Tyranny",
+          "id": "tyranny",
           "pageTitle": "Tyranny",
           "quantity": 2,
-          "villain": "Maleficent",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player has three or more Allies in their Realm, you may play Tyranny. Draw three cards into your hand, then discard any three cards.",
           "image": {
             "path": "/assets/maleficent/cards/villain/tyranny.webp",
             "width": 1000,
@@ -284,14 +300,12 @@
           }
         },
         {
-          "name": "Raven",
+          "id": "raven",
           "pageTitle": "Raven",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 3,
           "strength": 1,
-          "text": "Before Maleficent moves, you may move Raven to any location and perform one available action at his new location. Raven cannot perform Fate actions.",
           "image": {
             "path": "/assets/maleficent/cards/villain/raven.webp",
             "width": 1000,
@@ -302,14 +316,12 @@
           }
         },
         {
-          "name": "Spinning Wheel",
+          "id": "spinning-wheel",
           "pageTitle": "Spinning Wheel",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 1,
           "strength": null,
-          "text": "If a Hero is defeated at this location, gain Power equal to the Hero's Strength minus 1.",
           "image": {
             "path": "/assets/maleficent/cards/villain/spinning-wheel.webp",
             "width": 1000,
@@ -320,14 +332,12 @@
           }
         },
         {
-          "name": "Staff",
+          "id": "staff",
           "pageTitle": "Staff",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 1,
           "strength": null,
-          "text": "If Maleficent is at this location, the Cost to play an Effect or Curse is reduced by 1 Power.",
           "image": {
             "path": "/assets/maleficent/cards/villain/staff.webp",
             "width": 1000,
@@ -343,14 +353,12 @@
       "totalCards": 15,
       "cards": [
         {
-          "name": "Guards (Maleficent)",
+          "id": "guards-maleficent",
           "pageTitle": "Guards (Maleficent)",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When performing a Vanquish action to defeat Guards, at least two Allies must be used.",
           "image": {
             "path": "/assets/maleficent/cards/fate/guards-maleficent.webp",
             "width": 1000,
@@ -361,14 +369,12 @@
           }
         },
         {
-          "name": "Sword of Truth",
+          "id": "sword-of-truth",
           "pageTitle": "Sword of Truth",
           "quantity": 3,
-          "villain": "Maleficent",
-          "type": "Item",
+          "type": "ITEM",
           "cost": null,
           "strength": 2,
-          "text": "When Sword of Truth is played, attach it to a Hero with no other attached Items. That Hero gets +2 Strength. The Cost to play a Curse to this location is increased by 2 Power.",
           "image": {
             "path": "/assets/maleficent/cards/fate/sword-of-truth.webp",
             "width": 1000,
@@ -379,14 +385,12 @@
           }
         },
         {
-          "name": "Once Upon a Dream",
+          "id": "once-upon-a-dream",
           "pageTitle": "Once Upon a Dream",
           "quantity": 2,
-          "villain": "Maleficent",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Discard a Curse from a location in Maleficent's Realm that has a Hero.",
           "image": {
             "path": "/assets/maleficent/cards/fate/once-upon-a-dream.webp",
             "width": 1000,
@@ -397,14 +401,12 @@
           }
         },
         {
-          "name": "Aurora",
+          "id": "aurora",
           "pageTitle": "Aurora",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 4,
-          "text": "When Aurora is played, reveal the top card of Maleficent's Fate deck. If it is a Hero, play it. Otherwise, return it to the top of the deck.",
           "image": {
             "path": "/assets/maleficent/cards/fate/aurora.webp",
             "width": 1000,
@@ -415,14 +417,12 @@
           }
         },
         {
-          "name": "Fauna",
+          "id": "fauna",
           "pageTitle": "Fauna",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 2,
-          "text": "When Fauna is played, you may discard Dreamless Sleep from her location.",
           "image": {
             "path": "/assets/maleficent/cards/fate/fauna.webp",
             "width": 1000,
@@ -433,14 +433,12 @@
           }
         },
         {
-          "name": "Flora",
+          "id": "flora",
           "pageTitle": "Flora",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When Flora is played, Maleficent must reveal her hand.Until Flora is defeated, Maleficent must play with her hand revealed.",
           "image": {
             "path": "/assets/maleficent/cards/fate/flora.webp",
             "width": 1000,
@@ -451,14 +449,12 @@
           }
         },
         {
-          "name": "King Hubert",
+          "id": "king-hubert",
           "pageTitle": "King Hubert",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When King Hubert is played, you may move one Ally from each adjacent location to his location.",
           "image": {
             "path": "/assets/maleficent/cards/fate/king-hubert.webp",
             "width": 1000,
@@ -469,14 +465,12 @@
           }
         },
         {
-          "name": "King Stefan",
+          "id": "king-stefan",
           "pageTitle": "King Stefan",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 4,
-          "text": "When King Stefan is played, you may move Maleficent to any location.",
           "image": {
             "path": "/assets/maleficent/cards/fate/king-stefan.webp",
             "width": 1000,
@@ -487,14 +481,12 @@
           }
         },
         {
-          "name": "Merryweather",
+          "id": "merryweather",
           "pageTitle": "Merryweather",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 4,
-          "text": "Curses cannot be played to Merryweather's location.",
           "image": {
             "path": "/assets/maleficent/cards/fate/merryweather.webp",
             "width": 1000,
@@ -505,14 +497,12 @@
           }
         },
         {
-          "name": "Prince Phillip",
+          "id": "prince-phillip",
           "pageTitle": "Prince Phillip",
           "quantity": 1,
-          "villain": "Maleficent",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 5,
-          "text": "When Prince Phillip is played, you may discard all Allies from his location.",
           "image": {
             "path": "/assets/maleficent/cards/fate/prince-phillip.webp",
             "width": 1000,
@@ -531,7 +521,107 @@
   },
   "translations": {
     "en": {
-      "objective": "Maleficent must play Curses and move them as needed so she has at least one Curse at each location in her realm. She can only win at the start of her turn."
+      "objective": "Maleficent must play Curses and move them as needed so she has at least one Curse at each location in her realm. She can only win at the start of her turn.",
+      "locations": {
+        "forbidden-mountains": "Forbidden Mountains",
+        "briar-rose-s-cottage": "Briar Rose's Cottage",
+        "the-forest": "The Forest",
+        "king-stefan-s-castle": "King Stefan's Castle"
+      },
+      "cards": {
+        "cackling-goon": {
+          "name": "Cackling Goon",
+          "text": "Cackling Goon gets +1 Strength for each Hero at his location."
+        },
+        "dragon-form": {
+          "name": "Dragon Form",
+          "text": "Defeat a Hero with a Strength of 3 or less. If a Fate action targets you before your next turn, gain 3 Power."
+        },
+        "forest-of-thorns": {
+          "name": "Forest of Thorns",
+          "text": "Heroes must have a Strength of 4 or more to be played to this location.Discard this Curse when a Hero is played to this location."
+        },
+        "green-fire": {
+          "name": "Green Fire",
+          "text": "Heroes cannot be played to this location.Discard this Curse if Maleficent moves to this location."
+        },
+        "savage-goon": {
+          "name": "Savage Goon",
+          "text": "No additional Ability."
+        },
+        "sinister-goon": {
+          "name": "Sinister Goon",
+          "text": "Sinister Goon gets +1 Strength if there are any Curses at his location."
+        },
+        "vanish": {
+          "name": "Vanish",
+          "text": "At the start of your next turn, Maleficent does not have to move to a new location."
+        },
+        "dreamless-sleep": {
+          "name": "Dreamless Sleep",
+          "text": "Heroes at this location get -2 Strength.Discard this Curse when an Ally is played to this location."
+        },
+        "malice": {
+          "name": "Malice",
+          "text": "During their turn, if another player defeats a Hero with a Strength of 4 or more, you may play Malice. Defeat a Hero with a Strength of 4 or less."
+        },
+        "tyranny": {
+          "name": "Tyranny",
+          "text": "During their turn, if another player has three or more Allies in their Realm, you may play Tyranny. Draw three cards into your hand, then discard any three cards."
+        },
+        "raven": {
+          "name": "Raven",
+          "text": "Before Maleficent moves, you may move Raven to any location and perform one available action at his new location. Raven cannot perform Fate actions."
+        },
+        "spinning-wheel": {
+          "name": "Spinning Wheel",
+          "text": "If a Hero is defeated at this location, gain Power equal to the Hero's Strength minus 1."
+        },
+        "staff": {
+          "name": "Staff",
+          "text": "If Maleficent is at this location, the Cost to play an Effect or Curse is reduced by 1 Power."
+        },
+        "guards-maleficent": {
+          "name": "Guards (Maleficent)",
+          "text": "When performing a Vanquish action to defeat Guards, at least two Allies must be used."
+        },
+        "sword-of-truth": {
+          "name": "Sword of Truth",
+          "text": "When Sword of Truth is played, attach it to a Hero with no other attached Items. That Hero gets +2 Strength. The Cost to play a Curse to this location is increased by 2 Power."
+        },
+        "once-upon-a-dream": {
+          "name": "Once Upon a Dream",
+          "text": "Discard a Curse from a location in Maleficent's Realm that has a Hero."
+        },
+        "aurora": {
+          "name": "Aurora",
+          "text": "When Aurora is played, reveal the top card of Maleficent's Fate deck. If it is a Hero, play it. Otherwise, return it to the top of the deck."
+        },
+        "fauna": {
+          "name": "Fauna",
+          "text": "When Fauna is played, you may discard Dreamless Sleep from her location."
+        },
+        "flora": {
+          "name": "Flora",
+          "text": "When Flora is played, Maleficent must reveal her hand.Until Flora is defeated, Maleficent must play with her hand revealed."
+        },
+        "king-hubert": {
+          "name": "King Hubert",
+          "text": "When King Hubert is played, you may move one Ally from each adjacent location to his location."
+        },
+        "king-stefan": {
+          "name": "King Stefan",
+          "text": "When King Stefan is played, you may move Maleficent to any location."
+        },
+        "merryweather": {
+          "name": "Merryweather",
+          "text": "Curses cannot be played to Merryweather's location."
+        },
+        "prince-phillip": {
+          "name": "Prince Phillip",
+          "text": "When Prince Phillip is played, you may discard all Allies from his location."
+        }
+      }
     }
   }
 }

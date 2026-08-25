@@ -1,0 +1,20 @@
+{
+  "en": {
+    "ALLY": "Ally",
+    "CONDITION": "Condition",
+    "CURSE": "Curse",
+    "EFFECT": "Effect",
+    "HERO": "Hero",
+    "ITEM": "Item",
+    "TITAN": "Titan"
+  },
+  "es": {
+    "ALLY": "Aliado",
+    "CONDITION": "Condición",
+    "CURSE": "Maldición",
+    "EFFECT": "Efecto",
+    "HERO": "Héroe",
+    "ITEM": "Objeto",
+    "TITAN": "Titán"
+  }
+}

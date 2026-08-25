@@ -51,51 +51,86 @@
   ],
   "realm": [
     {
+      "id": "pride-rock",
       "position": 1,
-      "location": "Pride Rock",
       "topActions": [
-        "Gain 2 Power",
-        "Play a Card"
+        {
+          "type": "GAIN_POWER",
+          "amount": 2
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Play a Card",
-        "Move an Item or Ally"
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
       ]
     },
     {
+      "id": "the-savanna",
       "position": 2,
-      "location": "The Savanna",
       "topActions": [
-        "Play a Card",
-        "Fate"
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "FATE"
+        }
       ],
       "bottomActions": [
-        "Discard Cards",
-        "Gain 1 Power"
+        {
+          "type": "DISCARD_CARDS"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        }
       ]
     },
     {
+      "id": "elephant-graveyard",
       "position": 3,
-      "location": "Elephant Graveyard",
       "topActions": [
-        "Discard Cards",
-        "Play a Card"
+        {
+          "type": "DISCARD_CARDS"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Play a Card",
-        "Gain 3 Power"
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 3
+        }
       ]
     },
     {
+      "id": "the-gorge",
       "position": 4,
-      "location": "The Gorge",
       "topActions": [
-        "Move an Item or Ally",
-        "Play a Card"
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Vanquish",
-        "Fate"
+        {
+          "type": "VANQUISH"
+        },
+        {
+          "type": "FATE"
+        }
       ]
     }
   ],
@@ -104,14 +139,12 @@
       "totalCards": 30,
       "cards": [
         {
-          "name": "Hungry Hyena",
+          "id": "hungry-hyena",
           "pageTitle": "Hungry Hyena",
           "quantity": 6,
-          "villain": "Scar",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 1,
-          "text": "Hungry Hyena gets +1 Strength for each other Hyena at her location.",
           "image": {
             "path": "/assets/scar/cards/villain/hungry-hyena.webp",
             "width": 1000,
@@ -122,14 +155,12 @@
           }
         },
         {
-          "name": "Long Live the King",
+          "id": "long-live-the-king",
           "pageTitle": "Long Live the King",
           "quantity": 4,
-          "villain": "Scar",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 1,
           "strength": null,
-          "text": "Reveal the top four cards of your Fate deck. You may play one Hero. Discard the rest.",
           "image": {
             "path": "/assets/scar/cards/villain/long-live-the-king.webp",
             "width": 1000,
@@ -140,14 +171,12 @@
           }
         },
         {
-          "name": "Be Prepared",
+          "id": "be-prepared",
           "pageTitle": "Be Prepared",
           "quantity": 3,
-          "villain": "Scar",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 1,
           "strength": null,
-          "text": "Discard the top three cards of your deck. You may choose one Effect or up to two Allies from your discard pile and put them into your hand.",
           "image": {
             "path": "/assets/scar/cards/villain/be-prepared.webp",
             "width": 1000,
@@ -158,14 +187,12 @@
           }
         },
         {
-          "name": "Stick with Me",
+          "id": "stick-with-me",
           "pageTitle": "Stick with Me",
           "quantity": 3,
-          "villain": "Scar",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 0,
           "strength": null,
-          "text": "Choose a Hyena who is not at Scar's location. You may perform one available action at that Hyena's location. You cannot use Stick with Me to perform Fate actions.",
           "image": {
             "path": "/assets/scar/cards/villain/stick-with-me.webp",
             "width": 1000,
@@ -176,14 +203,12 @@
           }
         },
         {
-          "name": "Whisper",
+          "id": "whisper",
           "pageTitle": "Whisper",
           "quantity": 3,
-          "villain": "Scar",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 1,
           "strength": null,
-          "text": "Choose a card from your Fate discard pile and play it.",
           "image": {
             "path": "/assets/scar/cards/villain/whisper.webp",
             "width": 1000,
@@ -194,14 +219,12 @@
           }
         },
         {
-          "name": "Feeding Frenzy",
+          "id": "feeding-frenzy",
           "pageTitle": "Feeding Frenzy",
           "quantity": 2,
-          "villain": "Scar",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 2,
           "strength": null,
-          "text": "Choose a location and move any number of Hyenas in your Realm to that location.",
           "image": {
             "path": "/assets/scar/cards/villain/feeding-frenzy.webp",
             "width": 1000,
@@ -212,14 +235,12 @@
           }
         },
         {
-          "name": "Injustice",
+          "id": "injustice",
           "pageTitle": "Injustice",
           "quantity": 2,
-          "villain": "Scar",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player targets you with a Fate action, you may play Injustice. Before they reveal cards, look at the top two cards of your Fate deck. Either discard or return each to the top of the deck.",
           "image": {
             "path": "/assets/scar/cards/villain/injustice.webp",
             "width": 1000,
@@ -230,14 +251,12 @@
           }
         },
         {
-          "name": "Pride",
+          "id": "pride",
           "pageTitle": "Pride",
           "quantity": 2,
-          "villain": "Scar",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player discards two or more cards, you may play Pride. Gain 3 Power.",
           "image": {
             "path": "/assets/scar/cards/villain/pride.webp",
             "width": 1000,
@@ -248,14 +267,12 @@
           }
         },
         {
-          "name": "Stampede",
+          "id": "stampede",
           "pageTitle": "Stampede",
           "quantity": 2,
-          "villain": "Scar",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 3,
-          "text": "If Stampede is played to a location that has a Hero, move one Hero at that location to an adjacent location. Then you may perform a Vanquish action at the Hero's new location.",
           "image": {
             "path": "/assets/scar/cards/villain/stampede.webp",
             "width": 1000,
@@ -266,14 +283,12 @@
           }
         },
         {
-          "name": "Banzai the Hyena",
+          "id": "banzai-the-hyena",
           "pageTitle": "Banzai the Hyena",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 2,
-          "text": "Gain 1 Power for each other Hyena discarded from Banzai's location.",
           "image": {
             "path": "/assets/scar/cards/villain/banzai-the-hyena.webp",
             "width": 1000,
@@ -284,14 +299,12 @@
           }
         },
         {
-          "name": "Ed the Hyena",
+          "id": "ed-the-hyena",
           "pageTitle": "Ed the Hyena",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 2,
-          "text": "The Cost to play Hyenas to Ed's location is reduced by 1 Power.",
           "image": {
             "path": "/assets/scar/cards/villain/ed-the-hyena.webp",
             "width": 1000,
@@ -302,14 +315,12 @@
           }
         },
         {
-          "name": "Shenzi the Hyena",
+          "id": "shenzi-the-hyena",
           "pageTitle": "Shenzi the Hyena",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 2,
-          "text": "When Shenzi is played, you may play a Hyena from your hand for free.",
           "image": {
             "path": "/assets/scar/cards/villain/shenzi-the-hyena.webp",
             "width": 1000,
@@ -325,14 +336,12 @@
       "totalCards": 15,
       "cards": [
         {
-          "name": "Hakuna Matata",
+          "id": "hakuna-matata",
           "pageTitle": "Hakuna Matata",
           "quantity": 3,
-          "villain": "Scar",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Either choose a Hero with a Strength of 3 or less from the Succession pile and play that Hero, or move a Hero to any location.",
           "image": {
             "path": "/assets/scar/cards/fate/hakuna-matata.webp",
             "width": 1000,
@@ -343,14 +352,12 @@
           }
         },
         {
-          "name": "Prophecy",
+          "id": "prophecy",
           "pageTitle": "Prophecy",
           "quantity": 3,
-          "villain": "Scar",
-          "type": "Item",
+          "type": "ITEM",
           "cost": null,
           "strength": 3,
-          "text": "When Prophecy is played, attach it to a Hero with no other attached Items. That Hero gets +3 Strength.",
           "image": {
             "path": "/assets/scar/cards/fate/prophecy.webp",
             "width": 1000,
@@ -361,14 +368,12 @@
           }
         },
         {
-          "name": "Mufasa",
+          "id": "mufasa",
           "pageTitle": "Mufasa",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 6,
-          "text": "When Mufasa is defeated, put him into the Succession pile. If Mufasa is in the Succession pile, all Heroes you defeat are put into the Succession pile.",
           "image": {
             "path": "/assets/scar/cards/fate/mufasa.webp",
             "width": 1000,
@@ -379,14 +384,12 @@
           }
         },
         {
-          "name": "Nala",
+          "id": "nala",
           "pageTitle": "Nala",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When Nala is played, you may move a Hero to any location.",
           "image": {
             "path": "/assets/scar/cards/fate/nala.webp",
             "width": 1000,
@@ -397,14 +400,12 @@
           }
         },
         {
-          "name": "Pumbaa",
+          "id": "pumbaa",
           "pageTitle": "Pumbaa",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "Pumbaa gets +2 Strength if Timon is in Scar's Realm.",
           "image": {
             "path": "/assets/scar/cards/fate/pumbaa.webp",
             "width": 1000,
@@ -415,14 +416,12 @@
           }
         },
         {
-          "name": "Rafiki",
+          "id": "rafiki",
           "pageTitle": "Rafiki",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "Scar must defeat Rafiki before defeating other Heroes.",
           "image": {
             "path": "/assets/scar/cards/fate/rafiki.webp",
             "width": 1000,
@@ -433,14 +432,12 @@
           }
         },
         {
-          "name": "Rafiki's Stick",
+          "id": "rafiki-s-stick",
           "pageTitle": "Rafiki's Stick",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Item",
+          "type": "ITEM",
           "cost": null,
           "strength": null,
-          "text": "When Rafiki's Stick is played, attach it to a Hero. When that Hero would be defeated, discard this Item instead.",
           "image": {
             "path": "/assets/scar/cards/fate/rafiki-s-stick.webp",
             "width": 1000,
@@ -451,14 +448,12 @@
           }
         },
         {
-          "name": "Sarabi",
+          "id": "sarabi",
           "pageTitle": "Sarabi",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When Sarabi is played, you may discard a Hyena from her location.",
           "image": {
             "path": "/assets/scar/cards/fate/sarabi.webp",
             "width": 1000,
@@ -469,14 +464,12 @@
           }
         },
         {
-          "name": "Simba",
+          "id": "simba",
           "pageTitle": "Simba",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 5,
-          "text": "Hyenas cannot have a Strength of more than 2.",
           "image": {
             "path": "/assets/scar/cards/fate/simba.webp",
             "width": 1000,
@@ -487,14 +480,12 @@
           }
         },
         {
-          "name": "Timon",
+          "id": "timon",
           "pageTitle": "Timon",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 2,
-          "text": "Timon gets +2 Strength if Pumbaa is in Scar's Realm.",
           "image": {
             "path": "/assets/scar/cards/fate/timon.webp",
             "width": 1000,
@@ -505,14 +496,12 @@
           }
         },
         {
-          "name": "Zazu",
+          "id": "zazu",
           "pageTitle": "Zazu",
           "quantity": 1,
-          "villain": "Scar",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 2,
-          "text": "All other Heroes at Zazu's location get -2 Strength. All Heroes at other locations get +1 Strength.",
           "image": {
             "path": "/assets/scar/cards/fate/zazu.webp",
             "width": 1000,
@@ -531,7 +520,107 @@
   },
   "translations": {
     "en": {
-      "objective": "Scar must find and defeat Mufasa, and then defeat other Heroes in order to have at least 15 Strength in the Succession pile. He can only win at the start of his turn."
+      "objective": "Scar must find and defeat Mufasa, and then defeat other Heroes in order to have at least 15 Strength in the Succession pile. He can only win at the start of his turn.",
+      "locations": {
+        "pride-rock": "Pride Rock",
+        "the-savanna": "The Savanna",
+        "elephant-graveyard": "Elephant Graveyard",
+        "the-gorge": "The Gorge"
+      },
+      "cards": {
+        "hungry-hyena": {
+          "name": "Hungry Hyena",
+          "text": "Hungry Hyena gets +1 Strength for each other Hyena at her location."
+        },
+        "long-live-the-king": {
+          "name": "Long Live the King",
+          "text": "Reveal the top four cards of your Fate deck. You may play one Hero. Discard the rest."
+        },
+        "be-prepared": {
+          "name": "Be Prepared",
+          "text": "Discard the top three cards of your deck. You may choose one Effect or up to two Allies from your discard pile and put them into your hand."
+        },
+        "stick-with-me": {
+          "name": "Stick with Me",
+          "text": "Choose a Hyena who is not at Scar's location. You may perform one available action at that Hyena's location. You cannot use Stick with Me to perform Fate actions."
+        },
+        "whisper": {
+          "name": "Whisper",
+          "text": "Choose a card from your Fate discard pile and play it."
+        },
+        "feeding-frenzy": {
+          "name": "Feeding Frenzy",
+          "text": "Choose a location and move any number of Hyenas in your Realm to that location."
+        },
+        "injustice": {
+          "name": "Injustice",
+          "text": "During their turn, if another player targets you with a Fate action, you may play Injustice. Before they reveal cards, look at the top two cards of your Fate deck. Either discard or return each to the top of the deck."
+        },
+        "pride": {
+          "name": "Pride",
+          "text": "During their turn, if another player discards two or more cards, you may play Pride. Gain 3 Power."
+        },
+        "stampede": {
+          "name": "Stampede",
+          "text": "If Stampede is played to a location that has a Hero, move one Hero at that location to an adjacent location. Then you may perform a Vanquish action at the Hero's new location."
+        },
+        "banzai-the-hyena": {
+          "name": "Banzai the Hyena",
+          "text": "Gain 1 Power for each other Hyena discarded from Banzai's location."
+        },
+        "ed-the-hyena": {
+          "name": "Ed the Hyena",
+          "text": "The Cost to play Hyenas to Ed's location is reduced by 1 Power."
+        },
+        "shenzi-the-hyena": {
+          "name": "Shenzi the Hyena",
+          "text": "When Shenzi is played, you may play a Hyena from your hand for free."
+        },
+        "hakuna-matata": {
+          "name": "Hakuna Matata",
+          "text": "Either choose a Hero with a Strength of 3 or less from the Succession pile and play that Hero, or move a Hero to any location."
+        },
+        "prophecy": {
+          "name": "Prophecy",
+          "text": "When Prophecy is played, attach it to a Hero with no other attached Items. That Hero gets +3 Strength."
+        },
+        "mufasa": {
+          "name": "Mufasa",
+          "text": "When Mufasa is defeated, put him into the Succession pile. If Mufasa is in the Succession pile, all Heroes you defeat are put into the Succession pile."
+        },
+        "nala": {
+          "name": "Nala",
+          "text": "When Nala is played, you may move a Hero to any location."
+        },
+        "pumbaa": {
+          "name": "Pumbaa",
+          "text": "Pumbaa gets +2 Strength if Timon is in Scar's Realm."
+        },
+        "rafiki": {
+          "name": "Rafiki",
+          "text": "Scar must defeat Rafiki before defeating other Heroes."
+        },
+        "rafiki-s-stick": {
+          "name": "Rafiki's Stick",
+          "text": "When Rafiki's Stick is played, attach it to a Hero. When that Hero would be defeated, discard this Item instead."
+        },
+        "sarabi": {
+          "name": "Sarabi",
+          "text": "When Sarabi is played, you may discard a Hyena from her location."
+        },
+        "simba": {
+          "name": "Simba",
+          "text": "Hyenas cannot have a Strength of more than 2."
+        },
+        "timon": {
+          "name": "Timon",
+          "text": "Timon gets +2 Strength if Pumbaa is in Scar's Realm."
+        },
+        "zazu": {
+          "name": "Zazu",
+          "text": "All other Heroes at Zazu's location get -2 Strength. All Heroes at other locations get +1 Strength."
+        }
+      }
     }
   }
 }

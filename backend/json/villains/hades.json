@@ -51,51 +51,87 @@
   ],
   "realm": [
     {
+      "id": "the-underworld",
       "position": 1,
-      "location": "The Underworld",
       "topActions": [
-        "Play a Card",
-        "Gain 2 Power"
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 2
+        }
       ],
       "bottomActions": [
-        "Vanquish",
-        "Move an Item or Ally"
+        {
+          "type": "VANQUISH"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
       ]
     },
     {
+      "id": "thebes",
       "position": 2,
-      "location": "Thebes",
       "topActions": [
-        "Gain 1 Power",
-        "Play a Card"
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Fate",
-        "Discard Cards"
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "DISCARD_CARDS"
+        }
       ]
     },
     {
+      "id": "the-gardens",
       "position": 3,
-      "location": "The Gardens",
       "topActions": [
-        "Discard Cards",
-        "Play a Card"
+        {
+          "type": "DISCARD_CARDS"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Gain 3 Power",
-        "Play a Card"
+        {
+          "type": "GAIN_POWER",
+          "amount": 3
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ]
     },
     {
+      "id": "mount-olympus",
       "position": 4,
-      "location": "Mount Olympus",
       "topActions": [
-        "Fate",
-        "Move an Item or Ally"
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
       ],
       "bottomActions": [
-        "Play a Card",
-        "Gain 1 Power"
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        }
       ]
     }
   ],
@@ -104,14 +140,12 @@
       "totalCards": 30,
       "cards": [
         {
-          "name": "Get Ready to Rumble!",
+          "id": "get-ready-to-rumble",
           "pageTitle": "Get Ready to Rumble!",
           "quantity": 3,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Either pay 2 Power to move an untrapped Titan to an adjacent location, or pay 5 Power to move an untrapped Titan two locations away.",
           "image": {
             "path": "/assets/hades/cards/villain/get-ready-to-rumble.webp",
             "width": 1000,
@@ -122,14 +156,12 @@
           }
         },
         {
-          "name": "Mortality Potion",
+          "id": "mortality-potion",
           "pageTitle": "Mortality Potion",
           "quantity": 3,
-          "villain": "Hades",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 2,
           "strength": null,
-          "text": "When Mortality Potion is played, attach it to a Hero. Titans used to defeat that Hero are not discarded.",
           "image": {
             "path": "/assets/hades/cards/villain/mortality-potion.webp",
             "width": 1000,
@@ -140,14 +172,12 @@
           }
         },
         {
-          "name": "Planets Align",
+          "id": "planets-align",
           "pageTitle": "Planets Align",
           "quantity": 3,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Untrap one or more Titans in your Realm. The Cost to play Planets Align is equal to the number of Titans you untrap.",
           "image": {
             "path": "/assets/hades/cards/villain/planets-align.webp",
             "width": 1000,
@@ -158,14 +188,12 @@
           }
         },
         {
-          "name": "Achilles' Heel",
+          "id": "achilles-heel",
           "pageTitle": "Achilles' Heel",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 1,
           "strength": null,
-          "text": "Choose a Hero. That Hero gets -2 Strength until the end of your turn.",
           "image": {
             "path": "/assets/hades/cards/villain/achilles-heel.webp",
             "width": 1000,
@@ -176,14 +204,12 @@
           }
         },
         {
-          "name": "Eye of the Fates",
+          "id": "eye-of-the-fates",
           "pageTitle": "Eye of the Fates",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 2,
           "strength": null,
-          "text": "Reveal cards from the top of your deck until you reveal an Ally or Titan. Put that Ally or Titan into your hand. Discard the rest.",
           "image": {
             "path": "/assets/hades/cards/villain/eye-of-the-fates.webp",
             "width": 1000,
@@ -194,14 +220,12 @@
           }
         },
         {
-          "name": "I Rule!",
+          "id": "i-rule",
           "pageTitle": "I Rule!",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 0,
           "strength": null,
-          "text": "Gain 1 Power for each Ally and Titan in your discard pile.",
           "image": {
             "path": "/assets/hades/cards/villain/i-rule.webp",
             "width": 1000,
@@ -212,14 +236,12 @@
           }
         },
         {
-          "name": "Rage",
+          "id": "rage",
           "pageTitle": "Rage",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player defeats a Hero with a Strength of 3 or more, you may play Rage. Move a Hero in your Realm to any location.",
           "image": {
             "path": "/assets/hades/cards/villain/rage.webp",
             "width": 1000,
@@ -230,14 +252,12 @@
           }
         },
         {
-          "name": "Ruthless",
+          "id": "ruthless",
           "pageTitle": "Ruthless",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player has 6 or more Power, you may play Ruthless. Play an Ally or Titan from your hand for free.",
           "image": {
             "path": "/assets/hades/cards/villain/ruthless.webp",
             "width": 1000,
@@ -248,14 +268,12 @@
           }
         },
         {
-          "name": "Arges",
+          "id": "arges",
           "pageTitle": "Arges",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Titan",
+          "type": "TITAN",
           "cost": 3,
           "strength": 4,
-          "text": "Arges can only be played to The Underworld.When Arges is moved, gain 1 Power.",
           "image": {
             "path": "/assets/hades/cards/villain/arges.webp",
             "width": 1000,
@@ -266,14 +284,12 @@
           }
         },
         {
-          "name": "Cerberus",
+          "id": "cerberus",
           "pageTitle": "Cerberus",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 3,
           "strength": 4,
-          "text": "When performing a Vanquish action, Cerberus may be used to defeat a Hero at his location or at an adjacent location.",
           "image": {
             "path": "/assets/hades/cards/villain/cerberus.webp",
             "width": 1000,
@@ -284,14 +300,12 @@
           }
         },
         {
-          "name": "Chariot",
+          "id": "chariot",
           "pageTitle": "Chariot",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 3,
           "strength": null,
-          "text": "Once per turn, if Hades is as this location, you may move Hades and Chariot to any location and perform one available action at the new location. You cannot use Chariot to perform Fate actions.",
           "image": {
             "path": "/assets/hades/cards/villain/chariot.webp",
             "width": 1000,
@@ -302,14 +316,12 @@
           }
         },
         {
-          "name": "Hydra",
+          "id": "hydra",
           "pageTitle": "Hydra",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 3,
-          "text": "When Hydra is used to defeat a Hero, you may put Hydra into your hand instead of discarding him.",
           "image": {
             "path": "/assets/hades/cards/villain/hydra.webp",
             "width": 1000,
@@ -320,14 +332,12 @@
           }
         },
         {
-          "name": "Hydros",
+          "id": "hydros",
           "pageTitle": "Hydros",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Titan",
+          "type": "TITAN",
           "cost": 2,
           "strength": 3,
-          "text": "Hydros can only be played to The Underworld.Heroes at Hydros' location get -1 Strength and cannot be moved by Fate cards.",
           "image": {
             "path": "/assets/hades/cards/villain/hydros.webp",
             "width": 1000,
@@ -338,14 +348,12 @@
           }
         },
         {
-          "name": "Lythos",
+          "id": "lythos",
           "pageTitle": "Lythos",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Titan",
+          "type": "TITAN",
           "cost": 3,
           "strength": 4,
-          "text": "Lythos can only be played to The Underworld.When Lythos is moved, you may perform a Vanquish action at his new location. Lythos must be used in that action.",
           "image": {
             "path": "/assets/hades/cards/villain/lythos.webp",
             "width": 1000,
@@ -356,14 +364,12 @@
           }
         },
         {
-          "name": "Nessus",
+          "id": "nessus",
           "pageTitle": "Nessus",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 3,
           "strength": 4,
-          "text": "If Nessus is used to defeat a Hero with a Strength of 3 or less, gain 2 Power.",
           "image": {
             "path": "/assets/hades/cards/villain/nessus.webp",
             "width": 1000,
@@ -374,14 +380,12 @@
           }
         },
         {
-          "name": "Pain",
+          "id": "pain",
           "pageTitle": "Pain",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 2,
-          "text": "When Pain is moved, you may move a Hero from Pain's previous location to his new location.",
           "image": {
             "path": "/assets/hades/cards/villain/pain.webp",
             "width": 1000,
@@ -392,14 +396,12 @@
           }
         },
         {
-          "name": "Panic",
+          "id": "panic",
           "pageTitle": "Panic",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 1,
           "strength": 2,
-          "text": "If Hades is at Panic's location, the Cost to play Items, Allies, and Titans is reduced by 1 Power.",
           "image": {
             "path": "/assets/hades/cards/villain/panic.webp",
             "width": 1000,
@@ -410,14 +412,12 @@
           }
         },
         {
-          "name": "Pyros",
+          "id": "pyros",
           "pageTitle": "Pyros",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Titan",
+          "type": "TITAN",
           "cost": 3,
           "strength": 4,
-          "text": "Pyros can only be played to The Underworld.When Pyros is moved, you may untrap one Titan at his new location.",
           "image": {
             "path": "/assets/hades/cards/villain/pyros.webp",
             "width": 1000,
@@ -428,14 +428,12 @@
           }
         },
         {
-          "name": "Stratos",
+          "id": "stratos",
           "pageTitle": "Stratos",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Titan",
+          "type": "TITAN",
           "cost": 2,
           "strength": 3,
-          "text": "Stratos can only be played to The Underworld.When Stratos is moved, you may move a Hero from his new location to an adjacent location.",
           "image": {
             "path": "/assets/hades/cards/villain/stratos.webp",
             "width": 1000,
@@ -451,14 +449,12 @@
       "totalCards": 15,
       "cards": [
         {
-          "name": "Go the Distance",
+          "id": "go-the-distance",
           "pageTitle": "Go the Distance",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Either move an untrapped Titan up to two locations away, ignoring all Hero and Titan Abilities, or move a Hero to any location.",
           "image": {
             "path": "/assets/hades/cards/fate/go-the-distance.webp",
             "width": 1000,
@@ -469,14 +465,12 @@
           }
         },
         {
-          "name": "Lightning Bolt",
+          "id": "lightning-bolt",
           "pageTitle": "Lightning Bolt",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Choose a location in Hades' Realm. All Titans in that location are trapped.",
           "image": {
             "path": "/assets/hades/cards/fate/lightning-bolt.webp",
             "width": 1000,
@@ -487,14 +481,12 @@
           }
         },
         {
-          "name": "Medallion",
+          "id": "medallion",
           "pageTitle": "Medallion",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Item",
+          "type": "ITEM",
           "cost": null,
           "strength": 2,
-          "text": "When Medallion is played, attach it to a Hero. That Hero gets +2 Strength.",
           "image": {
             "path": "/assets/hades/cards/fate/medallion.webp",
             "width": 1000,
@@ -505,14 +497,12 @@
           }
         },
         {
-          "name": "The Gospel Truth",
+          "id": "the-gospel-truth",
           "pageTitle": "The Gospel Truth",
           "quantity": 2,
-          "villain": "Hades",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Discard an Item or Ally from Hades' Realm.",
           "image": {
             "path": "/assets/hades/cards/fate/the-gospel-truth.webp",
             "width": 1000,
@@ -523,14 +513,12 @@
           }
         },
         {
-          "name": "Hera",
+          "id": "hera",
           "pageTitle": "Hera",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 4,
-          "text": "When Hera is played or moved, you may choose a Titan at her new location. That Titan is trapped.",
           "image": {
             "path": "/assets/hades/cards/fate/hera.webp",
             "width": 1000,
@@ -541,14 +529,12 @@
           }
         },
         {
-          "name": "Hercules",
+          "id": "hercules",
           "pageTitle": "Hercules",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 5,
-          "text": "Titans cannot be moved from Hercules' location.",
           "image": {
             "path": "/assets/hades/cards/fate/hercules.webp",
             "width": 1000,
@@ -559,14 +545,12 @@
           }
         },
         {
-          "name": "Hermes",
+          "id": "hermes",
           "pageTitle": "Hermes",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When Hermes is played, if Zeus is in Hades' Realm, you may move Zeus to any location. Otherwise, find Zeus and put him on the top of Hades' Fate deck.",
           "image": {
             "path": "/assets/hades/cards/fate/hermes.webp",
             "width": 1000,
@@ -577,14 +561,12 @@
           }
         },
         {
-          "name": "Megara",
+          "id": "megara",
           "pageTitle": "Megara",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When Megara is played, you may move a Hero from her location to any location.",
           "image": {
             "path": "/assets/hades/cards/fate/megara.webp",
             "width": 1000,
@@ -595,14 +577,12 @@
           }
         },
         {
-          "name": "Pegasus",
+          "id": "pegasus",
           "pageTitle": "Pegasus",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "When Pegasus is played, you may move an untrapped Titan from his location to an adjacent location.",
           "image": {
             "path": "/assets/hades/cards/fate/pegasus.webp",
             "width": 1000,
@@ -613,14 +593,12 @@
           }
         },
         {
-          "name": "Phil",
+          "id": "phil",
           "pageTitle": "Phil",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 2,
-          "text": "Phil and Hercules get +1 Strength if Hercules is in Hades' Realm.",
           "image": {
             "path": "/assets/hades/cards/fate/phil.webp",
             "width": 1000,
@@ -631,14 +609,12 @@
           }
         },
         {
-          "name": "Zeus",
+          "id": "zeus",
           "pageTitle": "Zeus",
           "quantity": 1,
-          "villain": "Hades",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 5,
-          "text": "If a Titan moves to Zeus' location, that Titan is immediately trapped before the Titan's Ability is triggered.",
           "image": {
             "path": "/assets/hades/cards/fate/zeus.webp",
             "width": 1000,
@@ -657,7 +633,135 @@
   },
   "translations": {
     "en": {
-      "objective": "Hades must play Titans and move them so he has at least three untrapped Titans at Mount Olympus. He can only win at the start of his turn."
+      "objective": "Hades must play Titans and move them so he has at least three untrapped Titans at Mount Olympus. He can only win at the start of his turn.",
+      "locations": {
+        "the-underworld": "The Underworld",
+        "thebes": "Thebes",
+        "the-gardens": "The Gardens",
+        "mount-olympus": "Mount Olympus"
+      },
+      "cards": {
+        "get-ready-to-rumble": {
+          "name": "Get Ready to Rumble!",
+          "text": "Either pay 2 Power to move an untrapped Titan to an adjacent location, or pay 5 Power to move an untrapped Titan two locations away."
+        },
+        "mortality-potion": {
+          "name": "Mortality Potion",
+          "text": "When Mortality Potion is played, attach it to a Hero. Titans used to defeat that Hero are not discarded."
+        },
+        "planets-align": {
+          "name": "Planets Align",
+          "text": "Untrap one or more Titans in your Realm. The Cost to play Planets Align is equal to the number of Titans you untrap."
+        },
+        "achilles-heel": {
+          "name": "Achilles' Heel",
+          "text": "Choose a Hero. That Hero gets -2 Strength until the end of your turn."
+        },
+        "eye-of-the-fates": {
+          "name": "Eye of the Fates",
+          "text": "Reveal cards from the top of your deck until you reveal an Ally or Titan. Put that Ally or Titan into your hand. Discard the rest."
+        },
+        "i-rule": {
+          "name": "I Rule!",
+          "text": "Gain 1 Power for each Ally and Titan in your discard pile."
+        },
+        "rage": {
+          "name": "Rage",
+          "text": "During their turn, if another player defeats a Hero with a Strength of 3 or more, you may play Rage. Move a Hero in your Realm to any location."
+        },
+        "ruthless": {
+          "name": "Ruthless",
+          "text": "During their turn, if another player has 6 or more Power, you may play Ruthless. Play an Ally or Titan from your hand for free."
+        },
+        "arges": {
+          "name": "Arges",
+          "text": "Arges can only be played to The Underworld.When Arges is moved, gain 1 Power."
+        },
+        "cerberus": {
+          "name": "Cerberus",
+          "text": "When performing a Vanquish action, Cerberus may be used to defeat a Hero at his location or at an adjacent location."
+        },
+        "chariot": {
+          "name": "Chariot",
+          "text": "Once per turn, if Hades is as this location, you may move Hades and Chariot to any location and perform one available action at the new location. You cannot use Chariot to perform Fate actions."
+        },
+        "hydra": {
+          "name": "Hydra",
+          "text": "When Hydra is used to defeat a Hero, you may put Hydra into your hand instead of discarding him."
+        },
+        "hydros": {
+          "name": "Hydros",
+          "text": "Hydros can only be played to The Underworld.Heroes at Hydros' location get -1 Strength and cannot be moved by Fate cards."
+        },
+        "lythos": {
+          "name": "Lythos",
+          "text": "Lythos can only be played to The Underworld.When Lythos is moved, you may perform a Vanquish action at his new location. Lythos must be used in that action."
+        },
+        "nessus": {
+          "name": "Nessus",
+          "text": "If Nessus is used to defeat a Hero with a Strength of 3 or less, gain 2 Power."
+        },
+        "pain": {
+          "name": "Pain",
+          "text": "When Pain is moved, you may move a Hero from Pain's previous location to his new location."
+        },
+        "panic": {
+          "name": "Panic",
+          "text": "If Hades is at Panic's location, the Cost to play Items, Allies, and Titans is reduced by 1 Power."
+        },
+        "pyros": {
+          "name": "Pyros",
+          "text": "Pyros can only be played to The Underworld.When Pyros is moved, you may untrap one Titan at his new location."
+        },
+        "stratos": {
+          "name": "Stratos",
+          "text": "Stratos can only be played to The Underworld.When Stratos is moved, you may move a Hero from his new location to an adjacent location."
+        },
+        "go-the-distance": {
+          "name": "Go the Distance",
+          "text": "Either move an untrapped Titan up to two locations away, ignoring all Hero and Titan Abilities, or move a Hero to any location."
+        },
+        "lightning-bolt": {
+          "name": "Lightning Bolt",
+          "text": "Choose a location in Hades' Realm. All Titans in that location are trapped."
+        },
+        "medallion": {
+          "name": "Medallion",
+          "text": "When Medallion is played, attach it to a Hero. That Hero gets +2 Strength."
+        },
+        "the-gospel-truth": {
+          "name": "The Gospel Truth",
+          "text": "Discard an Item or Ally from Hades' Realm."
+        },
+        "hera": {
+          "name": "Hera",
+          "text": "When Hera is played or moved, you may choose a Titan at her new location. That Titan is trapped."
+        },
+        "hercules": {
+          "name": "Hercules",
+          "text": "Titans cannot be moved from Hercules' location."
+        },
+        "hermes": {
+          "name": "Hermes",
+          "text": "When Hermes is played, if Zeus is in Hades' Realm, you may move Zeus to any location. Otherwise, find Zeus and put him on the top of Hades' Fate deck."
+        },
+        "megara": {
+          "name": "Megara",
+          "text": "When Megara is played, you may move a Hero from her location to any location."
+        },
+        "pegasus": {
+          "name": "Pegasus",
+          "text": "When Pegasus is played, you may move an untrapped Titan from his location to an adjacent location."
+        },
+        "phil": {
+          "name": "Phil",
+          "text": "Phil and Hercules get +1 Strength if Hercules is in Hades' Realm."
+        },
+        "zeus": {
+          "name": "Zeus",
+          "text": "If a Titan moves to Zeus' location, that Titan is immediately trapped before the Titan's Ability is triggered."
+        }
+      }
     }
   }
 }

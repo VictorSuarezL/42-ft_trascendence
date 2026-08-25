@@ -10,9 +10,8 @@ import { dirname, resolve } from 'node:path';
 
 import type { StoredImage } from './images';
 import type {
+  CardType,
   Deck,
-  DeckCard,
-  NormalizedCard,
   VillainImageId,
   VillainImageReference,
 } from './normalize';
@@ -29,24 +28,42 @@ const villainImageFileNames: Record<VillainImageId, string> = {
   fateDeckBack: 'fate-deck-back',
 };
 
-type ImportedCard = DeckCard &
-  Omit<NormalizedCard, 'imageName' | 'imageSourceUrl'> & {
-    image: StoredImage | null;
-  };
-
 type DeckName = 'villain' | 'fate';
+
+interface ImportedCard {
+  id: string;
+  pageTitle: string;
+  quantity: number;
+  type: CardType;
+  cost: number | null;
+  strength: number | null;
+  image: StoredImage | null;
+}
 
 interface ImportedDeck {
   totalCards: number;
   cards: ImportedCard[];
 }
 
+interface CardTranslation {
+  name: string;
+  text: string;
+}
+
+type CardTranslations = Record<string, CardTranslation>;
+
+interface ImportedDeckResult {
+  deck: ImportedDeck;
+  translations: CardTranslations;
+}
+
 async function importDeckCards(
   deck: Deck,
   villainId: string,
   deckName: DeckName,
-): Promise<ImportedDeck> {
+): Promise<ImportedDeckResult> {
   const cards: ImportedCard[] = [];
+  const translations: CardTranslations = {};
 
   for (const [index, reference] of deck.cards.entries()) {
     console.log(
@@ -57,6 +74,7 @@ async function importDeckCards(
     const cardPage = await getFandomPage(reference.pageTitle);
 
     const details = normalizeCardPage(cardPage);
+    const cardId = createSlug(details.name);
 
     let image: StoredImage | null = null;
 
@@ -66,7 +84,7 @@ async function importDeckCards(
         sourceName: details.imageName,
         relativePath:
           `${villainId}/cards/${deckName}/` +
-          `${createSlug(details.name)}.webp`,
+          `${cardId}.webp`,
       });
     } else {
       console.warn(`Image was not found for "${details.name}"`);
@@ -79,23 +97,51 @@ async function importDeckCards(
       );
     }
 
-    const {
-      imageName: _imageName,
-      imageSourceUrl: _imageSourceUrl,
-      ...cardDetails
-    } = details;
+    if (translations[cardId]) {
+      throw new Error(`Duplicated card id "${cardId}" in ${deckName} deck`);
+    }
+
+    translations[cardId] = {
+      name: details.name,
+      text: details.text,
+    };
 
     cards.push({
-      ...reference,
-      ...cardDetails,
+      id: cardId,
+      pageTitle: reference.pageTitle,
+      quantity: reference.quantity,
+      type: details.type,
+      cost: details.cost,
+      strength: details.strength,
       image,
     });
   }
 
   return {
-    totalCards: deck.totalCards,
-    cards,
+    deck: {
+      totalCards: deck.totalCards,
+      cards,
+    },
+    translations,
   };
+}
+
+function mergeCardTranslations(
+  ...groups: CardTranslations[]
+): CardTranslations {
+  const translations: CardTranslations = {};
+
+  for (const group of groups) {
+    for (const [cardId, translation] of Object.entries(group)) {
+      if (translations[cardId]) {
+        throw new Error(`Duplicated card translation id "${cardId}"`);
+      }
+
+      translations[cardId] = translation;
+    }
+  }
+
+  return translations;
 }
 
 async function importVillainImages(
@@ -183,12 +229,24 @@ async function main(): Promise<void> {
     'fate',
   );
 
+  const cardTranslations = mergeCardTranslations(
+    villainDeck.translations,
+    fateDeck.translations,
+  );
+
   const result = {
     ...normalized,
     images: villainImages,
     decks: {
-      villain: villainDeck,
-      fate: fateDeck,
+      villain: villainDeck.deck,
+      fate: fateDeck.deck,
+    },
+    translations: {
+      ...normalized.translations,
+      en: {
+        ...normalized.translations.en,
+        cards: cardTranslations,
+      },
     },
   };
 

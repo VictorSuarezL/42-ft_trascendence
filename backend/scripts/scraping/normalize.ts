@@ -26,10 +26,33 @@ function extractObjective(html: string): string {
 }
 
 export interface RealmLocation {
+  id: string;
   position: number;
-  location: string;
-  topActions: string[];
-  bottomActions: string[];
+  topActions: RealmAction[];
+  bottomActions: RealmAction[];
+}
+
+export type SimpleRealmActionType =
+  | 'PLAY_CARD'
+  | 'FATE'
+  | 'VANQUISH'
+  | 'DISCARD_CARDS'
+  | 'MOVE_ITEM_OR_ALLY'
+  | 'MOVE_HERO'
+  | 'ACTIVATE';
+
+export type RealmAction =
+  | {
+      type: 'GAIN_POWER';
+      amount: number;
+    }
+  | {
+      type: SimpleRealmActionType;
+    };
+
+interface ExtractedRealm {
+  locations: RealmLocation[];
+  locationTranslations: Record<string, string>;
 }
 
 export interface DeckCard {
@@ -61,14 +84,46 @@ export interface VillainImageReference {
   sourceUrl: string;
 }
 
-function extractActions(value: string): string[] {
-  return cleanText(value)
-    .split('|')
-    .map((action) => action.trim())
-    .filter(Boolean);
+const simpleRealmActionTypes: Record<string, SimpleRealmActionType> = {
+  'play a card': 'PLAY_CARD',
+  fate: 'FATE',
+  vanquish: 'VANQUISH',
+  'discard cards': 'DISCARD_CARDS',
+  'move an item or ally': 'MOVE_ITEM_OR_ALLY',
+  'move a hero': 'MOVE_HERO',
+  activate: 'ACTIVATE',
+};
+
+export function parseRealmAction(value: string): RealmAction {
+  const actionText = cleanText(value);
+
+  const gainPowerMatch = actionText.match(/^Gain\s+(\d+)\s+Power$/i);
+
+  if (gainPowerMatch) {
+    return {
+      type: 'GAIN_POWER',
+      amount: Number.parseInt(gainPowerMatch[1], 10),
+    };
+  }
+
+  const actionType = simpleRealmActionTypes[actionText.toLowerCase()];
+
+  if (!actionType) {
+    throw new Error(`Unknown Realm action "${actionText}"`);
+  }
+
+  return {
+    type: actionType,
+  };
 }
 
-function extractRealm(html: string): RealmLocation[] {
+function extractActions(value: string): RealmAction[] {
+  return cleanText(value)
+    .split('|')
+    .map((action) => parseRealmAction(action));
+}
+
+function extractRealm(html: string): ExtractedRealm {
   const $ = load(html);
 
   const heading = $('#Realm').closest('h2');
@@ -84,6 +139,7 @@ function extractRealm(html: string): RealmLocation[] {
   }
 
   const realm: RealmLocation[] = [];
+  const locationTranslations: Record<string, string> = {};
 
   realmList.children('li').each((index, element) => {
     const locationElement = $(element);
@@ -106,9 +162,23 @@ function extractRealm(html: string): RealmLocation[] {
 
     const bottomActions = extractActions(actionRows.eq(1).text());
 
+    if (topActions.length !== 2 || bottomActions.length !== 2) {
+      throw new Error(
+        `Realm location "${location}" does not have two actions per row`,
+      );
+    }
+
+    const locationId = createSlug(location);
+
+    if (locationTranslations[locationId]) {
+      throw new Error(`Duplicated Realm location id "${locationId}"`);
+    }
+
+    locationTranslations[locationId] = location;
+
     realm.push({
+      id: locationId,
       position: index + 1,
-      location,
       topActions,
       bottomActions,
     });
@@ -118,7 +188,10 @@ function extractRealm(html: string): RealmLocation[] {
     throw new Error('No Realm locations were found');
   }
 
-  return realm;
+  return {
+    locations: realm,
+    locationTranslations,
+  };
 }
 
 function extractDeck(html: string, sectionId: string): Deck {
@@ -190,12 +263,42 @@ function extractDecks(html: string): Decks {
 export interface NormalizedCard {
   name: string;
   villain: string;
-  type: string;
+  type: CardType;
   cost: number | null;
   strength: number | null;
   text: string;
   imageName: string | null;
   imageSourceUrl: string | null;
+}
+
+export type CardType =
+  | 'ALLY'
+  | 'CONDITION'
+  | 'CURSE'
+  | 'EFFECT'
+  | 'HERO'
+  | 'ITEM'
+  | 'TITAN';
+
+const cardTypes: Record<string, CardType> = {
+  ally: 'ALLY',
+  condition: 'CONDITION',
+  curse: 'CURSE',
+  effect: 'EFFECT',
+  hero: 'HERO',
+  item: 'ITEM',
+  titan: 'TITAN',
+};
+
+export function parseCardType(value: string): CardType {
+  const typeText = cleanText(value);
+  const cardType = cardTypes[typeText.toLowerCase()];
+
+  if (!cardType) {
+    throw new Error(`Unknown card type "${typeText}"`);
+  }
+
+  return cardType;
 }
 
 function parseOptionalNumber(value: string): number | null {
@@ -230,13 +333,13 @@ export function normalizeCardPage(page: FandomPage): NormalizedCard {
     cleanText(infobox.find('.pi-title').first().text()) || page.title;
 
   const villain = getValue('villain');
-  const type = getValue('type');
+  const typeText = getValue('type');
 
   if (!villain) {
     throw new Error(`Card villain was not found for "${page.title}"`);
   }
 
-  if (!type) {
+  if (!typeText) {
     throw new Error(`Card type was not found for "${page.title}"`);
   }
 
@@ -251,7 +354,7 @@ export function normalizeCardPage(page: FandomPage): NormalizedCard {
   return {
     name,
     villain,
-    type,
+    type: parseCardType(typeText),
     cost: parseOptionalNumber(getValue('cost')),
     strength: parseOptionalNumber(getValue('strength')),
     text: getValue('text'),
@@ -359,6 +462,7 @@ export interface NormalizedFandomPage {
   translations: {
     en: {
       objective: string;
+      locations: Record<string, string>;
     };
   };
 }
@@ -389,7 +493,7 @@ export function normalizeFandomPage(page: FandomPage): NormalizedFandomPage {
     name: page.title,
     game: 'Disney Villainous',
     images,
-    realm,
+    realm: realm.locations,
     decks,
     source: {
       article: createArticleUrl(page.title),
@@ -398,6 +502,7 @@ export function normalizeFandomPage(page: FandomPage): NormalizedFandomPage {
     translations: {
       en: {
         objective: objective,
+        locations: realm.locationTranslations,
       },
     },
   };

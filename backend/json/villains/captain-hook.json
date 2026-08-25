@@ -51,51 +51,87 @@
   ],
   "realm": [
     {
+      "id": "jolly-roger",
       "position": 1,
-      "location": "Jolly Roger",
       "topActions": [
-        "Gain 1 Power",
-        "Discard Cards"
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "DISCARD_CARDS"
+        }
       ],
       "bottomActions": [
-        "Vanquish",
-        "Play a Card"
+        {
+          "type": "VANQUISH"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ]
     },
     {
+      "id": "skull-rock",
       "position": 2,
-      "location": "Skull Rock",
       "topActions": [
-        "Gain 1 Power",
-        "Play a Card"
+        {
+          "type": "GAIN_POWER",
+          "amount": 1
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ],
       "bottomActions": [
-        "Fate",
-        "Discard Cards"
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "DISCARD_CARDS"
+        }
       ]
     },
     {
+      "id": "mermaid-lagoon",
       "position": 3,
-      "location": "Mermaid Lagoon",
       "topActions": [
-        "Play a Card",
-        "Move an Item or Ally"
+        {
+          "type": "PLAY_CARD"
+        },
+        {
+          "type": "MOVE_ITEM_OR_ALLY"
+        }
       ],
       "bottomActions": [
-        "Gain 3 Power",
-        "Play a Card"
+        {
+          "type": "GAIN_POWER",
+          "amount": 3
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ]
     },
     {
+      "id": "hangman-s-tree",
       "position": 4,
-      "location": "Hangman's Tree",
       "topActions": [
-        "Fate",
-        "Gain 2 Power"
+        {
+          "type": "FATE"
+        },
+        {
+          "type": "GAIN_POWER",
+          "amount": 2
+        }
       ],
       "bottomActions": [
-        "Move a Hero",
-        "Play a Card"
+        {
+          "type": "MOVE_HERO"
+        },
+        {
+          "type": "PLAY_CARD"
+        }
       ]
     }
   ],
@@ -104,14 +140,12 @@
       "totalCards": 30,
       "cards": [
         {
-          "name": "Boarding Party",
+          "id": "boarding-party",
           "pageTitle": "Boarding Party",
           "quantity": 3,
-          "villain": "Captain Hook",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 2,
-          "text": "When performing a Vanquish action, Boarding Party may be used to defeat a Hero at their location or at an adjacent unlocked location.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/boarding-party.webp",
             "width": 1000,
@@ -122,14 +156,12 @@
           }
         },
         {
-          "name": "Give Them a Scare",
+          "id": "give-them-a-scare",
           "pageTitle": "Give Them a Scare",
           "quantity": 3,
-          "villain": "Captain Hook",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 1,
           "strength": null,
-          "text": "Look at the top two cards of your Fate deck. Either discard both cards or return them to the top in any order.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/give-them-a-scare.webp",
             "width": 1000,
@@ -140,14 +172,12 @@
           }
         },
         {
-          "name": "Swashbuckler",
+          "id": "swashbuckler",
           "pageTitle": "Swashbuckler",
           "quantity": 3,
-          "villain": "Captain Hook",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 1,
           "strength": 2,
-          "text": "No additional Ability.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/swashbuckler.webp",
             "width": 1000,
@@ -158,14 +188,12 @@
           }
         },
         {
-          "name": "Worthy Opponent",
+          "id": "worthy-opponent",
           "pageTitle": "Worthy Opponent",
           "quantity": 3,
-          "villain": "Captain Hook",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 0,
           "strength": null,
-          "text": "Gain 2 Power. Reveal cards from the top of your Fate deck until you reveal a Hero. Play that Hero and discard the rest.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/worthy-opponent.webp",
             "width": 1000,
@@ -176,14 +204,12 @@
           }
         },
         {
-          "name": "Aye, Aye, Sir!",
+          "id": "aye-aye-sir",
           "pageTitle": "Aye, Aye, Sir!",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": 1,
           "strength": null,
-          "text": "Move an Ally to an adjacent unlocked location. That Ally gets +2 Strength until the end of your turn.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/aye-aye-sir.webp",
             "width": 1000,
@@ -194,14 +220,12 @@
           }
         },
         {
-          "name": "Cannon",
+          "id": "cannon",
           "pageTitle": "Cannon",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 2,
           "strength": null,
-          "text": "This location gains: Vanquish action.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/cannon.webp",
             "width": 1000,
@@ -212,14 +236,12 @@
           }
         },
         {
-          "name": "Cunning",
+          "id": "cunning",
           "pageTitle": "Cunning",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player has an Ally with a Strength of 4 or more in their realm, you may play Cunning. Play an Ally from your hand for free.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/cunning.webp",
             "width": 1000,
@@ -230,14 +252,12 @@
           }
         },
         {
-          "name": "Cutlass",
+          "id": "cutlass",
           "pageTitle": "Cutlass",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 1,
           "strength": 2,
-          "text": "When Cutlass is played, attach it to an Ally. That Ally gets +2 Strength.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/cutlass.webp",
             "width": 1000,
@@ -248,14 +268,12 @@
           }
         },
         {
-          "name": "Hook's Case",
+          "id": "hook-s-case",
           "pageTitle": "Hook's Case",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 2,
           "strength": null,
-          "text": "This location gains: Gain 1 Power action.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/hook-s-case.webp",
             "width": 1000,
@@ -266,14 +284,12 @@
           }
         },
         {
-          "name": "Obsession",
+          "id": "obsession",
           "pageTitle": "Obsession",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Condition",
+          "type": "CONDITION",
           "cost": null,
           "strength": null,
-          "text": "During their turn, if another player defeats a Hero with a Strength of 4 or more, you may play Obsession. Reveal cards from the top of your Fate deck until you reveal a Hero. Either play or discard the Hero. Discard the rest.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/obsession.webp",
             "width": 1000,
@@ -284,14 +300,12 @@
           }
         },
         {
-          "name": "Pirate Brute",
+          "id": "pirate-brute",
           "pageTitle": "Pirate Brute",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 3,
           "strength": 4,
-          "text": "No additional Ability.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/pirate-brute.webp",
             "width": 1000,
@@ -302,14 +316,12 @@
           }
         },
         {
-          "name": "Ingenious Device",
+          "id": "ingenious-device",
           "pageTitle": "Ingenious Device",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 2,
           "strength": null,
-          "text": "This location gains: Move a Hero action.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/ingenious-device.webp",
             "width": 1000,
@@ -320,14 +332,12 @@
           }
         },
         {
-          "name": "Mr. Starkey",
+          "id": "mr-starkey",
           "pageTitle": "Mr. Starkey",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 2,
-          "text": "When Mr. Starkey is played, you may move a Hero from his location to an adjacent unlocked location.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/mr-starkey.webp",
             "width": 1000,
@@ -338,14 +348,12 @@
           }
         },
         {
-          "name": "Never Land Map",
+          "id": "never-land-map",
           "pageTitle": "Never Land Map",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Item",
+          "type": "ITEM",
           "cost": 4,
           "strength": null,
-          "text": "When Never Land Map is played, unlock Hangman's Tree.When you play an Item, you may discard Never Land Map instead of paying the Item's cost.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/never-land-map.webp",
             "width": 1000,
@@ -356,14 +364,12 @@
           }
         },
         {
-          "name": "Smee",
+          "id": "smee",
           "pageTitle": "Smee",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Ally",
+          "type": "ALLY",
           "cost": 2,
           "strength": 2,
-          "text": "Smee gets +2 Strength if he is at the Jolly Roger.",
           "image": {
             "path": "/assets/captain-hook/cards/villain/smee.webp",
             "width": 1000,
@@ -379,14 +385,12 @@
       "totalCards": 15,
       "cards": [
         {
-          "name": "Pixie Dust",
+          "id": "pixie-dust",
           "pageTitle": "Pixie Dust",
           "quantity": 3,
-          "villain": "Captain Hook",
-          "type": "Item",
+          "type": "ITEM",
           "cost": null,
           "strength": 2,
-          "text": "When Pixie Dust is played, attach it to a Hero. That Hero gets +2 Strength.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/pixie-dust.webp",
             "width": 1000,
@@ -397,14 +401,12 @@
           }
         },
         {
-          "name": "Lost Boys",
+          "id": "lost-boys",
           "pageTitle": "Lost Boys",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 4,
-          "text": "When performing a Vanquish action to defeat Lost Boys, at least two Allies must be used.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/lost-boys.webp",
             "width": 1000,
@@ -415,14 +417,12 @@
           }
         },
         {
-          "name": "Splitting Headache",
+          "id": "splitting-headache",
           "pageTitle": "Splitting Headache",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Effect",
+          "type": "EFFECT",
           "cost": null,
           "strength": null,
-          "text": "Discard an Item from Captain Hook's Realm.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/splitting-headache.webp",
             "width": 1000,
@@ -433,14 +433,12 @@
           }
         },
         {
-          "name": "Taunt",
+          "id": "taunt",
           "pageTitle": "Taunt",
           "quantity": 2,
-          "villain": "Captain Hook",
-          "type": "Item",
+          "type": "ITEM",
           "cost": null,
           "strength": null,
-          "text": "When Taunt is played, attach it to a Hero. Captain Hook must defeat Heroes with Taunt before defeating other Heroes.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/taunt.webp",
             "width": 1000,
@@ -451,14 +449,12 @@
           }
         },
         {
-          "name": "John",
+          "id": "john",
           "pageTitle": "John",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 2,
-          "text": "John gets +1 Strength if he has any Items attached to him.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/john.webp",
             "width": 1000,
@@ -469,14 +465,12 @@
           }
         },
         {
-          "name": "Michael",
+          "id": "michael",
           "pageTitle": "Michael",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 1,
-          "text": "Michael gets +1 Strength for each location in Captain Hook's Realm that has a Hero, including Michael's location.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/michael.webp",
             "width": 1000,
@@ -487,14 +481,12 @@
           }
         },
         {
-          "name": "Peter Pan",
+          "id": "peter-pan",
           "pageTitle": "Peter Pan",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 8,
-          "text": "When Peter Pan is revealed, you MUST IMMEDIATELY PLAY HIM to Hangman's Tree, even if it is locked. Any other Fate cards revealed during this action are discarded.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/peter-pan.webp",
             "width": 1000,
@@ -505,14 +497,12 @@
           }
         },
         {
-          "name": "Tick Tock",
+          "id": "tick-tock",
           "pageTitle": "Tick Tock",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 5,
-          "text": "If Captain Hook moves to Tick Tock's location, Captain Hook must immediately discard his hand.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/tick-tock.webp",
             "width": 1000,
@@ -523,14 +513,12 @@
           }
         },
         {
-          "name": "Tinker Bell",
+          "id": "tinker-bell",
           "pageTitle": "Tinker Bell",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 2,
-          "text": "When Tinker Bell is played, you may discard one Ally from her location.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/tinker-bell.webp",
             "width": 1000,
@@ -541,14 +529,12 @@
           }
         },
         {
-          "name": "Wendy",
+          "id": "wendy",
           "pageTitle": "Wendy",
           "quantity": 1,
-          "villain": "Captain Hook",
-          "type": "Hero",
+          "type": "HERO",
           "cost": null,
           "strength": 3,
-          "text": "All other Heroes in Captain Hook's Realm get +1 Strength.",
           "image": {
             "path": "/assets/captain-hook/cards/fate/wendy.webp",
             "width": 1000,
@@ -567,7 +553,115 @@
   },
   "translations": {
     "en": {
-      "objective": "Captain Hook must defeat Peter Pan at the Jolly Roger."
+      "objective": "Captain Hook must defeat Peter Pan at the Jolly Roger.",
+      "locations": {
+        "jolly-roger": "Jolly Roger",
+        "skull-rock": "Skull Rock",
+        "mermaid-lagoon": "Mermaid Lagoon",
+        "hangman-s-tree": "Hangman's Tree"
+      },
+      "cards": {
+        "boarding-party": {
+          "name": "Boarding Party",
+          "text": "When performing a Vanquish action, Boarding Party may be used to defeat a Hero at their location or at an adjacent unlocked location."
+        },
+        "give-them-a-scare": {
+          "name": "Give Them a Scare",
+          "text": "Look at the top two cards of your Fate deck. Either discard both cards or return them to the top in any order."
+        },
+        "swashbuckler": {
+          "name": "Swashbuckler",
+          "text": "No additional Ability."
+        },
+        "worthy-opponent": {
+          "name": "Worthy Opponent",
+          "text": "Gain 2 Power. Reveal cards from the top of your Fate deck until you reveal a Hero. Play that Hero and discard the rest."
+        },
+        "aye-aye-sir": {
+          "name": "Aye, Aye, Sir!",
+          "text": "Move an Ally to an adjacent unlocked location. That Ally gets +2 Strength until the end of your turn."
+        },
+        "cannon": {
+          "name": "Cannon",
+          "text": "This location gains: Vanquish action."
+        },
+        "cunning": {
+          "name": "Cunning",
+          "text": "During their turn, if another player has an Ally with a Strength of 4 or more in their realm, you may play Cunning. Play an Ally from your hand for free."
+        },
+        "cutlass": {
+          "name": "Cutlass",
+          "text": "When Cutlass is played, attach it to an Ally. That Ally gets +2 Strength."
+        },
+        "hook-s-case": {
+          "name": "Hook's Case",
+          "text": "This location gains: Gain 1 Power action."
+        },
+        "obsession": {
+          "name": "Obsession",
+          "text": "During their turn, if another player defeats a Hero with a Strength of 4 or more, you may play Obsession. Reveal cards from the top of your Fate deck until you reveal a Hero. Either play or discard the Hero. Discard the rest."
+        },
+        "pirate-brute": {
+          "name": "Pirate Brute",
+          "text": "No additional Ability."
+        },
+        "ingenious-device": {
+          "name": "Ingenious Device",
+          "text": "This location gains: Move a Hero action."
+        },
+        "mr-starkey": {
+          "name": "Mr. Starkey",
+          "text": "When Mr. Starkey is played, you may move a Hero from his location to an adjacent unlocked location."
+        },
+        "never-land-map": {
+          "name": "Never Land Map",
+          "text": "When Never Land Map is played, unlock Hangman's Tree.When you play an Item, you may discard Never Land Map instead of paying the Item's cost."
+        },
+        "smee": {
+          "name": "Smee",
+          "text": "Smee gets +2 Strength if he is at the Jolly Roger."
+        },
+        "pixie-dust": {
+          "name": "Pixie Dust",
+          "text": "When Pixie Dust is played, attach it to a Hero. That Hero gets +2 Strength."
+        },
+        "lost-boys": {
+          "name": "Lost Boys",
+          "text": "When performing a Vanquish action to defeat Lost Boys, at least two Allies must be used."
+        },
+        "splitting-headache": {
+          "name": "Splitting Headache",
+          "text": "Discard an Item from Captain Hook's Realm."
+        },
+        "taunt": {
+          "name": "Taunt",
+          "text": "When Taunt is played, attach it to a Hero. Captain Hook must defeat Heroes with Taunt before defeating other Heroes."
+        },
+        "john": {
+          "name": "John",
+          "text": "John gets +1 Strength if he has any Items attached to him."
+        },
+        "michael": {
+          "name": "Michael",
+          "text": "Michael gets +1 Strength for each location in Captain Hook's Realm that has a Hero, including Michael's location."
+        },
+        "peter-pan": {
+          "name": "Peter Pan",
+          "text": "When Peter Pan is revealed, you MUST IMMEDIATELY PLAY HIM to Hangman's Tree, even if it is locked. Any other Fate cards revealed during this action are discarded."
+        },
+        "tick-tock": {
+          "name": "Tick Tock",
+          "text": "If Captain Hook moves to Tick Tock's location, Captain Hook must immediately discard his hand."
+        },
+        "tinker-bell": {
+          "name": "Tinker Bell",
+          "text": "When Tinker Bell is played, you may discard one Ally from her location."
+        },
+        "wendy": {
+          "name": "Wendy",
+          "text": "All other Heroes in Captain Hook's Realm get +1 Strength."
+        }
+      }
     }
   }
 }

@@ -621,6 +621,109 @@
           "text": "All other Heroes at Zazu's location get -2 Strength. All Heroes at other locations get +1 Strength."
         }
       }
+    },
+    "es": {
+      "objective": "Scar debe encontrar y derrotar a Mufasa y, después, derrotar a otros Héroes hasta tener al menos 15 de Fuerza en la pila de Sucesión. Solo puede ganar al comienzo de su turno.",
+      "locations": {
+        "pride-rock": "Roca del Rey",
+        "the-savanna": "La Sabana",
+        "elephant-graveyard": "Cementerio de Elefantes",
+        "the-gorge": "El Desfiladero"
+      },
+      "cards": {
+        "hungry-hyena": {
+          "name": "Hiena hambrienta",
+          "text": "Hiena hambrienta obtiene +1 de Fuerza por cada otra Hiena que haya en su ubicación."
+        },
+        "long-live-the-king": {
+          "name": "Larga vida al rey",
+          "text": "Revela las cuatro primeras cartas de tu mazo de Destino. Puedes jugar un Héroe. Descarta el resto."
+        },
+        "be-prepared": {
+          "name": "Preparaos",
+          "text": "Descarta las tres primeras cartas de tu mazo. Puedes elegir un Efecto o hasta dos Aliados de tu pila de descartes y añadirlos a tu mano."
+        },
+        "stick-with-me": {
+          "name": "Seguid conmigo",
+          "text": "Elige una Hiena que no esté en la ubicación de Scar. Puedes realizar una acción disponible en la ubicación de esa Hiena. No puedes usar Seguid conmigo para realizar acciones de Destino."
+        },
+        "whisper": {
+          "name": "Susurro",
+          "text": "Elige una carta de tu pila de descartes de Destino y juégala."
+        },
+        "feeding-frenzy": {
+          "name": "Frenesí alimenticio",
+          "text": "Elige una ubicación y mueve hasta allí cualquier número de Hienas de tu Reino."
+        },
+        "injustice": {
+          "name": "Injusticia",
+          "text": "Durante el turno de otro jugador, si te elige como objetivo de una acción de Destino, puedes jugar Injusticia. Antes de que revele cartas, mira las dos primeras cartas de tu mazo de Destino. Descarta cada una o devuélvela a la parte superior del mazo."
+        },
+        "pride": {
+          "name": "Orgullo",
+          "text": "Durante el turno de otro jugador, si descarta dos o más cartas, puedes jugar Orgullo. Obtén 3 de Poder."
+        },
+        "stampede": {
+          "name": "Estampida",
+          "text": "Si juegas Estampida en una ubicación que contiene un Héroe, mueve un Héroe de esa ubicación a una ubicación adyacente. Después, puedes realizar una acción de Vencer en la nueva ubicación del Héroe."
+        },
+        "banzai-the-hyena": {
+          "name": "Banzai, la hiena",
+          "text": "Obtén 1 de Poder por cada otra Hiena descartada de la ubicación de Banzai."
+        },
+        "ed-the-hyena": {
+          "name": "Ed, la hiena",
+          "text": "El Coste de jugar Hienas en la ubicación de Ed se reduce en 1 de Poder."
+        },
+        "shenzi-the-hyena": {
+          "name": "Shenzi, la hiena",
+          "text": "Cuando juegues a Shenzi, puedes jugar gratis una Hiena de tu mano."
+        },
+        "hakuna-matata": {
+          "name": "Hakuna Matata",
+          "text": "Elige un Héroe con una Fuerza de 3 o menos de la pila de Sucesión y juégalo, o mueve un Héroe a cualquier ubicación."
+        },
+        "prophecy": {
+          "name": "Profecía",
+          "text": "Cuando juegues Profecía, vincúlala a un Héroe que no tenga otros Objetos vinculados. Ese Héroe obtiene +3 de Fuerza."
+        },
+        "mufasa": {
+          "name": "Mufasa",
+          "text": "Cuando Mufasa sea derrotado, colócalo en la pila de Sucesión. Si Mufasa está en la pila de Sucesión, todos los Héroes que derrotes se colocan en la pila de Sucesión."
+        },
+        "nala": {
+          "name": "Nala",
+          "text": "Cuando juegues a Nala, puedes mover un Héroe a cualquier ubicación."
+        },
+        "pumbaa": {
+          "name": "Pumba",
+          "text": "Pumba obtiene +2 de Fuerza si Timón está en el Reino de Scar."
+        },
+        "rafiki": {
+          "name": "Rafiki",
+          "text": "Scar debe derrotar a Rafiki antes de derrotar a otros Héroes."
+        },
+        "rafiki-s-stick": {
+          "name": "Bastón de Rafiki",
+          "text": "Cuando juegues Bastón de Rafiki, vincúlalo a un Héroe. Cuando ese Héroe fuera a ser derrotado, descarta este Objeto en su lugar."
+        },
+        "sarabi": {
+          "name": "Sarabi",
+          "text": "Cuando juegues a Sarabi, puedes descartar una Hiena de su ubicación."
+        },
+        "simba": {
+          "name": "Simba",
+          "text": "Las Hienas no pueden tener más de 2 de Fuerza."
+        },
+        "timon": {
+          "name": "Timón",
+          "text": "Timón obtiene +2 de Fuerza si Pumba está en el Reino de Scar."
+        },
+        "zazu": {
+          "name": "Zazú",
+          "text": "Todos los demás Héroes en la ubicación de Zazú obtienen -2 de Fuerza. Todos los Héroes en otras ubicaciones obtienen +1 de Fuerza."
+        }
+      }
     }
   }
 }

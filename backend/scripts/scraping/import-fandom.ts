@@ -5,10 +5,15 @@ import {
   normalizeCardPage,
 } from './normalize';
 import { downloadImageAsWebp } from './images';
+import { loadSpanishTranslation } from './villain-translations';
 import { mkdir, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
 import type { StoredImage } from './images';
+import type {
+  CardTranslations,
+  VillainTranslation,
+} from './villain-translations';
 import type {
   CardType,
   Deck,
@@ -44,13 +49,6 @@ interface ImportedDeck {
   totalCards: number;
   cards: ImportedCard[];
 }
-
-interface CardTranslation {
-  name: string;
-  text: string;
-}
-
-type CardTranslations = Record<string, CardTranslation>;
 
 interface ImportedDeckResult {
   deck: ImportedDeck;
@@ -234,6 +232,16 @@ async function main(): Promise<void> {
     fateDeck.translations,
   );
 
+  const englishTranslations: VillainTranslation = {
+    ...normalized.translations.en,
+    cards: cardTranslations,
+  };
+
+  const spanishTranslation = await loadSpanishTranslation(
+    normalized.id,
+    englishTranslations,
+  );
+
   const result = {
     ...normalized,
     images: villainImages,
@@ -242,11 +250,8 @@ async function main(): Promise<void> {
       fate: fateDeck.deck,
     },
     translations: {
-      ...normalized.translations,
-      en: {
-        ...normalized.translations.en,
-        cards: cardTranslations,
-      },
+      en: englishTranslations,
+      ...(spanishTranslation ? { es: spanishTranslation } : {}),
     },
   };
 

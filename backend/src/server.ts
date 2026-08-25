@@ -3,8 +3,6 @@ import cors from 'cors';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import { resolve } from 'node:path';
-import { resolve } from 'node:path';
-
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import createUserRoutes from './routes/createUser.routes';

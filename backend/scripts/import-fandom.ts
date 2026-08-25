@@ -1,15 +1,51 @@
 import { getFandomPage } from './fandom.client';
-import { normalizeFandomPage, normalizeCardPage } from './normalize';
-import type { Deck, DeckCard, NormalizedCard } from './normalize';
+import {
+  createSlug,
+  normalizeFandomPage,
+  normalizeCardPage,
+} from './normalize';
+import { downloadImageAsWebp } from './images';
+import { mkdir, rename, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 
-type ImportedCard = DeckCard & NormalizedCard;
+import type { StoredImage } from './images';
+import type {
+  Deck,
+  DeckCard,
+  NormalizedCard,
+  VillainImageId,
+  VillainImageReference,
+} from './normalize';
+
+type ImportedVillainImage = StoredImage & {
+  id: VillainImageId;
+};
+
+const villainImageFileNames: Record<VillainImageId, string> = {
+  portrait: 'portrait',
+  mover: 'mover',
+  realm: 'realm',
+  villainDeckBack: 'villain-deck-back',
+  fateDeckBack: 'fate-deck-back',
+};
+
+type ImportedCard = DeckCard &
+  Omit<NormalizedCard, 'imageName' | 'imageSourceUrl'> & {
+    image: StoredImage | null;
+  };
+
+type DeckName = 'villain' | 'fate';
 
 interface ImportedDeck {
   totalCards: number;
   cards: ImportedCard[];
 }
 
-async function importDeckCards(deck: Deck): Promise<ImportedDeck> {
+async function importDeckCards(
+  deck: Deck,
+  villainId: string,
+  deckName: DeckName,
+): Promise<ImportedDeck> {
   const cards: ImportedCard[] = [];
 
   for (const [index, reference] of deck.cards.entries()) {
@@ -22,6 +58,20 @@ async function importDeckCards(deck: Deck): Promise<ImportedDeck> {
 
     const details = normalizeCardPage(cardPage);
 
+    let image: StoredImage | null = null;
+
+    if (details.imageName && details.imageSourceUrl) {
+      image = await downloadImageAsWebp({
+        sourceUrl: details.imageSourceUrl,
+        sourceName: details.imageName,
+        relativePath:
+          `${villainId}/cards/${deckName}/` +
+          `${createSlug(details.name)}.webp`,
+      });
+    } else {
+      console.warn(`Image was not found for "${details.name}"`);
+    }
+
     if (details.name !== reference.name) {
       console.warn(
         `Card name differs: deck="${reference.name}", ` +
@@ -29,9 +79,16 @@ async function importDeckCards(deck: Deck): Promise<ImportedDeck> {
       );
     }
 
+    const {
+      imageName: _imageName,
+      imageSourceUrl: _imageSourceUrl,
+      ...cardDetails
+    } = details;
+
     cards.push({
       ...reference,
-      ...details,
+      ...cardDetails,
+      image,
     });
   }
 
@@ -39,6 +96,59 @@ async function importDeckCards(deck: Deck): Promise<ImportedDeck> {
     totalCards: deck.totalCards,
     cards,
   };
+}
+
+async function importVillainImages(
+  references: VillainImageReference[],
+  villainId: string,
+): Promise<ImportedVillainImage[]> {
+  const images: ImportedVillainImage[] = [];
+
+  for (const reference of references) {
+    console.log(`Importing villain image: ${reference.id}`);
+
+    const filename = villainImageFileNames[reference.id];
+
+    const storedImage = await downloadImageAsWebp({
+      sourceUrl: reference.sourceUrl,
+      sourceName: reference.sourceName,
+      relativePath: `${villainId}/` + `${villainId}-${filename}.webp`,
+      maxWidth: reference.id === 'realm' ? 1800 : 1000,
+    });
+
+    images.push({
+      id: reference.id,
+      ...storedImage,
+    });
+  }
+
+  return images;
+}
+
+async function saveGeneratedJson(
+  villainId: string,
+  data: unknown,
+): Promise<string> {
+  const outputPath = resolve(
+    process.cwd(),
+    'json',
+    'villains',
+    `${villainId}.json`,
+  );
+
+  const temporaryPath = `${outputPath}.tmp`;
+
+  await mkdir(dirname(outputPath), {
+    recursive: true,
+  });
+
+  const content = JSON.stringify(data, null, 2) + '\n';
+
+  await writeFile(temporaryPath, content, 'utf8');
+
+  await rename(temporaryPath, outputPath);
+
+  return outputPath;
 }
 
 async function main(): Promise<void> {
@@ -56,21 +166,39 @@ async function main(): Promise<void> {
 
   const normalized = normalizeFandomPage(page);
 
-  const villainDeck = await importDeckCards(normalized.decks.villain);
+  const villainImages = await importVillainImages(
+    normalized.images,
+    normalized.id,
+  );
 
-  const fateDeck = await importDeckCards(normalized.decks.fate);
+  const villainDeck = await importDeckCards(
+    normalized.decks.villain,
+    normalized.id,
+    'villain',
+  );
+
+  const fateDeck = await importDeckCards(
+    normalized.decks.fate,
+    normalized.id,
+    'fate',
+  );
 
   const result = {
     ...normalized,
+    images: villainImages,
     decks: {
       villain: villainDeck,
       fate: fateDeck,
     },
   };
 
-  console.dir(result, {
-    depth: null,
-  });
+  const outputPath = await saveGeneratedJson(normalized.id, result);
+
+  console.log(`Generated JSON saved to: ${outputPath}`);
+
+  // console.dir(result, {
+  //   depth: null,
+  // });
 }
 
 main().catch((error: unknown) => {

@@ -48,6 +48,19 @@ export interface Decks {
   fate: Deck;
 }
 
+export type VillainImageId =
+  | 'portrait'
+  | 'mover'
+  | 'realm'
+  | 'villainDeckBack'
+  | 'fateDeckBack';
+
+export interface VillainImageReference {
+  id: VillainImageId;
+  sourceName: string;
+  sourceUrl: string;
+}
+
 function extractActions(value: string): string[] {
   return cleanText(value)
     .split('|')
@@ -182,6 +195,7 @@ export interface NormalizedCard {
   strength: number | null;
   text: string;
   imageName: string | null;
+  imageSourceUrl: string | null;
 }
 
 function parseOptionalNumber(value: string): number | null {
@@ -226,6 +240,14 @@ export function normalizeCardPage(page: FandomPage): NormalizedCard {
     throw new Error(`Card type was not found for "${page.title}"`);
   }
 
+  const imageElement = infobox.find('.pi-image').first();
+
+  const imageName =
+    imageElement.find('img').first().attr('data-image-name') ?? null;
+
+  const imageSourceUrl =
+    imageElement.find('a[href]').first().attr('href') ?? null;
+
   return {
     name,
     villain,
@@ -233,15 +255,101 @@ export function normalizeCardPage(page: FandomPage): NormalizedCard {
     cost: parseOptionalNumber(getValue('cost')),
     strength: parseOptionalNumber(getValue('strength')),
     text: getValue('text'),
-    imageName:
-      infobox.find('.pi-image img').first().attr('data-image-name') ?? null,
+    imageName,
+    imageSourceUrl,
   };
+}
+
+function extractVillainImages(html: string): VillainImageReference[] {
+  const $ = load(html);
+
+  const article = $('.mw-parser-output').first();
+
+  if (article.length === 0) {
+    throw new Error('Article content was not found');
+  }
+
+  const realmHeading = $('#Realm').closest('h2');
+  const villainDeckHeading = $('#Villain_deck').closest('h2');
+  const fateDeckHeading = $('#Fate_deck').closest('h2');
+
+  if (realmHeading.length === 0) {
+    throw new Error('Realm section was not found');
+  }
+
+  if (villainDeckHeading.length === 0) {
+    throw new Error('Villain deck section was not found');
+  }
+
+  if (fateDeckHeading.length === 0) {
+    throw new Error('Fate deck section was not found');
+  }
+
+  const realmSection = realmHeading.nextUntil('h2');
+
+  const villainDeckSection = villainDeckHeading.nextUntil('h2');
+
+  const fateDeckSection = fateDeckHeading.nextUntil('h2');
+
+  const realmImages = realmSection.find('img[data-image-name]');
+
+  const candidates = [
+    {
+      id: 'portrait',
+      element: article.find('img[data-image-name]').first(),
+    },
+    {
+      id: 'mover',
+      element: realmImages.first(),
+    },
+    {
+      id: 'realm',
+      element: realmImages.last(),
+    },
+    {
+      id: 'villainDeckBack',
+      element: villainDeckSection.find('img[data-image-name]').first(),
+    },
+    {
+      id: 'fateDeckBack',
+      element: fateDeckSection.find('img[data-image-name]').first(),
+    },
+  ] as const;
+
+  const images: VillainImageReference[] = [];
+
+  for (const candidate of candidates) {
+    const sourceName = candidate.element.attr('data-image-name');
+
+    const sourceUrl = candidate.element.closest('a[href]').attr('href');
+
+    if (!sourceName || !sourceUrl) {
+      throw new Error(`Image "${candidate.id}" was not found`);
+    }
+
+    images.push({
+      id: candidate.id,
+      sourceName,
+      sourceUrl,
+    });
+  }
+
+  const mover = images.find((image) => image.id === 'mover');
+
+  const realm = images.find((image) => image.id === 'realm');
+
+  if (mover?.sourceName === realm?.sourceName) {
+    throw new Error('Mover and Realm resolved to the same image');
+  }
+
+  return images;
 }
 
 export interface NormalizedFandomPage {
   id: string;
   name: string;
   game: string;
+  images: VillainImageReference[];
   realm: RealmLocation[];
   decks: Decks;
   source: {
@@ -255,7 +363,7 @@ export interface NormalizedFandomPage {
   };
 }
 
-function createSlug(value: string): string {
+export function createSlug(value: string): string {
   return value
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -274,11 +382,13 @@ export function normalizeFandomPage(page: FandomPage): NormalizedFandomPage {
   const objective = extractObjective(page.html);
   const realm = extractRealm(page.html);
   const decks = extractDecks(page.html);
+  const images = extractVillainImages(page.html);
 
   return {
     id: createSlug(page.title),
     name: page.title,
     game: 'Disney Villainous',
+    images,
     realm,
     decks,
     source: {

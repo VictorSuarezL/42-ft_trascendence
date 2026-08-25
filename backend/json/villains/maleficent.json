@@ -1,0 +1,537 @@
+{
+  "id": "maleficent",
+  "name": "Maleficent",
+  "game": "Disney Villainous",
+  "images": [
+    {
+      "id": "portrait",
+      "path": "/assets/maleficent/maleficent-portrait.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Maleficent.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/e/e8/Maleficent.png/revision/latest?cb=20210503154728"
+    },
+    {
+      "id": "mover",
+      "path": "/assets/maleficent/maleficent-mover.webp",
+      "width": 1000,
+      "height": 1000,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Maleficentmover.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/e/e0/Maleficentmover.png/revision/latest?cb=20210504142750"
+    },
+    {
+      "id": "realm",
+      "path": "/assets/maleficent/maleficent-realm.webp",
+      "width": 1800,
+      "height": 505,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Maleficentrealm.jpg",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/7/71/Maleficentrealm.jpg/revision/latest?cb=20190712042506"
+    },
+    {
+      "id": "villainDeckBack",
+      "path": "/assets/maleficent/maleficent-villain-deck-back.webp",
+      "width": 1000,
+      "height": 1411,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Maleficent_Villain_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/b9/Maleficent_Villain_Back.png/revision/latest?cb=20190805233502"
+    },
+    {
+      "id": "fateDeckBack",
+      "path": "/assets/maleficent/maleficent-fate-deck-back.webp",
+      "width": 1000,
+      "height": 1411,
+      "mimeType": "image/webp",
+      "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Maleficent_Fate_Back.png",
+      "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/5/5b/Maleficent_Fate_Back.png/revision/latest?cb=20190805234149"
+    }
+  ],
+  "realm": [
+    {
+      "position": 1,
+      "location": "Forbidden Mountains",
+      "topActions": [
+        "Move an Item or Ally",
+        "Play a Card"
+      ],
+      "bottomActions": [
+        "Gain 1 Power",
+        "Fate"
+      ]
+    },
+    {
+      "position": 2,
+      "location": "Briar Rose's Cottage",
+      "topActions": [
+        "Gain 2 Power",
+        "Move an Item or Ally"
+      ],
+      "bottomActions": [
+        "Play a Card",
+        "Discard Cards"
+      ]
+    },
+    {
+      "position": 3,
+      "location": "The Forest",
+      "topActions": [
+        "Discard Cards",
+        "Play a Card"
+      ],
+      "bottomActions": [
+        "Gain 3 Power",
+        "Play a Card"
+      ]
+    },
+    {
+      "position": 4,
+      "location": "King Stefan's Castle",
+      "topActions": [
+        "Gain 1 Power",
+        "Fate"
+      ],
+      "bottomActions": [
+        "Vanquish",
+        "Play a Card"
+      ]
+    }
+  ],
+  "decks": {
+    "villain": {
+      "totalCards": 30,
+      "cards": [
+        {
+          "name": "Cackling Goon",
+          "pageTitle": "Cackling Goon",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Ally",
+          "cost": 1,
+          "strength": 1,
+          "text": "Cackling Goon gets +1 Strength for each Hero at his location.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/cackling-goon.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Cackling_Goon.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c0/Cackling_Goon.png/revision/latest?cb=20190807044343"
+          }
+        },
+        {
+          "name": "Dragon Form",
+          "pageTitle": "Dragon Form",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Effect",
+          "cost": 3,
+          "strength": null,
+          "text": "Defeat a Hero with a Strength of 3 or less. If a Fate action targets you before your next turn, gain 3 Power.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/dragon-form.webp",
+            "width": 1000,
+            "height": 1421,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Dragon_Form.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/20/Dragon_Form.png/revision/latest?cb=20190728030814"
+          }
+        },
+        {
+          "name": "Forest of Thorns",
+          "pageTitle": "Forest of Thorns",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Curse",
+          "cost": 2,
+          "strength": null,
+          "text": "Heroes must have a Strength of 4 or more to be played to this location.Discard this Curse when a Hero is played to this location.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/forest-of-thorns.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Forest_of_Thorns.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/60/Forest_of_Thorns.png/revision/latest?cb=20190807140203"
+          }
+        },
+        {
+          "name": "Green Fire",
+          "pageTitle": "Green Fire",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Curse",
+          "cost": 3,
+          "strength": null,
+          "text": "Heroes cannot be played to this location.Discard this Curse if Maleficent moves to this location.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/green-fire.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Green_Fire.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/e/ee/Green_Fire.png/revision/latest?cb=20190807140649"
+          }
+        },
+        {
+          "name": "Savage Goon",
+          "pageTitle": "Savage Goon",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Ally",
+          "cost": 3,
+          "strength": 4,
+          "text": "No additional Ability.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/savage-goon.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Savage_Goon.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/d/da/Savage_Goon.png/revision/latest?cb=20190807141314"
+          }
+        },
+        {
+          "name": "Sinister Goon",
+          "pageTitle": "Sinister Goon",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Ally",
+          "cost": 2,
+          "strength": 3,
+          "text": "Sinister Goon gets +1 Strength if there are any Curses at his location.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/sinister-goon.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Sinister_Goon.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/1/12/Sinister_Goon.png/revision/latest?cb=20190807021028"
+          }
+        },
+        {
+          "name": "Vanish",
+          "pageTitle": "Vanish",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Effect",
+          "cost": 0,
+          "strength": null,
+          "text": "At the start of your next turn, Maleficent does not have to move to a new location.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/vanish.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Vanish.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/b6/Vanish.png/revision/latest?cb=20190727140426"
+          }
+        },
+        {
+          "name": "Dreamless Sleep",
+          "pageTitle": "Dreamless Sleep",
+          "quantity": 2,
+          "villain": "Maleficent",
+          "type": "Curse",
+          "cost": 3,
+          "strength": null,
+          "text": "Heroes at this location get -2 Strength.Discard this Curse when an Ally is played to this location.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/dreamless-sleep.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Dreamless_Sleep.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/65/Dreamless_Sleep.png/revision/latest?cb=20190807021442"
+          }
+        },
+        {
+          "name": "Malice",
+          "pageTitle": "Malice",
+          "quantity": 2,
+          "villain": "Maleficent",
+          "type": "Condition",
+          "cost": null,
+          "strength": null,
+          "text": "During their turn, if another player defeats a Hero with a Strength of 4 or more, you may play Malice. Defeat a Hero with a Strength of 4 or less.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/malice.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Malice.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/d/d4/Malice.png/revision/latest?cb=20190807143041"
+          }
+        },
+        {
+          "name": "Tyranny",
+          "pageTitle": "Tyranny",
+          "quantity": 2,
+          "villain": "Maleficent",
+          "type": "Condition",
+          "cost": null,
+          "strength": null,
+          "text": "During their turn, if another player has three or more Allies in their Realm, you may play Tyranny. Draw three cards into your hand, then discard any three cards.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/tyranny.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Tyranny.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/1/1b/Tyranny.png/revision/latest?cb=20190807043637"
+          }
+        },
+        {
+          "name": "Raven",
+          "pageTitle": "Raven",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Ally",
+          "cost": 3,
+          "strength": 1,
+          "text": "Before Maleficent moves, you may move Raven to any location and perform one available action at his new location. Raven cannot perform Fate actions.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/raven.webp",
+            "width": 1000,
+            "height": 1406,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Raven.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/66/Raven.png/revision/latest?cb=20190727135134"
+          }
+        },
+        {
+          "name": "Spinning Wheel",
+          "pageTitle": "Spinning Wheel",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Item",
+          "cost": 1,
+          "strength": null,
+          "text": "If a Hero is defeated at this location, gain Power equal to the Hero's Strength minus 1.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/spinning-wheel.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Spinning_Wheel.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/2e/Spinning_Wheel.png/revision/latest?cb=20190807020526"
+          }
+        },
+        {
+          "name": "Staff",
+          "pageTitle": "Staff",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Item",
+          "cost": 1,
+          "strength": null,
+          "text": "If Maleficent is at this location, the Cost to play an Effect or Curse is reduced by 1 Power.",
+          "image": {
+            "path": "/assets/maleficent/cards/villain/staff.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Staff.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/b/bb/Staff.png/revision/latest?cb=20190807021912"
+          }
+        }
+      ]
+    },
+    "fate": {
+      "totalCards": 15,
+      "cards": [
+        {
+          "name": "Guards (Maleficent)",
+          "pageTitle": "Guards (Maleficent)",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 3,
+          "text": "When performing a Vanquish action to defeat Guards, at least two Allies must be used.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/guards-maleficent.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Guards_(Maleficent).png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/c/c5/Guards_%28Maleficent%29.png/revision/latest?cb=20190728140849"
+          }
+        },
+        {
+          "name": "Sword of Truth",
+          "pageTitle": "Sword of Truth",
+          "quantity": 3,
+          "villain": "Maleficent",
+          "type": "Item",
+          "cost": null,
+          "strength": 2,
+          "text": "When Sword of Truth is played, attach it to a Hero with no other attached Items. That Hero gets +2 Strength. The Cost to play a Curse to this location is increased by 2 Power.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/sword-of-truth.webp",
+            "width": 1000,
+            "height": 1414,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Sword_of_Truth.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/0/05/Sword_of_Truth.png/revision/latest?cb=20190728114840"
+          }
+        },
+        {
+          "name": "Once Upon a Dream",
+          "pageTitle": "Once Upon a Dream",
+          "quantity": 2,
+          "villain": "Maleficent",
+          "type": "Effect",
+          "cost": null,
+          "strength": null,
+          "text": "Discard a Curse from a location in Maleficent's Realm that has a Hero.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/once-upon-a-dream.webp",
+            "width": 1000,
+            "height": 1415,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Once_Upon_a_Dream.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/8/89/Once_Upon_a_Dream.png/revision/latest?cb=20190224150907"
+          }
+        },
+        {
+          "name": "Aurora",
+          "pageTitle": "Aurora",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 4,
+          "text": "When Aurora is played, reveal the top card of Maleficent's Fate deck. If it is a Hero, play it. Otherwise, return it to the top of the deck.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/aurora.webp",
+            "width": 1000,
+            "height": 1398,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Aurora.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/8/89/Aurora.png/revision/latest?cb=20190224154246"
+          }
+        },
+        {
+          "name": "Fauna",
+          "pageTitle": "Fauna",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 2,
+          "text": "When Fauna is played, you may discard Dreamless Sleep from her location.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/fauna.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Fauna.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/7/72/Fauna.png/revision/latest?cb=20190731020714"
+          }
+        },
+        {
+          "name": "Flora",
+          "pageTitle": "Flora",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 3,
+          "text": "When Flora is played, Maleficent must reveal her hand.Until Flora is defeated, Maleficent must play with her hand revealed.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/flora.webp",
+            "width": 1000,
+            "height": 1406,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Flora.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/9/90/Flora.png/revision/latest?cb=20190224162442"
+          }
+        },
+        {
+          "name": "King Hubert",
+          "pageTitle": "King Hubert",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 3,
+          "text": "When King Hubert is played, you may move one Ally from each adjacent location to his location.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/king-hubert.webp",
+            "width": 1000,
+            "height": 1399,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:King_Hubert.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/69/King_Hubert.png/revision/latest?cb=20190224165805"
+          }
+        },
+        {
+          "name": "King Stefan",
+          "pageTitle": "King Stefan",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 4,
+          "text": "When King Stefan is played, you may move Maleficent to any location.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/king-stefan.webp",
+            "width": 1000,
+            "height": 1415,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:King_Stefan.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/2/27/King_Stefan.png/revision/latest?cb=20190224170855"
+          }
+        },
+        {
+          "name": "Merryweather",
+          "pageTitle": "Merryweather",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 4,
+          "text": "Curses cannot be played to Merryweather's location.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/merryweather.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Merryweather.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/6/6b/Merryweather.png/revision/latest?cb=20190224221934"
+          }
+        },
+        {
+          "name": "Prince Phillip",
+          "pageTitle": "Prince Phillip",
+          "quantity": 1,
+          "villain": "Maleficent",
+          "type": "Hero",
+          "cost": null,
+          "strength": 5,
+          "text": "When Prince Phillip is played, you may discard all Allies from his location.",
+          "image": {
+            "path": "/assets/maleficent/cards/fate/prince-phillip.webp",
+            "width": 1000,
+            "height": 1416,
+            "mimeType": "image/webp",
+            "sourcePage": "https://disney-villainous.fandom.com/wiki/File:Prince_Phillip.png",
+            "sourceUrl": "https://static.wikia.nocookie.net/disney-villainous/images/a/a0/Prince_Phillip.png/revision/latest?cb=20190731021340"
+          }
+        }
+      ]
+    }
+  },
+  "source": {
+    "article": "https://disney-villainous.fandom.com/wiki/Maleficent",
+    "sourceLanguage": "en"
+  },
+  "translations": {
+    "en": {
+      "objective": "Maleficent must play Curses and move them as needed so she has at least one Curse at each location in her realm. She can only win at the start of her turn."
+    }
+  }
+}

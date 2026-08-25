@@ -24,6 +24,7 @@
     "@types/node": "^22.0.0",
     "cheerio": "^1.2.0",
     "prisma": "^6.0.0",
+    "sharp": "^0.35.3",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0"
   },
@@ -33,6 +34,7 @@
     "esbuild@0.28.1": true,
     "@prisma/client@6.19.3": true,
     "@prisma/engines@6.19.3": true,
-    "cheerio@1.2.0": true
+    "cheerio@1.2.0": true,
+    "sharp@0.35.3": true
   }
 }

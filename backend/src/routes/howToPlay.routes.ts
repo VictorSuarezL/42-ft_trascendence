@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import scar from '../../json/scar.json';
+import scar from '../../json/to_delete/scar.json';
 
 const router = Router();
 type Language = keyof typeof scar.translations;

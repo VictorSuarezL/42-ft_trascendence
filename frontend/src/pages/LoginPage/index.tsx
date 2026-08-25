@@ -33,6 +33,11 @@ export function LoginPage() {
       console.error('Login error:', error);
     }
   };
+
+  function handleResetPassword() {
+    navigate('/forgot-password');
+  }
+
   return (
     <main className={styles.page}>
       <video className={styles.backgroundVideo} autoPlay loop muted playsInline>
@@ -90,6 +95,10 @@ export function LoginPage() {
           <p className={styles.signupText}>
             Don't have an account?{' '}
             <button onClick={() => navigate('/signup')}>Sign up</button>
+          </p>
+          <p className={styles.signupText}>
+            Forgot your password?{' '}
+            <button onClick={handleResetPassword}>Reset it</button>
           </p>
         </div>
       </section>

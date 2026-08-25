@@ -10,7 +10,7 @@ export function LoginPage() {
   const { setUser } = useUser();
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:3000/users/login', {
+      const response = await fetch('/api/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,10 +83,7 @@ export function LoginPage() {
           <span>or</span>
         </div>
 
-        <a
-          href="http://localhost:3000/auth/42"
-          className={styles.fortyTwoButton}
-        >
+        <a href="/api/auth/42" className={styles.fortyTwoButton}>
           Continue with 42
         </a>
         <div className={styles.signupPrompt}>

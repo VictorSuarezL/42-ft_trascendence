@@ -3,8 +3,12 @@ import { mapFortyTwoUser } from '../utils/mapUser';
 import { createSession } from '../services/session.services';
 import { prisma } from '../utils/prisma';
 
-const { FORTYTWO_CLIENT_ID, FORTYTWO_CLIENT_SECRET, FORTYTWO_REDIRECT_URI } =
-  process.env;
+const {
+  FORTYTWO_CLIENT_ID,
+  FORTYTWO_CLIENT_SECRET,
+  FORTYTWO_REDIRECT_URI,
+  FRONTEND_URL,
+} = process.env;
 
 export function loginWithFortyTwo(_req: Request, res: Response) {
   const params = new URLSearchParams({
@@ -57,6 +61,7 @@ export async function fortyTwoCallback(req: Request, res: Response) {
     }
 
     const fortyTwoUser = await userResponse.json();
+    console.log('42 user data:', fortyTwoUser);
 
     const user = await prisma.user.upsert({
       where: {
@@ -91,7 +96,7 @@ export async function fortyTwoCallback(req: Request, res: Response) {
       expires: session.expiresAt,
     });
 
-    return res.redirect('http://localhost:5173/home');
+    return res.redirect(`${FRONTEND_URL}/home`);
   } catch (error) {
     console.error(error);
 

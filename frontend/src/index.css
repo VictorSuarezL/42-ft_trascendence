@@ -23,23 +23,72 @@
 }
 
 :root {
+  /* =========================
+     COLORS
+     ========================= */
+
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
+
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
+
   --social-bg: rgba(244, 243, 236, 0.5);
+
+  /* FLAGS */
+  --flag-spain-red: #aa151b;
+  --flag-spain-yellow: #f1bf00;
+
+  --flag-france-blue: #0055a4;
+  --flag-france-red: #ef4135;
+
+  --flag-uk-blue: #00247d;
+  --flag-uk-red: #cf142b;
+
+  --white: #ffffff;
+
+  /* =========================
+     SHADOWS
+     ========================= */
+
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(0, 0, 0, 0.1) 0 0.625rem 0.9375rem -0.1875rem,
+    rgba(0, 0, 0, 0.05) 0 0.25rem 0.375rem -0.125rem;
+
+  --shadow-button: rgba(0, 0, 0, 0.2) 0 0.1875rem 0.625rem;
+
+  --shadow-button-hover: rgba(0, 0, 0, 0.25) 0 0.3125rem 0.875rem;
+
+  /* =========================
+     SIZES
+     ========================= */
+
+  --size-xxs: 0.5rem;
+  --size-xs: 0.75rem;
+  --size-sm: 0.875rem;
+  --size-md: 1rem;
+  --size-lg: 1.125rem;
+  --size-xl: 1.25rem;
+
+  --size-language-button: 3.25rem;
+
+  /* =========================
+     TYPOGRAPHY
+     ========================= */
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --moana: 'Moanas', sans-serif;
   --magic-owl: 'MagicOwl', sans-serif;
   --walt-disney: 'WaltDisney', sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+
+  /* =========================
+     ETC
+     ========================= */
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -52,15 +101,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   @media (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 1rem;
   }
-
-  --size-xxs: 0.5rem;
-  --size-xs: 0.75rem;
-  --size-sm: 0.875rem;
-  --size-md: 1rem;
-  --size-lg: 1.125rem;
-  --size-xl: 1.25rem;
 }
 
 html,

@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "exportedAt": "2026-08-20T17:25:47.231Z",
+  "translations": [
+    {
+      "key": "homePage.description",
+      "language": "en",
+      "value": "This is my page"
+    },
+    {
+      "key": "homePage.login",
+      "language": "en",
+      "value": "Login"
+    },
+    {
+      "key": "homePage.title",
+      "language": "en",
+      "value": "Welcome"
+    },
+    {
+      "key": "homePage.description",
+      "language": "es",
+      "value": "Esta es mi página"
+    },
+    {
+      "key": "homePage.login",
+      "language": "es",
+      "value": "Iniciar sesión"
+    },
+    {
+      "key": "homePage.title",
+      "language": "es",
+      "value": "Bienvenido"
+    }
+  ]
+}

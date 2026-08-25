@@ -8,6 +8,7 @@ import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import createUserRoutes from './routes/createUser.routes';
 import howToPlayRoutes from './routes/howToPlay.routes';
+import translationsRoutes from './routes/translations.routes';
 
 const app = express();
 
@@ -21,16 +22,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/assets', express.static(resolve(process.cwd(), 'assets')));
 
-app.get('/health', (_req, res) => {
-  res.json({
-    status: 'ok',
-  });
-});
-
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/signup', createUserRoutes);
 app.use('/how-to-play', howToPlayRoutes);
+app.use('/translations', translationsRoutes);
 
 const PORT = Number(process.env.PORT) || 3000;
 

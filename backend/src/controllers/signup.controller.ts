@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { prisma } from '../utils/prisma';
+import { sendVerificationEmail } from '../utils/emailUtil';
+import { generateToken, hashToken } from '../utils/tokenUtils';
 
 export async function createUser(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
-    console.log('Received request to create user:', { email, password });
 
     if (!email || !password) {
       return res.status(400).json({
@@ -41,6 +42,33 @@ export async function createUser(req: Request, res: Response) {
         emailVerified: false,
       },
     });
+
+    // Generate verification token
+    const token = generateToken();
+    const tokenHash = hashToken(token);
+
+    // Token expires in 24 hours
+    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+    await prisma.emailVerificationToken.create({
+      data: {
+        tokenHash,
+        userId: user.id,
+        expiresAt,
+      },
+    });
+
+    const confirmationUrl = `http://localhost:5173/confirm-email?token=${token}`;
+
+    try {
+      await sendVerificationEmail({
+        email: user.email,
+        name: user.name,
+        confirmationUrl,
+      });
+    } catch (error) {
+      console.error('Could not send verification email:', error);
+    }
 
     return res.status(201).json({
       id: user.id,

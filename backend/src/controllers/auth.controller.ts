@@ -2,9 +2,16 @@ import { Request, Response } from 'express';
 import { mapFortyTwoUser } from '../utils/mapUser';
 import { createSession } from '../services/session.services';
 import { prisma } from '../utils/prisma';
+import { generateToken, hashToken } from '../utils/tokenUtils';
+import { sendPasswordResetEmail } from '../utils/emailUtil';
+import bcrypt from 'bcrypt';
 
-const { FORTYTWO_CLIENT_ID, FORTYTWO_CLIENT_SECRET, FORTYTWO_REDIRECT_URI } =
-  process.env;
+const {
+  FORTYTWO_CLIENT_ID,
+  FORTYTWO_CLIENT_SECRET,
+  FORTYTWO_REDIRECT_URI,
+  FRONTEND_URL,
+} = process.env;
 
 export function loginWithFortyTwo(_req: Request, res: Response) {
   const params = new URLSearchParams({
@@ -57,6 +64,7 @@ export async function fortyTwoCallback(req: Request, res: Response) {
     }
 
     const fortyTwoUser = await userResponse.json();
+    console.log('42 user data:', fortyTwoUser);
 
     const user = await prisma.user.upsert({
       where: {
@@ -91,7 +99,7 @@ export async function fortyTwoCallback(req: Request, res: Response) {
       expires: session.expiresAt,
     });
 
-    return res.redirect('http://localhost:5173/home');
+    return res.redirect(`${FRONTEND_URL}/home`);
   } catch (error) {
     console.error(error);
 
@@ -145,4 +153,220 @@ export async function logout(req: Request, res: Response) {
   return res.json({
     success: true,
   });
+}
+
+export async function confirmEmail(req: Request, res: Response) {
+  try {
+    const { token } = req.body;
+
+    if (!token) {
+      return res.status(400).json({
+        error: 'Token is required',
+      });
+    }
+    console.log('Received token:', token);
+    const tokenHash = hashToken(token);
+    console.log('tokenHash:', tokenHash);
+
+    const verificationToken = await prisma.emailVerificationToken.findUnique({
+      where: {
+        tokenHash,
+      },
+    });
+    console.log('verificationToken:', verificationToken);
+
+    if (!verificationToken) {
+      return res.status(400).json({
+        error: 'Invalid verification token',
+      });
+    }
+
+    if (verificationToken.expiresAt < new Date()) {
+      await prisma.emailVerificationToken.delete({
+        where: {
+          id: verificationToken.id,
+        },
+      });
+
+      return res.status(410).json({
+        error: 'Verification token has expired',
+      });
+    }
+
+    await prisma.user.update({
+      where: {
+        id: verificationToken.userId,
+      },
+      data: {
+        emailVerified: true,
+      },
+    });
+
+    // Token de un solo uso
+    await prisma.emailVerificationToken.delete({
+      where: {
+        id: verificationToken.id,
+      },
+    });
+
+    return res.status(200).json({
+      message: 'Email successfully verified',
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      error: 'Could not verify email',
+    });
+  }
+}
+
+export async function forgotPassword(req: Request, res: Response) {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        error: 'Email is required',
+      });
+    }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    // No revelar si el email existe
+    if (!user) {
+      return res.status(200).json({
+        message: 'If the email exists, a reset link has been sent',
+      });
+    }
+
+    const token = generateToken();
+    console.log('Generated token:', token);
+    const tokenHash = hashToken(token);
+
+    const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hora
+
+    // Eliminar tokens anteriores
+    await prisma.passwordResetToken.deleteMany({
+      where: {
+        userId: user.id,
+      },
+    });
+
+    await prisma.passwordResetToken.create({
+      data: {
+        tokenHash,
+        userId: user.id,
+        expiresAt,
+      },
+    });
+
+    const resetUrl = `http://localhost:5173/reset-password?token=${token}`;
+
+    try {
+      await sendPasswordResetEmail({
+        email: user.email,
+        name: user.name,
+        resetUrl,
+      });
+    } catch (error) {
+      console.error('Could not send password reset email:', error);
+    }
+
+    return res.status(200).json({
+      message: 'If the email exists, a reset link has been sent',
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      error: 'Could not process password reset',
+    });
+  }
+}
+
+export async function resetPassword(req: Request, res: Response) {
+  try {
+    const { token, password } = req.body;
+
+    if (!token || !password) {
+      return res.status(400).json({
+        error: 'Token and password are required',
+      });
+    }
+
+    if (password.length < 8) {
+      return res.status(400).json({
+        error: 'Password must be at least 8 characters',
+      });
+    }
+
+    const tokenHash = hashToken(token);
+
+    const resetToken = await prisma.passwordResetToken.findUnique({
+      where: {
+        tokenHash,
+      },
+    });
+
+    if (!resetToken) {
+      return res.status(400).json({
+        error: 'Invalid password reset token',
+      });
+    }
+
+    if (resetToken.usedAt) {
+      return res.status(400).json({
+        error: 'Password reset token has already been used',
+      });
+    }
+
+    if (resetToken.expiresAt < new Date()) {
+      return res.status(410).json({
+        error: 'Password reset token has expired',
+      });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    await prisma.user.update({
+      where: {
+        id: resetToken.userId,
+      },
+      data: {
+        passwordHash,
+      },
+    });
+
+    await prisma.passwordResetToken.update({
+      where: {
+        id: resetToken.id,
+      },
+      data: {
+        usedAt: new Date(),
+      },
+    });
+
+    // Opcional pero recomendable:
+    // invalidar todas las sesiones existentes
+    await prisma.session.deleteMany({
+      where: {
+        userId: resetToken.userId,
+      },
+    });
+
+    return res.status(200).json({
+      message: 'Password successfully reset',
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      error: 'Could not reset password',
+    });
+  }
 }

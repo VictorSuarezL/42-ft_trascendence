@@ -37,9 +37,15 @@ export async function loginUser(req: Request, res: Response) {
       });
     }
 
+    if (!user.emailVerified) {
+      return res.status(403).json({
+        error: 'Please verify your email before logging in',
+      });
+    }
+
     // lets use bcrypt to compare the password
     // with the hashed password in the database
-    const isMatch = await bcrypt.compare(password, user.passwordHash);
+    const isMatch = await bcrypt.compare(password, user.passwordHash ?? '');
     console.log('Password match:', isMatch);
     if (!isMatch) {
       return res.status(401).json({

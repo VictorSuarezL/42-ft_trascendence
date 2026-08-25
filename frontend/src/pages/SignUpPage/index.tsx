@@ -16,7 +16,7 @@ export function SignUpPage() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/signup', {
+      const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export function SignUpPage() {
 
       console.log('User created:', data);
 
-      navigate('/signup-confirmation');
+      navigate('/email-confirmation');
     } catch (error) {
       console.error('Signup error:', error);
     }

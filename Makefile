@@ -1,7 +1,9 @@
-.PHONY: all build up down restart logs logs-backend logs-frontend ps db migrate prisma-generate prisma-studio db-shell db-tables db-users clean fclean re
+.PHONY: all build up down restart lan logs logs-backend logs-frontend ps db migrate prisma-generate prisma-studio db-shell db-tables db-users clean fclean re
 
 COMPOSE = docker compose
 PRISMA_STUDIO_PORT ?= 5555
+PORT ?= 3000
+FRONTEND_PORT ?= 5173
 
 all: build db db-push up
 
@@ -73,5 +75,26 @@ clean:
 
 fclean:
 	$(COMPOSE) down -v --remove-orphans
+
+lan: build db db-push
+	@IP=$$(ipconfig getifaddr en0); \
+	if [ -z "$$IP" ]; then \
+		echo "No se pudo detectar la IP de la LAN."; \
+		exit 1; \
+	fi; \
+	set -a; \
+	. ./.env; \
+	if [ -f .env.lan ]; then . ./.env.lan; fi; \
+	set +a; \
+	echo ""; \
+	echo "========================================"; \
+	echo "  LAN mode"; \
+	echo "========================================"; \
+	echo "  App: http://$$IP"; \
+	echo "========================================"; \
+	echo ""; \
+	FRONTEND_URL=http://$$IP \
+	FORTYTWO_REDIRECT_URI=http://$$IP/api/auth/42/callback \
+	$(COMPOSE) up -d
 
 re: fclean all

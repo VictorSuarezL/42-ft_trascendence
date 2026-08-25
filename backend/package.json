@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^5.0.0",
-    "nodemailer": "^9.0.5"
+    "nodemailer": "9.0.5"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
@@ -24,8 +24,8 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
+    "@types/nodemailer": "8.0.1",
     "cheerio": "^1.2.0",
-    "@types/nodemailer": "^8.0.1",
     "prisma": "^6.0.0",
     "sharp": "^0.35.3",
     "tsx": "^4.0.0",
@@ -38,6 +38,7 @@
     "@prisma/client@6.19.3": true,
     "@prisma/engines@6.19.3": true,
     "cheerio@1.2.0": true,
-    "sharp@0.35.3": true
+    "sharp@0.35.3": true,
+    "nodemailer@9.0.5": true
   }
 }

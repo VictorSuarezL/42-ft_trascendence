@@ -11,7 +11,10 @@ build:
 	$(COMPOSE) build
 
 up:
-	$(COMPOSE) up -d
+	$(COMPOSE) up -d \
+		--build \
+		--force-recreate \
+		--renew-anon-volumes
 
 down:
 	$(COMPOSE) down

@@ -20,7 +20,7 @@ export function NotFoundPage() {
       <h1>404 - Page Not Found</h1>
       <p>The page you are looking for does not exist.</p>
       <Button
-        onClick={() => navigate('/')}
+        onClick={(handleGoHome)}
         className={styles.homeButton}
         onHover={mostrarError}
       >

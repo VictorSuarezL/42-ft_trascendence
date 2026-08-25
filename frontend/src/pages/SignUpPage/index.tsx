@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { useState, type SubmitEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './SignUpPage.module.scss';
 
@@ -8,7 +8,7 @@ export function SignUpPage() {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password !== repeatPassword) {

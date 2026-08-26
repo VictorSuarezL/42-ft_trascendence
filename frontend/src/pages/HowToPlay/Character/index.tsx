@@ -10,7 +10,7 @@ interface VillainGuide {
   name: string;
   language: string;
   images: VillainImage[];
-  localized: {
+  translation: {
     objective: string;
   };
 }
@@ -27,7 +27,7 @@ export function Character({ name }: { name: string }) {
     async function loadGuide() {
       try {
         const response = await fetch(
-          `${backendUrl}/how-to-play/${encodeURIComponent(name)}` +
+          `${backendUrl}/villains/${encodeURIComponent(name)}` +
             `?lang=${encodeURIComponent(villainLanguage)}`,
         );
 
@@ -71,8 +71,8 @@ export function Character({ name }: { name: string }) {
         />
       )}
 
-      <h2>{guide.language === 'es' ? 'Objetivo' : 'Objective'}</h2>
-      <p>{guide.localized.objective}</p>
+      <h2>{villainLanguage === 'es' ? 'Objetivo' : 'Objective'}</h2>
+      <p>{guide.translation.objective}</p>
     </main>
   );
 }

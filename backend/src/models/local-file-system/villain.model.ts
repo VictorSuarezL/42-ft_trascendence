@@ -1,6 +1,6 @@
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
-import type { Villain } from '../../types/villains';
+import type { Villain } from '../../types/villains.types.ts';
 
 const villainsDirectory = path.resolve(process.cwd(), 'json/villains');
 

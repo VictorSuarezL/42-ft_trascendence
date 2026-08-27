@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import type { TranslationData } from '../types/types';
 
-type Language = 'en' | 'es';
+export type Language = 'en' | 'es';
 
 async function fetchTranslationData(code: Language): Promise<TranslationData> {
-  const response = await fetch(`http://localhost:3000/translations/${code}`);
+  const response = await fetch(`/api/translations/${code}`);
 
   if (!response.ok) {
     throw new Error('Error fetching translations');

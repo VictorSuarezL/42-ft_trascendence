@@ -1,0 +1,89 @@
+.villainPage {
+  min-height: 100vh;
+  background: #000;
+}
+
+.villain {
+  position: relative;
+
+  min-height: 750px;
+
+  background-size: 60%;
+  background-position: 80% 9%;
+  background-repeat: no-repeat;
+  
+  background-color: #000;
+}
+
+.villain::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    #000 0%,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 1) 92%,
+
+  );
+
+  pointer-events: none;
+}
+
+.villain::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.villainContent {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.5fr;
+
+  min-height: 410px;
+}
+
+.villainInfo {
+  padding: 40px;
+}
+
+.objective {
+  position: relative;
+
+  left: 150px;
+  top: 400px;
+  max-width: 250px;
+
+}
+
+.customButton {
+  background-color: var(--accent);
+  color: var(--text-color);
+  cursor: pointer;
+  border: none;
+}
+
+.realm {
+  padding: 40px;
+}
+
+.realmHeader {
+  display: flex;
+  gap: 20px;
+}
+
+.realmContent {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+}

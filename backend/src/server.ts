@@ -19,13 +19,22 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: [
+      'http://localhost',
+      'http://localhost:5173',
+    ],
     credentials: true,
   }),
 );
 app.use(express.json());
 app.use(cookieParser());
 app.use('/assets', express.static(resolve(process.cwd(), 'assets')));
+
+app.get('/health', (_req, res) => {
+  res.json({
+    status: 'ok',
+  });
+});
 
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);

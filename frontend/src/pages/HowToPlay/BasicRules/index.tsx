@@ -1,8 +1,8 @@
 export function BasicRules() {
   return (
-    <div>
-      <h1>¿Cómo jugar?</h1>
-      <p>Esta es la página de instrucciones de cómo jugar.</p>
-    </div>
+    <main>
+      <h1>Cómo jugar</h1>
+      <p>Aquí se mostrarán las reglas básicas del juego.</p>
+    </main>
   );
 }

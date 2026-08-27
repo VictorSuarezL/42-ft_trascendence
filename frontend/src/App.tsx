@@ -41,7 +41,8 @@ function App() {
               </Route>
               <Route element={<ProtectedRoute />}>
                 <Route path="/home" element={<HomePage />} />
-                <Route path="/howtoplay/:name?" element={<HowToPlay />} />
+                <Route path="/comojugar" element={<HowToPlay />} />
+                <Route path="/comojugar/:villain" element={<HowToPlay />} />
                 <Route path="/profile" element={<ProfilePage />} />
               </Route>
               <Route path="*" element={<NotFoundPage />} />

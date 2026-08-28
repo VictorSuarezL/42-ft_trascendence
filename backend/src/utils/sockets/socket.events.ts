@@ -1,7 +1,3 @@
-export interface TranslationData {
-  // Generado por el BE
-}
-
 export const SOCKET_EVENTS = {
   SYSTEM: {
     CONNECTED: 'system.connected',
@@ -14,7 +10,10 @@ export const SOCKET_EVENTS = {
     MESSAGE_RECEIVED: 'social.message.received',
 
     FRIEND_REQUEST: 'social.friend.request',
+    FRIEND_REQUESTED: 'social.friend.requested',
+
     FRIEND_ACCEPT: 'social.friend.accept',
+    FRIEND_ACCEPTED: 'social.friend.accepted',
 
     PRESENCE_CHANGED: 'social.presence.changed',
   },
@@ -39,28 +38,3 @@ export const SOCKET_EVENTS = {
     CARD_DRAW: 'game.card.draw',
   },
 } as const;
-
-export interface MessageSendPayload {
-  message: string;
-}
-
-export interface MessageReceivedPayload {
-  id: string;
-  user: {
-    id: number;
-    displayName: string;
-    avatarUrl: string | null;
-  };
-  message: string;
-  createdAt: string;
-}
-
-export interface SystemConnectedPayload {
-  socketId: string;
-  userId: number;
-}
-
-export interface SystemErrorPayload {
-  code: string;
-  message: string;
-}

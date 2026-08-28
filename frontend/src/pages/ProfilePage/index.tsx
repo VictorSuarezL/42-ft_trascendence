@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import styles from './ProfilePage.module.scss';
+import ChatTest from '../../components/Chat';
+import { Card } from '../../components/Card/Card';
 
 export function ProfilePage() {
   const { user, loading, logout } = useUser();

@@ -15,14 +15,17 @@
   "dependencies": {
     "@prisma/client": "^6.0.0",
     "bcrypt": "^6.0.0",
+    "cookie": "1.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "express": "^5.0.0",
-    "nodemailer": "9.0.5"
+    "express": "5.0.0",
+    "nodemailer": "9.0.5",
+    "socket.io": "4.8.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cookie": "0.6.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",

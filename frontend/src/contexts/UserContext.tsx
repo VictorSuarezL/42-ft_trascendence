@@ -3,9 +3,12 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from 'react';
+import { io, type Socket } from 'socket.io-client';
+import type { Language } from '../hooks/useTranslation';
 
 export interface User {
   id: number;
@@ -22,8 +25,9 @@ interface UserContextValue {
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   loading: boolean;
   logout: () => Promise<void>;
-  language: string;
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  language: Language;
+  setLanguage: React.Dispatch<React.SetStateAction<Language>>;
+  socket: Socket | null;
 }
 
 const UserContext = createContext<UserContextValue | undefined>(undefined);
@@ -35,6 +39,10 @@ interface UserProviderProps {
 export function UserProvider({ children }: UserProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState<Language>('en');
+
+  const [socket, setSocket] = useState<Socket | null>(null);
+  const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
     async function fetchUser() {
@@ -62,7 +70,54 @@ export function UserProvider({ children }: UserProviderProps) {
     fetchUser();
   }, []);
 
-  const [language, setLanguage] = useState('en');
+  useEffect(() => {
+    if (!user) {
+      console.log('[Socket] No user, disconnecting');
+
+      socketRef.current?.disconnect();
+      socketRef.current = null;
+      setSocket(null);
+
+      return;
+    }
+
+    if (socketRef.current) {
+      console.log('[Socket] Already connected');
+      return;
+    }
+
+    console.log('[Socket] Creating connection...');
+
+    const newSocket = io({
+      withCredentials: true,
+    });
+
+    socketRef.current = newSocket;
+    setSocket(newSocket);
+
+    newSocket.on('connect', () => {
+      console.log('[Socket] Connected:', newSocket.id);
+    });
+
+    newSocket.on('connect_error', (error) => {
+      console.error('[Socket] Connection error:', error);
+    });
+
+    newSocket.on('disconnect', (reason) => {
+      console.log('[Socket] Disconnected:', reason);
+    });
+
+    return () => {
+      console.log('[Socket] Cleanup');
+
+      newSocket.disconnect();
+
+      if (socketRef.current === newSocket) {
+        socketRef.current = null;
+        setSocket(null);
+      }
+    };
+  }, [user]);
 
   const logout = async () => {
     try {
@@ -80,9 +135,18 @@ export function UserProvider({ children }: UserProviderProps) {
       console.error('Could not logout:', error);
     }
   };
+
   const value = useMemo(
-    () => ({ user, setUser, loading, logout, language, setLanguage }),
-    [user, loading, language],
+    () => ({
+      user,
+      setUser,
+      loading,
+      logout,
+      language,
+      setLanguage,
+      socket,
+    }),
+    [user, loading, language, socket],
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

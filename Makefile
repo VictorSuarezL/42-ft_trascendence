@@ -80,7 +80,8 @@ fclean:
 	$(COMPOSE) down -v --remove-orphans
 
 lan: build db db-push
-	@IP=$$(ipconfig getifaddr en0); \
+	@HOST=$$(scutil --get LocalHostName).local; \
+	IP=$$(ipconfig getifaddr en0); \
 	if [ -z "$$IP" ]; then \
 		echo "No se pudo detectar la IP de la LAN."; \
 		exit 1; \
@@ -93,11 +94,12 @@ lan: build db db-push
 	echo "========================================"; \
 	echo "  LAN mode"; \
 	echo "========================================"; \
-	echo "  App: http://$$IP"; \
+	echo "  App: http://$$HOST"; \
+	echo "  (IP: $$IP)"; \
 	echo "========================================"; \
 	echo ""; \
-	FRONTEND_URL=http://$$IP \
-	FORTYTWO_REDIRECT_URI=http://$$IP/api/auth/42/callback \
+	FRONTEND_URL=http://$$HOST \
+	FORTYTWO_REDIRECT_URI=http://$$HOST/api/auth/42/callback \
 	$(COMPOSE) up -d
 
 re: fclean all

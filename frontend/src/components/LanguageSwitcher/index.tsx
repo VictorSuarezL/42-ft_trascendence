@@ -7,8 +7,6 @@ export function LanguageSwitcher() {
   const toggleLanguage = () => {
     if (language === 'es') {
       setLanguage('en');
-    } else if (language === 'en') {
-      setLanguage('fr');
     } else {
       setLanguage('es');
     }
@@ -23,11 +21,7 @@ export function LanguageSwitcher() {
     >
       <span
         className={`${styles.flag} ${
-          language === 'es'
-            ? styles.spain
-            : language === 'en'
-              ? styles.uk
-              : styles.france
+          language === 'es' ? styles.spain : styles.uk
         }`}
       />
     </button>

@@ -1,8 +1,11 @@
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
 .headerApp {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-top: 1rem;
-  margin-left: -1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
 }

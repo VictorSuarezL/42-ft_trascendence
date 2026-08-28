@@ -14,12 +14,14 @@ export function LanguageSwitcher() {
     }
   };
 
+  const languageLabel = language.toUpperCase();
+
   return (
     <button
       type="button"
       className={styles.languageButton}
       onClick={toggleLanguage}
-      aria-label="Change language"
+      aria-label={`Change language. Current language: ${languageLabel}`}
     >
       <span
         className={`${styles.flag} ${
@@ -30,6 +32,10 @@ export function LanguageSwitcher() {
               : styles.france
         }`}
       />
+
+      <span className={styles.languageCode}>{languageLabel}</span>
+
+      <span className={styles.chevron}>⌄</span>
     </button>
   );
 }

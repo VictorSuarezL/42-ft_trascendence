@@ -23,10 +23,7 @@ export class VillainPrismaModel {
           },
           include: {
             actions: {
-              orderBy: [
-                { area: 'asc' },
-                { position: 'asc' },
-              ],
+              orderBy: [{ area: 'asc' }, { position: 'asc' }],
             },
             translations: {
               where: { language },
@@ -40,25 +37,10 @@ export class VillainPrismaModel {
       return null;
     }
 
-    const translation = villain.translations[0];
-
-    if (!translation) {
-      throw new Error(`Translation "${language}" not found for "${id}"`);
-    }
-
     const realm: RealmLocation[] = villain.realmLocations.map((location) => {
-      const locationTranslation = location.translations[0];
-
-      if (!locationTranslation) {
-        throw new Error(
-          `Translation "${language}" not found for location ` +
-            `"${location.id}"`,
-        );
-      }
-
       return {
         id: location.id,
-        name: locationTranslation.name,
+        name: location.translations[0].name,
         position: location.position,
         actions: location.actions,
       };
@@ -66,8 +48,8 @@ export class VillainPrismaModel {
 
     return {
       id: villain.id,
-      name: translation.name,
-      objective: translation.objective,
+      name: villain.translations[0].name,
+      objective: villain.translations[0].objective,
       images: villain.images,
       realm,
     };

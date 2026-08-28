@@ -9,9 +9,7 @@ interface VillainImage {
 interface VillainGuide {
   name: string;
   images: VillainImage[];
-  translation: {
-    objective: string;
-  };
+  objective: string;
 }
 
 const backendUrl = '/api';
@@ -70,7 +68,7 @@ export function Character({ name }: { name: string }) {
       )}
 
       <h2>{language === 'es' ? 'Objetivo' : 'Objective'}</h2>
-      <p>{guide.translation.objective}</p>
+      <p>{guide.objective}</p>
     </main>
   );
 }

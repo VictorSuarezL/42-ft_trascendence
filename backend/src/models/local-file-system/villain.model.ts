@@ -4,7 +4,7 @@ import type { Villain } from '../../types/villains.types.ts';
 
 const villainsDirectory = path.resolve(process.cwd(), 'json/villains');
 
-export class VillainModel {
+export class VillainJsonModel {
   static async getById(villainId: string): Promise<Villain | null> {
     if (!/^[a-z0-9-]+$/.test(villainId)) {
       return null;

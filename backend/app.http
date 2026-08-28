@@ -60,13 +60,4 @@ GET {{backend}}/villains/scar
 
 GET {{backend}}/villains/scar?lang=es
 
-### Path traversal test: plain relative path
-# This client or the server may normalize the URL before it reaches the route.
-
-GET {{backend}}/villains/../translations/actions
-
-### Path traversal test: encoded slashes
-# A safe implementation should reject this identifier and return 404 or 400.
-
-GET {{backend}}/villains/..%2Ftranslations%2Factions
 

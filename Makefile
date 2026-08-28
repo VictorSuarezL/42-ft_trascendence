@@ -6,7 +6,7 @@ PRISMA_STUDIO_CONTAINER ?= transcendence-prisma-studio
 PORT ?= 3000
 FRONTEND_PORT ?= 5173
 
-all: build db db-push db-seed up 
+all: build db db-push up db-seed
 
 build:
 	$(COMPOSE) build
@@ -89,7 +89,7 @@ db-users:
 	$(COMPOSE) exec database psql -U postgres -d transcendence -c 'SELECT * FROM "User";'
 
 db-push:
-	$(COMPOSE) run --rm backend npx prisma db push
+	$(COMPOSE) exec backend npx prisma db push
 
 reset-db:
 	$(COMPOSE) down -v --remove-orphans
@@ -103,7 +103,7 @@ reset-db:
 	$(COMPOSE) run --rm backend npx prisma generate
 
 db-seed: db
-	$(COMPOSE) run --rm backend npx prisma db seed
+	$(COMPOSE) exec backend npx prisma db seed
 
 clean:
 	$(COMPOSE) down

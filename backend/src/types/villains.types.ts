@@ -1,15 +1,30 @@
+export interface RealmAction {
+  area: 'TOP' | 'BOTTOM';
+  position: number;
+  type: string;
+  amount: number | null;
+}
+
+export interface RealmLocationTranslation {
+  name: string;
+}
+
+export interface RealmLocation {
+  id: string;
+  name: string;
+  position: number;
+  actions: RealmAction[];
+}
+
 export interface Villain {
   id: string;
   name: string;
   images: VillainImage[];
-  translations: Record<string, VillainTranslation>;
+  objective: string;
 }
 
-export interface VillainResponse {
-  id: string;
-  name: string;
-  images: VillainImage[];
-  translation: VillainTranslation;
+export interface VillainDetail extends Villain {
+  realm: RealmLocation[];
 }
 
 export interface VillainImage {
@@ -18,15 +33,11 @@ export interface VillainImage {
   width: number;
   height: number;
   mimeType: string;
-  sourcePage: string;
-  sourceUrl: string;
-}
-
-export interface VillainTranslation {
-  objective: string;
+  sourcePage: string | null;
+  sourceUrl: string | null;
 }
 
 export interface VillainModelContract {
-  getAll(): Promise<Villain[]>;
-  getById(id: string): Promise<Villain | null>;
+  getAll(language: string): Promise<Villain[]>;
+  getById(id: string, language: string): Promise<VillainDetail | null>;
 }

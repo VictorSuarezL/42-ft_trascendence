@@ -11,9 +11,7 @@ interface VillainListItem {
   id: string;
   name: string;
   images: VillainImage[];
-  translation: {
-    objective: string;
-  };
+  objective: string;
 }
 
 export function BasicRules() {
@@ -45,7 +43,7 @@ export function BasicRules() {
               <h2>{villain.name}</h2>
             </Link>
 
-            <p>{villain.translation.objective}</p>
+            <p>{villain.objective}</p>
 
             {portrait && (
               <img

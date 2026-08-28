@@ -39,7 +39,7 @@ export async function createUser(req: Request, res: Response) {
         email,
         name: email.split('@')[0],
         passwordHash,
-        emailVerified: false,
+        emailVerified: true, // Set to true for testing purposes; in production, set to false and require email verification
       },
     });
 

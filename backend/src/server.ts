@@ -9,7 +9,8 @@ import createUserRoutes from './routes/createUser.routes';
 import howToPlayRoutes from './routes/howToPlay.routes';
 import translationsRoutes from './routes/translations.routes';
 import { createVillainRouter } from './routes/villain.routes';
-import { VillainModel } from './models/local-file-system/villain.model';
+// import { VillainJsonModel } from './models/local-file-system/villain.model';
+import { VillainPrismaModel } from './models/prisma/villain.prisma.model';
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.use('/users', userRoutes);
 app.use('/signup', createUserRoutes);
 app.use('/how-to-play', howToPlayRoutes);
 app.use('/translations', translationsRoutes);
-app.use('/villains', createVillainRouter(VillainModel));
+app.use('/villains', createVillainRouter(VillainPrismaModel));
 const PORT = Number(process.env.PORT) || 3000;
 
 app.listen(PORT, '0.0.0.0', () => {

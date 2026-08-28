@@ -1,4 +1,5 @@
 {
+  "name": "Hades",
   "objective": "Hades debe jugar Titanes y moverlos hasta tener al menos tres Titanes sin atrapar en el Monte Olimpo. Solo puede ganar al comienzo de su turno.",
   "locations": {
     "the-underworld": "El Inframundo",

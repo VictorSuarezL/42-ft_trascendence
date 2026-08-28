@@ -1,6 +1,5 @@
 {
   "id": "captain-hook",
-  "name": "Captain Hook",
   "game": "Disney Villainous",
   "images": [
     {
@@ -553,6 +552,7 @@
   },
   "translations": {
     "en": {
+      "name": "Captain Hook",
       "objective": "Captain Hook must defeat Peter Pan at the Jolly Roger.",
       "locations": {
         "jolly-roger": "Jolly Roger",
@@ -664,6 +664,7 @@
       }
     },
     "es": {
+      "name": "Capitán Garfio",
       "objective": "El Capitán Garfio debe derrotar a Peter Pan en el Jolly Roger.",
       "locations": {
         "jolly-roger": "Jolly Roger",

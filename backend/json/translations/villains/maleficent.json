@@ -1,4 +1,5 @@
 {
+  "name": "Maléfica",
   "objective": "Maléfica debe jugar Maldiciones y moverlas cuando sea necesario hasta tener al menos una Maldición en cada ubicación de su Reino. Solo puede ganar al comienzo de su turno.",
   "locations": {
     "forbidden-mountains": "Montañas Prohibidas",

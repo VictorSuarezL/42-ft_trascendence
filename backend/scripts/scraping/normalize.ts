@@ -450,7 +450,6 @@ function extractVillainImages(html: string): VillainImageReference[] {
 
 export interface NormalizedFandomPage {
   id: string;
-  name: string;
   game: string;
   images: VillainImageReference[];
   realm: RealmLocation[];
@@ -461,6 +460,7 @@ export interface NormalizedFandomPage {
   };
   translations: {
     en: {
+      name: string;
       objective: string;
       locations: Record<string, string>;
     };
@@ -490,7 +490,6 @@ export function normalizeFandomPage(page: FandomPage): NormalizedFandomPage {
 
   return {
     id: createSlug(page.title),
-    name: page.title,
     game: 'Disney Villainous',
     images,
     realm: realm.locations,
@@ -501,6 +500,7 @@ export function normalizeFandomPage(page: FandomPage): NormalizedFandomPage {
     },
     translations: {
       en: {
+        name: page.title,
         objective: objective,
         locations: realm.locationTranslations,
       },

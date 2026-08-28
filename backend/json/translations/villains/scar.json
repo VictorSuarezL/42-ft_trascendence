@@ -1,4 +1,5 @@
 {
+  "name": "Scar",
   "objective": "Scar debe encontrar y derrotar a Mufasa y, después, derrotar a otros Héroes hasta tener al menos 15 de Fuerza en la pila de Sucesión. Solo puede ganar al comienzo de su turno.",
   "locations": {
     "pride-rock": "Roca del Rey",

@@ -1,24 +1,24 @@
 {
   "name": "Maléfica",
-  "objective": "Maléfica debe jugar Maldiciones y moverlas cuando sea necesario hasta tener al menos una Maldición en cada ubicación de su Reino. Solo puede ganar al comienzo de su turno.",
+  "objective": "Empezar tu turno con una Maldición en cada ubicación.",
   "locations": {
-    "forbidden-mountains": "Montañas Prohibidas",
-    "briar-rose-s-cottage": "Cabaña de Rosa",
+    "forbidden-mountains": "Montaña Prohibida",
+    "briar-rose-s-cottage": "Cabaña de Aurora",
     "the-forest": "El Bosque",
     "king-stefan-s-castle": "Castillo del Rey Estéfano"
   },
   "cards": {
     "cackling-goon": {
       "name": "Esbirro risueño",
-      "text": "Esbirro risueño obtiene +1 de Fuerza por cada Héroe que haya en su ubicación."
+      "text": "El Esbirro Risueño recibe +1 Fuerza por cada Héroe que haya en su ubicación."
     },
     "dragon-form": {
       "name": "Forma de dragón",
-      "text": "Derrota a un Héroe con una Fuerza de 3 o menos. Si eres el objetivo de una acción de Destino antes de tu próximo turno, obtén 3 de Poder."
+      "text": "Derrota a un Héroe de Fuerza de 3 o inferior. Si eres el blanco de una acción Destino antes de tu próximo turno, ganas 3 Monedas de Poder."
     },
     "forest-of-thorns": {
-      "name": "Bosque de espinos",
-      "text": "Los Héroes deben tener una Fuerza de 4 o más para poder jugarse en esta ubicación. Descarta esta Maldición cuando se juegue un Héroe en esta ubicación."
+      "name": "Selva de mortales espinos",
+      "text": "Los Héroes deben tener una Fuerza 4 o superior para poder jugarse en esta ubicación. Descarta esta Maldición cuando un Héroe sea jugado en esta ubicación."
     },
     "green-fire": {
       "name": "Fuego verde",
@@ -30,63 +30,63 @@
     },
     "sinister-goon": {
       "name": "Esbirro siniestro",
-      "text": "Esbirro siniestro obtiene +1 de Fuerza si hay alguna Maldición en su ubicación."
+      "text": "El Esbirro Siniestro recibe +1 Fuerza si hay alguna Maldición en su ubicación."
     },
     "vanish": {
-      "name": "Desvanecerse",
-      "text": "Al comienzo de tu próximo turno, Maléfica no tiene que moverse a una nueva ubicación."
+      "name": "Desaparecer",
+      "text": "En tu próximo turno, Maléfica no necesita moverse a una nueva ubicación."
     },
     "dreamless-sleep": {
       "name": "Sueño sin sueños",
-      "text": "Los Héroes en esta ubicación obtienen -2 de Fuerza. Descarta esta Maldición cuando se juegue un Aliado en esta ubicación."
+      "text": "Los Héroes que se encuenten en esta ubicación reciben -2 Fuerza. Descarta esta Maldición cuando un Aliado sea jugado en esta ubicación."
     },
     "malice": {
-      "name": "Maldad",
-      "text": "Durante el turno de otro jugador, si derrota a un Héroe con una Fuerza de 4 o más, puedes jugar Maldad. Derrota a un Héroe con una Fuerza de 4 o menos."
+      "name": "Malicia",
+      "text": "Durante su turno, si otro jugador derrota a un Héroe de Fuerza de 4 o superior, puedes jugar Malicia. Derrota a un Héroe de Fuerza de 4 o inferior."
     },
     "tyranny": {
       "name": "Tiranía",
-      "text": "Durante el turno de otro jugador, si tiene tres o más Aliados en su Reino, puedes jugar Tiranía. Roba tres cartas y añádelas a tu mano; después, descarta tres cartas cualesquiera."
+      "text": "Durante su turno, si otro jugador tiene tres o más Aliados en su Reino, puedes jugar Tiranía. Roba tres cartas y ponlas en tu mano, luego descarta tres cartas cualquiera."
     },
     "raven": {
-      "name": "Cuervo",
-      "text": "Antes de que Maléfica se mueva, puedes mover a Cuervo a cualquier ubicación y realizar una acción disponible en su nueva ubicación. Cuervo no puede realizar acciones de Destino."
+      "name": "El Cuervo",
+      "text": "Antes de mover a Maléfica, puedes mover El Cuervo a cualquier ubicación y llevar a cabo una de las acciones disponibles en su nueva ubicación. El Cuervo no puede realizar acciones Destino."
     },
     "spinning-wheel": {
       "name": "Rueca",
-      "text": "Si se derrota a un Héroe en esta ubicación, obtén una cantidad de Poder igual a la Fuerza del Héroe menos 1."
+      "text": "Si un Héroe es derrotado en esta ubicación, recibes una cantidad de Monedas de Poder equivalente a la Fuerza de ese Héroe menos 1."
     },
     "staff": {
-      "name": "Bastón",
-      "text": "Si Maléfica está en esta ubicación, el Coste de jugar un Efecto o una Maldición se reduce en 1 de Poder."
+      "name": "Cetro",
+      "text": "Si Maléfica está en esta ubicación, el Precio para jugar un Efecto o una Maldición se reduce en -1  Moneda de Poder."
     },
     "guards-maleficent": {
       "name": "Guardias",
-      "text": "Al realizar una acción de Vencer para derrotar a los Guardias, debes usar al menos dos Aliados."
+      "text": "Al realizar una acción Vencer para derrotar a los Guardias, se deben utilizar al menos dos Aliados."
     },
     "sword-of-truth": {
       "name": "Espada de la Verdad",
-      "text": "Cuando juegues Espada de la Verdad, vincúlala a un Héroe que no tenga otros Objetos vinculados. Ese Héroe obtiene +2 de Fuerza. El Coste de jugar una Maldición en esta ubicación aumenta en 2 de Poder."
+      "text": "Cuando juegues la Espada de la Verdad, únela a un Héroe que no tenga ningún otro Objeto unido. Ese Héroe recibe +2 Fuerza. El Precio para jugar una Maldición en esa ubicación aumenta en +2 Monedasde Poder."
     },
     "once-upon-a-dream": {
-      "name": "Érase una vez un sueño",
-      "text": "Descarta una Maldición de una ubicación del Reino de Maléfica que contenga un Héroe."
+      "name": "Una vez un sueños",
+      "text": "Descarta una Maldición de una ubicación del Reino de Maléfica que tenga un Héroe."
     },
     "aurora": {
       "name": "Aurora",
-      "text": "Cuando juegues a Aurora, revela la primera carta del mazo de Destino de Maléfica. Si es un Héroe, juégalo. De lo contrario, devuélvela a la parte superior del mazo."
+      "text": "Cuando juegues a Aurora, revela la carta superior del mazo de Destino de Maléfica. Si es un Héroe, juégalo. Si no, devuélvelo arriba superior del mazo."
     },
     "fauna": {
       "name": "Fauna",
-      "text": "Cuando juegues a Fauna, puedes descartar Sueño sin sueños de su ubicación."
+      "text": "Cuando juegues a Fauna, puedes descartar Sueño sin Sueños de la ubicación en la que la juegues."
     },
     "flora": {
       "name": "Flora",
-      "text": "Cuando juegues a Flora, Maléfica debe revelar su mano. Hasta que Flora sea derrotada, Maléfica debe jugar con su mano revelada."
+      "text": "Cuando juegues a Flora, Maléfica debe revelar su mano. Hasta que Flora sea derrotada, Maléfica debe jugar con las cartas de su mano a la vista de todos."
     },
     "king-hubert": {
       "name": "Rey Huberto",
-      "text": "Cuando juegues al Rey Huberto, puedes mover un Aliado de cada ubicación adyacente a su ubicación."
+      "text": "Cuando juegues al Rey Huberto, puedes mover un Aliado de cada ubicación adyacente a la ubicación del Rey Huberto."
     },
     "king-stefan": {
       "name": "Rey Estéfano",
@@ -98,7 +98,7 @@
     },
     "prince-phillip": {
       "name": "Príncipe Felipe",
-      "text": "Cuando juegues al Príncipe Felipe, puedes descartar todos los Aliados de su ubicación."
+      "text": "Cuando juegues al Príncipe Felipe, puedes descartar todos los Aliados que estén en su ubicación."
     }
   }
 }

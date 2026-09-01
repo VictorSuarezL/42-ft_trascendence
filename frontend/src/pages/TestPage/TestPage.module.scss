@@ -1,0 +1,180 @@
+.villainTestPage {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.villainHeader {
+  display: grid;
+  grid-template-columns: minmax(160px, 280px) 1fr;
+  align-items: center;
+  gap: 32px;
+}
+
+.villainPortrait {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.villainImageGrid,
+.realmGrid,
+.deckGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.villainImageFigure {
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+  background: rgb(255 255 255 / 8%);
+  border-radius: 12px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    margin-bottom: 8px;
+    object-fit: contain;
+  }
+}
+
+.testPanel {
+  padding: 16px;
+  background: rgb(255 255 255 / 8%);
+  border-radius: 12px;
+}
+
+.deckGrid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.deckImages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 12px;
+
+  img {
+    display: block;
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+  }
+}
+
+.cardList {
+  padding-left: 20px;
+}
+
+@media (max-width: 640px) {
+  .villainHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .villainPortrait {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+.cardPreview {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 35%);
+}
+
+.cardFigure {
+  width: 280px;
+  max-width: calc(100vw - 40px);
+  margin: 0;
+}
+
+.cardCaption {
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.originalCard {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 35%);
+}
+
+.cardTop {
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.cardBottomContainer {
+  position: relative;
+}
+
+.cardBottom {
+  display: block;
+  width: 100%;
+}
+
+.cardContent {
+  position: absolute;
+  inset: 0;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.cardName {
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  width: 80%;
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.cardText {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    right: 10%;
+    bottom: 8%;
+    margin-top: 11px;
+    padding: 4%;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 1.2;
+    overflow: hidden;
+    outline: 1px solid red;
+    font-weight: bolder;
+}
+
+.cardType {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cardStrength {
+  position: absolute;
+  left: 7%;
+  bottom: 8%;
+  font-size: 1.5rem;
+}

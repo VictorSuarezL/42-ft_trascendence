@@ -14,6 +14,7 @@ import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { HowToPlay } from './pages/HowToPlay';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { TestingVillainPage, TestingCardPage } from './pages/TestPage';
 
 function App() {
   return (
@@ -43,6 +44,14 @@ function App() {
                 <Route path="/home" element={<HomePage />} />
                 {/* <Route path="/howtoplay" element={<HowToPlay />} /> */}
                 <Route path="/howtoplay/:villain?" element={<HowToPlay />} />
+                <Route
+                  path="/test/villain/:villain"
+                  element={<TestingVillainPage />}
+                />
+                <Route
+                  path="/test/card/:id"
+                  element={<TestingCardPage/>}
+                />
                 <Route path="/profile" element={<ProfilePage />} />
               </Route>
               <Route path="*" element={<NotFoundPage />} />

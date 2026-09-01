@@ -1,5 +1,6 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { prisma } from '../utils/prisma';
+import { DeckType } from '@prisma/client';
 
 interface VillainImageFile {
   id: string;
@@ -46,6 +47,8 @@ interface CardFile {
 
 interface DeckFile {
   totalCards: number;
+  backImagePath: string;
+  bottomImagePath: string;
   cards: CardFile[];
 }
 
@@ -66,14 +69,15 @@ async function main() {
 
   const files = await readdir(directoryUrl);
 
-  const jsonFiles = files.filter((file) => file.endsWith('.json')).sort();
+  // const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
+  const jsonFiles = ['scar.json'];
 
   for (const file of jsonFiles) {
     const fileUrl = new URL(file, directoryUrl);
     const content = await readFile(fileUrl, 'utf-8');
     const data = JSON.parse(content) as VillainFile;
 
-    console.log(`Importing villain from: ${file}`);
+    // console.log(`Importing villain from: ${file}`);
 
     const villain = await prisma.villain.upsert({
       where: { id: data.id },
@@ -82,43 +86,88 @@ async function main() {
     });
 
     for (const [deckId, deck] of Object.entries(data.decks)) {
+      // Select the back image path from the villain's images where id = villainDeckBack
+
+      const deckType = deckId === 'villain' ? DeckType.VILLAIN : DeckType.FATE;
+
+      const backImageId =
+        deckType === DeckType.VILLAIN ? 'villainDeckBack' : 'fateDeckBack';
+
+      const backImageElement = data.images.find(
+        (image) => image.id === backImageId,
+      );
+
+      if (!backImageElement) {
+        throw new Error('imagePath not found');
+      }
+
+      const backImagePath = backImageElement.path;
+
+      // Building this path: backend/assets/scar/cropped-images/scar-power-fate-clean.webp
+      const bottomPowerImagePath =
+        '/assets/' +
+        data.id +
+        '/cropped-images/' +
+        data.id +
+        '-power-' +
+        deckId +
+        '-clean.webp';
+
+      const bottomPowerlessImagePath =
+        '/assets/' +
+        data.id +
+        '/cropped-images/' +
+        data.id +
+        '-powerless-' +
+        deckId +
+        '-clean.webp';
+
       await prisma.deck.upsert({
         where: {
-          villainId_id: {
+          villainId_type: {
             villainId: data.id,
-            id: deckId,
+            type: deckType,
           },
         },
-        update: {},
+        update: {
+          backImagePath: backImagePath,
+          bottomPowerImagePath: bottomPowerImagePath,
+          bottomPowerlessImagePath: bottomPowerlessImagePath,
+        },
         create: {
           villainId: data.id,
-          id: deckId,
+          type: deckType,
+          backImagePath: backImagePath,
+          bottomPowerImagePath: bottomPowerImagePath,
+          bottomPowerlessImagePath: bottomPowerlessImagePath,
         },
       });
 
       console.log(`Deck imported: ${data.id}/${deckId}`);
 
       for (const card of deck.cards) {
+        // Need to substitute in card image path the substring "cards" with "cropped-images"
+        const cardImagePath = card.image.path.replace(
+          'cards',
+          'cropped-images',
+        );
+
         const cardData = {
+          villainId: data.id,
+          deckType,
           quantity: card.quantity,
           type: card.type,
           cost: card.cost,
           strength: card.strength,
-          imagePath: card.image.path,
+          imagePath: cardImagePath,
         };
 
         await prisma.card.upsert({
           where: {
-            villainId_deckId_id: {
-              villainId: data.id,
-              deckId,
-              id: card.id,
-            },
+            id: card.id,
           },
           update: cardData,
           create: {
-            villainId: data.id,
-            deckId,
             id: card.id,
             ...cardData,
           },
@@ -139,9 +188,7 @@ async function main() {
 
           await prisma.cardTranslation.upsert({
             where: {
-              villainId_deckId_cardId_language: {
-                villainId: data.id,
-                deckId,
+              cardId_language: {
                 cardId: card.id,
                 language,
               },
@@ -151,8 +198,6 @@ async function main() {
               text: cardTranslation.text,
             },
             create: {
-              villainId: data.id,
-              deckId,
               cardId: card.id,
               language,
               name: cardTranslation.name,
@@ -333,6 +378,7 @@ async function main() {
         );
       }
     }
+
   }
 }
 

@@ -152,42 +152,47 @@ model RealmLocationTranslation {
   @@index([language])
 }
 
+enum DeckType {
+  VILLAIN
+  FATE
+}
+
 model Deck {
-  villainId String
-  id        String
+  villainId                String
+  type                     DeckType
+  backImagePath            String
+  bottomPowerImagePath     String
+  bottomPowerlessImagePath String
 
   villain Villain @relation(fields: [villainId], references: [id], onDelete: Cascade)
-  cards   Card[]
 
-  @@id([villainId, id])
+  cards Card[]
+
+  @@id([villainId, type])
 }
 
 model Card {
+  id        String   @id
   villainId String
-  deckId    String
-  id        String
+  deckType  DeckType
   quantity  Int
   type      String
   cost      Int?
   strength  Int?
   imagePath String
 
-  deck         Deck              @relation(fields: [villainId, deckId], references: [villainId, id], onDelete: Cascade)
+  deck         Deck              @relation(fields: [villainId, deckType], references: [villainId, type], onDelete: Cascade)
   translations CardTranslation[]
-
-  @@id([villainId, deckId, id])
 }
 
 model CardTranslation {
-  villainId String
-  deckId    String
-  cardId    String
-  language  String
-  name      String
-  text      String
+  cardId   String
+  language String
+  name     String
+  text     String
 
-  card Card @relation(fields: [villainId, deckId, cardId], references: [villainId, deckId, id], onDelete: Cascade)
+  card Card @relation(fields: [cardId], references: [id], onDelete: Cascade)
 
-  @@id([villainId, deckId, cardId, language])
+  @@id([cardId, language])
   @@index([language])
 }

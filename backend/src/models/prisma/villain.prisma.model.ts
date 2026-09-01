@@ -1,5 +1,6 @@
 import { prisma } from '../../utils/prisma';
 import type {
+  Deck,
   RealmLocation,
   Villain,
   VillainDetail,
@@ -18,15 +19,19 @@ export class VillainPrismaModel {
         },
         images: true,
         realmLocations: {
-          orderBy: {
-            position: 'asc',
-          },
           include: {
-            actions: {
-              orderBy: [{ area: 'asc' }, { position: 'asc' }],
-            },
-            translations: {
-              where: { language },
+            actions: true,
+            translations: { where: { language } },
+          },
+        },
+        decks: {
+          include: {
+            cards: {
+              include: {
+                translations: {
+                  where: { language },
+                },
+              },
             },
           },
         },
@@ -46,12 +51,41 @@ export class VillainPrismaModel {
       };
     });
 
+    const decks: Deck[] = villain.decks.map((deck) => ({
+      type: deck.type,
+      backImagePath: deck.backImagePath,
+      bottomPowerImagePath: deck.bottomPowerImagePath,
+      bottomPowerlessImagePath: deck.bottomPowerlessImagePath,
+
+      cards: deck.cards.map((card) => {
+        const translation = card.translations[0];
+
+        if (!translation) {
+          throw new Error(
+            `Translation "${language}" not found for card "${card.id}"`,
+          );
+        }
+
+        return {
+          id: card.id,
+          quantity: card.quantity,
+          type: card.type,
+          cost: card.cost,
+          strength: card.strength,
+          imagePath: card.imagePath,
+          name: translation.name,
+          text: translation.text,
+        };
+      }),
+    }));
+
     return {
       id: villain.id,
       name: villain.translations[0].name,
       objective: villain.translations[0].objective,
       images: villain.images,
       realm,
+      decks,
     };
   }
 

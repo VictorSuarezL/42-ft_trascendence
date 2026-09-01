@@ -60,4 +60,10 @@ GET {{backend}}/villains/scar
 
 GET {{backend}}/villains/scar?lang=es
 
+### Get card by id
 
+GET {{backend}}/cards/injustice
+
+### Get card by id
+
+GET {{backend}}/cards/injustice?lang=es

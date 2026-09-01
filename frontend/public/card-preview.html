@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prueba de composición de carta</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 40px 20px;
+        color: #f7f2e7;
+        background: #17232d;
+        font-family: system-ui, sans-serif;
+      }
+
+      h1,
+      p {
+        text-align: center;
+      }
+
+      .examples {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+        margin-top: 32px;
+      }
+
+      figure {
+        width: min(350px, 100%);
+        margin: 0;
+      }
+
+      figcaption {
+        margin-bottom: 12px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .original,
+      .card-preview {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgb(0 0 0 / 35%);
+      }
+
+      .original {
+        display: block;
+      }
+
+      .card-top {
+        aspect-ratio: 1000 / 669;
+        overflow: hidden;
+      }
+
+      .card-top img,
+      .card-bottom {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Prueba de composición de carta</h1>
+    <p>Carta original y versión formada con la ilustración y el panel limpio.</p>
+
+    <div class="examples">
+      <figure>
+        <figcaption>Original</figcaption>
+        <img
+          class="original"
+          src="/api/assets/captain-hook/cards/fate/john.webp"
+          alt="Carta original de John"
+        />
+      </figure>
+
+      <figure>
+        <figcaption>Composición</figcaption>
+        <div class="card-preview">
+          <div class="card-top">
+            <img
+              src="/api/assets/captain-hook/cards/fate/john.webp"
+              alt="Ilustración de John"
+            />
+          </div>
+
+          <img
+            class="card-bottom"
+            src="/api/assets/captain-hook/cropped-images/hook-power-fate-clean.webp"
+            alt="Panel inferior limpio"
+          />
+        </div>
+      </figure>
+    </div>
+  </body>
+</html>

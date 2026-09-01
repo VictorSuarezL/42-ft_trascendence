@@ -38,7 +38,7 @@ router.get('/:villain', (req, res) => {
   return res.json({
     ...villainData,
     language,
-    localized: villainData.translations[language],
+    translations: villainData.translations[language],
   });
 });
 

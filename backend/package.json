@@ -9,6 +9,9 @@
     "translations:generate": "tsx src/scripts/generate-translations.ts",
     "translations:sync": "tsx scripts/scraping/sync-translations.ts"
   },
+  "prisma": {
+    "seed": "tsx src/scripts/seeding.ts"
+  },
   "dependencies": {
     "@prisma/client": "^6.0.0",
     "bcrypt": "^6.0.0",

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import { prisma } from '../utils/prisma';
 
 function buildTranslationObject(
@@ -31,7 +31,10 @@ function buildTranslationObject(
   return result;
 }
 
-export async function getTranslations(req: Request, res: Response) {
+export async function getTranslations(
+  req: Request<{ language: string }>,
+  res: Response,
+) {
   const { language } = req.params;
 
   const translations = await prisma.translation.findMany({

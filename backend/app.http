@@ -1,20 +1,31 @@
 @backend = http://localhost:3000
+@testEmail = test@example.com
+@testPassword = password123
 
 ### Check backend
 
 GET {{backend}}/health
 
+### Create user
+# @name createUser
+
+POST {{backend}}/signup
+Content-Type: application/json
+
+{
+  "email": "{{testEmail}}",
+  "password": "{{testPassword}}"
+}
+
 ### Make login
 # @name login
-# @prompt email Send mail to the test user
-# @prompt password Password for the test user
 
 POST {{backend}}/users/login
 Content-Type: application/json
 
 {
-  "email": "{{email}}",
-  "password": "{{password}}"
+  "email": "{{testEmail}}",
+  "password": "{{testPassword}}"
 }
 
 ### Get authenticated user
@@ -32,3 +43,27 @@ GET {{backend}}/how-to-play/scar
 ### Get how to play in spanish
 
 GET {{backend}}/how-to-play/scar?lang=es
+
+### Get villains
+
+GET {{backend}}/villains
+
+### Get villains in spanish
+
+GET {{backend}}/villains?lang=es
+
+### Get villain by id
+
+GET {{backend}}/villains/scar
+
+### Get villain by id in spanish
+
+GET {{backend}}/villains/scar?lang=es
+
+### Get card by id
+
+GET {{backend}}/cards/injustice
+
+### Get card by id
+
+GET {{backend}}/cards/injustice?lang=es

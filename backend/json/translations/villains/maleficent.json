@@ -1,4 +1,5 @@
 {
+  "name": "Maléfica",
   "objective": "Empezar tu turno con una Maldición en cada ubicación.",
   "locations": {
     "forbidden-mountains": "Montaña Prohibida",

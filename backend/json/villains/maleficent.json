@@ -1,6 +1,5 @@
 {
   "id": "maleficent",
-  "name": "Maleficent",
   "game": "Disney Villainous",
   "images": [
     {
@@ -521,6 +520,7 @@
   },
   "translations": {
     "en": {
+      "name": "Maleficent",
       "objective": "Maleficent must play Curses and move them as needed so she has at least one Curse at each location in her realm. She can only win at the start of her turn.",
       "locations": {
         "forbidden-mountains": "Forbidden Mountains",
@@ -624,6 +624,7 @@
       }
     },
     "es": {
+      "name": "Maléfica",
       "objective": "Maléfica debe jugar Maldiciones y moverlas cuando sea necesario hasta tener al menos una Maldición en cada ubicación de su Reino. Solo puede ganar al comienzo de su turno.",
       "locations": {
         "forbidden-mountains": "Montañas Prohibidas",

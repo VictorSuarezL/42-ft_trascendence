@@ -4,7 +4,7 @@ import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import { resolve } from 'node:path';
 import { createServer } from 'node:http';
-import { Server } from 'socket.io';
+import { Server, type Socket } from 'socket.io';
 
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
@@ -14,15 +14,17 @@ import translationsRoutes from './routes/translations.routes';
 import { socketAuth } from './utils/sockets/socket.auth';
 import { registerSocialHandlers } from './utils/sockets/social/social.handlers';
 import { registerSystemHandlers } from './utils/sockets/system/system.handlers';
+import { createVillainRouter } from './routes/villain.routes';
+import { createCardRouter } from './routes/card.routes';
+// import { VillainJsonModel } from './models/local-file-system/villain.model';
+import { VillainPrismaModel } from './models/prisma/villain.prisma.model';
+import { CardPrismaModel } from './models/prisma/card.prisma.model';
 
 const app = express();
 
 app.use(
   cors({
-    origin: [
-      'http://localhost',
-      'http://localhost:5173',
-    ],
+    origin: ['http://localhost', 'http://localhost:5173'],
     credentials: true,
   }),
 );
@@ -41,7 +43,8 @@ app.use('/users', userRoutes);
 app.use('/signup', createUserRoutes);
 app.use('/how-to-play', howToPlayRoutes);
 app.use('/translations', translationsRoutes);
-
+app.use('/villains', createVillainRouter(VillainPrismaModel));
+app.use('/cards', createCardRouter(CardPrismaModel));
 const PORT = Number(process.env.PORT) || 3000;
 
 const server = createServer(app);

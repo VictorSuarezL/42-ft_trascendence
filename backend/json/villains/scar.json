@@ -1,6 +1,5 @@
 {
   "id": "scar",
-  "name": "Scar",
   "game": "Disney Villainous",
   "images": [
     {
@@ -520,6 +519,7 @@
   },
   "translations": {
     "en": {
+      "name": "Scar",
       "objective": "Scar must find and defeat Mufasa, and then defeat other Heroes in order to have at least 15 Strength in the Succession pile. He can only win at the start of his turn.",
       "locations": {
         "pride-rock": "Pride Rock",
@@ -623,6 +623,7 @@
       }
     },
     "es": {
+      "name": "Scar",
       "objective": "Scar debe encontrar y derrotar a Mufasa y, después, derrotar a otros Héroes hasta tener al menos 15 de Fuerza en la pila de Sucesión. Solo puede ganar al comienzo de su turno.",
       "locations": {
         "pride-rock": "Roca del Rey",

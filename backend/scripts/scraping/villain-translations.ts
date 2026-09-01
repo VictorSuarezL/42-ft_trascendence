@@ -9,6 +9,7 @@ export interface CardTranslation {
 export type CardTranslations = Record<string, CardTranslation>;
 
 export interface VillainTranslation {
+  name: string;
   objective: string;
   locations: Record<string, string>;
   cards: CardTranslations;
@@ -45,6 +46,8 @@ export function parseVillainTranslation(
   const translation = value as Partial<VillainTranslation>;
 
   if (
+    typeof translation.name !== 'string' ||
+    !translation.name.trim() ||
     typeof translation.objective !== 'string' ||
     !translation.objective.trim() ||
     !translation.locations ||

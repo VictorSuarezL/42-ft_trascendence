@@ -8,24 +8,24 @@ datasource db {
 }
 
 model User {
-  id              Int      @id @default(autoincrement())
-  email           String   @unique
-  name            String
-  passwordHash    String?
-  emailVerified   Boolean  @default(false)
+  id            Int     @id @default(autoincrement())
+  email         String  @unique
+  name          String
+  passwordHash  String?
+  emailVerified Boolean @default(false)
 
-  fortyTwoId      Int?     @unique
-  login           String?
-  firstName       String?
-  lastName        String?
-  displayName     String?
-  image           String?
+  fortyTwoId  Int?    @unique
+  login       String?
+  firstName   String?
+  lastName    String?
+  displayName String?
+  image       String?
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  sessions        Session[]
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
+  sessions                Session[]
   emailVerificationTokens EmailVerificationToken[]
-  passwordResetTokens PasswordResetToken[]
+  passwordResetTokens     PasswordResetToken[]
 }
 
 model Session {
@@ -51,12 +51,12 @@ model EmailVerificationToken {
 }
 
 model PasswordResetToken {
-  id        Int      @id @default(autoincrement())
-  tokenHash String   @unique
+  id        Int       @id @default(autoincrement())
+  tokenHash String    @unique
   userId    Int
   expiresAt DateTime
   usedAt    DateTime?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -70,5 +70,129 @@ model Translation {
   value    String
 
   @@unique([key, language])
+  @@index([language])
+}
+
+model Villain {
+  id String @id
+
+  translations   VillainTranslation[]
+  images         VillainImage[]
+  realmLocations RealmLocation[]
+  decks          Deck[]
+}
+
+model VillainTranslation {
+  villainId String
+  language  String
+  name      String
+  objective String
+
+  villain Villain @relation(fields: [villainId], references: [id], onDelete: Cascade)
+
+  @@id([villainId, language])
+  @@index([language])
+}
+
+model VillainImage {
+  villainId  String
+  id         String
+  path       String
+  width      Int
+  height     Int
+  mimeType   String
+  sourcePage String?
+  sourceUrl  String?
+
+  villain Villain @relation(fields: [villainId], references: [id], onDelete: Cascade)
+
+  @@id([villainId, id])
+}
+
+model RealmLocation {
+  villainId String
+  id        String
+  position  Int
+
+  villain      Villain                    @relation(fields: [villainId], references: [id], onDelete: Cascade)
+  actions      RealmAction[]
+  translations RealmLocationTranslation[]
+
+  @@id([villainId, id])
+  @@unique([villainId, position])
+}
+
+model RealmAction {
+  villainId  String
+  locationId String
+  area       RealmActionArea
+  position   Int
+  type       String
+  amount     Int?
+
+  location RealmLocation @relation(fields: [villainId, locationId], references: [villainId, id], onDelete: Cascade)
+
+  @@id([villainId, locationId, area, position])
+}
+
+enum RealmActionArea {
+  TOP
+  BOTTOM
+}
+
+model RealmLocationTranslation {
+  villainId  String
+  locationId String
+  language   String
+  name       String
+
+  location RealmLocation @relation(fields: [villainId, locationId], references: [villainId, id], onDelete: Cascade)
+
+  @@id([villainId, locationId, language])
+  @@index([language])
+}
+
+enum DeckType {
+  VILLAIN
+  FATE
+}
+
+model Deck {
+  villainId                String
+  type                     DeckType
+  backImagePath            String
+  bottomPowerImagePath     String
+  bottomPowerlessImagePath String
+
+  villain Villain @relation(fields: [villainId], references: [id], onDelete: Cascade)
+
+  cards Card[]
+
+  @@id([villainId, type])
+}
+
+model Card {
+  id        String   @id
+  villainId String
+  deckType  DeckType
+  quantity  Int
+  type      String
+  cost      Int?
+  strength  Int?
+  imagePath String
+
+  deck         Deck              @relation(fields: [villainId, deckType], references: [villainId, type], onDelete: Cascade)
+  translations CardTranslation[]
+}
+
+model CardTranslation {
+  cardId   String
+  language String
+  name     String
+  text     String
+
+  card Card @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@id([cardId, language])
   @@index([language])
 }

@@ -1,11 +1,12 @@
-.PHONY: all build up down restart lan logs logs-backend logs-frontend ps db migrate prisma-generate prisma-studio db-shell db-tables db-users clean fclean re
+.PHONY: all build up down restart lan logs logs-backend logs-frontend ps db migrate prisma-generate-local prisma-generate-docker prisma-generate prisma-format prisma-validate prisma-check prisma-sync prisma-studio prisma-studio-stop db-shell db-tables db-users db-seed db-push reset-db clean fclean re
 
 COMPOSE = docker compose
 PRISMA_STUDIO_PORT ?= 5555
+PRISMA_STUDIO_CONTAINER ?= transcendence-prisma-studio
 PORT ?= 3000
 FRONTEND_PORT ?= 5173
 
-all: build db db-push up
+all: up db db-push db-seed
 
 build:
 	$(COMPOSE) build
@@ -41,14 +42,42 @@ db:
 	done
 	@echo "PostgreSQL is ready."
 
-prisma-generate:
-	$(COMPOSE) run --rm backend npx prisma generate
+prisma-generate-local:
+	cd backend && npx prisma generate
+
+prisma-generate-docker:
+	$(COMPOSE) exec backend npx prisma generate
+
+prisma-generate: prisma-generate-local prisma-generate-docker
+
+prisma-check:
+	$(COMPOSE) exec backend npx prisma format
+	$(COMPOSE) exec backend npx prisma validate
+
+prisma-sync:
+	$(MAKE) prisma-check
+	$(COMPOSE) exec backend npx prisma db push --skip-generate
+	$(MAKE) prisma-generate
 
 prisma-studio: db
-	$(COMPOSE) run --rm --build \
-		-p 127.0.0.1:$(PRISMA_STUDIO_PORT):5555 \
-		backend \
-		npx prisma studio --hostname 0.0.0.0 --port 5555
+	@if docker inspect $(PRISMA_STUDIO_CONTAINER) > /dev/null 2>&1; then \
+		echo "Prisma Studio is already running."; \
+	else \
+		$(COMPOSE) run --rm --build -d \
+			--name $(PRISMA_STUDIO_CONTAINER) \
+			-p 127.0.0.1:$(PRISMA_STUDIO_PORT):5555 \
+			backend \
+			npx prisma studio --hostname 0.0.0.0 --port 5555; \
+	fi
+	@echo "Prisma Studio is up on http://localhost:$(PRISMA_STUDIO_PORT)"
+
+prisma-studio-stop:
+	@if docker inspect $(PRISMA_STUDIO_CONTAINER) > /dev/null 2>&1; then \
+		docker stop $(PRISMA_STUDIO_CONTAINER) > /dev/null; \
+		echo "Prisma Studio stopped."; \
+	else \
+		echo "Prisma Studio is not running."; \
+	fi
 
 db-shell:
 	$(COMPOSE) exec database psql -U postgres -d transcendence
@@ -60,7 +89,7 @@ db-users:
 	$(COMPOSE) exec database psql -U postgres -d transcendence -c 'SELECT * FROM "User";'
 
 db-push:
-	$(COMPOSE) run --rm backend npx prisma db push
+	$(COMPOSE) exec backend npx prisma db push
 
 reset-db:
 	$(COMPOSE) down -v --remove-orphans
@@ -72,6 +101,9 @@ reset-db:
 	@echo "PostgreSQL is ready."
 	$(COMPOSE) run --rm backend npx prisma db push
 	$(COMPOSE) run --rm backend npx prisma generate
+
+db-seed: db
+	$(COMPOSE) exec backend npx prisma db seed
 
 clean:
 	$(COMPOSE) down
@@ -101,5 +133,6 @@ lan: build db db-push
 	FRONTEND_URL=http://$$HOST \
 	FORTYTWO_REDIRECT_URI=http://$$HOST/api/auth/42/callback \
 	$(COMPOSE) up -d
+
 
 re: fclean all

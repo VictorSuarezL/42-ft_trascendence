@@ -8,27 +8,23 @@ interface VillainImage {
 
 interface VillainGuide {
   name: string;
-  language: string;
   images: VillainImage[];
-  localized: {
-    objective: string;
-  };
+  objective: string;
 }
 
-const backendUrl = 'http://localhost:3000';
+const backendUrl = '/api';
 
 export function Character({ name }: { name: string }) {
   const [guide, setGuide] = useState<VillainGuide | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { language } = useUser();
 
-  const villainLanguage = language === 'es' ? 'es' : 'en';
   useEffect(() => {
     async function loadGuide() {
       try {
         const response = await fetch(
-          `${backendUrl}/how-to-play/${encodeURIComponent(name)}` +
-            `?lang=${encodeURIComponent(villainLanguage)}`,
+          `${backendUrl}/villains/${encodeURIComponent(name)}` +
+            `?lang=${encodeURIComponent(language)}`,
         );
 
         if (!response.ok) {
@@ -47,7 +43,7 @@ export function Character({ name }: { name: string }) {
     }
 
     loadGuide();
-  }, [name, villainLanguage]);
+  }, [name, language]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -71,8 +67,8 @@ export function Character({ name }: { name: string }) {
         />
       )}
 
-      <h2>{guide.language === 'es' ? 'Objetivo' : 'Objective'}</h2>
-      <p>{guide.localized.objective}</p>
+      <h2>{language === 'es' ? 'Objetivo' : 'Objective'}</h2>
+      <p>{guide.objective}</p>
     </main>
   );
 }

@@ -1,6 +1,5 @@
 {
   "id": "hades",
-  "name": "Hades",
   "game": "Disney Villainous",
   "images": [
     {
@@ -633,6 +632,7 @@
   },
   "translations": {
     "en": {
+      "name": "Hades",
       "objective": "Hades must play Titans and move them so he has at least three untrapped Titans at Mount Olympus. He can only win at the start of his turn.",
       "locations": {
         "the-underworld": "The Underworld",
@@ -764,6 +764,7 @@
       }
     },
     "es": {
+      "name": "Hades",
       "objective": "Hades debe jugar Titanes y moverlos hasta tener al menos tres Titanes sin atrapar en el Monte Olimpo. Solo puede ganar al comienzo de su turno.",
       "locations": {
         "the-underworld": "El Inframundo",

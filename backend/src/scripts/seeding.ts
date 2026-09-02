@@ -69,8 +69,8 @@ async function main() {
 
   const files = await readdir(directoryUrl);
 
-  // const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
-  const jsonFiles = ['scar.json'];
+  const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
+  // const jsonFiles = ['scar.json'];
 
   for (const file of jsonFiles) {
     const fileUrl = new URL(file, directoryUrl);

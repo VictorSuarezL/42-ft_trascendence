@@ -765,133 +765,133 @@
     },
     "es": {
       "name": "Hades",
-      "objective": "Hades debe jugar Titanes y moverlos hasta tener al menos tres Titanes sin atrapar en el Monte Olimpo. Solo puede ganar al comienzo de su turno.",
+      "objective": "Empezar tu turno con tres Titanes en el Monte Olimpo.",
       "locations": {
         "the-underworld": "El Inframundo",
         "thebes": "Tebas",
         "the-gardens": "Los Jardines",
-        "mount-olympus": "Monte Olimpo"
+        "mount-olympus": "El Monte Olimpo"
       },
       "cards": {
         "get-ready-to-rumble": {
-          "name": "¡Prepárate para luchar!",
-          "text": "Paga 2 de Poder para mover un Titán sin atrapar a una ubicación adyacente o paga 5 de Poder para mover un Titán sin atrapar a una ubicación situada a dos espacios."
+          "name": "¡Listos para la pelea!",
+          "text": "Escoge: paga 2 Monedas de Poder para mover un Titán no apriosionado a una ubicación adyacente o paga 5 Monedas de Poder para mover un Titán no aprisionado a dos ubicaciones de distancia."
         },
         "mortality-potion": {
           "name": "Poción de mortalidad",
-          "text": "Cuando juegues Poción de mortalidad, vincúlala a un Héroe. Los Titanes usados para derrotar a ese Héroe no se descartan."
+          "text": "Cuando juegues la Poción de Mortalidad, únela a un Héroe. Los Titanes utilizados para derrotar a ese Héroe no se descartan."
         },
         "planets-align": {
           "name": "Los planetas se alinean",
-          "text": "Libera uno o más Titanes de tu Reino. El Coste de jugar Los planetas se alinean es igual al número de Titanes que liberes."
+          "text": "Libera uno o más Titanes de tu Reino. El Precio para jugar Los Planetas se Alinean es equivalente al número de Titanes que liberes."
         },
         "achilles-heel": {
-          "name": "Talón de Aquiles",
-          "text": "Elige un Héroe. Ese Héroe obtiene -2 de Fuerza hasta el final de tu turno."
+          "name": "El talón de Aquiles",
+          "text": "Escoge un Héroe. Ese Héroe recibe -2 Fuerza hasta el final de tu turno."
         },
         "eye-of-the-fates": {
           "name": "Ojo de las Moiras",
-          "text": "Revela cartas de la parte superior de tu mazo hasta revelar un Aliado o Titán. Añade ese Aliado o Titán a tu mano. Descarta el resto."
+          "text": "Revela cartas de arriba de tu mazo hasta que reveles un Aliado o un Titán. Añade ese Aliado o Titán a tu mano. Descarta el resto de cartas reveladas."
         },
         "i-rule": {
-          "name": "¡Yo mando!",
-          "text": "Obtén 1 de Poder por cada Aliado y Titán que haya en tu pila de descartes."
+          "name": "¡Hades al poder!",
+          "text": "Ganas 1 Moneda de Poder por cada Aliado y Titán que haya en tu pila de descartes."
         },
         "rage": {
-          "name": "Ira",
-          "text": "Durante el turno de otro jugador, si derrota a un Héroe con una Fuerza de 3 o más, puedes jugar Ira. Mueve un Héroe de tu Reino a cualquier ubicación."
+          "name": "Rabia",
+          "text": "Durante su turno, si otro jugador derrota a un Héroe de Fuerza de 3 o superior, puedes jugar Rabia. Mueve un Héroe de tu Reino a cualquier ubicación."
         },
         "ruthless": {
           "name": "Despiadado",
-          "text": "Durante el turno de otro jugador, si tiene 6 o más de Poder, puedes jugar Despiadado. Juega gratis un Aliado o Titán de tu mano."
+          "text": "Durante su turno, si otro jugador tiene 6 o más Monedas de Poder, puedes jugar Despiadado. Juega un Aliado o Titán de tu mano sin pagar su precio."
         },
         "arges": {
-          "name": "Arges",
-          "text": "Arges solo puede jugarse en el Inframundo. Cuando muevas a Arges, obtén 1 de Poder."
+          "name": "Cíclope",
+          "text": "Cíclope solo puede ser jugado en el Inframundo. Cuando Cíclope es movido, ganas 1 Moneda de Poder."
         },
         "cerberus": {
           "name": "Cerbero",
-          "text": "Al realizar una acción de Vencer, puedes usar a Cerbero para derrotar a un Héroe en su ubicación o en una ubicación adyacente."
+          "text": "Cuando realices una acción Vencer, Cerbero puede ser utilizado para derrotar a un Héroe en su misma ubicación o en una adyacente."
         },
         "chariot": {
           "name": "Carro",
-          "text": "Una vez por turno, si Hades está en esta ubicación, puedes mover a Hades y al Carro a cualquier ubicación y realizar una acción disponible en la nueva ubicación. No puedes usar el Carro para realizar acciones de Destino."
+          "text": "Una vez por turno, si Hades se encuentra en la misma ubicación que el Carro, puedes mover a Hades y el Carro a cualquier ubicación y realizar una de las acciones que estén disponibles en esa ubicación. No puedes utilizar el Carro para realizar acciones Destino."
         },
         "hydra": {
-          "name": "Hidra",
-          "text": "Cuando uses a Hidra para derrotar a un Héroe, puedes devolver a Hidra a tu mano en lugar de descartarla."
+          "name": "La Hidra",
+          "text": "Cuando la Hidra es utilizadapara derrotar a un Héroe, puedes ponerla en tu mano en lugar de descartarla."
         },
         "hydros": {
           "name": "Hydros",
-          "text": "Hydros solo puede jugarse en el Inframundo. Los Héroes en la ubicación de Hydros obtienen -1 de Fuerza y no pueden ser movidos por cartas de Destino."
+          "text": "Hydros solo puede ser jugado en el Inframundo. Los Héroes que estén en la ubicación de Hydros reciben -1 Fuerza y no pueden ser movidos por cartas de Destino."
         },
         "lythos": {
-          "name": "Lythos",
-          "text": "Lythos solo puede jugarse en el Inframundo. Cuando muevas a Lythos, puedes realizar una acción de Vencer en su nueva ubicación. Debes usar a Lythos en esa acción."
+          "name": "Lithos",
+          "text": "Lithos solo puede ser jugado en el Inframundo. Cuando Lithos es movido, puedes realizar una acción Vencer en su nueva ubicación. Lithos debe ser utilizado en esa acción."
         },
         "nessus": {
           "name": "Neso",
-          "text": "Si usas a Neso para derrotar a un Héroe con una Fuerza de 3 o menos, obtén 2 de Poder."
+          "text": "Si Neso es utilizado para derrotar a un Héroe de Fuerza de 3 o inferior, ganas 2 Monedas de Poder."
         },
         "pain": {
           "name": "Pena",
-          "text": "Cuando muevas a Pena, puedes mover un Héroe de la ubicación anterior de Pena a su nueva ubicación."
+          "text": "Cuando Pena es movido, puedes mover a un Héroe de la ubicación que Pena ocupaba anteriormente a la nueva a la que ha sido movido."
         },
         "panic": {
           "name": "Pánico",
-          "text": "Si Hades está en la ubicación de Pánico, el Coste de jugar Objetos, Aliados y Titanes se reduce en 1 de Poder."
+          "text": "Si Hades se encuentra en la misma ubicación que Pánico, el Precio para jugar Objetos, Aliados y Titanes se reduce en -1 Monedade Poder."
         },
         "pyros": {
           "name": "Pyros",
-          "text": "Pyros solo puede jugarse en el Inframundo. Cuando muevas a Pyros, puedes liberar un Titán en su nueva ubicación."
+          "text": "Pyros solo puede ser jugado en el Inframundo. Cuando Pyros es movido, puedes liberar a un Titán que esté en la nueva ubicación a la que lo muevas."
         },
         "stratos": {
           "name": "Stratos",
-          "text": "Stratos solo puede jugarse en el Inframundo. Cuando muevas a Stratos, puedes mover un Héroe de su nueva ubicación a una ubicación adyacente."
+          "text": "Stratos solo puede ser jugado en el Inframundo. Cuando Stratos es movido, puedes mover un Héroe de la ubicación a la que Stratos ha llegado a una adyacente."
         },
         "go-the-distance": {
           "name": "No importa la distancia",
-          "text": "Mueve un Titán sin atrapar hasta dos ubicaciones, ignorando todas las Habilidades de Héroes y Titanes, o mueve un Héroe a cualquier ubicación."
+          "text": "Escoge: mueve un Titán no aprisionado hasta dos ubicaciones de distancia, ignorando todas las Habilidades de Héroes y Titanes, o mueve un Héroe a cualquier ubicación."
         },
         "lightning-bolt": {
-          "name": "Rayo",
-          "text": "Elige una ubicación del Reino de Hades. Todos los Titanes de esa ubicación quedan atrapados."
+          "name": "Relámpago",
+          "text": "Escoge una ubicación del Reino de Hades. Todos los Titanes de esa ubicación quedan aprisionados."
         },
         "medallion": {
           "name": "Medallón",
-          "text": "Cuando juegues Medallón, vincúlalo a un Héroe. Ese Héroe obtiene +2 de Fuerza."
+          "text": "Cuando juegues el Medallón, únelo a un Héroe. Ese Héroe recibe +2 Fuerza."
         },
         "the-gospel-truth": {
-          "name": "La cruda realidad",
-          "text": "Descarta un Objeto o Aliado del Reino de Hades."
+          "name": "Tan cierto como tú",
+          "text": "Descarta un Objeto o un Aliado del Reino de Hades."
         },
         "hera": {
           "name": "Hera",
-          "text": "Cuando juegues o muevas a Hera, puedes elegir un Titán en su nueva ubicación. Ese Titán queda atrapado."
+          "text": "Cuando Hera es jugada o movida, puedes escoger un Titán que esté en su misma ubicación. Ese Titán queda aprisionado."
         },
         "hercules": {
           "name": "Hércules",
-          "text": "Los Titanes no pueden moverse de la ubicación de Hércules."
+          "text": "Los Titanes no pueden ser movidos de la ubicación en la que se encuentra Hércules."
         },
         "hermes": {
           "name": "Hermes",
-          "text": "Cuando juegues a Hermes, si Zeus está en el Reino de Hades, puedes mover a Zeus a cualquier ubicación. De lo contrario, busca a Zeus y colócalo en la parte superior del mazo de Destino de Hades."
+          "text": "Cuando juegues a Hermes, si Zeus está en el Reino de Hades, puedes mover a Zeus a cualquier ubicación. Si no, encuentra a Zeus y ponlo arriba del mazo de Destino de Hades."
         },
         "megara": {
-          "name": "Megara",
-          "text": "Cuando juegues a Megara, puedes mover un Héroe de su ubicación a cualquier ubicación."
+          "name": "Mégara",
+          "text": "Cuando juegues a Mégara, puedes mover un Héroe de la ubicación en la que se encuentre Mégaraa cualquier otra ubicación."
         },
         "pegasus": {
           "name": "Pegaso",
-          "text": "Cuando juegues a Pegaso, puedes mover un Titán sin atrapar de su ubicación a una ubicación adyacente."
+          "text": "Cuando juegues a Pegaso, puedes mover un Titán no apriosionado de la ubicación en la que se encuentre a una adyacente."
         },
         "phil": {
-          "name": "Filoctetes",
-          "text": "Filoctetes y Hércules obtienen +1 de Fuerza si Hércules está en el Reino de Hades."
+          "name": "Fil",
+          "text": "Fil y Hércules reciben +1 Fuerza si Hércules se encuentra en el Reino de Hades."
         },
         "zeus": {
           "name": "Zeus",
-          "text": "Si un Titán se mueve a la ubicación de Zeus, ese Titán queda atrapado inmediatamente antes de que se active su Habilidad."
+          "text": "Si un Titán se mueve a la ubicación de Zeus, ese Titán queda inmediatamente aprisionado antes de que pueda tener efecto su Habilidad."
         }
       }
     }

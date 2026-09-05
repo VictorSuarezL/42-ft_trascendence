@@ -665,7 +665,7 @@
     },
     "es": {
       "name": "Capitán Garfio",
-      "objective": "El Capitán Garfio debe derrotar a Peter Pan en el Jolly Roger.",
+      "objective": "Derrotar a Peter Pan en el Jolly Roger.",
       "locations": {
         "jolly-roger": "Jolly Roger",
         "skull-rock": "Roca Calavera",
@@ -674,96 +674,96 @@
       },
       "cards": {
         "boarding-party": {
-          "name": "Grupo de abordaje",
-          "text": "Al realizar una acción de Vencer, puedes usar Grupo de abordaje para derrotar a un Héroe en su ubicación o en una ubicación adyacente desbloqueada."
+          "name": "Pelotón de abordaje",
+          "text": "Cuando realices una acción Vencer, puedes utilizar el Pelotón de Abordaje para derrotar a un Héroe en la ubicación en la que se encuentre o en una adyacente que no esté bloqueada."
         },
         "give-them-a-scare": {
-          "name": "Dales un susto",
-          "text": "Mira las dos primeras cartas de tu mazo de Destino. Descarta ambas cartas o devuélvelas a la parte superior en cualquier orden."
+          "name": "Démosles un susto",
+          "text": "Mira las dos cartas de arriba de tu mazo de Destino. Descarta ambas cartas o ponlas de nuevo arriba del mazo en el orden que quieras."
         },
         "swashbuckler": {
           "name": "Espadachín",
           "text": "Sin Habilidad adicional."
         },
         "worthy-opponent": {
-          "name": "Digno oponente",
-          "text": "Obtén 2 de Poder. Revela cartas de la parte superior de tu mazo de Destino hasta revelar un Héroe. Juega ese Héroe y descarta el resto."
+          "name": "Rival digno",
+          "text": "Recibe 2 Monedas de Poder. Revela cartas de arriba de tu mazo de Destino hasta revelar un Héroe. Juega ese Héroe y descarta el resto."
         },
         "aye-aye-sir": {
-          "name": "¡Sí, señor!",
-          "text": "Mueve un Aliado a una ubicación adyacente desbloqueada. Ese Aliado obtiene +2 de Fuerza hasta el final de tu turno."
+          "name": "¡A la orden, señor!",
+          "text": "Mueve un Aliado a una ubicación adyacente que no esté bloqueada. Ese Aliado recibe +2 Fuerza hasta el final de tu turno."
         },
         "cannon": {
           "name": "Cañón",
-          "text": "Esta ubicación obtiene una acción de Vencer."
+          "text": "Esta ubicación te ofrece esta acción extra:"
         },
         "cunning": {
-          "name": "Astucia",
-          "text": "Durante el turno de otro jugador, si tiene un Aliado con una Fuerza de 4 o más en su Reino, puedes jugar Astucia. Juega gratis un Aliado de tu mano."
+          "name": "Perspicaz",
+          "text": "Durante su turno, si otro jugador tiene un Aliado de Fuerza de 4 o superior en su Reino, puedes jugar Perspicaz. Juega un Aliado de tu mano de forma gratuita."
         },
         "cutlass": {
-          "name": "Alfanje",
-          "text": "Cuando juegues Alfanje, vincúlalo a un Aliado. Ese Aliado obtiene +2 de Fuerza."
+          "name": "Sable",
+          "text": "Cuando juegues el Sable, únelo a un Aliado. Ese Aliado obtiene +2 Fuerza."
         },
         "hook-s-case": {
-          "name": "Cofre de Garfio",
-          "text": "Esta ubicación obtiene una acción de Obtener 1 de Poder."
+          "name": "El Estuche de Garfio",
+          "text": "Esta ubicación te ofrece esta acción extra:"
         },
         "obsession": {
           "name": "Obsesión",
-          "text": "Durante el turno de otro jugador, si derrota a un Héroe con una Fuerza de 4 o más, puedes jugar Obsesión. Revela cartas de la parte superior de tu mazo de Destino hasta revelar un Héroe. Juega o descarta al Héroe. Descarta el resto."
+          "text": "Durante su turno, si otro jugador derrota a un Héroe de Fuerza de 4 o superior, puedes jugar Obsesión. Revela cartas de la parte superior de tu mazo de Destino hasta revelar un Héroe. Juega o descarta ese Héroe. Descarta el resto."
         },
         "pirate-brute": {
-          "name": "Pirata bruto",
+          "name": "Matón Pirata",
           "text": "Sin Habilidad adicional."
         },
         "ingenious-device": {
-          "name": "Dispositivo ingenioso",
-          "text": "Esta ubicación obtiene una acción de Mover un Héroe."
+          "name": "Mecanismo ingenioso",
+          "text": "Esta ubicación te ofrece esta acción extra:"
         },
         "mr-starkey": {
           "name": "Sr. Starkey",
-          "text": "Cuando juegues al Sr. Starkey, puedes mover un Héroe de su ubicación a una ubicación adyacente desbloqueada."
+          "text": "Cuando juegas el Sr. Starkey, puedes mover un Héroe de su ubicación a otra ubicación adyacente que no esté bloqueada."
         },
         "never-land-map": {
           "name": "Mapa de Nunca Jamás",
-          "text": "Cuando juegues Mapa de Nunca Jamás, desbloquea el Árbol del Ahorcado. Cuando juegues un Objeto, puedes descartar Mapa de Nunca Jamás en lugar de pagar el Coste del Objeto."
+          "text": "Cuando juegues Mapa de Nunca Jamás, desbloquea el Árbol del Ahorcado. Cuando juegues un Objeto, puedes descartar el Mapa de Nunca Jamás en vez de pagar el Precio del Objeto."
         },
         "smee": {
-          "name": "Smee",
-          "text": "Smee obtiene +2 de Fuerza si está en el Jolly Roger."
+          "name": "Sr. Smee",
+          "text": "El Sr. Smee obtiene +2 Fuerza si está en el Jolly Roger."
         },
         "pixie-dust": {
           "name": "Polvo de hada",
-          "text": "Cuando juegues Polvo de hada, vincúlalo a un Héroe. Ese Héroe obtiene +2 de Fuerza."
+          "text": "Cuando juegues el Polvo de Hada, únelo a un Héroe. Ese Héroe recibe +2 Fuerza."
         },
         "lost-boys": {
           "name": "Niños Perdidos",
-          "text": "Al realizar una acción de Vencer para derrotar a los Niños Perdidos, debes usar al menos dos Aliados."
+          "text": "Cuando se lleve a cabo la acción Vencer para derrotar a los Niños Perdidos, se deben utilizar al menos dos Aliados."
         },
         "splitting-headache": {
-          "name": "Dolor de cabeza",
+          "name": "Gran jaqueca",
           "text": "Descarta un Objeto del Reino del Capitán Garfio."
         },
         "taunt": {
-          "name": "Provocación",
-          "text": "Cuando juegues Provocación, vincúlala a un Héroe. El Capitán Garfio debe derrotar a los Héroes con Provocación antes de derrotar a otros Héroes."
+          "name": "Burla",
+          "text": "Cuando juegues Burla, únela a un Héroe. El Capitán Garfio deberá derrotar a los Héroes con Burla antes de derrotar a otros Héroes."
         },
         "john": {
           "name": "Juan",
-          "text": "Juan obtiene +1 de Fuerza si tiene algún Objeto vinculado."
+          "text": "Juan recibe +1 Fuerza si tiene algún Objeto unido a él."
         },
         "michael": {
           "name": "Miguel",
-          "text": "Miguel obtiene +1 de Fuerza por cada ubicación del Reino del Capitán Garfio que contenga un Héroe, incluida la ubicación de Miguel."
+          "text": "Miguel recibe +1 Fuerza por cada ubicación que haya en el Reino del Capitán Garfio que tenga un Héroe, incluida la ubicación de Miguel."
         },
         "peter-pan": {
           "name": "Peter Pan",
-          "text": "Cuando reveles a Peter Pan, DEBES JUGARLO INMEDIATAMENTE en el Árbol del Ahorcado, aunque esté bloqueado. Descarta cualquier otra carta de Destino revelada durante esta acción."
+          "text": "Cuando Peter Pan sea revelado, DEBES JUGARLO INMEDIATAMENTE en el Árbol del Ahorcado, incluso aunque esté bloqueado."
         },
         "tick-tock": {
           "name": "Tic Tac",
-          "text": "Si el Capitán Garfio se mueve a la ubicación de Tic Tac, debe descartar su mano inmediatamente."
+          "text": "Si el Capitán Garfio se mueve a la ubicación de Tic Tac, el Capitán Garfio debe descartar su mano inmediatamente."
         },
         "tinker-bell": {
           "name": "Campanilla",
@@ -771,7 +771,7 @@
         },
         "wendy": {
           "name": "Wendy",
-          "text": "Todos los demás Héroes del Reino del Capitán Garfio obtienen +1 de Fuerza."
+          "text": "Todos los demás Héroes que estén en el Reino del Capitán Garfio reciben +1 Fuerza."
         }
       }
     }

@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import styles from './ConfirmEmailPage.module.scss';
+
+type ConfirmationStatus =
+  | 'loading'
+  | 'success'
+  | 'expired'
+  | 'invalid'
+  | 'error';
 
 export function ConfirmEmailPage() {
   const [searchParams] = useSearchParams();
-  const [status, setStatus] = useState('loading');
+  const navigate = useNavigate();
+
+  const [status, setStatus] = useState<ConfirmationStatus>('loading');
 
   useEffect(() => {
     const token = searchParams.get('token');
@@ -41,21 +51,82 @@ export function ConfirmEmailPage() {
     confirmEmail();
   }, [searchParams]);
 
-  if (status === 'loading') {
-    return <p>Confirming your email...</p>;
-  }
+  const content = {
+    loading: {
+      icon: '✦',
+      title: 'Confirming your email...',
+      message:
+        'The magic is working. Please wait while we verify your account.',
+      className: styles.loading,
+    },
 
-  if (status === 'success') {
-    return <p>Email confirmed successfully!</p>;
-  }
+    success: {
+      icon: '✓',
+      title: 'Welcome, Villain!',
+      message:
+        'Your email has been confirmed successfully. Your journey into the world of Villainous can now begin.',
+      className: styles.success,
+    },
 
-  if (status === 'expired') {
-    return <p>This confirmation link has expired.</p>;
-  }
+    expired: {
+      icon: '⌛',
+      title: 'The spell has expired',
+      message:
+        'This confirmation link is no longer valid. Please request a new confirmation email.',
+      className: styles.warning,
+    },
 
-  if (status === 'invalid') {
-    return <p>This confirmation link is invalid.</p>;
-  }
+    invalid: {
+      icon: '✕',
+      title: 'Something went wrong',
+      message: 'This confirmation link is invalid or could not be found.',
+      className: styles.error,
+    },
 
-  return <p>Something went wrong.</p>;
+    error: {
+      icon: '!',
+      title: 'The magic failed',
+      message:
+        'We could not confirm your email right now. Please try again later.',
+      className: styles.error,
+    },
+  }[status];
+
+  return (
+    <main className={styles.page}>
+      <div className={styles.backgroundGlow} />
+
+      <section className={styles.card}>
+        <div className={`${styles.icon} ${content.className}`}>
+          {content.icon}
+        </div>
+
+        <h1 className={styles.title}>{content.title}</h1>
+
+        <p className={styles.message}>{content.message}</p>
+
+        {status === 'loading' && (
+          <div className={styles.loadingIndicator}>
+            <span />
+            <span />
+            <span />
+          </div>
+        )}
+
+        {status !== 'loading' && (
+          <>
+            <div className={styles.divider}>
+              <span />
+              ✦
+              <span />
+            </div>
+
+            <button className={styles.button} onClick={() => navigate('/')}>
+              Back to Login
+            </button>
+          </>
+        )}
+      </section>
+    </main>
+  );
 }

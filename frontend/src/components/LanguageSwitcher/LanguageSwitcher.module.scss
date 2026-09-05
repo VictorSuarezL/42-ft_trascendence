@@ -1,39 +1,103 @@
 .languageButton {
-  width: var(--size-language-button);
-  height: var(--size-language-button);
+  display: flex;
+  align-items: center;
+  gap: 9px;
 
-  padding: 0;
-  border: none;
-  border-radius: 50%;
+  height: 38px;
+  padding: 4px 10px 4px 5px;
 
-  overflow: hidden;
+  border: 1px solid rgba(197, 108, 255, 0.2);
+  border-radius: 20px;
+
+  background: rgba(8, 6, 13, 0.55);
+
+  color: rgba(255, 255, 255, 0.7);
+
+  backdrop-filter: blur(12px);
+
   cursor: pointer;
 
-  box-shadow: var(--shadow-button);
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.25),
+    inset 0 0 15px rgba(170, 59, 255, 0.03);
 
   transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
 
   &:hover {
-    transform: scale(1.08);
-    box-shadow: var(--shadow-button-hover);
+    border-color: rgba(197, 108, 255, 0.5);
+
+    background: rgba(25, 12, 38, 0.75);
+
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.35),
+      0 0 15px rgba(170, 59, 255, 0.12);
+
+    transform: translateY(-1px);
   }
 
   &:active {
-    transform: scale(0.95);
+    transform: translateY(0) scale(0.97);
   }
 }
 
+/* =========================
+   FLAG
+   ========================= */
+
 .flag {
+  width: 27px;
+  height: 27px;
+
+  flex-shrink: 0;
+
   display: block;
 
-  width: 100%;
-  height: 100%;
-
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
 
-  transition: all 0.25s ease;
+  overflow: hidden;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    inset 0 0 3px rgba(255, 255, 255, 0.2);
+
+  transition: transform 0.25s ease;
+}
+
+.languageButton:hover .flag {
+  transform: rotate(8deg);
+}
+
+/* =========================
+   LANGUAGE
+   ========================= */
+
+.languageCode {
+  min-width: 20px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* =========================
+   CHEVRON
+   ========================= */
+
+.chevron {
+  margin-top: -3px;
+
+  color: rgba(197, 108, 255, 0.7);
+
+  font-size: 13px;
+  line-height: 1;
 }
 
 /* =========================
@@ -58,7 +122,6 @@
 
 .uk {
   background:
-    /* Cruz blanca vertical */
     linear-gradient(
       to right,
       transparent 38%,
@@ -66,29 +129,46 @@
       var(--white) 62%,
       transparent 62%
     ),
-    /* Cruz blanca horizontal */
     linear-gradient(
-        to bottom,
-        transparent 38%,
-        var(--white) 38%,
-        var(--white) 62%,
-        transparent 62%
-      ),
-    /* Cruz roja vertical */
+      to bottom,
+      transparent 38%,
+      var(--white) 38%,
+      var(--white) 62%,
+      transparent 62%
+    ),
     linear-gradient(
-        to right,
-        transparent 45%,
-        var(--flag-uk-red) 45%,
-        var(--flag-uk-red) 55%,
-        transparent 55%
-      ),
-    /* Cruz roja horizontal */
+      to right,
+      transparent 45%,
+      var(--flag-uk-red) 45%,
+      var(--flag-uk-red) 55%,
+      transparent 55%
+    ),
     linear-gradient(
-        to bottom,
-        transparent 45%,
-        var(--flag-uk-red) 45%,
-        var(--flag-uk-red) 55%,
-        transparent 55%
-      ),
+      to bottom,
+      transparent 45%,
+      var(--flag-uk-red) 45%,
+      var(--flag-uk-red) 55%,
+      transparent 55%
+    ),
     var(--flag-uk-blue);
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+  .languageButton {
+    height: 34px;
+    padding-right: 8px;
+  }
+
+  .flag {
+    width: 24px;
+    height: 24px;
+  }
+
+  .languageCode {
+    font-size: 9px;
+  }
 }

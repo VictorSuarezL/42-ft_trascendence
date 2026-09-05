@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import styles from './ProfilePage.module.scss';
-// import ChatTest from '../../components/Chat';
-// import { Card } from '../../components/Card/Card';
+import { useToast } from '../../contexts/ToastContext';
 
 export function ProfilePage() {
   const { user, loading, logout } = useUser();
@@ -15,6 +14,9 @@ export function ProfilePage() {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const { showToast } = useToast();
+
   return (
     <div className={styles.profile}>
       <h1>Welcome to the Profile Page!</h1>
@@ -35,9 +37,44 @@ export function ProfilePage() {
         <span>Last Name: {user?.lastName}</span>
         <span>Display Name: {user?.displayName}</span>
         <button onClick={handleLogout}>Log out!</button>
-        <ChatTest />
-        {/* <Card /> */}
+        <button
+          onClick={() =>
+            showToast({
+              message: 'El juego se ha creado correctamente.',
+              type: 'info',
+              location: 'TOP-RIGHT',
+              durationMs: 3000,
+            })
+          }
+        >
+          Mostrar toast info
+        </button>
+        <button
+          onClick={() =>
+            showToast({
+              message: 'El juego se ha creado correctamente.',
+              type: 'success',
+              location: 'TOP-RIGHT',
+              durationMs: 3000,
+            })
+          }
+        >
+          Mostrar toast success
+        </button>
+        <button
+          onClick={() =>
+            showToast({
+              message: 'El juego se ha creado correctamente.',
+              type: 'error',
+              location: 'TOP-RIGHT',
+              durationMs: 3000,
+            })
+          }
+        >
+          Mostrar toast error
+        </button>
       </div>
+      *{' '}
     </div>
   );
 }

@@ -64,20 +64,18 @@ interface VillainFile {
   decks: Record<string, DeckFile>;
 }
 
-type SharedTranslationFile = Record<string, Record<string, string>>;
+type SharedTranslationFile = Record<string, Record<string, string>>; // key → language → value
 
-async function seedSharedTranslations(filename: string, namespace: string) {
+async function seedSharedTranslations(filename: string) {
   const fileUrl = new URL(
-    `../../json/translations/${filename}`,
+    `../../json/${filename}`,
     import.meta.url,
   );
   const content = await readFile(fileUrl, 'utf-8');
   const translations = JSON.parse(content) as SharedTranslationFile;
 
-  for (const [language, values] of Object.entries(translations)) {
-    for (const [translationKey, value] of Object.entries(values)) {
-      const key = `${namespace}.${translationKey}`;
-
+  for (const [key, languages] of Object.entries(translations)) {
+    for (const [language, value] of Object.entries(languages)) {
       await prisma.translation.upsert({
         where: {
           key_language: {
@@ -101,14 +99,15 @@ async function seedSharedTranslations(filename: string, namespace: string) {
 }
 
 async function main() {
-  await seedSharedTranslations('card-types.json', 'cardTypes');
+  await seedSharedTranslations('translations/game.json');
+  await seedSharedTranslations('content.json');
 
   const directoryUrl = new URL('../../json/villains/', import.meta.url);
 
   const files = await readdir(directoryUrl);
 
-  // const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
-  const jsonFiles = ['scar.json'];
+  const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
+  // const jsonFiles = ['scar.json'];
 
   for (const file of jsonFiles) {
     const fileUrl = new URL(file, directoryUrl);

@@ -1,8 +1,14 @@
 import { Router } from 'express';
-import { getTranslations } from '../controllers/translations.controller';
+import { TranslationsController } from '../controllers/translations.controller';
+import type { TranslationModelContract } from '../types/translations.types';
 
-const router = Router();
+export const createTranslationsRouter = (
+  translationsModel: TranslationModelContract,
+) => {
+  const translationsRouter = Router();
+  const translationsController = new TranslationsController(translationsModel);
 
-router.get('/:language', getTranslations);
+  translationsRouter.get('/:language', translationsController.getTranslations);
 
-export default router;
+  return translationsRouter;
+};

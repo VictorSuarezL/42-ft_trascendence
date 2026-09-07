@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { prisma } from '../utils/prisma';
+import type { TranslationModelContract } from '../types/translations.types';
 
 function buildTranslationObject(
   translations: {
@@ -31,23 +31,17 @@ function buildTranslationObject(
   return result;
 }
 
-export async function getTranslations(
-  req: Request<{ language: string }>,
-  res: Response,
-) {
-  const { language } = req.params;
+export class TranslationsController {
+  constructor(private translationsModel: TranslationModelContract) {}
 
-  const translations = await prisma.translation.findMany({
-    where: {
-      language,
-    },
-    select: {
-      key: true,
-      value: true,
-    },
-  });
+  getTranslations = async (
+    req: Request<{ language: string }>,
+    res: Response,
+  ) => {
+    const { language } = req.params;
+    const translations = await this.translationsModel.getByLanguage(language);
+    const data = buildTranslationObject(translations);
 
-  const data = buildTranslationObject(translations);
-
-  res.json(data);
+    return res.json(data);
+  };
 }

@@ -64,13 +64,51 @@ interface VillainFile {
   decks: Record<string, DeckFile>;
 }
 
+type SharedTranslationFile = Record<string, Record<string, string>>;
+
+async function seedSharedTranslations(filename: string, namespace: string) {
+  const fileUrl = new URL(
+    `../../json/translations/${filename}`,
+    import.meta.url,
+  );
+  const content = await readFile(fileUrl, 'utf-8');
+  const translations = JSON.parse(content) as SharedTranslationFile;
+
+  for (const [language, values] of Object.entries(translations)) {
+    for (const [translationKey, value] of Object.entries(values)) {
+      const key = `${namespace}.${translationKey}`;
+
+      await prisma.translation.upsert({
+        where: {
+          key_language: {
+            key,
+            language,
+          },
+        },
+        update: {
+          value,
+        },
+        create: {
+          key,
+          language,
+          value,
+        },
+      });
+
+      console.log(`Shared translation imported: ${key}/${language}`);
+    }
+  }
+}
+
 async function main() {
+  await seedSharedTranslations('card-types.json', 'cardTypes');
+
   const directoryUrl = new URL('../../json/villains/', import.meta.url);
 
   const files = await readdir(directoryUrl);
 
-  const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
-  // const jsonFiles = ['scar.json'];
+  // const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
+  const jsonFiles = ['scar.json'];
 
   for (const file of jsonFiles) {
     const fileUrl = new URL(file, directoryUrl);

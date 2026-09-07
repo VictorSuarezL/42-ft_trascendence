@@ -1,4 +1,8 @@
 {
+  "homePage.viewprofile": {
+    "en": "View Profile",
+    "es": "Ver perfil"
+  },
   "homePage.description": {
     "en": "This is the main content of the home page.",
     "es": "Este es el contenido principal de la página de inicio."

@@ -5,6 +5,7 @@ export interface TranslationData {
     login: string;
     viewprofile: string;
   };
+  cardTypes: Record<string, string>;
 }
 
 export const SOCKET_EVENTS = {

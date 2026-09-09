@@ -67,3 +67,11 @@ GET {{backend}}/cards/injustice
 ### Get card by id
 
 GET {{backend}}/cards/injustice?lang=es
+
+### GET translations by keys
+
+GET {{backend}}/translations/es?namespace=homePage
+
+### Get several translations by keys
+
+GET {{backend}}/translations/es?namespace=homePage,cardTypes

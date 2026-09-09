@@ -1,5 +1,11 @@
 export interface TranslationData {
-  // Generado por el BE
+  homePage: {
+    title: string;
+    description: string;
+    login: string;
+    viewprofile: string;
+  };
+  cardTypes: Record<string, string>;
 }
 
 export const SOCKET_EVENTS = {

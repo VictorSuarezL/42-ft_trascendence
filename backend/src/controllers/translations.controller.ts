@@ -1,11 +1,8 @@
 import type { Request, Response } from 'express';
-import { prisma } from '../utils/prisma';
+import type { Translation, TranslationModelContract } from '../types/translations.types';
 
 function buildTranslationObject(
-  translations: {
-    key: string;
-    value: string;
-  }[],
+  translations: { key: string; value: string }[],
 ) {
   const result: Record<string, any> = {};
 
@@ -31,23 +28,34 @@ function buildTranslationObject(
   return result;
 }
 
-export async function getTranslations(
-  req: Request<{ language: string }>,
-  res: Response,
-) {
-  const { language } = req.params;
+export class TranslationsController {
+  constructor(private translationsModel: TranslationModelContract) {}
 
-  const translations = await prisma.translation.findMany({
-    where: {
-      language,
-    },
-    select: {
-      key: true,
-      value: true,
-    },
-  });
+  getTranslations = async (
+    req: Request<{ language: string }>,
+    res: Response,
+  ) => {
+    const { language } = req.params;
+    const namespace = req.query.namespace;
 
-  const data = buildTranslationObject(translations);
+    if (typeof namespace !== 'string') {
+      const translations = await this.translationsModel.getByLanguage(language);
 
-  res.json(data);
+      return res.json(buildTranslationObject(translations));
+    }
+
+    const namespaces = namespace.split(',');
+    const translations: Translation[] = [];
+
+    for (const name of namespaces) {
+      const group = await this.translationsModel.getByNamespace(
+        name.trim(),
+        language,
+      );
+
+      translations.push(...group);
+    }
+
+    return res.json(buildTranslationObject(translations));
+  };
 }

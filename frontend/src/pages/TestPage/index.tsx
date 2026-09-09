@@ -12,6 +12,7 @@ import type {
   VillainDetail,
 } from '../../../../backend/src/types/villains.types.ts';
 import styles from './TestPage.module.scss';
+import { useTranslation } from '../../hooks/useTranslation';
 // interface VillainImage {
 //   id: string;
 //   path: string;
@@ -183,10 +184,7 @@ export function TestingVillainPage() {
             <article className={styles.testPanel} key={deck.type}>
               <h3>{deck.type}</h3>
               <p>
-                {deck.cards.reduce(
-                  (total, card) => total + card.quantity,
-                  0,
-                )}{' '}
+                {deck.cards.reduce((total, card) => total + card.quantity, 0)}{' '}
                 cartas · {deck.cards.length} cartas diferentes
               </p>
 
@@ -226,7 +224,7 @@ export function TestingVillainPage() {
 export function TestingCardPage() {
   const { id } = useParams<{ id: string }>();
   const { language } = useUser();
-
+  const translations = useTranslation(language, 'cardTypes');
   const [card, setCard] = useState<CardDetail | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -297,9 +295,7 @@ export function TestingCardPage() {
         </figure>
 
         <figure className={styles.cardFigure}>
-          <figcaption className={styles.cardCaption}>
-            Composición
-          </figcaption>
+          <figcaption className={styles.cardCaption}>Composición</figcaption>
 
           <div className={styles.cardPreview}>
             <div className={styles.cardTop}>
@@ -326,7 +322,7 @@ export function TestingCardPage() {
                 </AutoFitText>
 
                 <span className={styles.cardType} data-card-part="type">
-                  {card.type}
+                  {translations?.cardTypes[card.type] ?? card.type}
                 </span>
 
                 {card.strength !== null && (

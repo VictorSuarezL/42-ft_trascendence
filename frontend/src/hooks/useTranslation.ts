@@ -3,8 +3,10 @@ import type { TranslationData } from '../types/types';
 
 export type Language = 'en' | 'es';
 
-async function fetchTranslationData(code: Language): Promise<TranslationData> {
-  const response = await fetch(`/api/translations/${code}`);
+async function fetchTranslationData(code: Language, namespace: string): Promise<TranslationData> {
+  const response = await fetch(
+    `/api/translations/${code}?namespace=${encodeURIComponent(namespace)}`,
+  );
 
   if (!response.ok) {
     throw new Error('Error fetching translations');
@@ -13,17 +15,17 @@ async function fetchTranslationData(code: Language): Promise<TranslationData> {
   return response.json();
 }
 
-export function useTranslation(code: Language) {
+export function useTranslation(code: Language, namespace: string) {
   const [data, setData] = useState<TranslationData | null>(null);
 
   useEffect(() => {
-    fetchTranslationData(code)
+    fetchTranslationData(code, namespace)
       .then(setData)
       .catch((error) => {
         console.error(error);
         setData(null);
       });
-  }, [code]);
+  }, [code, namespace]);
 
   return data;
 }

@@ -1,0 +1,70 @@
+{
+  "actions.PLAY_CARD": {
+    "en": "Play a Card",
+    "es": "Jugar una carta"
+  },
+  "actions.GAIN_POWER": {
+    "en": "Gain {amount} Power",
+    "es": "Obtener {amount} de Poder"
+  },
+  "actions.FATE": {
+    "en": "Fate",
+    "es": "Destino"
+  },
+  "actions.VANQUISH": {
+    "en": "Vanquish",
+    "es": "Derrotar"
+  },
+  "actions.DISCARD_CARDS": {
+    "en": "Discard Cards",
+    "es": "Descartar cartas"
+  },
+  "actions.MOVE_ITEM_OR_ALLY": {
+    "en": "Move an Item or Ally",
+    "es": "Mover un Objeto o Aliado"
+  },
+  "actions.MOVE_HERO": {
+    "en": "Move a Hero",
+    "es": "Mover un Héroe"
+  },
+  "actions.ACTIVATE": {
+    "en": "Activate",
+    "es": "Activar"
+  },
+  "cardTypes.ALLY": {
+    "en": "Ally",
+    "es": "Aliado"
+  },
+  "cardTypes.CONDITION": {
+    "en": "Condition",
+    "es": "Condición"
+  },
+  "cardTypes.CURSE": {
+    "en": "Curse",
+    "es": "Maldición"
+  },
+  "cardTypes.EFFECT": {
+    "en": "Effect",
+    "es": "Efecto"
+  },
+  "cardTypes.HERO": {
+    "en": "Hero",
+    "es": "Héroe"
+  },
+  "cardTypes.ITEM": {
+    "en": "Item",
+    "es": "Objeto"
+  },
+  "cardTypes.TITAN": {
+    "en": "Titan",
+    "es": "Titán"
+  },
+  "decks.VILLAIN": {
+    "en": "Villain deck",
+    "es": "Mazo de Villano"
+  },
+  "decks.FATE": {
+    "en": "Fate deck",
+    "es": "Mazo de Destino"
+  }
+}

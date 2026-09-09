@@ -64,7 +64,44 @@ interface VillainFile {
   decks: Record<string, DeckFile>;
 }
 
+type SharedTranslationFile = Record<string, Record<string, string>>; // key → language → value
+
+async function seedSharedTranslations(filename: string) {
+  const fileUrl = new URL(
+    `../../json/${filename}`,
+    import.meta.url,
+  );
+  const content = await readFile(fileUrl, 'utf-8');
+  const translations = JSON.parse(content) as SharedTranslationFile;
+
+  for (const [key, languages] of Object.entries(translations)) {
+    for (const [language, value] of Object.entries(languages)) {
+      await prisma.translation.upsert({
+        where: {
+          key_language: {
+            key,
+            language,
+          },
+        },
+        update: {
+          value,
+        },
+        create: {
+          key,
+          language,
+          value,
+        },
+      });
+
+      console.log(`Shared translation imported: ${key}/${language}`);
+    }
+  }
+}
+
 async function main() {
+  await seedSharedTranslations('translations/game.json');
+  await seedSharedTranslations('content.json');
+
   const directoryUrl = new URL('../../json/villains/', import.meta.url);
 
   const files = await readdir(directoryUrl);

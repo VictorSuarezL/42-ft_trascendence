@@ -224,7 +224,7 @@ export function TestingVillainPage() {
 export function TestingCardPage() {
   const { id } = useParams<{ id: string }>();
   const { language } = useUser();
-  const translations = useTranslation(language);
+  const translations = useTranslation(language, 'cardTypes');
   const [card, setCard] = useState<CardDetail | null>(null);
   const [error, setError] = useState<string | null>(null);
 

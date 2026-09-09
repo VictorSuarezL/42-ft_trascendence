@@ -20,4 +20,11 @@ export class TranslationsJsonModel {
 
     return result;
   }
+
+  static async getByNamespace(namespace: string[], language: string): Promise<Translation[]> {
+    
+    const translations = await this.getByLanguage(language);
+
+    return translations.filter(({ key }) => key.startsWith(`${namespace}.`));
+  }
 }

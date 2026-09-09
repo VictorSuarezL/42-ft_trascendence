@@ -6,7 +6,7 @@ import { useUser } from '../../contexts/UserContext';
 export function HomePage() {
   const navigate = useNavigate();
   const { language } = useUser();
-  const translations = useTranslation(language);
+  const translations = useTranslation(language, 'homePage,cardTypes');
 
   if (!translations) {
     return <p>...</p>;

@@ -1,11 +1,8 @@
 import type { Request, Response } from 'express';
-import type { TranslationModelContract } from '../types/translations.types';
+import type { Translation, TranslationModelContract } from '../types/translations.types';
 
 function buildTranslationObject(
-  translations: {
-    key: string;
-    value: string;
-  }[],
+  translations: { key: string; value: string }[],
 ) {
   const result: Record<string, any> = {};
 
@@ -39,9 +36,26 @@ export class TranslationsController {
     res: Response,
   ) => {
     const { language } = req.params;
-    const translations = await this.translationsModel.getByLanguage(language);
-    const data = buildTranslationObject(translations);
+    const namespace = req.query.namespace;
 
-    return res.json(data);
+    if (typeof namespace !== 'string') {
+      const translations = await this.translationsModel.getByLanguage(language);
+
+      return res.json(buildTranslationObject(translations));
+    }
+
+    const namespaces = namespace.split(',');
+    const translations: Translation[] = [];
+
+    for (const name of namespaces) {
+      const group = await this.translationsModel.getByNamespace(
+        name.trim(),
+        language,
+      );
+
+      translations.push(...group);
+    }
+
+    return res.json(buildTranslationObject(translations));
   };
 }

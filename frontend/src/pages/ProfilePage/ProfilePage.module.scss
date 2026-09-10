@@ -1,20 +1,106 @@
 .profile {
-  border: 1px solid red;
   display: flex;
-  align-items: center;
   flex-direction: column;
-}
-
-.profileImage {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 28px;
+  padding: 32px 20px;
 }
 
 .userInfo {
+  width: min(760px, 100%);
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.avatarSection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.avatarEditButton {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.avatarWrapper:hover .avatarEditButton {
+  opacity: 1;
+}
+
+.avatarEditIcon {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.fields {
+  width: 100%;
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+}
+
+.fieldLabel {
+  font-weight: 700;
+  text-align: right;
+  opacity: 0.85;
+}
+
+.fieldValue,
+.fieldInput {
+  width: 100%;
+}
+
+.fieldInput {
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }

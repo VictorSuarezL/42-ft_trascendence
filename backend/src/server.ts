@@ -33,6 +33,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 app.use('/assets', express.static(resolve(process.cwd(), 'assets')));
+app.use('/uploads', express.static(resolve(process.cwd(), 'uploads')));
 
 app.get('/health', (_req, res) => {
   res.json({

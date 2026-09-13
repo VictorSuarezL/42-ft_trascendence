@@ -123,3 +123,41 @@ export async function updateCurrentUser(req: Request, res: Response) {
     return res.status(500).json({ error: 'Could not update user' });
   }
 }
+
+export async function deleteCurrentUser(req: Request, res: Response) {
+  try {
+    const sessionId = req.cookies.session;
+
+    if (!sessionId) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const session = await prisma.session.findUnique({
+      where: { id: sessionId },
+      include: { user: true },
+    });
+
+    if (!session || session.expiresAt < new Date()) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const userId = session.userId;
+
+    // Delete the user's sessions
+    await prisma.session.deleteMany({
+      where: { userId },
+    });
+
+    // Delete the user
+    await prisma.user.delete({
+      where: { id: userId },
+    });
+
+    res.clearCookie('session');
+
+    return res.json({ message: 'User deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Could not delete user' });
+  }
+}

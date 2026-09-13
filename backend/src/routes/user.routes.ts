@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import { resolve } from 'node:path';
 import {
+  deleteCurrentUser,
   getUsers,
   loginUser,
   updateCurrentUser,
@@ -25,5 +26,6 @@ const upload = multer({ storage });
 router.get('/', getUsers);
 router.post('/login', loginUser);
 router.patch('/me', upload.single('image'), updateCurrentUser);
+router.delete('/me', deleteCurrentUser);
 
 export default router;

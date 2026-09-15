@@ -83,6 +83,28 @@ export function ProfilePage() {
     navigate('/');
   };
 
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete your account? This action cannot be undone.',
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    const response = await fetch('/api/users/me', {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      console.error('Failed to delete account');
+      return;
+    }
+    await logout();
+    navigate('/');
+  };
+
   const handleStartEdit = () => {
     syncFormWithUser();
     setEditMode(true);
@@ -277,6 +299,9 @@ export function ProfilePage() {
               <button type="submit">Save</button>
               <button type="button" onClick={handleCancelEdit}>
                 Cancel
+              </button>
+              <button type="button" onClick={handleDeleteAccount}>
+                Delete Account
               </button>
             </>
           )}

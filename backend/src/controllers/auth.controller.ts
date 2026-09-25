@@ -71,11 +71,7 @@ export async function fortyTwoCallback(req: Request, res: Response) {
         fortyTwoId: fortyTwoUser.id,
       },
       update: {
-        email: fortyTwoUser.email,
-        firstName: fortyTwoUser.first_name,
-        lastName: fortyTwoUser.last_name,
-        displayName: fortyTwoUser.displayname,
-        image: fortyTwoUser.image?.link,
+        emailVerified: true,
       },
       create: {
         fortyTwoId: fortyTwoUser.id,

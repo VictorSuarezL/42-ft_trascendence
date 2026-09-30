@@ -22,6 +22,87 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Horror';
+  src: url('./fonts/UnfinishedScream/UnfinishedScreamRegular.otf')
+    format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cabin';
+  src: url('./fonts/Cabin/Cabin-Regular-TTF.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cabin';
+  src: url('./fonts/Cabin/Cabin-Bold-TTF.ttf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant';
+  src: url('./fonts/Cormorant/CormorantSC-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Esteban';
+  src: url('./fonts/Esteban/Esteban-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter/Inter_28pt-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter/Inter_28pt-SemiBold.ttf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter/Inter_28pt-ExtraLight.ttf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pirata';
+  src: url('./fonts/Pirata_one/PirataOne-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Walshes';
+  src: url('./fonts/Walshes/Walshes.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* =========================
      COLORS
@@ -50,6 +131,19 @@
   --flag-uk-red: #cf142b;
 
   --white: #ffffff;
+
+  /* CARDS*/
+
+  --villain-card: #d3ac69;
+
+  --cardtype-ally: #f43721;
+  --cardtype-hero: #f6a52c;
+  --cardtype-item: #27a2d8;
+  --cardtype-effect: #96b508;
+  --cardtype-condition: #c46ca0;
+  --cardtype-curse: #8e578b;
+  --cardtype-titan: #c4accb;
+
 
   /* =========================
      SHADOWS

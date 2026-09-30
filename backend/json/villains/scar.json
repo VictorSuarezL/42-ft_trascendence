@@ -521,7 +521,8 @@
     "en": {
       "name": "Scar",
       "name": "Scar",
-      "objective": "Scar must find and defeat Mufasa, and then defeat other Heroes in order to have at least 15 Strength in the Succession pile. He can only win at the start of his turn.",
+      "subtitle": "Long live the king.",
+      "objective": "Start your turn with at least 15 Strength in the Succession pile.",
       "locations": {
         "pride-rock": "Pride Rock",
         "the-savanna": "The Savanna",
@@ -625,6 +626,7 @@
     },
     "es": {
       "name": "Scar",
+      "subtitle": "Larga vida al rey.",
       "objective": "Empezar tu turno con al menos 15 de Fuerza en la pila de Sucesión.",
       "locations": {
         "pride-rock": "Roca del Rey",

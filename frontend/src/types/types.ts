@@ -5,7 +5,14 @@ export interface TranslationData {
     login: string;
     viewprofile: string;
   };
+
+  howToPage: Record<string, string>;
+
+  decks: Record<string, string>;
+
   cardTypes: Record<string, string>;
+
+  actions: Record<string, string>;
 }
 
 export const SOCKET_EVENTS = {

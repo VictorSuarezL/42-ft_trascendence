@@ -633,7 +633,8 @@
   "translations": {
     "en": {
       "name": "Hades",
-      "objective": "Hades must play Titans and move them so he has at least three untrapped Titans at Mount Olympus. He can only win at the start of his turn.",
+      "subtitle": "Everybody's got a weakness.",
+      "objective": "Start your turn with three Titans at Mount Olympus.",
       "locations": {
         "the-underworld": "The Underworld",
         "thebes": "Thebes",
@@ -765,6 +766,7 @@
     },
     "es": {
       "name": "Hades",
+      "subtitle": "Todo el mundo tiene flaquezas.",
       "objective": "Empezar tu turno con tres Titanes en el Monte Olimpo.",
       "locations": {
         "the-underworld": "El Inframundo",

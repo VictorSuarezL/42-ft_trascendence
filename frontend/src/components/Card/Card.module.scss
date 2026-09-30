@@ -1,0 +1,339 @@
+
+.card {
+  position: relative;
+
+  width: 333.34px;
+  height: 473px;
+
+  overflow: hidden;
+
+  border: 2px solid #222;
+  border-radius: 16px;
+
+  background: #000;
+  color: #fff;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+/* =========================================
+   PARTE SUPERIOR
+   ========================================= */
+
+.top {
+  position: relative;
+
+  width: 100%;
+  height: 50%;
+
+  overflow: hidden;
+}
+
+.imagePath {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  /*
+   * Hace que la imagen rellene TODO el espacio.
+   * Puede recortar los bordes de la imagen,
+   * pero nunca la deforma.
+   */
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================
+   PARTE INFERIOR
+   ========================================= */
+
+.bottom {
+  position: relative;
+
+  width: 100%;
+  height: 50%;
+
+  overflow: hidden;
+}
+
+.bottomImage {
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================
+   CONTENIDO
+   ========================================= */
+
+.content {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 18px;
+}
+
+
+/* =========================================
+   TÍTULO
+   ========================================= */
+
+.titleContainer {
+  width: 100%;
+  max-width: 100%;
+
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.title {
+  width: max-content;
+
+  margin: 0;
+  padding: 0;
+  padding-top: 6px;
+
+  font-family: 'Esteban', Esteban-Regular;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  transform-origin: center center;
+
+  color: var(--villain-card);
+
+  flex-shrink: 0;
+}
+
+/* =========================================
+   DESCRIPCIÓN
+   ========================================= */
+
+.text {
+  /*
+   * Ocupa el espacio disponible entre
+   * el título y la zona inferior.
+   */
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  margin: 0;
+
+  padding: 15px 5px;
+
+  text-align: center;
+
+  font-family: 'Cabin', Cabin-Regular;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--villain-card);
+
+
+  /*
+   * Si el texto es muy largo,
+   * no rompe el diseño.
+   */
+  overflow: hidden;
+}
+
+
+.fateText {
+  color: #000;
+}
+
+/* =========================================
+   TIPO DE CARTA
+   ========================================= */
+
+.type {
+  position: absolute;
+
+  bottom: 2px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  max-width: 65%;
+
+  text-align: center;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+
+  font-family: 'Cabin', Cabin-Regular;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+
+/* =========================================
+   COLORES SEGÚN TIPO DE CARTA
+   ========================================= */
+
+.ally {
+  color: var(--cardtype-ally);
+}
+
+.effect {
+  color: var(--cardtype-effect);
+}
+
+.condition {
+  color: var(--cardtype-condition);
+}
+
+.hero {
+  color: var(--cardtype-hero);
+}
+
+.item {
+  color: var(--cardtype-item);
+}
+
+.curse {
+  color: var(--cardtype-curse);
+}
+
+.titan {
+  color: var(--cardtype-titan);
+}
+
+
+/* =========================================
+   VALOR
+   ========================================= */
+
+.strength {
+  position: absolute;
+
+  left: 11px;
+  bottom: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  font-family: 'Cabin', Cabin-Regular;
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  color: var(--villain-card);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .card {
+    width: 280px;
+    height: 397px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    padding-top: 5px;
+  }
+
+  .text {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    padding: 12px 5px;
+  }
+
+  .type {
+    bottom: 13px;
+    font-size: 0.8rem;
+  }
+
+  .strength {
+    left: 10px;
+    bottom: 8px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 1.1rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .card {
+    width: 250px;
+    height: 355px;
+  }
+
+  .content {
+    padding: 14px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+    padding-top: 4px;
+  }
+
+  .text {
+    font-size: 0.8rem;
+    line-height: 1.15;
+    padding: 10px 4px;
+  }
+
+  .type {
+    bottom: 11px;
+    font-size: 0.7rem;
+  }
+
+  .strength {
+    left: 7px;
+    bottom: 5px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 1rem;
+  }
+}

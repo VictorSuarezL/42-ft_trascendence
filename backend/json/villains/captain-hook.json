@@ -553,7 +553,8 @@
   "translations": {
     "en": {
       "name": "Captain Hook",
-      "objective": "Captain Hook must defeat Peter Pan at the Jolly Roger.",
+      "subtitle": "Double the powder and shorten the fuse!",
+      "objective": "Defeat Peter Pan at the Jolly Roger.",
       "locations": {
         "jolly-roger": "Jolly Roger",
         "skull-rock": "Skull Rock",
@@ -665,6 +666,7 @@
     },
     "es": {
       "name": "Capitán Garfio",
+      "subtitle": "¡Doblen la pólvora y acorten las mechas!",
       "objective": "Derrotar a Peter Pan en el Jolly Roger.",
       "locations": {
         "jolly-roger": "Jolly Roger",

@@ -15,7 +15,7 @@ model User {
   emailVerified Boolean @default(false)
 
   fortyTwoId  Int?    @unique
-  login       String?
+  login       String? @unique
   firstName   String?
   lastName    String?
   displayName String?

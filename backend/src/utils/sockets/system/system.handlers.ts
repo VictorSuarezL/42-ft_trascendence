@@ -1,12 +1,14 @@
 import type { Server, Socket } from 'socket.io';
 import { SOCKET_EVENTS } from '../socket.events';
 import { getUserRoom } from '../socket.rooms';
+import { markUserOffline, markUserOnline } from '../presence.store';
 
 export function registerSystemHandlers(io: Server, socket: Socket) {
   const userId = socket.data.user.id;
   const userRoom = getUserRoom(userId);
 
   socket.join(userRoom);
+  markUserOnline(userId, socket.id);
 
   console.log('[System] User joined room:', {
     userId,
@@ -24,6 +26,8 @@ export function registerSystemHandlers(io: Server, socket: Socket) {
   });
 
   socket.on('disconnect', (reason) => {
+    markUserOffline(userId, socket.id);
+
     console.log('[System] Socket disconnected:', {
       socketId: socket.id,
       userId,

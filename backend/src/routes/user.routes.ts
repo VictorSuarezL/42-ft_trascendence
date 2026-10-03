@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import {
   deleteCurrentUser,
   getUsers,
+  getUserByLogin,
   loginUser,
   updateCurrentUser,
 } from '../controllers/user.controller';
@@ -27,5 +28,6 @@ router.get('/', getUsers);
 router.post('/login', loginUser);
 router.patch('/me', upload.single('image'), updateCurrentUser);
 router.delete('/me', deleteCurrentUser);
+router.get('/:login', getUserByLogin);
 
 export default router;

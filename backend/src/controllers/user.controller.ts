@@ -4,6 +4,17 @@ import bcrypt from 'bcrypt';
 import { createSession } from '../services/session.services';
 import { unlink } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { isUserOnline } from '../utils/sockets/presence.store';
+
+const publicUserSelect = {
+  id: true,
+  login: true,
+  email: true,
+  firstName: true,
+  lastName: true,
+  displayName: true,
+  image: true,
+} as const;
 
 export async function getUsers(_req: Request, res: Response) {
   try {
@@ -19,6 +30,52 @@ export async function getUsers(_req: Request, res: Response) {
 
     return res.status(500).json({
       error: 'Could not get users',
+    });
+  }
+}
+
+export async function getUserByLogin(req: Request, res: Response) {
+  try {
+    const login =
+      typeof req.params.login === 'string' ? req.params.login.trim() : '';
+
+    if (!login) {
+      return res.status(400).json({
+        error: 'Login is required',
+      });
+    }
+
+    const user = await prisma.user.findFirst({
+      where: { login },
+      select: publicUserSelect,
+    });
+
+    if (!user && /^\d+$/.test(login)) {
+      const legacyUser = await prisma.user.findUnique({
+        where: { id: Number(login) },
+        select: publicUserSelect,
+      });
+
+      if (legacyUser) {
+        return res.json({
+          user: legacyUser,
+          isOnline: isUserOnline(legacyUser.id),
+        });
+      }
+    }
+
+    if (!user) {
+      return res.status(404).json({
+        error: 'User not found',
+      });
+    }
+
+    return res.json({ user, isOnline: isUserOnline(user.id) });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      error: 'Could not get user',
     });
   }
 }
@@ -97,6 +154,25 @@ export async function updateCurrentUser(req: Request, res: Response) {
     const { login, firstName, lastName, displayName } = req.body;
     const file = req.file as Express.Multer.File | undefined;
 
+    const normalizedLogin = typeof login === 'string' ? login.trim() : '';
+
+    if (!normalizedLogin) {
+      return res.status(400).json({
+        error: 'Login is required',
+      });
+    }
+
+    const existingUser = await prisma.user.findFirst({
+      where: { login: normalizedLogin },
+      select: { id: true },
+    });
+
+    if (existingUser && existingUser.id !== session.userId) {
+      return res.status(409).json({
+        error: 'Login is already taken',
+      });
+    }
+
     const oldImage = session.user.image;
     const imagePath = file ? `/uploads/${file.filename}` : undefined;
 
@@ -109,7 +185,7 @@ export async function updateCurrentUser(req: Request, res: Response) {
     const updatedUser = await prisma.user.update({
       where: { id: session.userId },
       data: {
-        ...(login !== undefined && { login }),
+        login: normalizedLogin,
         ...(firstName !== undefined && { firstName }),
         ...(lastName !== undefined && { lastName }),
         ...(displayName !== undefined && { displayName }),

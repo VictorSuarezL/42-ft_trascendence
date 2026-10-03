@@ -38,6 +38,7 @@ export function ProfilePage() {
 
   const [editMode, setEditMode] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
+  const [saveError, setSaveError] = useState('');
   const [formData, setFormData] = useState<ProfileFormState>({
     login: '',
     firstName: '',
@@ -60,6 +61,7 @@ export function ProfilePage() {
     });
 
     setPreviewImage('');
+    setSaveError('');
   }, [user]);
 
   const syncFormWithUser = () => {
@@ -76,6 +78,7 @@ export function ProfilePage() {
     });
 
     setPreviewImage('');
+    setSaveError('');
   };
 
   const handleLogout = async () => {
@@ -142,8 +145,13 @@ export function ProfilePage() {
       return;
     }
 
+    if (!formData.login.trim()) {
+      setSaveError('Login is required.');
+      return;
+    }
+
     const payload = new FormData();
-    payload.append('login', formData.login);
+    payload.append('login', formData.login.trim());
     payload.append('firstName', formData.firstName);
     payload.append('lastName', formData.lastName);
     payload.append('displayName', formData.displayName);
@@ -160,6 +168,8 @@ export function ProfilePage() {
     });
 
     if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      setSaveError(errorData?.error ?? 'Could not update profile.');
       return;
     }
 
@@ -167,6 +177,7 @@ export function ProfilePage() {
     setUser(data.user);
     setEditMode(false);
     setPreviewImage('');
+    setSaveError('');
   };
 
   if (loading) {
@@ -182,6 +193,8 @@ export function ProfilePage() {
       <h1>Welcome to the Profile Page!</h1>
 
       <form className={styles.userInfo} onSubmit={handleSave}>
+        {saveError && <p>{saveError}</p>}
+
         <div className={styles.avatarSection}>
           <div className={styles.avatarWrapper}>
             <img
@@ -227,6 +240,7 @@ export function ProfilePage() {
                 value={formData.login}
                 onChange={handleChange}
                 type="text"
+                required
               />
             ) : (
               <span className={styles.fieldValue}>{user.login}</span>

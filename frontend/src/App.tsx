@@ -16,6 +16,7 @@ import { HowToPlay } from './pages/HowToPlay';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { TestingVillainPage, TestingCardPage } from './pages/TestPage';
 import { ToastProvider } from './contexts/ToastContext';
+import { PublicProfilePage } from './pages/PublicProfilePage';
 
 function App() {
   return (
@@ -55,6 +56,10 @@ function App() {
                   />
                   <Route path="/test/card/:id" element={<TestingCardPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route
+                    path="/profile/:login"
+                    element={<PublicProfilePage />}
+                  />
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

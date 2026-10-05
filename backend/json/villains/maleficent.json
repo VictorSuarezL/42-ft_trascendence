@@ -522,7 +522,8 @@
     "en": {
       "name": "Maleficent",
       "name": "Maleficent",
-      "objective": "Maleficent must play Curses and move them as needed so she has at least one Curse at each location in her realm. She can only win at the start of her turn.",
+      "subtitle": "Now go with a curse and serve me well!",
+      "objective": "Start your turn with a Curse at each location.",
       "locations": {
         "forbidden-mountains": "Forbidden Mountains",
         "briar-rose-s-cottage": "Briar Rose's Cottage",
@@ -626,6 +627,7 @@
     },
     "es": {
       "name": "Maléfica",
+      "subtitle": "¡Id con mi maldición y prestad bien vuestro servicio!",
       "objective": "Empezar tu turno con una Maldición en cada ubicación.",
       "locations": {
         "forbidden-mountains": "Montaña Prohibida",

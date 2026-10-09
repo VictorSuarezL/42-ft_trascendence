@@ -521,7 +521,6 @@
   "translations": {
     "en": {
       "name": "Maleficent",
-      "name": "Maleficent",
       "subtitle": "Now go with a curse and serve me well!",
       "objective": "Start your turn with a Curse at each location.",
       "locations": {
@@ -729,6 +728,111 @@
           "text": "Cuando juegues al Príncipe Felipe, puedes descartar todos los Aliados que estén en su ubicación."
         }
       }
+    },
+    "fr": {
+      "name": "Maléfique",
+      "objective": "Commencez votre tour avec une Malédiction sur chaque lieu.",
+      "locations": {
+        "forbidden-mountains": "Montagnes Interdites",
+        "briar-rose-s-cottage": "Chaumière de Rose",
+        "the-forest": "La Forêt",
+        "king-stefan-s-castle": "Château du roi Stéphane"
+      },
+      "cards": {
+        "cackling-goon": {
+          "name": "Sbire ricanant",
+          "text": "Le Sbire ricanant gagne +1 en Force pour chaque Héros sur son lieu."
+        },
+        "dragon-form": {
+          "name": "Forme de dragon",
+          "text": "Éliminez un Héros d'une Force de 3 ou moins. Si une action Fatalité vous cible avant votre prochain tour, gagnez 3 Pouvoir."
+        },
+        "forest-of-thorns": {
+          "name": "Forêt de ronces",
+          "text": "Les Héros doivent avoir une Force de 4 ou plus pour être joués sur ce lieu. Défaussez cette Malédiction lorsqu'un Héros est joué sur ce lieu."
+        },
+        "green-fire": {
+          "name": "Flammes vertes",
+          "text": "Aucun Héros ne peut être joué sur ce lieu. Défaussez cette Malédiction si Maléfique se déplace sur ce lieu."
+        },
+        "savage-goon": {
+          "name": "Sbire sauvage",
+          "text": "Aucune capacité supplémentaire."
+        },
+        "sinister-goon": {
+          "name": "Sbire sinistre",
+          "text": "Le Sbire sinistre gagne +1 en Force si au moins une Malédiction se trouve sur son lieu."
+        },
+        "vanish": {
+          "name": "Disparition",
+          "text": "Au début de votre prochain tour, Maléfique n'est pas obligée de se déplacer vers un nouveau lieu."
+        },
+        "dreamless-sleep": {
+          "name": "Sommeil sans rêves",
+          "text": "Les Héros sur ce lieu perdent 2 en Force. Défaussez cette Malédiction lorsqu'un Allié est joué sur ce lieu."
+        },
+        "malice": {
+          "name": "Malveillance",
+          "text": "Pendant le tour d'un autre joueur, si celui-ci élimine un Héros d'une Force de 4 ou plus, vous pouvez jouer Malveillance. Éliminez un Héros d'une Force de 4 ou moins."
+        },
+        "tyranny": {
+          "name": "Tyrannie",
+          "text": "Pendant le tour d'un autre joueur, si celui-ci possède au moins trois Alliés dans son Royaume, vous pouvez jouer Tyrannie. Piochez trois cartes, puis défaussez trois cartes de votre choix."
+        },
+        "raven": {
+          "name": "Corbeau",
+          "text": "Avant que Maléfique ne se déplace, vous pouvez déplacer le Corbeau vers le lieu de votre choix et effectuer une action disponible sur son nouveau lieu. Le Corbeau ne peut pas effectuer d'action Fatalité."
+        },
+        "spinning-wheel": {
+          "name": "Rouet",
+          "text": "Si un Héros est éliminé sur ce lieu, gagnez autant de Pouvoir que sa Force moins 1."
+        },
+        "staff": {
+          "name": "Sceptre",
+          "text": "Si Maléfique se trouve sur ce lieu, le coût pour jouer un Effet ou une Malédiction est réduit de 1 Pouvoir."
+        },
+        "guards-maleficent": {
+          "name": "Gardes",
+          "text": "Vous devez utiliser au moins deux Alliés lors d'une action Éliminer pour éliminer les Gardes."
+        },
+        "sword-of-truth": {
+          "name": "Épée de Vérité",
+          "text": "Lorsque vous jouez l'Épée de Vérité, attachez-la à un Héros auquel aucun autre Objet n'est attaché. Ce Héros gagne +2 en Force. Le coût pour jouer une Malédiction sur ce lieu augmente de 2 Pouvoir."
+        },
+        "once-upon-a-dream": {
+          "name": "J'en ai rêvé",
+          "text": "Défaussez une Malédiction d'un lieu du Royaume de Maléfique où se trouve un Héros."
+        },
+        "aurora": {
+          "name": "Aurore",
+          "text": "Lorsque Aurore est jouée, révélez la première carte du paquet Fatalité de Maléfique. S'il s'agit d'un Héros, jouez-le. Sinon, replacez la carte au sommet du paquet."
+        },
+        "fauna": {
+          "name": "Pâquerette",
+          "text": "Lorsque Pâquerette est jouée, vous pouvez défausser Sommeil sans rêves de son lieu."
+        },
+        "flora": {
+          "name": "Flora",
+          "text": "Lorsque Flora est jouée, Maléfique doit révéler sa main. Tant que Flora n'est pas éliminée, Maléfique doit jouer avec sa main révélée."
+        },
+        "king-hubert": {
+          "name": "Roi Hubert",
+          "text": "Lorsque le roi Hubert est joué, vous pouvez déplacer un Allié de chaque lieu adjacent vers son lieu."
+        },
+        "king-stefan": {
+          "name": "Roi Stéphane",
+          "text": "Lorsque le roi Stéphane est joué, vous pouvez déplacer Maléfique vers le lieu de votre choix."
+        },
+        "merryweather": {
+          "name": "Pimprenelle",
+          "text": "Aucune Malédiction ne peut être jouée sur le lieu de Pimprenelle."
+        },
+        "prince-phillip": {
+          "name": "Prince Philippe",
+          "text": "Lorsque le prince Philippe est joué, vous pouvez défausser tous les Alliés de son lieu."
+        }
+      },
+      "subtitle": "Allez, avec ma malédiction, et servez-moi bien !"
     }
   }
 }

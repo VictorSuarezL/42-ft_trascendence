@@ -16,5 +16,14 @@
     "HERO": "Héroe",
     "ITEM": "Objeto",
     "TITAN": "Titán"
+  },
+  "fr": {
+    "ALLY": "Allié",
+    "CONDITION": "Condition",
+    "CURSE": "Malédiction",
+    "EFFECT": "Effet",
+    "HERO": "Héros",
+    "ITEM": "Objet",
+    "TITAN": "Titan"
   }
 }

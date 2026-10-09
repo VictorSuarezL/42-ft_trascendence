@@ -776,6 +776,119 @@
           "text": "Todos los demás Héroes que estén en el Reino del Capitán Garfio reciben +1 Fuerza."
         }
       }
+    },
+    "fr": {
+      "name": "Capitaine Crochet",
+      "objective": "Éliminez Peter Pan au Jolly Roger.",
+      "locations": {
+        "jolly-roger": "Jolly Roger",
+        "skull-rock": "Rocher du Crâne",
+        "mermaid-lagoon": "Lagune des Sirènes",
+        "hangman-s-tree": "Arbre du Pendu"
+      },
+      "cards": {
+        "boarding-party": {
+          "name": "À l'abordage",
+          "text": "Lors d'une action Éliminer, À l'abordage peut être utilisée pour éliminer un Héros sur son lieu ou sur un lieu adjacent déverrouillé."
+        },
+        "give-them-a-scare": {
+          "name": "Faites-leur peur",
+          "text": "Regardez les deux premières cartes de votre paquet Fatalité. Défaussez-les toutes les deux ou replacez-les au sommet du paquet dans l'ordre de votre choix."
+        },
+        "swashbuckler": {
+          "name": "Bretteur",
+          "text": "Aucune capacité supplémentaire."
+        },
+        "worthy-opponent": {
+          "name": "Un adversaire de taille",
+          "text": "Gagnez 2 Pouvoir. Révélez les cartes de votre paquet Fatalité une par une jusqu'à révéler un Héros. Jouez ce Héros et défaussez les autres cartes révélées."
+        },
+        "aye-aye-sir": {
+          "name": "À vos ordres, capitaine !",
+          "text": "Déplacez un Allié vers un lieu adjacent déverrouillé. Cet Allié gagne +2 en Force jusqu'à la fin de votre tour."
+        },
+        "cannon": {
+          "name": "Canon",
+          "text": "Ce lieu gagne une action Éliminer."
+        },
+        "cunning": {
+          "name": "Ruse",
+          "text": "Pendant le tour d'un autre joueur, si celui-ci possède dans son Royaume un Allié d'une Force de 4 ou plus, vous pouvez jouer Ruse. Jouez gratuitement un Allié de votre main."
+        },
+        "cutlass": {
+          "name": "Sabre",
+          "text": "Lorsque vous jouez Sabre, attachez-le à un Allié. Cet Allié gagne +2 en Force."
+        },
+        "hook-s-case": {
+          "name": "Coffret de Crochet",
+          "text": "Ce lieu gagne une action Gagner 1 Pouvoir."
+        },
+        "obsession": {
+          "name": "Obsession",
+          "text": "Pendant le tour d'un autre joueur, si celui-ci élimine un Héros d'une Force de 4 ou plus, vous pouvez jouer Obsession. Révélez les cartes de votre paquet Fatalité une par une jusqu'à révéler un Héros. Jouez ou défaussez ce Héros. Défaussez les autres cartes révélées."
+        },
+        "pirate-brute": {
+          "name": "Pirate brutal",
+          "text": "Aucune capacité supplémentaire."
+        },
+        "ingenious-device": {
+          "name": "Dispositif ingénieux",
+          "text": "Ce lieu gagne une action Déplacer un Héros."
+        },
+        "mr-starkey": {
+          "name": "M. Starkey",
+          "text": "Lorsque vous jouez M. Starkey, vous pouvez déplacer un Héros de son lieu vers un lieu adjacent déverrouillé."
+        },
+        "never-land-map": {
+          "name": "Carte du Pays Imaginaire",
+          "text": "Lorsque vous jouez la Carte du Pays Imaginaire, déverrouillez l'Arbre du Pendu. Lorsque vous jouez un Objet, vous pouvez défausser la Carte du Pays Imaginaire au lieu de payer le coût de cet Objet."
+        },
+        "smee": {
+          "name": "Mouche",
+          "text": "Mouche gagne +2 en Force s'il se trouve au Jolly Roger."
+        },
+        "pixie-dust": {
+          "name": "Poussière de fée",
+          "text": "Lorsque vous jouez Poussière de fée, attachez-la à un Héros. Ce Héros gagne +2 en Force."
+        },
+        "lost-boys": {
+          "name": "Enfants perdus",
+          "text": "Vous devez utiliser au moins deux Alliés lors d'une action Éliminer pour éliminer les Enfants perdus."
+        },
+        "splitting-headache": {
+          "name": "Migraine épouvantable",
+          "text": "Défaussez un Objet du Royaume du Capitaine Crochet."
+        },
+        "taunt": {
+          "name": "Provocation",
+          "text": "Lorsque vous jouez Provocation, attachez-la à un Héros. Le Capitaine Crochet doit éliminer les Héros auxquels Provocation est attachée avant d'éliminer les autres Héros."
+        },
+        "john": {
+          "name": "Jean",
+          "text": "Jean gagne +1 en Force si au moins un Objet lui est attaché."
+        },
+        "michael": {
+          "name": "Michel",
+          "text": "Michel gagne +1 en Force pour chaque lieu du Royaume du Capitaine Crochet où se trouve un Héros, y compris son propre lieu."
+        },
+        "peter-pan": {
+          "name": "Peter Pan",
+          "text": "Lorsque Peter Pan est révélé, vous DEVEZ IMMÉDIATEMENT LE JOUER à l'Arbre du Pendu, même si ce lieu est verrouillé. Toutes les autres cartes Fatalité révélées lors de cette action sont défaussées."
+        },
+        "tick-tock": {
+          "name": "Tic Tac",
+          "text": "Si le Capitaine Crochet se déplace sur le lieu de Tic Tac, il doit immédiatement défausser sa main."
+        },
+        "tinker-bell": {
+          "name": "Fée Clochette",
+          "text": "Lorsque vous jouez la Fée Clochette, vous pouvez défausser un Allié de son lieu."
+        },
+        "wendy": {
+          "name": "Wendy",
+          "text": "Tous les autres Héros du Royaume du Capitaine Crochet gagnent +1 en Force."
+        }
+      },
+      "subtitle": "Doublez la poudre et raccourcissez la mèche !"
     }
   }
 }

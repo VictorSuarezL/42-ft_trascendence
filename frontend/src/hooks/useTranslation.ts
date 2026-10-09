@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { TranslationData } from '../types/types';
 
-export type Language = 'en' | 'es';
+export const SUPPORTED_LANGUAGES = ['en', 'es', 'fr'] as const;
+export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 
 async function fetchTranslationData(code: Language, namespace: string): Promise<TranslationData> {
   const response = await fetch(

@@ -18,5 +18,15 @@
     "MOVE_ITEM_OR_ALLY": "Mover un Objeto o Aliado",
     "MOVE_HERO": "Mover un Héroe",
     "ACTIVATE": "Activar"
+  },
+  "fr": {
+    "PLAY_CARD": "Jouer une carte",
+    "GAIN_POWER": "Gagner {amount} Pouvoir",
+    "FATE": "Fatalité",
+    "VANQUISH": "Éliminer",
+    "DISCARD_CARDS": "Défausser des cartes",
+    "MOVE_ITEM_OR_ALLY": "Déplacer un Objet ou un Allié",
+    "MOVE_HERO": "Déplacer un Héros",
+    "ACTIVATE": "Activer"
   }
 }

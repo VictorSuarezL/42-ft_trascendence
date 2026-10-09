@@ -1,70 +1,87 @@
 {
   "actions.PLAY_CARD": {
     "en": "Play a Card",
-    "es": "Jugar una carta"
+    "es": "Jugar una carta",
+    "fr": "Jouer une carte"
   },
   "actions.GAIN_POWER": {
     "en": "Gain {amount} Power",
-    "es": "Obtener {amount} de Poder"
+    "es": "Obtener {amount} de Poder",
+    "fr": "Gagner {amount} Pouvoir"
   },
   "actions.FATE": {
     "en": "Fate",
-    "es": "Destino"
+    "es": "Destino",
+    "fr": "Fatalité"
   },
   "actions.VANQUISH": {
     "en": "Vanquish",
-    "es": "Derrotar"
+    "es": "Derrotar",
+    "fr": "Éliminer"
   },
   "actions.DISCARD_CARDS": {
     "en": "Discard Cards",
-    "es": "Descartar cartas"
+    "es": "Descartar cartas",
+    "fr": "Défausser des cartes"
   },
   "actions.MOVE_ITEM_OR_ALLY": {
     "en": "Move an Item or Ally",
-    "es": "Mover un Objeto o Aliado"
+    "es": "Mover un Objeto o Aliado",
+    "fr": "Déplacer un Objet ou un Allié"
   },
   "actions.MOVE_HERO": {
     "en": "Move a Hero",
-    "es": "Mover un Héroe"
+    "es": "Mover un Héroe",
+    "fr": "Déplacer un Héros"
   },
   "actions.ACTIVATE": {
     "en": "Activate",
-    "es": "Activar"
+    "es": "Activar",
+    "fr": "Activer"
   },
   "cardTypes.ALLY": {
     "en": "Ally",
-    "es": "Aliado"
+    "es": "Aliado",
+    "fr": "Allié"
   },
   "cardTypes.CONDITION": {
     "en": "Condition",
-    "es": "Condición"
+    "es": "Condición",
+    "fr": "Condition"
   },
   "cardTypes.CURSE": {
     "en": "Curse",
-    "es": "Maldición"
+    "es": "Maldición",
+    "fr": "Malédiction"
   },
   "cardTypes.EFFECT": {
     "en": "Effect",
-    "es": "Efecto"
+    "es": "Efecto",
+    "fr": "Effet"
   },
   "cardTypes.HERO": {
     "en": "Hero",
-    "es": "Héroe"
+    "es": "Héroe",
+    "fr": "Héros"
   },
   "cardTypes.ITEM": {
     "en": "Item",
-    "es": "Objeto"
+    "es": "Objeto",
+    "fr": "Objet"
   },
   "cardTypes.TITAN": {
     "en": "Titan",
-    "es": "Titán"
+    "es": "Titán",
+    "fr": "Titan"
   },
   "decks.VILLAIN": {
     "en": "Villain deck",
-    "es": "Mazo de Villano"
+    "es": "Mazo de Villano",
+    "fr": "Paquet Méchant"
   },
   "decks.FATE": {
     "en": "Fate deck",
-    "es": "Mazo de Destino"
+    "es": "Mazo de Destino",
+    "fr": "Paquet Fatalité"
   }
 }

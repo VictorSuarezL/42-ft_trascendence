@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" fill="none">
+<defs>
+  <filter id="g"><feGaussianBlur stdDeviation="1.4"/></filter>
+</defs>
+<g stroke="#c49a45" stroke-width="2" opacity=".95">
+  <rect x="24" y="24" width="952" height="352" rx="8"/>
+  <rect x="34" y="34" width="932" height="332" rx="5" stroke-width="1"/>
+  <path d="M24 82V38Q24 24 38 24h44 M24 318v44q0 14 14 14h44
+           M976 82V38q0-14-14-14h-44 M976 318v44q0 14-14 14h-44"/>
+  <path d="M42 73q14-38 52-31l-22 12q-12 7-19 21l-11 21z"/>
+  <path d="M42 327q14 38 52 31l-22-12q-12-7-19-21l-11-21z"/>
+  <path d="M958 73q-14-38-52-31l22 12q12 7 19 21l11 21z"/>
+  <path d="M958 327q-14 38-52 31l22-12q12-7 19-21l11-21z"/>
+  <path d="M430 24h140 M430 376h140"/>
+  <path d="M500 13l7 11 11 7-11 7-7 11-7-11-11-7 11-7z"/>
+  <path d="M500 351l7 11 11 7-11 7-7 11-7-11-11-7 11-7z"/>
+  <path d="M24 195h18 M958 195h18"/>
+</g>
+<g stroke="#8d672b" stroke-width="1" opacity=".85">
+  <path d="M55 55q18-18 36-8 M55 345q18 18 36 8 M945 55q-18-18-36-8 M945 345q-18 18-36 8"/>
+  <path d="M70 24l12 12 M70 376l12-12 M930 24l-12 12 M930 376l-12-12"/>
+</g>
+<g fill="#d4aa56">
+  <circle cx="24" cy="195" r="3"/><circle cx="976" cy="195" r="3"/>
+</g>
+</svg>

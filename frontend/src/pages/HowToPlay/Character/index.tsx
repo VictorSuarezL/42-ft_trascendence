@@ -13,7 +13,7 @@ interface VillainImage {
 interface ActionLocation {
   position: number;
   area: string;
-  type: string;
+  type: ActionType;
   amount: number;
 }
 
@@ -27,7 +27,7 @@ interface RealmLocation {
 interface cardData {
   id: string;
   quantity: number;
-  type: string;
+  type: CardType;
   cost: number;
   strength: number;
   imagePath: string;
@@ -36,7 +36,7 @@ interface cardData {
 }
 
 interface deckTypes {
-  type: string;
+  type: DeckType;
   backImagePath: string;
   bottomPowerImagePath: string;
   bottomPowerlessImagePath: string;
@@ -56,6 +56,71 @@ const backendUrl = '/api';
 interface CharacterProps {
   name: string;
 }
+
+type DeckType = 'VILLAIN' | 'FATE';
+
+type CardType =
+  | 'EFFECT'
+  | 'ALLY'
+  | 'HERO'
+  | 'ITEM'
+  | 'CONDITION'
+  | 'TITAN'
+  | 'CURSE';
+
+type VillainSubtitleKey =
+  | 'scarSubtitle'
+  | 'captain-hookSubtitle'
+  | 'maleficentSubtitle'
+  | 'hadesSubtitle';
+
+type CardTypeTranslationKey =
+  | 'cardTypeALLY'
+  | 'cardTypeEFFECT'
+  | 'cardTypeITEM'
+  | 'cardTypeHERO'
+  | 'cardTypeCONDITION'
+  | 'cardTypeCURSE'
+  | 'cardTypeTITAN';
+
+type VillainGuideKey =
+  | 'scarGuide'
+  | 'captain-hookGuide'
+  | 'maleficentGuide'
+  | 'hadesGuide';
+
+type ActionType =
+  | 'PLAY_CARD'
+  | 'GAIN_POWER'
+  | 'FATE'
+  | 'VANQUISH'
+  | 'DISCARD_CARDS'
+  | 'MOVE_ITEM_OR_ALLY'
+  | 'MOVE_HERO'
+  | 'ACTIVATE';
+
+const villainTranslationKeys: Record<
+  string,
+  { subtitle: VillainSubtitleKey; guide: VillainGuideKey }
+> = {
+  scar: { subtitle: 'scarSubtitle', guide: 'scarGuide' },
+  'captain-hook': {
+    subtitle: 'captain-hookSubtitle',
+    guide: 'captain-hookGuide',
+  },
+  maleficent: { subtitle: 'maleficentSubtitle', guide: 'maleficentGuide' },
+  hades: { subtitle: 'hadesSubtitle', guide: 'hadesGuide' },
+};
+
+const cardTypeTranslationKeys: Record<CardType, CardTypeTranslationKey> = {
+  EFFECT: 'cardTypeEFFECT',
+  ALLY: 'cardTypeALLY',
+  HERO: 'cardTypeHERO',
+  ITEM: 'cardTypeITEM',
+  CONDITION: 'cardTypeCONDITION',
+  TITAN: 'cardTypeTITAN',
+  CURSE: 'cardTypeCURSE',
+};
 
 export function Character({ name }: CharacterProps) {
   const navigate = useNavigate();
@@ -113,8 +178,9 @@ export function Character({ name }: CharacterProps) {
     .href;
 
   const realmImage = guide.images.find((image) => image.id === 'realm');
+  const translationKeys = villainTranslationKeys[name];
 
-  const cardTypeOrder = [
+  const cardTypeOrder: CardType[] = [
     'EFFECT',
     'ALLY',
     'HERO',
@@ -158,7 +224,9 @@ export function Character({ name }: CharacterProps) {
             <h1 className={styles.villainName}>{guide.name}</h1>
 
             <p className={styles.subtitle}>
-              {translations.howToPage[`${name}Subtitle`]}
+              {translationKeys
+                ? translations.howToPage[translationKeys.subtitle]
+                : ''}
             </p>
           </div>
 
@@ -173,7 +241,9 @@ export function Character({ name }: CharacterProps) {
 
             <div className={styles.villainGuide}>
               <p className={styles.villainGuideText}>
-                {translations.howToPage[`${name}Guide`]}
+                {translationKeys
+                  ? translations.howToPage[translationKeys.guide]
+                  : ''}
               </p>
             </div>
           </div>
@@ -241,50 +311,6 @@ export function Character({ name }: CharacterProps) {
           ))}
         </div>
 
-        {/*
-        <div className={styles.locations}>
-          {guide.realm.map((location) => {
-            const sortedActions = [...location.actions].sort((a, b) => {
-              if (a.area !== b.area) {
-                return a.area === 'TOP' ? -1 : 1;
-              }
-
-              return a.position - b.position;
-            });
-
-            return (
-              <div className={styles.location} key={location.id}>
-                NUMBER
-                <div className={styles.locationNumber}>
-                  <span>{location.position}</span>
-                </div>
-
-                NAME
-                <div className={styles.locationName}>
-                  <h3>{location.name}</h3>
-                </div>
-
-                ACTIONS
-                <div className={styles.locationActions}>
-                  {sortedActions.map((action) => (
-                    <div
-                      className={styles.action}
-                      key={`${action.area}-${action.position}`}
-                    >
-                      <span className={styles.actionIcon}>✦</span>
-
-                      <span>
-                        {action.type}
-                        {action.amount > 0 && ` ${action.amount}`}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-/*}
         {/* =========================
             REALM BOARD
         ========================= */}
@@ -358,7 +384,7 @@ export function Character({ name }: CharacterProps) {
                 return (
                   <section key={type} className={styles.cardGroup}>
                     <h3 className={styles.groupTitle}>
-                      {translations.howToPage[`cardType${type}`]}
+                      {translations.howToPage[cardTypeTranslationKeys[type]]}
                     </h3>
 
                     <div className={styles.cards}>

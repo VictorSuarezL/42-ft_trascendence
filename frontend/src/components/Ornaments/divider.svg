@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 80" fill="none">
+<g stroke="#c49a45" stroke-width="2">
+  <path d="M40 40H425 M575 40H960"/>
+  <path d="M500 22l8 12 12 6-12 6-8 12-8-12-12-6 12-6z"/>
+</g>
+<g stroke="#8d672b" stroke-width="1">
+  <path d="M40 35h35 M925 35h35 M60 45h45 M895 45h45"/>
+</g>
+<circle cx="460" cy="40" r="3" fill="#c49a45"/>
+<circle cx="540" cy="40" r="3" fill="#c49a45"/>
+</svg>

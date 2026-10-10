@@ -25,6 +25,7 @@ function App() {
           <BrowserRouter>
             <div className={styles.app}>
               <div className={styles.headerApp}>
+               <p> Holi</p>
                 <LanguageSwitcher />
               </div>
               <Routes>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 900" fill="none">
+<rect x="10" y="10" width="280" height="880" rx="5" stroke="#c49a45" stroke-width="2"/>
+<rect x="18" y="18" width="264" height="864" rx="3" stroke="#8d672b" stroke-width="1"/>
+<g stroke="#c49a45" stroke-width="2">
+  <path d="M10 80V24q0-14 14-14h56 M10 820v56q0 14 14 14h56
+           M290 80V24q0-14-14-14h-56 M290 820v56q0 14-14 14h-56"/>
+  <path d="M26 72q15-40 55-34l-24 14q-14 8-21 25z"/>
+  <path d="M26 828q15 40 55 34l-24-14q-14-8-21-25z"/>
+  <path d="M274 72q-15-40-55-34l24 14q14 8 21 25z"/>
+  <path d="M274 828q-15 40-55 34l24-14q14-8 21-25z"/>
+  <path d="M150 10l7 13 13 7-13 7-7 13-7-13-13-7 13-7z"/>
+  <path d="M150 850l7 13 13 7-13 7-7 13-7-13-13-7 13-7z"/>
+</g>
+</svg>

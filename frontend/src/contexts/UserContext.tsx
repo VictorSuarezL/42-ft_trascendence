@@ -9,6 +9,7 @@ import {
 } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import type { Language } from '../hooks/useTranslation';
+import { useToast } from './ToastContext';
 
 export interface User {
   id: number;
@@ -40,6 +41,7 @@ export function UserProvider({ children }: UserProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState<Language>('en');
+  const { showToast } = useToast();
 
   const [socket, setSocket] = useState<Socket | null>(null);
   const socketRef = useRef<Socket | null>(null);
@@ -122,6 +124,31 @@ export function UserProvider({ children }: UserProviderProps) {
       }
     };
   }, [user]);
+
+  useEffect(() => {
+    if (!socket || !user) {
+      return;
+    }
+
+    const handleFriendRequested = ({
+      senderName,
+    }: {
+      userId: number;
+      senderName?: string;
+    }) => {
+      showToast({
+        message: `${senderName ?? 'Someone'} sent you a friend request`,
+        type: 'info',
+        location: 'TOP-RIGHT',
+      });
+    };
+
+    socket.on('social.friend.requested', handleFriendRequested);
+
+    return () => {
+      socket.off('social.friend.requested', handleFriendRequested);
+    };
+  }, [socket, user, showToast]);
 
   const logout = async () => {
     try {

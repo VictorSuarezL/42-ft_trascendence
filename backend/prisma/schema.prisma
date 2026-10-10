@@ -26,6 +26,82 @@ model User {
   sessions                Session[]
   emailVerificationTokens EmailVerificationToken[]
   passwordResetTokens     PasswordResetToken[]
+  friendshipsAsUserOne    Friendship[]             @relation("FriendshipUserOne")
+  friendshipsAsUserTwo    Friendship[]             @relation("FriendshipUserTwo")
+  friendshipsRequested    Friendship[]             @relation("FriendshipRequester")
+  conversationsAsUserOne  Conversation[]           @relation("ConversationUserOne")
+  conversationsAsUserTwo  Conversation[]           @relation("ConversationUserTwo")
+  messagesSent            Message[]
+  messageNotificationsReceived MessageNotification[] @relation("MessageNotificationRecipient")
+  messageNotificationsSent     MessageNotification[] @relation("MessageNotificationSender")
+}
+
+model Friendship {
+  id          Int      @id @default(autoincrement())
+  userOneId    Int
+  userTwoId    Int
+  requesterId  Int
+  isAccepted   Boolean  @default(false)
+  isBlocked    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  userOne   User @relation("FriendshipUserOne", fields: [userOneId], references: [id], onDelete: Cascade)
+  userTwo   User @relation("FriendshipUserTwo", fields: [userTwoId], references: [id], onDelete: Cascade)
+  requester User @relation("FriendshipRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+
+  @@unique([userOneId, userTwoId])
+  @@index([requesterId])
+}
+
+model Conversation {
+  id            Int       @id @default(autoincrement())
+  userOneId     Int
+  userTwoId     Int
+  lastMessageAt DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  userOne User     @relation("ConversationUserOne", fields: [userOneId], references: [id], onDelete: Cascade)
+  userTwo User     @relation("ConversationUserTwo", fields: [userTwoId], references: [id], onDelete: Cascade)
+  messages Message[]
+
+  messageNotifications MessageNotification[]
+  @@unique([userOneId, userTwoId])
+  @@index([userOneId])
+  @@index([userTwoId])
+  @@index([lastMessageAt])
+}
+
+model Message {
+  id             Int      @id @default(autoincrement())
+  conversationId Int
+  senderId       Int
+  content        String
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+  @@index([senderId])
+}
+
+model MessageNotification {
+  id            Int      @id @default(autoincrement())
+  recipientId   Int
+  senderId      Int
+  conversationId Int
+  preview       String
+  isRead        Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  recipient    User @relation("MessageNotificationRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  sender       User @relation("MessageNotificationSender", fields: [senderId], references: [id], onDelete: Cascade)
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([recipientId, isRead])
+  @@index([conversationId])
 }
 
 model Session {

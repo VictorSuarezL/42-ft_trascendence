@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
+import { FriendsList } from '../../components/FriendsList';
 import styles from './ProfilePage.module.scss';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
 
@@ -320,6 +321,8 @@ export function ProfilePage() {
             </>
           )}
         </div>
+
+        <FriendsList />
       </form>
     </div>
   );

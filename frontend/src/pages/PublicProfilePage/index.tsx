@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
+import { useToast } from '../../contexts/ToastContext';
+import { ProfileStatusNotice } from './components/ProfileStatusNotice';
 import styles from './PublicProfilePage.module.scss';
 
 type PublicUser = {
@@ -20,7 +22,6 @@ type PublicProfileResponse = {
 
 const SOCKET_EVENTS = {
   SOCIAL: {
-    FRIEND_REQUEST: 'social.friend.request',
     PRESENCE_CHANGED: 'social.presence.changed',
   },
 } as const;
@@ -41,6 +42,7 @@ export function PublicProfilePage() {
   const { login } = useParams<{ login: string }>();
   const navigate = useNavigate();
   const { user: currentUser, socket } = useUser();
+  const { showToast } = useToast();
   const [user, setUser] = useState<PublicUser | null>(null);
   const [isOnline, setIsOnline] = useState(false);
   const [friendRequested, setFriendRequested] = useState(false);
@@ -100,15 +102,51 @@ export function PublicProfilePage() {
   }, [socket, user]);
 
   const handleAddFriend = () => {
-    if (!socket || !user || friendRequested || currentUser?.id === user.id) {
+    if (!user || friendRequested || currentUser?.id === user.id) {
       return;
     }
 
-    socket.emit(SOCKET_EVENTS.SOCIAL.FRIEND_REQUEST, {
-      userId: user.id,
-    });
+    const sendFriendRequest = async () => {
+      try {
+        const response = await fetch(
+          `/api/users/${encodeURIComponent(profileLogin)}/friend-request`,
+          {
+            method: 'POST',
+            credentials: 'include',
+          },
+        );
 
-    setFriendRequested(true);
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok) {
+          showToast({
+            message: data?.error ?? 'Could not send friend request',
+            type: 'error',
+            location: 'TOP-RIGHT',
+          });
+          return;
+        }
+
+        if (data?.created) {
+          showToast({
+            message: 'Friend request sent',
+            type: 'success',
+            location: 'TOP-RIGHT',
+          });
+        }
+
+        setFriendRequested(true);
+      } catch (error) {
+        console.error('Error sending friend request:', error);
+        showToast({
+          message: 'Could not send friend request',
+          type: 'error',
+          location: 'TOP-RIGHT',
+        });
+      }
+    };
+
+    void sendFriendRequest();
   };
 
   return (
@@ -177,6 +215,8 @@ export function PublicProfilePage() {
               <span className={styles.fieldValue}>{user.displayName}</span>
             </div>
           </div>
+
+          <ProfileStatusNotice isOnline={isOnline} />
 
           <div className={styles.actions}>
             <button

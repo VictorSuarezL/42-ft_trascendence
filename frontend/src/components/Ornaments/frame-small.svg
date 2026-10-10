@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+<circle cx="150" cy="150" r="112" stroke="#c49a45" stroke-width="2"/>
+<circle cx="150" cy="150" r="100" stroke="#8d672b" stroke-width="1"/>
+<path d="M150 25l7 13 13 7-13 7-7 13-7-13-13-7 13-7z
+         M150 235l7 13 13 7-13 7-7 13-7-13-13-7 13-7z
+         M25 150l13-7 7-13 7 13 13 7-13 7-7 13-7-13-13-7z
+         M235 150l13-7 7-13 7 13 13 7-13 7-7 13-7-13z"
+      fill="#c49a45"/>
+<path d="M73 73q-25 25-32 58 M227 73q25 25 32 58 M73 227q-25-25-32-58 M227 227q25-25 32-58"
+      stroke="#8d672b" stroke-width="2"/>
+<circle cx="150" cy="150" r="88" stroke="#c49a45" stroke-width="1"/>
+</svg>

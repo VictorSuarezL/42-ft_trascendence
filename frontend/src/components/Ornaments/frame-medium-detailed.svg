@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300">
+
+<defs>
+  <style>
+    .gold1{fill:none;stroke:#d2ad5b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .gold2{fill:none;stroke:#9b7130;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
+    .gold3{fill:#c9a24d;stroke:#6e4b20;stroke-width:.8}
+    .dark{fill:#17151b}
+  </style>
+  <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="1.1" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<rect x="15" y="15" width="970" height="270" rx="7" class="dark"/>
+<rect x="23" y="23" width="954" height="254" class="gold2"/>
+<rect x="31" y="31" width="938" height="238" class="gold1"/>
+<rect x="41" y="41" width="918" height="218" class="gold2"/>
+<g transform="scale(.82)">
+<g class="gold1">
+  <path d="M34 118 C35 78 53 49 84 31 C103 20 125 16 149 17"/>
+  <path d="M24 102 C31 68 48 41 78 23 C99 10 125 6 157 8"/>
+  <path d="M48 120 C54 88 71 63 98 47 C115 37 132 33 154 33"/>
+  <path d="M61 119 C67 96 80 77 101 64 C116 55 130 52 147 52"/>
+  <path d="M38 89 C48 73 61 61 78 52"/>
+  <path d="M52 70 C64 57 78 48 95 41"/>
+  <path d="M74 38 C87 29 101 25 118 23"/>
+  <path d="M34 117 C26 110 21 99 22 87 C24 78 28 72 35 67"/>
+  <path d="M45 104 C39 97 37 89 40 81 C42 75 46 71 52 68"/>
+</g>
+<g class="gold2">
+  <path d="M29 111 C43 93 58 79 76 68"/>
+  <path d="M38 119 C52 100 68 87 87 76"/>
+  <path d="M56 116 C67 101 80 90 95 82"/>
+  <path d="M75 57 C84 50 94 45 105 42"/>
+  <path d="M89 31 C100 26 112 24 124 24"/>
+</g>
+<g class="gold3">
+  <path d="M18 73 C27 74 35 69 39 61 C29 61 21 64 18 73Z"/>
+  <path d="M43 46 C51 49 60 46 66 39 C56 37 48 39 43 46Z"/>
+  <path d="M76 21 C82 27 91 28 100 24 C93 18 84 17 76 21Z"/>
+  <circle cx="28" cy="92" r="3"/>
+  <circle cx="55" cy="61" r="2.6"/>
+</g>
+</g>
+<g transform="translate(1000 0) scale(-.82 .82)">
+<g class="gold1">
+  <path d="M34 118 C35 78 53 49 84 31 C103 20 125 16 149 17"/>
+  <path d="M24 102 C31 68 48 41 78 23 C99 10 125 6 157 8"/>
+  <path d="M48 120 C54 88 71 63 98 47 C115 37 132 33 154 33"/>
+  <path d="M61 119 C67 96 80 77 101 64 C116 55 130 52 147 52"/>
+  <path d="M38 89 C48 73 61 61 78 52"/>
+  <path d="M52 70 C64 57 78 48 95 41"/>
+  <path d="M74 38 C87 29 101 25 118 23"/>
+  <path d="M34 117 C26 110 21 99 22 87 C24 78 28 72 35 67"/>
+  <path d="M45 104 C39 97 37 89 40 81 C42 75 46 71 52 68"/>
+</g>
+<g class="gold2">
+  <path d="M29 111 C43 93 58 79 76 68"/>
+  <path d="M38 119 C52 100 68 87 87 76"/>
+  <path d="M56 116 C67 101 80 90 95 82"/>
+  <path d="M75 57 C84 50 94 45 105 42"/>
+  <path d="M89 31 C100 26 112 24 124 24"/>
+</g>
+<g class="gold3">
+  <path d="M18 73 C27 74 35 69 39 61 C29 61 21 64 18 73Z"/>
+  <path d="M43 46 C51 49 60 46 66 39 C56 37 48 39 43 46Z"/>
+  <path d="M76 21 C82 27 91 28 100 24 C93 18 84 17 76 21Z"/>
+  <circle cx="28" cy="92" r="3"/>
+  <circle cx="55" cy="61" r="2.6"/>
+</g>
+</g>
+<g transform="translate(0 300) scale(.82 -.82)">
+<g class="gold1">
+  <path d="M34 118 C35 78 53 49 84 31 C103 20 125 16 149 17"/>
+  <path d="M24 102 C31 68 48 41 78 23 C99 10 125 6 157 8"/>
+  <path d="M48 120 C54 88 71 63 98 47 C115 37 132 33 154 33"/>
+  <path d="M61 119 C67 96 80 77 101 64 C116 55 130 52 147 52"/>
+  <path d="M38 89 C48 73 61 61 78 52"/>
+  <path d="M52 70 C64 57 78 48 95 41"/>
+  <path d="M74 38 C87 29 101 25 118 23"/>
+  <path d="M34 117 C26 110 21 99 22 87 C24 78 28 72 35 67"/>
+  <path d="M45 104 C39 97 37 89 40 81 C42 75 46 71 52 68"/>
+</g>
+<g class="gold2">
+  <path d="M29 111 C43 93 58 79 76 68"/>
+  <path d="M38 119 C52 100 68 87 87 76"/>
+  <path d="M56 116 C67 101 80 90 95 82"/>
+  <path d="M75 57 C84 50 94 45 105 42"/>
+  <path d="M89 31 C100 26 112 24 124 24"/>
+</g>
+<g class="gold3">
+  <path d="M18 73 C27 74 35 69 39 61 C29 61 21 64 18 73Z"/>
+  <path d="M43 46 C51 49 60 46 66 39 C56 37 48 39 43 46Z"/>
+  <path d="M76 21 C82 27 91 28 100 24 C93 18 84 17 76 21Z"/>
+  <circle cx="28" cy="92" r="3"/>
+  <circle cx="55" cy="61" r="2.6"/>
+</g>
+</g>
+<g transform="translate(1000 300) scale(-.82 -.82)">
+<g class="gold1">
+  <path d="M34 118 C35 78 53 49 84 31 C103 20 125 16 149 17"/>
+  <path d="M24 102 C31 68 48 41 78 23 C99 10 125 6 157 8"/>
+  <path d="M48 120 C54 88 71 63 98 47 C115 37 132 33 154 33"/>
+  <path d="M61 119 C67 96 80 77 101 64 C116 55 130 52 147 52"/>
+  <path d="M38 89 C48 73 61 61 78 52"/>
+  <path d="M52 70 C64 57 78 48 95 41"/>
+  <path d="M74 38 C87 29 101 25 118 23"/>
+  <path d="M34 117 C26 110 21 99 22 87 C24 78 28 72 35 67"/>
+  <path d="M45 104 C39 97 37 89 40 81 C42 75 46 71 52 68"/>
+</g>
+<g class="gold2">
+  <path d="M29 111 C43 93 58 79 76 68"/>
+  <path d="M38 119 C52 100 68 87 87 76"/>
+  <path d="M56 116 C67 101 80 90 95 82"/>
+  <path d="M75 57 C84 50 94 45 105 42"/>
+  <path d="M89 31 C100 26 112 24 124 24"/>
+</g>
+<g class="gold3">
+  <path d="M18 73 C27 74 35 69 39 61 C29 61 21 64 18 73Z"/>
+  <path d="M43 46 C51 49 60 46 66 39 C56 37 48 39 43 46Z"/>
+  <path d="M76 21 C82 27 91 28 100 24 C93 18 84 17 76 21Z"/>
+  <circle cx="28" cy="92" r="3"/>
+  <circle cx="55" cy="61" r="2.6"/>
+</g>
+</g>
+
+<g transform="translate(500 0)">
+  <g class="gold1">
+    <path d="M0 28 C-15 11 -38 7 -58 17 C-42 25 -31 35 -24 49"/>
+    <path d="M0 28 C15 11 38 7 58 17 C42 25 31 35 24 49"/>
+    <path d="M0 20 C-8 10 -18 7 -28 10 C-20 16 -15 23 -13 31"/>
+    <path d="M0 20 C8 10 18 7 28 10 C20 16 15 23 13 31"/>
+    <path d="M-1 30 C-12 39 -15 50 -10 60 C-5 51 -2 46 0 42"/>
+    <path d="M1 30 C12 39 15 50 10 60 C5 51 2 46 0 42"/>
+  </g>
+  <path class="gold3" d="M0 15 L8 28 L0 42 L-8 28 Z"/>
+  <circle class="gold3" cx="0" cy="28" r="3"/>
+</g>
+
+<g transform="translate(0 300) scale(1 -1)">
+<g transform="translate(500 0)">
+  <g class="gold1">
+    <path d="M0 28 C-15 11 -38 7 -58 17 C-42 25 -31 35 -24 49"/>
+    <path d="M0 28 C15 11 38 7 58 17 C42 25 31 35 24 49"/>
+    <path d="M0 20 C-8 10 -18 7 -28 10 C-20 16 -15 23 -13 31"/>
+    <path d="M0 20 C8 10 18 7 28 10 C20 16 15 23 13 31"/>
+    <path d="M-1 30 C-12 39 -15 50 -10 60 C-5 51 -2 46 0 42"/>
+    <path d="M1 30 C12 39 15 50 10 60 C5 51 2 46 0 42"/>
+  </g>
+  <path class="gold3" d="M0 15 L8 28 L0 42 L-8 28 Z"/>
+  <circle class="gold3" cx="0" cy="28" r="3"/>
+</g>
+</g>
+<path class="gold2" d="M175 31 C260 20 340 20 420 28 M580 28 C660 20 740 20 825 31"/>
+</svg>

@@ -1,0 +1,315 @@
+.carousel {
+  position: relative;
+
+  min-height: 300px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  padding: 50px 110px;
+
+  border: 1px solid rgba(212, 165, 44, 0.2);
+
+  border-radius: 6px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #0b120d 0%,
+      #101810 50%,
+      #0a100c 100%
+    );
+
+  background-size: cover;
+  background-position: top;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =====================================================
+   DARK OVERLAY
+===================================================== */
+
+.carousel::after {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  // background:
+  //   linear-gradient(
+  //     90deg,
+  //     rgba(5, 9, 7, 0.92) 0%,
+  //     rgba(5, 9, 7, 0.78) 45%,
+  //     rgba(5, 9, 7, 0.55) 100%
+  //   );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* =====================================================
+   DECORATIVE BACKGROUND
+===================================================== */
+
+.carousel::before {
+  content: '';
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  right: -150px;
+  top: -180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(165, 168, 58, 0.08),
+      transparent 65%
+    );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 700px;
+
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+
+  color: #a5a83a;
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+}
+
+.content h2 {
+  margin: 0;
+
+  color: #e8dfc5;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 42px;
+
+  font-weight: 500;
+
+  letter-spacing: 1px;
+}
+
+.description {
+  margin: 10px auto 20px;
+
+  max-width: 520px;
+
+  color: #d0cec2;
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   EXPLORE BUTTON
+===================================================== */
+
+.explore {
+  padding: 10px 20px;
+
+  border: 1px solid rgba(212, 165, 44, 0.5);
+
+  background: rgba(5, 9, 7, 0.35);
+
+  color: #d4a52c;
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.explore:hover {
+  background: rgba(212, 165, 44, 0.12);
+
+  border-color: #d4a52c;
+}
+
+
+/* =====================================================
+   LEFT / RIGHT NAVIGATION
+===================================================== */
+
+.navigation {
+  position: absolute;
+
+  top: 0;
+
+  width: 80px;
+  height: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  color: rgba(232, 223, 197, 0.45);
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 55px;
+
+  cursor: pointer;
+
+  z-index: 3;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.navigation:hover {
+  color: #d4a52c;
+
+  background: rgba(212, 165, 44, 0.05);
+}
+
+.previous {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+
+/* =====================================================
+   INDICATORS
+===================================================== */
+
+.indicators {
+  position: absolute;
+
+  bottom: 15px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  z-index: 4;
+}
+
+.indicator,
+.activeIndicator {
+  width: 6px;
+  height: 6px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.indicator {
+  background: rgba(232, 223, 197, 0.35);
+}
+
+.activeIndicator {
+  background: #d4a52c;
+
+  transform: scale(1.4);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .carousel {
+    min-height: 280px;
+
+    padding: 40px 60px;
+
+    background-position: center;
+  }
+
+  .carousel::after {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 9, 7, 0.82) 0%,
+        rgba(5, 9, 7, 0.72) 100%
+      );
+  }
+
+  .navigation {
+    width: 50px;
+
+    font-size: 40px;
+  }
+
+  .content h2 {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+}

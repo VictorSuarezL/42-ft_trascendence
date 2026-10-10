@@ -54,7 +54,7 @@ GET {{backend}}/villains?lang=es
 
 ### Get villain by id
 
-GET {{backend}}/villains/scar
+GET {{backend}}/villains/captain-hook
 
 ### Get villain by id in spanish
 

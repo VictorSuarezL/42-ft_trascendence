@@ -4,15 +4,92 @@ export interface TranslationData {
     description: string;
     login: string;
     viewprofile: string;
+
+    home: string;
+    play: string;
+    friends: string;
+    chat: string;
+    profile: string;
+    notifications: string;
+    myGames: string;
+    settings: string;
+    logout: string;
+
+    realmAwaits: string;
+    welcomeBack: string;
+    destinyAwaits: string;
+
+    createGame: string;
+    createGameDescription: string;
+    joinGame: string;
+    joinGameDescription: string;
+
+    yourBattles: string;
+    yourGames: string;
+    viewAll: string;
+    playingAs: string;
+    yourTurn: string;
+    waiting: string;
+
+    howToPlayTitle: string;
+    howToPlayDescription: string;
+    explore: string;
+
+    scarCarouselDescription: string;
+    maleficentCarouselDescription: string;
+    'captain-hookCarouselDescription': string;
+    hadesCarouselDescription: string;
   };
 
-  howToPage: Record<string, string>;
+  howToPage: {
+    scarSubtitle: string;
+    'captain-hookSubtitle': string;
+    maleficentSubtitle: string;
+    hadesSubtitle: string;
 
-  decks: Record<string, string>;
+    villainGuideTitle: string;
 
-  cardTypes: Record<string, string>;
+    scarGuide: string;
+    hadesGuide: string;
+    'captain-hookGuide': string;
+    maleficentGuide: string;
 
-  actions: Record<string, string>;
+    cardTypeALLY: string;
+    cardTypeEFFECT: string;
+    cardTypeITEM: string;
+    cardTypeHERO: string;
+    cardTypeCONDITION: string;
+    cardTypeCURSE: string;
+    cardTypeTITAN: string;
+
+    copyNumber: string;
+  };
+
+  actions: {
+    PLAY_CARD: string;
+    GAIN_POWER: string;
+    FATE: string;
+    VANQUISH: string;
+    DISCARD_CARDS: string;
+    MOVE_ITEM_OR_ALLY: string;
+    MOVE_HERO: string;
+    ACTIVATE: string;
+  };
+
+  cardTypes: {
+    ALLY: string;
+    CONDITION: string;
+    CURSE: string;
+    EFFECT: string;
+    HERO: string;
+    ITEM: string;
+    TITAN: string;
+  };
+
+  decks: {
+    VILLAIN: string;
+    FATE: string;
+  };
 }
 
 export const SOCKET_EVENTS = {

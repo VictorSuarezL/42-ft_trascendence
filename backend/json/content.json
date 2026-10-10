@@ -15,6 +15,126 @@
     "en": "Welcome to the Home Page!",
     "es": "Bienvenido a la página de inicio!"
   },
+  "homePage.home": {
+    "en": "HOME",
+    "es": "INICIO"
+  },
+  "homePage.play": {
+    "en": "PLAY",
+    "es": "JUGAR"
+  },
+  "homePage.friends": {
+    "en": "FRIENDS",
+    "es": "AMIGOS"
+  },
+  "homePage.chat": {
+    "en": "CHAT",
+    "es": "CHAT"
+  },
+  "homePage.profile": {
+    "en": "PROFILE",
+    "es": "PERFIL"
+  },
+  "homePage.notifications": {
+    "en": "NOTIFICATIONS",
+    "es": "NOTIFICACIONES"
+  },
+  "homePage.myGames": {
+    "en": "MY GAMES",
+    "es": "MIS PARTIDAS"
+  },
+  "homePage.settings": {
+    "en": "SETTINGS",
+    "es": "AJUSTES"
+  },
+  "homePage.logout": {
+    "en": "LOG OUT",
+    "es": "CERRAR SESIÓN"
+  },
+
+  "homePage.realmAwaits": {
+    "en": "THE REALM AWAITS",
+    "es": "EL REINO TE ESPERA"
+  },
+  "homePage.welcomeBack": {
+    "en": "WELCOME BACK",
+    "es": "BIENVENIDO DE NUEVO"
+  },
+  "homePage.destinyAwaits": {
+    "en": "Your destiny awaits. Choose your next move.",
+    "es": "Tu destino te espera. Elige tu próximo movimiento."
+  },
+
+  "homePage.createGame": {
+    "en": "CREATE GAME",
+    "es": "CREAR PARTIDA"
+  },
+  "homePage.createGameDescription": {
+    "en": "Start a new battle",
+    "es": "Comienza una nueva batalla"
+  },
+  "homePage.joinGame": {
+    "en": "JOIN GAME",
+    "es": "UNIRSE A UNA PARTIDA"
+  },
+  "homePage.joinGameDescription": {
+    "en": "Enter an existing battle",
+    "es": "Entra en una partida existente"
+  },
+  "homePage.yourBattles": {
+    "en": "YOUR BATTLES",
+    "es": "TUS BATALLAS"
+  },
+  "homePage.yourGames": {
+    "en": "YOUR GAMES",
+    "es": "TUS PARTIDAS"
+  },
+  "homePage.viewAll": {
+    "en": "VIEW ALL",
+    "es": "VER TODAS"
+  },
+  "homePage.playingAs": {
+    "en": "Playing as",
+    "es": "Jugando como"
+  },
+  "homePage.yourTurn": {
+    "en": "YOUR TURN",
+    "es": "TU TURNO"
+  },
+  "homePage.waiting": {
+    "en": "WAITING",
+    "es": "ESPERANDO"
+  },
+  "homePage.howToPlayTitle": {
+    "en": "HOW TO PLAY",
+    "es": "CÓMO JUGAR"
+  },
+  "homePage.howToPlayDescription": {
+    "en": "BASIC RULES",
+    "es": "REGLAS BÁSICAS"
+  },
+  "homePage.explore": {
+    "en": "EXPLORE",
+    "es": "EXPLORAR"
+  },
+
+  "homePage.scarCarouselDescription": {
+    "en": "...",
+    "es": "..."
+  },
+  "homePage.maleficentCarouselDescription": {
+    "en": "...",
+    "es": "..."
+  },
+  "homePage.captain-hookCarouselDescription": {
+    "en": "...",
+    "es": "..."
+  },
+  "homePage.hadesCarouselDescription": {
+    "en": "...",
+    "es": "..."
+  },
+
   "howToPage.scarSubtitle": {
     "en": "\"Long live the king.\"",
     "es": "\"Larga vida al rey.\""

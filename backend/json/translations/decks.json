@@ -6,5 +6,9 @@
   "es": {
     "VILLAIN": "Mazo de Villano",
     "FATE": "Mazo de Destino"
+  },
+  "fr": {
+    "VILLAIN": "Paquet Méchant",
+    "FATE": "Paquet Fatalité"
   }
 }

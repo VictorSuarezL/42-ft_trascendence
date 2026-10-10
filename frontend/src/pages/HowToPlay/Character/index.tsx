@@ -104,7 +104,11 @@ export function Character({ name }: CharacterProps) {
   }
 
   if (!guide || !translations) {
-    return <p className={styles.loading}>Cargando...</p>;
+    return (
+      <p className={styles.loading}>
+        {translations?.howToPage.loading ?? '...'}
+      </p>
+    );
   }
 
   const fileName = `${name}Main.webp`;
@@ -152,7 +156,7 @@ export function Character({ name }: CharacterProps) {
               onClick={() => navigate('/home')}
               className={styles.customButton}
             >
-              {language === 'es' ? 'PÁGINA PRINCIPAL' : 'BACK TO HOME'}
+              {translations.howToPage.backToHome}
             </button>
 
             <h1 className={styles.villainName}>{guide.name}</h1>
@@ -165,7 +169,7 @@ export function Character({ name }: CharacterProps) {
           <div className={styles.objectiveGuide}>
             <div className={styles.objective}>
               <h2 className={styles.objectiveTitle}>
-                ♛ {language === 'es' ? 'Objetivo' : 'Objective'}
+                ♛ {translations.howToPage.objective}
               </h2>
 
               <p>{guide.objective}</p>
@@ -194,19 +198,18 @@ export function Character({ name }: CharacterProps) {
 
           <div>
             <h2 className={styles.realmTitle}>
-              {language === 'es' ? 'EL REINO' : 'THE REALM'}
+              {translations.howToPage.realmTitle}
             </h2>
 
             <p>
-              {language === 'es'
-                ? `El reino está dividido en ${guide.realm.length} localizaciones.`
-                : `The realm is divided into ${guide.realm.length} locations.`}
+              {translations.howToPage.realmDescription.replace(
+                '{count}',
+                String(guide.realm.length),
+              )}
             </p>
 
             <p>
-              {language === 'es'
-                ? 'De izquierda a derecha:'
-                : 'From left to right:'}
+              {translations.howToPage.locationOrder}
             </p>
           </div>
         </header>
@@ -293,7 +296,7 @@ export function Character({ name }: CharacterProps) {
           {realmImage && (
             <img
               src={`${backendUrl}${realmImage.path}`}
-              alt={`${guide.name} Realm`}
+              alt={translations.howToPage.realmImage.replace('{name}', guide.name)}
               className={styles.realmBoard}
             />
           )}

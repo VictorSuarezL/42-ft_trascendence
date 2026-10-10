@@ -45,6 +45,10 @@ export function UserProvider({ children }: UserProviderProps) {
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  useEffect(() => {
     async function fetchUser() {
       try {
         const response = await fetch('/api/auth/me', {

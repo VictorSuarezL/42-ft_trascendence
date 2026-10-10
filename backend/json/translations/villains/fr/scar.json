@@ -1,0 +1,105 @@
+{
+  "name": "Scar",
+  "subtitle": "Longue vie au roi.",
+  "objective": "Commencez votre tour avec une Force totale d'au moins 15 dans la pile de Succession.",
+  "locations": {
+    "pride-rock": "Rocher des Lions",
+    "the-savanna": "La Savane",
+    "elephant-graveyard": "Cimetière des Éléphants",
+    "the-gorge": "Les Gorges"
+  },
+  "cards": {
+    "hungry-hyena": {
+      "name": "Hyène affamée",
+      "text": "La Hyène affamée gagne +1 en Force pour chaque autre Hyène sur son lieu."
+    },
+    "long-live-the-king": {
+      "name": "Longue vie au roi",
+      "text": "Révélez les quatre premières cartes de votre paquet Fatalité. Vous pouvez jouer un Héros. Défaussez les autres cartes révélées."
+    },
+    "be-prepared": {
+      "name": "Soyez prêtes",
+      "text": "Défaussez les trois premières cartes de votre paquet. Vous pouvez choisir un Effet ou jusqu'à deux Alliés dans votre défausse et les ajouter à votre main."
+    },
+    "stick-with-me": {
+      "name": "Restez avec moi",
+      "text": "Choisissez une Hyène qui ne se trouve pas sur le lieu de Scar. Vous pouvez effectuer une action disponible sur le lieu de cette Hyène. Vous ne pouvez pas utiliser Restez avec moi pour effectuer une action Fatalité."
+    },
+    "whisper": {
+      "name": "Murmure",
+      "text": "Choisissez une carte dans votre défausse Fatalité et jouez-la."
+    },
+    "feeding-frenzy": {
+      "name": "Frénésie dévorante",
+      "text": "Choisissez un lieu et déplacez-y autant de Hyènes de votre Royaume que vous le souhaitez."
+    },
+    "injustice": {
+      "name": "Injustice",
+      "text": "Pendant le tour d'un autre joueur, si celui-ci vous cible avec une action Fatalité, vous pouvez jouer Injustice. Avant qu'il ne révèle les cartes, regardez les deux premières cartes de votre paquet Fatalité. Pour chacune, défaussez-la ou replacez-la au sommet du paquet."
+    },
+    "pride": {
+      "name": "Orgueil",
+      "text": "Pendant le tour d'un autre joueur, si celui-ci défausse au moins deux cartes, vous pouvez jouer Orgueil. Gagnez 3 Pouvoir."
+    },
+    "stampede": {
+      "name": "Ruée",
+      "text": "Si Ruée est jouée sur un lieu où se trouve un Héros, déplacez un Héros de ce lieu vers un lieu adjacent. Vous pouvez ensuite effectuer une action Éliminer sur le nouveau lieu de ce Héros."
+    },
+    "banzai-the-hyena": {
+      "name": "Banzaï la Hyène",
+      "text": "Gagnez 1 Pouvoir pour chaque autre Hyène défaussée du lieu de Banzaï."
+    },
+    "ed-the-hyena": {
+      "name": "Ed la Hyène",
+      "text": "Le coût pour jouer des Hyènes sur le lieu d'Ed est réduit de 1 Pouvoir."
+    },
+    "shenzi-the-hyena": {
+      "name": "Shenzi la Hyène",
+      "text": "Lorsque Shenzi est jouée, vous pouvez jouer gratuitement une Hyène de votre main."
+    },
+    "hakuna-matata": {
+      "name": "Hakuna Matata",
+      "text": "Choisissez un Héros d'une Force de 3 ou moins dans la pile de Succession et jouez-le, ou déplacez un Héros vers le lieu de votre choix."
+    },
+    "prophecy": {
+      "name": "Prophétie",
+      "text": "Lorsque vous jouez Prophétie, attachez-la à un Héros auquel aucun autre Objet n'est attaché. Ce Héros gagne +3 en Force."
+    },
+    "mufasa": {
+      "name": "Mufasa",
+      "text": "Lorsque Mufasa est éliminé, placez-le dans la pile de Succession. Si Mufasa se trouve dans la pile de Succession, tous les Héros que vous éliminez sont placés dans cette pile."
+    },
+    "nala": {
+      "name": "Nala",
+      "text": "Lorsque Nala est jouée, vous pouvez déplacer un Héros vers le lieu de votre choix."
+    },
+    "pumbaa": {
+      "name": "Pumbaa",
+      "text": "Pumbaa gagne +2 en Force si Timon se trouve dans le Royaume de Scar."
+    },
+    "rafiki": {
+      "name": "Rafiki",
+      "text": "Scar doit éliminer Rafiki avant d'éliminer les autres Héros."
+    },
+    "rafiki-s-stick": {
+      "name": "Bâton de Rafiki",
+      "text": "Lorsque vous jouez le Bâton de Rafiki, attachez-le à un Héros. Si ce Héros doit être éliminé, défaussez cet Objet à la place."
+    },
+    "sarabi": {
+      "name": "Sarabi",
+      "text": "Lorsque Sarabi est jouée, vous pouvez défausser une Hyène de son lieu."
+    },
+    "simba": {
+      "name": "Simba",
+      "text": "Les Hyènes ne peuvent pas avoir une Force supérieure à 2."
+    },
+    "timon": {
+      "name": "Timon",
+      "text": "Timon gagne +2 en Force si Pumbaa se trouve dans le Royaume de Scar."
+    },
+    "zazu": {
+      "name": "Zazu",
+      "text": "Tous les autres Héros sur le lieu de Zazu perdent 2 en Force. Tous les Héros sur les autres lieux gagnent +1 en Force."
+    }
+  }
+}

@@ -896,6 +896,139 @@
           "text": "Si un Titán se mueve a la ubicación de Zeus, ese Titán queda inmediatamente aprisionado antes de que pueda tener efecto su Habilidad."
         }
       }
+    },
+    "fr": {
+      "name": "Hadès",
+      "objective": "Commencez votre tour avec trois Titans au mont Olympe.",
+      "locations": {
+        "the-underworld": "Les Enfers",
+        "thebes": "Thèbes",
+        "the-gardens": "Les Jardins",
+        "mount-olympus": "Mont Olympe"
+      },
+      "cards": {
+        "get-ready-to-rumble": {
+          "name": "Préparez-vous au combat !",
+          "text": "Payez 2 Pouvoir pour déplacer un Titan non emprisonné vers un lieu adjacent, ou payez 5 Pouvoir pour déplacer un Titan non emprisonné de deux lieux."
+        },
+        "mortality-potion": {
+          "name": "Potion de mortalité",
+          "text": "Lorsque vous jouez Potion de mortalité, attachez-la à un Héros. Les Titans utilisés pour éliminer ce Héros ne sont pas défaussés."
+        },
+        "planets-align": {
+          "name": "Alignement des planètes",
+          "text": "Libérez un ou plusieurs Titans emprisonnés dans votre Royaume. Le coût pour jouer Alignement des planètes est égal au nombre de Titans que vous libérez."
+        },
+        "achilles-heel": {
+          "name": "Talon d'Achille",
+          "text": "Choisissez un Héros. Ce Héros perd 2 en Force jusqu'à la fin de votre tour."
+        },
+        "eye-of-the-fates": {
+          "name": "Œil des Moires",
+          "text": "Révélez les cartes de votre paquet une par une jusqu'à révéler un Allié ou un Titan. Ajoutez cet Allié ou ce Titan à votre main. Défaussez les autres cartes révélées."
+        },
+        "i-rule": {
+          "name": "Je suis le maître !",
+          "text": "Gagnez 1 Pouvoir pour chaque Allié et chaque Titan dans votre défausse."
+        },
+        "rage": {
+          "name": "Rage",
+          "text": "Pendant le tour d'un autre joueur, si celui-ci élimine un Héros d'une Force de 3 ou plus, vous pouvez jouer Rage. Déplacez un Héros de votre Royaume vers le lieu de votre choix."
+        },
+        "ruthless": {
+          "name": "Impitoyable",
+          "text": "Pendant le tour d'un autre joueur, si celui-ci possède 6 Pouvoir ou plus, vous pouvez jouer Impitoyable. Jouez gratuitement un Allié ou un Titan de votre main."
+        },
+        "arges": {
+          "name": "Argès",
+          "text": "Argès ne peut être joué qu'aux Enfers. Lorsque Argès est déplacé, gagnez 1 Pouvoir."
+        },
+        "cerberus": {
+          "name": "Cerbère",
+          "text": "Lors d'une action Éliminer, Cerbère peut être utilisé pour éliminer un Héros sur son lieu ou sur un lieu adjacent."
+        },
+        "chariot": {
+          "name": "Char",
+          "text": "Une fois par tour, si Hadès se trouve sur ce lieu, vous pouvez déplacer Hadès et le Char vers le lieu de votre choix, puis effectuer une action disponible sur ce nouveau lieu. Vous ne pouvez pas utiliser le Char pour effectuer une action Fatalité."
+        },
+        "hydra": {
+          "name": "Hydre",
+          "text": "Lorsque l'Hydre est utilisée pour éliminer un Héros, vous pouvez l'ajouter à votre main au lieu de la défausser."
+        },
+        "hydros": {
+          "name": "Hydros",
+          "text": "Hydros ne peut être joué qu'aux Enfers. Les Héros sur le lieu d'Hydros perdent 1 en Force et ne peuvent pas être déplacés par des cartes Fatalité."
+        },
+        "lythos": {
+          "name": "Lythos",
+          "text": "Lythos ne peut être joué qu'aux Enfers. Lorsque Lythos est déplacé, vous pouvez effectuer une action Éliminer sur son nouveau lieu. Lythos doit être utilisé lors de cette action."
+        },
+        "nessus": {
+          "name": "Nessus",
+          "text": "Si Nessus est utilisé pour éliminer un Héros d'une Force de 3 ou moins, gagnez 2 Pouvoir."
+        },
+        "pain": {
+          "name": "Peine",
+          "text": "Lorsque Peine est déplacé, vous pouvez déplacer un Héros de son ancien lieu vers son nouveau lieu."
+        },
+        "panic": {
+          "name": "Panique",
+          "text": "Si Hadès se trouve sur le lieu de Panique, le coût pour jouer des Objets, des Alliés et des Titans est réduit de 1 Pouvoir."
+        },
+        "pyros": {
+          "name": "Pyros",
+          "text": "Pyros ne peut être joué qu'aux Enfers. Lorsque Pyros est déplacé, vous pouvez libérer un Titan emprisonné sur son nouveau lieu."
+        },
+        "stratos": {
+          "name": "Stratos",
+          "text": "Stratos ne peut être joué qu'aux Enfers. Lorsque Stratos est déplacé, vous pouvez déplacer un Héros de son nouveau lieu vers un lieu adjacent."
+        },
+        "go-the-distance": {
+          "name": "Aller au bout",
+          "text": "Déplacez un Titan non emprisonné d'un ou deux lieux en ignorant toutes les capacités des Héros et des Titans, ou déplacez un Héros vers le lieu de votre choix."
+        },
+        "lightning-bolt": {
+          "name": "Éclair",
+          "text": "Choisissez un lieu du Royaume d'Hadès. Tous les Titans sur ce lieu sont emprisonnés."
+        },
+        "medallion": {
+          "name": "Médaillon",
+          "text": "Lorsque vous jouez Médaillon, attachez-le à un Héros. Ce Héros gagne +2 en Force."
+        },
+        "the-gospel-truth": {
+          "name": "La vérité pure",
+          "text": "Défaussez un Objet ou un Allié du Royaume d'Hadès."
+        },
+        "hera": {
+          "name": "Héra",
+          "text": "Lorsque Héra est jouée ou déplacée, vous pouvez choisir un Titan sur son nouveau lieu. Ce Titan est emprisonné."
+        },
+        "hercules": {
+          "name": "Hercule",
+          "text": "Les Titans ne peuvent pas quitter le lieu d'Hercule."
+        },
+        "hermes": {
+          "name": "Hermès",
+          "text": "Lorsque Hermès est joué, si Zeus se trouve dans le Royaume d'Hadès, vous pouvez déplacer Zeus vers le lieu de votre choix. Sinon, cherchez Zeus et placez-le au sommet du paquet Fatalité d'Hadès."
+        },
+        "megara": {
+          "name": "Mégara",
+          "text": "Lorsque Mégara est jouée, vous pouvez déplacer un Héros de son lieu vers le lieu de votre choix."
+        },
+        "pegasus": {
+          "name": "Pégase",
+          "text": "Lorsque Pégase est joué, vous pouvez déplacer un Titan non emprisonné de son lieu vers un lieu adjacent."
+        },
+        "phil": {
+          "name": "Phil",
+          "text": "Phil et Hercule gagnent +1 en Force si Hercule se trouve dans le Royaume d'Hadès."
+        },
+        "zeus": {
+          "name": "Zeus",
+          "text": "Si un Titan se déplace sur le lieu de Zeus, ce Titan est immédiatement emprisonné avant que sa capacité ne se déclenche."
+        }
+      },
+      "subtitle": "Tout le monde a un point faible."
     }
   }
 }

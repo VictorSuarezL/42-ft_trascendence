@@ -1,4 +1,5 @@
 import type { Request, Response } from 'express';
+import { getRequestedLanguage } from '../utils/language';
 import { Card } from '../types/villains.types';
 
 export interface CardDeck {
@@ -17,22 +18,12 @@ export interface CardModelContract {
   getById(id: string, language: string): Promise<CardDetail | null>;
 }
 
-type Language = 'en' | 'es';
-
-function getRequestedLanguage(query: Request['query']): Language {
-  if (typeof query.lang === 'string' && query.lang.toLowerCase() === 'es') {
-    return 'es';
-  }
-
-  return 'en';
-}
-
 export class CardController {
   constructor(private cardModel: CardModelContract) {}
 
   getById = async (req: Request<{ cardId: string }>, res: Response) => {
     const cardId = req.params.cardId.toLowerCase();
-    const language = getRequestedLanguage(req.query);
+    const language = getRequestedLanguage(req.query.lang);
 
     const villain = await this.cardModel.getById(cardId, language);
 

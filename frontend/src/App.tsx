@@ -16,17 +16,22 @@ import { HowToPlay } from './pages/HowToPlay';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { TestingVillainPage, TestingCardPage } from './pages/TestPage';
 import { ToastProvider } from './contexts/ToastContext';
+import { PublicProfilePage } from './pages/PublicProfilePage';
+import { NotificationsBell } from './components/NotificationsBell';
+import { MessagesPage } from './pages/MessagesPage';
 
 function App() {
   return (
-    <UserProvider>
-      <ToastProvider>
+    <ToastProvider>
+      <UserProvider>
         <main>
           <BrowserRouter>
             <div className={styles.app}>
               <div className={styles.headerApp}>
-               <p> Holi</p>
-                <LanguageSwitcher />
+                <div className={styles.headerActions}>
+                  <NotificationsBell />
+                  <LanguageSwitcher />
+                </div>
               </div>
               <Routes>
                 <Route element={<GuestRoute />}>
@@ -56,14 +61,22 @@ function App() {
                   />
                   <Route path="/test/card/:id" element={<TestingCardPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route
+                    path="/profile/:login"
+                    element={<PublicProfilePage />}
+                  />
+                  <Route
+                    path="/messages/:conversationId?"
+                    element={<MessagesPage />}
+                  />
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </div>
           </BrowserRouter>
         </main>
-      </ToastProvider>
-    </UserProvider>
+      </UserProvider>
+    </ToastProvider>
   );
 }
 

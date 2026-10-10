@@ -13,15 +13,15 @@ router.get('/:villain', (req, res) => {
   const villainName = req.params.villain.toLowerCase();
   const villainData = villains[villainName];
 
-  const availableLanguages = Object.keys(
-    villainData.translations,
-  ) as Language[];
-
   if (!villainData) {
     return res.status(404).json({
       message: `Villain "${villainName}" not found`,
     });
   }
+
+  const availableLanguages = Object.keys(
+    villainData.translations,
+  ) as Language[];
 
   const requestedLanguage =
     typeof req.query.lang === 'string' ? req.query.lang.toLowerCase() : 'en';

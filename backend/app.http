@@ -75,3 +75,23 @@ GET {{backend}}/translations/es?namespace=homePage
 ### Get several translations by keys
 
 GET {{backend}}/translations/es?namespace=homePage,cardTypes
+
+### Get French translations
+
+GET {{backend}}/translations/fr?namespace=homePage,howToPage,cardTypes,decks,actions
+
+### Get villains in French
+
+GET {{backend}}/villains?lang=fr
+
+### Get villain by id in French
+
+GET {{backend}}/villains/captain-hook?lang=fr
+
+### Get card by id in French
+
+GET {{backend}}/cards/injustice?lang=fr
+
+### Get how to play in French
+
+GET {{backend}}/how-to-play/scar?lang=fr

@@ -8,6 +8,7 @@ import { Server, type Socket } from 'socket.io';
 
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
+import chatRoutes from './routes/chat.routes';
 import createUserRoutes from './routes/createUser.routes';
 import howToPlayRoutes from './routes/howToPlay.routes';
 import { createTranslationsRouter } from './routes/translations.routes';
@@ -16,6 +17,7 @@ import { TranslationsJsonModel } from './models/local-file-system/translations.m
 import { socketAuth } from './utils/sockets/socket.auth';
 import { registerSocialHandlers } from './utils/sockets/social/social.handlers';
 import { registerSystemHandlers } from './utils/sockets/system/system.handlers';
+import { setSocketServer } from './utils/sockets/socket.server';
 import { createVillainRouter } from './routes/villain.routes';
 import { createCardRouter } from './routes/card.routes';
 // import { VillainJsonModel } from './models/local-file-system/villain.model';
@@ -43,6 +45,7 @@ app.get('/health', (_req, res) => {
 
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/conversations', chatRoutes);
 app.use('/signup', createUserRoutes);
 app.use('/how-to-play', howToPlayRoutes);
 app.use('/translations', createTranslationsRouter(TranslationsJsonModel));
@@ -57,6 +60,7 @@ const io = new Server(server, {
     credentials: true,
   },
 });
+setSocketServer(io);
 io.use(socketAuth);
 io.on('connection', (socket) => {
   console.log(`Socket connected: ${socket.id}`);

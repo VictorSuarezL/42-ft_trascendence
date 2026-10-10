@@ -43,6 +43,8 @@ export function registerSocialHandlers(io: Server, socket: Socket) {
 
       io.to(getUserRoom(userId)).emit(SOCKET_EVENTS.SOCIAL.FRIEND_REQUESTED, {
         userId: senderId,
+        senderName:
+          socket.data.user.displayName ?? socket.data.user.login ?? 'Someone',
       });
     },
   );

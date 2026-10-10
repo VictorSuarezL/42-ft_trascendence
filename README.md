@@ -184,6 +184,22 @@ Generate Prisma Client:
 make prisma-generate
 ```
 
+## Traducciones
+
+Idiomas disponibles: inglés (`en`), español (`es`) y francés (`fr`). El botón de idioma recorre los tres en ese orden.
+
+Los textos de la interfaz están en `backend/json/content.json`; los términos del juego también están en `backend/json/translations/`. Las traducciones francesas de los villanos, sus localizaciones y sus cartas están en `backend/json/translations/villains/fr/`. Los archivos españoles se mantienen en `backend/json/translations/villains/`.
+
+Después de editar las traducciones de los villanos, sincroniza los JSON y actualiza la base de datos local:
+
+```bash
+docker compose exec backend npm run translations:sync
+make db-seed
+docker compose restart backend
+```
+
+No hace falta modificar el esquema de Prisma. Las rutas `/villains`, `/villains/:id`, `/cards/:id` y `/how-to-play/scar` aceptan `?lang=fr`; `/translations/fr` devuelve los textos franceses de la interfaz. Hay ejemplos en `backend/app.http`.
+
 ## Creating a new database migration
 
 When you modify:

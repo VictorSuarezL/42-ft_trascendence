@@ -23,8 +23,8 @@ services:
       FORTYTWO_CLIENT_SECRET: ${FORTYTWO_CLIENT_SECRET}
       FORTYTWO_REDIRECT_URI: ${FORTYTWO_REDIRECT_URI}
       FRONTEND_URL: ${FRONTEND_URL}
-    ports:
-      - '${PORT}:${PORT}'
+      SMTP_EMAIL: ${SMTP_EMAIL}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -36,8 +36,6 @@ services:
     build: ./frontend
     container_name: transcendence-frontend
     restart: unless-stopped
-    ports:
-      - '5173:5173'
     volumes:
       - ./frontend:/app
       - /app/node_modules

@@ -261,7 +261,7 @@ export async function forgotPassword(req: Request, res: Response) {
       },
     });
 
-    const resetUrl = `http://localhost:5173/reset-password?token=${token}`;
+    const resetUrl = `${FRONTEND_URL}/reset-password?token=${token}`;
 
     try {
       await sendPasswordResetEmail({

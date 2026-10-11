@@ -3,7 +3,7 @@
   height: var(--size-language-button);
 
   padding: 0;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 50%;
 
   overflow: hidden;
@@ -12,16 +12,19 @@
   box-shadow: var(--shadow-button);
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.35s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 
   &:hover {
-    transform: scale(1.08);
-    box-shadow: var(--shadow-button-hover);
+    transform: scale(1.12) rotate(20deg);
+    box-shadow: 0 0 0 3px rgba(212, 165, 44, 0.25), var(--shadow-button-hover);
+    border-color: rgba(212, 165, 44, 0.5);
   }
 
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.92) rotate(0deg);
+    transition-duration: 0.1s;
   }
 }
 

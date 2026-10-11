@@ -53,7 +53,7 @@ export function LoginPage() {
     return null;
   };
 
-  // ── live signup validation while typing ────────────────────────────────
+  // ── live signup hint while typing ──────────────────────────────────────
 
   const signupLiveError = (() => {
     if (signupPassword && signupPassword.length < 8)
@@ -62,8 +62,6 @@ export function LoginPage() {
       return tr('passwordMismatch', 'Passwords do not match.');
     return null;
   })();
-
-
 
   // ── handlers ───────────────────────────────────────────────────────────
 
@@ -193,7 +191,6 @@ export function LoginPage() {
                 autoComplete="new-password"
               />
             </div>
-            {/* live hint while typing, only shown if no submit error */}
             {!signupError && signupLiveError && (
               <p className={styles.hintMsg}>{signupLiveError}</p>
             )}

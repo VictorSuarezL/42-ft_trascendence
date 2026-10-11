@@ -9,7 +9,6 @@ import {
   resetPassword,
   forgotPassword,
 } from '../controllers/auth.controller';
-
 const router = Router();
 
 router.get('/42', loginWithFortyTwo);
@@ -20,5 +19,6 @@ router.post('/confirm-email', confirmEmail);
 router.post('/reset-password', resetPassword);
 router.post('/forgot-password', forgotPassword);
 router.post('/logout', logout);
+
 
 export default router;

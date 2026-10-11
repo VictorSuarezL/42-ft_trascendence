@@ -2,7 +2,6 @@ databases:
   - name: villainous-db
     plan: free
     databaseName: transcendence
-    user: postgres
 
 services:
   - type: web

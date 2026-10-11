@@ -17,8 +17,9 @@ import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { TestingVillainPage, TestingCardPage } from './pages/TestPage';
 import { ToastProvider } from './contexts/ToastContext';
 import { PublicProfilePage } from './pages/PublicProfilePage';
-import { NotificationsBell } from './components/NotificationsBell';
 import { MessagesPage } from './pages/MessagesPage';
+import { FriendsPage } from './pages/FriendsPage';
+import { NotificationsPage } from './pages/NotificationsPage';
 
 function App() {
   return (
@@ -29,7 +30,6 @@ function App() {
             <div className={styles.app}>
               <div className={styles.headerApp}>
                 <div className={styles.headerActions}>
-                  <NotificationsBell />
                   <LanguageSwitcher />
                 </div>
               </div>
@@ -69,6 +69,8 @@ function App() {
                     path="/messages/:conversationId?"
                     element={<MessagesPage />}
                   />
+                  <Route path="/friends" element={<FriendsPage />} />
+                  <Route path="/notifications" element={<NotificationsPage />} />
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

@@ -1,0 +1,152 @@
+.page {
+  min-height: 100vh;
+  background: #05070a;
+  color: #e8dfc5;
+  font-family: 'Inter', sans-serif;
+  padding: 32px 38px 60px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.back {
+  border: none;
+  background: transparent;
+  color: #aaa69b;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+}
+
+.back:hover { color: #d4a52c; }
+
+.title {
+  margin: 0;
+  color: #e8dfc5;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.totalCount {
+  min-width: 1.9rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aaa69b;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionLabel {
+  margin: 0 0 14px;
+  color: #d4a52c;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #0b1015, #080d12);
+  border: 1px solid rgba(212, 165, 44, 0.15);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.card:hover {
+  background: rgba(212, 165, 44, 0.05);
+  border-color: rgba(212, 165, 44, 0.35);
+}
+
+.avatarWrapper {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  color: #e8dfc5;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.login {
+  color: #aaa69b;
+  font-size: 0.82rem;
+}
+
+.status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.statusOnline  { color: #36d399; }
+.statusOffline { color: #4b5563; }
+
+.cardActions {
+  flex: 0 0 auto;
+}
+
+.chatBtn {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f8d36a, #7cf0c5);
+  color: #10131c;
+  font-size: 0.9rem;
+  display: grid;
+  place-items: center;
+}
+
+.empty {
+  margin: 0;
+  opacity: 0.6;
+}

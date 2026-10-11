@@ -123,7 +123,7 @@ export function UserProvider({ children }: UserProviderProps) {
         setSocket(null);
       }
     };
-  }, [user]);
+  }, [user?.id]);
 
   useEffect(() => {
     if (!socket || !user) {
@@ -147,6 +147,37 @@ export function UserProvider({ children }: UserProviderProps) {
 
     return () => {
       socket.off('social.friend.requested', handleFriendRequested);
+    };
+  }, [socket, user, showToast]);
+
+  useEffect(() => {
+    if (!socket || !user) return;
+
+    const handleMessageReceived = ({
+      conversationId,
+      message,
+    }: {
+      conversationId: number;
+      message: { sender: { displayName?: string | null; login?: string | null } };
+    }) => {
+      // Don't toast if the user is already viewing that conversation
+      const currentPath = window.location.pathname;
+      if (currentPath === `/messages/${conversationId}`) return;
+
+      const senderName =
+        message.sender.displayName ?? message.sender.login ?? 'Someone';
+
+      showToast({
+        message: `New message from ${senderName}`,
+        type: 'info',
+        location: 'TOP-RIGHT',
+      });
+    };
+
+    socket.on('social.message.received', handleMessageReceived);
+
+    return () => {
+      socket.off('social.message.received', handleMessageReceived);
     };
   }, [socket, user, showToast]);
 

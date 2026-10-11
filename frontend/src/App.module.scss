@@ -1,14 +1,14 @@
 .headerApp {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-top: 1rem;
-  margin-left: -1rem;
+  position: fixed;
+  top: 0.75rem;
+  right: 1rem;
+  z-index: 200;
+  pointer-events: none;
 }
 
 .headerActions {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  pointer-events: auto;
 }

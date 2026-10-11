@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 import { resolve } from 'node:path';
+import { mkdirSync } from 'node:fs';
 import {
   deleteCurrentUser,
   acceptFriendRequest,
@@ -19,6 +20,7 @@ import {
 const router = Router();
 
 const uploadDir = resolve(process.cwd(), 'uploads');
+mkdirSync(uploadDir, { recursive: true });
 
 const storage = multer.diskStorage({
   destination: uploadDir,

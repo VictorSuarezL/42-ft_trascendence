@@ -1,10 +1,29 @@
-.profile {
+.page {
+  min-height: 100vh;
+  background: #05070a;
+  color: #e8dfc5;
+  font-family: 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
-  padding: 32px 20px;
+  padding: 32px 20px 60px;
+  box-sizing: border-box;
 }
+
+.back {
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: #aaa69b;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.back:hover { color: #d4a52c; }
 
 .userInfo {
   width: min(760px, 100%);
@@ -12,6 +31,11 @@
   flex-direction: column;
   align-items: center;
   gap: 28px;
+}
+
+.saveError {
+  color: #ff5b6e;
+  margin: 0;
 }
 
 .avatarSection {
@@ -49,9 +73,7 @@
   cursor: pointer;
 }
 
-.avatarWrapper:hover .avatarEditButton {
-  opacity: 1;
-}
+.avatarWrapper:hover .avatarEditButton { opacity: 1; }
 
 .avatarEditIcon {
   color: #fff;
@@ -60,9 +82,7 @@
   line-height: 1;
 }
 
-.hiddenFileInput {
-  display: none;
-}
+.hiddenFileInput { display: none; }
 
 .fields {
   width: 100%;

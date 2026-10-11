@@ -1,5 +1,4 @@
 import {
-  useEffect,
   useRef,
   useState,
   type ChangeEvent,
@@ -7,79 +6,97 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
-import { FriendsList } from '../../components/FriendsList';
 import styles from './ProfilePage.module.scss';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
 
-type ProfileFormState = {
-  login: string;
-  firstName: string;
-  lastName: string;
-  displayName: string;
-  image: string;
-};
-
-const getImageUrl = (image?: string | null) => {
-  if (!image) {
-    return defaultProfileImage;
-  }
-
-  if (image.startsWith('http')) {
-    return image;
-  }
-
+const getImageUrl = (image?: string | null): string => {
+  if (!image) return defaultProfileImage;
+  if (image.startsWith('http')) return image;
   return `http://localhost:3000${image}`;
 };
 
 export function ProfilePage() {
   const { user, loading, logout, setUser } = useUser();
-  console.log('ProfilePage user:', user);
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [editMode, setEditMode] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [saveError, setSaveError] = useState('');
-  const [formData, setFormData] = useState<ProfileFormState>({
-    login: '',
-    firstName: '',
-    lastName: '',
-    displayName: '',
-    image: '',
-  });
+  const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    if (!user) {
-      return;
-    }
+  // Edit form state — only used while in edit mode
+  const [login, setLogin] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [displayName, setDisplayName] = useState('');
 
-    setFormData({
-      login: user.login ?? '',
-      firstName: user.firstName ?? '',
-      lastName: user.lastName ?? '',
-      displayName: user.displayName ?? '',
-      image: user.image ?? '',
-    });
-
+  const enterEditMode = () => {
+    if (!user) return;
+    setLogin(user.login ?? '');
+    setFirstName(user.firstName ?? '');
+    setLastName(user.lastName ?? '');
+    setDisplayName(user.displayName ?? '');
     setPreviewImage('');
     setSaveError('');
-  }, [user]);
+    setEditMode(true);
+  };
 
-  const syncFormWithUser = () => {
-    if (!user) {
-      return;
-    }
-
-    setFormData({
-      login: user.login ?? '',
-      firstName: user.firstName ?? '',
-      lastName: user.lastName ?? '',
-      displayName: user.displayName ?? '',
-      image: user.image ?? '',
-    });
-
+  const cancelEditMode = () => {
+    setEditMode(false);
     setPreviewImage('');
     setSaveError('');
+  };
+
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) setPreviewImage(URL.createObjectURL(file));
+  };
+
+  const handleSave = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!user || saving) return;
+    if (!login.trim()) { setSaveError('Login is required.'); return; }
+
+    setSaveError('');
+    setSaving(true);
+
+    try {
+      const payload = new FormData();
+      payload.append('login', login.trim());
+      payload.append('firstName', firstName);
+      payload.append('lastName', lastName);
+      payload.append('displayName', displayName);
+      const imageFile = fileInputRef.current?.files?.[0];
+      if (imageFile) payload.append('image', imageFile);
+
+      const response = await fetch('/api/users/me', {
+        method: 'PATCH',
+        credentials: 'include',
+        body: payload,
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        setSaveError(data?.error ?? `Error ${response.status}`);
+        return;
+      }
+
+      // Re-fetch the full user
+      const meRes = await fetch('/api/auth/me', { credentials: 'include' });
+      if (meRes.ok) {
+        const meData = await meRes.json();
+        setUser(meData.user);
+      }
+
+      setEditMode(false);
+      setPreviewImage('');
+    } catch {
+      setSaveError('Network error — could not save profile.');
+    } finally {
+      setSaving(false);
+    }
   };
 
   const handleLogout = async () => {
@@ -88,127 +105,76 @@ export function ProfilePage() {
   };
 
   const handleDeleteAccount = async () => {
-    const confirmed = window.confirm(
-      'Are you sure you want to delete your account? This action cannot be undone.',
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
-    const response = await fetch('/api/users/me', {
-      method: 'DELETE',
-      credentials: 'include',
-    });
-
-    if (!response.ok) {
-      console.error('Failed to delete account');
-      return;
-    }
+    if (!window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) return;
+    const res = await fetch('/api/users/me', { method: 'DELETE', credentials: 'include' });
+    if (!res.ok) return;
     await logout();
     navigate('/');
   };
 
-  const handleStartEdit = () => {
-    syncFormWithUser();
-    setEditMode(true);
-  };
-
-  const handleCancelEdit = () => {
-    syncFormWithUser();
-    setEditMode(false);
-  };
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    setFormData((current) => ({
-      ...current,
-      [name]: value,
-    }));
-  };
-
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-
-    if (!file) {
-      return;
-    }
-
-    const objectUrl = URL.createObjectURL(file);
-    setPreviewImage(objectUrl);
-  };
-
-  const handleSave = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!user) {
-      return;
-    }
-
-    if (!formData.login.trim()) {
-      setSaveError('Login is required.');
-      return;
-    }
-
-    const payload = new FormData();
-    payload.append('login', formData.login.trim());
-    payload.append('firstName', formData.firstName);
-    payload.append('lastName', formData.lastName);
-    payload.append('displayName', formData.displayName);
-
-    const imageFile = fileInputRef.current?.files?.[0];
-    if (imageFile) {
-      payload.append('image', imageFile);
-    }
-
-    const response = await fetch('/api/users/me', {
-      method: 'PATCH',
-      credentials: 'include',
-      body: payload,
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => null);
-      setSaveError(errorData?.error ?? 'Could not update profile.');
-      return;
-    }
-
-    const data = await response.json();
-    setUser(data.user);
-    setEditMode(false);
-    setPreviewImage('');
-    setSaveError('');
-  };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user) {
-    return <div>No user found</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (!user) return <div>No user found</div>;
 
   return (
-    <div className={styles.profile}>
-      <h1>Welcome to the Profile Page!</h1>
+    <div className={styles.page}>
+      <button type="button" className={styles.back} onClick={() => navigate('/home')}>
+        ← Back
+      </button>
 
-      <form className={styles.userInfo} onSubmit={handleSave}>
-        {saveError && <p>{saveError}</p>}
+      {!editMode ? (
+        /* ── VIEW MODE ── */
+        <div className={styles.userInfo}>
+          <div className={styles.avatarSection}>
+            <div className={styles.avatarWrapper}>
+              <img
+                className={styles.profileImage}
+                src={getImageUrl(user.image)}
+                alt={user.displayName ?? user.login ?? ''}
+              />
+            </div>
+          </div>
 
-        <div className={styles.avatarSection}>
-          <div className={styles.avatarWrapper}>
-            <img
-              className={styles.profileImage}
-              src={
-                previewImage
-                  ? previewImage
-                  : getImageUrl(formData.image || user.image)
-              }
-              alt={`Profile of ${user.displayName}`}
-            />
+          <div className={styles.fields}>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Login</span>
+              <span className={styles.fieldValue}>{user.login}</span>
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Email</span>
+              <span className={styles.fieldValue}>{user.email}</span>
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>First Name</span>
+              <span className={styles.fieldValue}>{user.firstName}</span>
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Last Name</span>
+              <span className={styles.fieldValue}>{user.lastName}</span>
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Display Name</span>
+              <span className={styles.fieldValue}>{user.displayName}</span>
+            </div>
+          </div>
 
-            {editMode && (
+          <div className={styles.actions}>
+            <button type="button" onClick={enterEditMode}>Edit Profile</button>
+            <button type="button" onClick={handleLogout}>Log out</button>
+            <button type="button" onClick={handleDeleteAccount}>Delete Account</button>
+          </div>
+        </div>
+      ) : (
+        /* ── EDIT MODE ── */
+        <form className={styles.userInfo} onSubmit={handleSave}>
+          {saveError && <p className={styles.saveError}>{saveError}</p>}
+
+          <div className={styles.avatarSection}>
+            <div className={styles.avatarWrapper}>
+              <img
+                className={styles.profileImage}
+                src={previewImage || getImageUrl(user.image)}
+                alt={user.displayName ?? user.login ?? ''}
+              />
               <button
                 type="button"
                 className={styles.avatarEditButton}
@@ -217,9 +183,6 @@ export function ProfilePage() {
               >
                 <span className={styles.avatarEditIcon}>✎</span>
               </button>
-            )}
-
-            {editMode && (
               <input
                 ref={fileInputRef}
                 className={styles.hiddenFileInput}
@@ -227,103 +190,38 @@ export function ProfilePage() {
                 accept="image/*"
                 onChange={handleImageChange}
               />
-            )}
-          </div>
-        </div>
-
-        <div className={styles.fields}>
-          <div className={styles.field}>
-            <span className={styles.fieldLabel}>Login</span>
-            {editMode ? (
-              <input
-                className={styles.fieldInput}
-                name="login"
-                value={formData.login}
-                onChange={handleChange}
-                type="text"
-                required
-              />
-            ) : (
-              <span className={styles.fieldValue}>{user.login}</span>
-            )}
+            </div>
           </div>
 
-          <div className={styles.field}>
-            <span className={styles.fieldLabel}>Email</span>
-            <span className={styles.fieldValue}>{user.email}</span>
+          <div className={styles.fields}>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Login</span>
+              <input className={styles.fieldInput} value={login} onChange={e => setLogin(e.target.value)} type="text" required />
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Email</span>
+              <span className={styles.fieldValue}>{user.email}</span>
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>First Name</span>
+              <input className={styles.fieldInput} value={firstName} onChange={e => setFirstName(e.target.value)} type="text" />
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Last Name</span>
+              <input className={styles.fieldInput} value={lastName} onChange={e => setLastName(e.target.value)} type="text" />
+            </div>
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Display Name</span>
+              <input className={styles.fieldInput} value={displayName} onChange={e => setDisplayName(e.target.value)} type="text" />
+            </div>
           </div>
 
-          <div className={styles.field}>
-            <span className={styles.fieldLabel}>First Name</span>
-            {editMode ? (
-              <input
-                className={styles.fieldInput}
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                type="text"
-              />
-            ) : (
-              <span className={styles.fieldValue}>{user.firstName}</span>
-            )}
+          <div className={styles.actions}>
+            <button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save'}</button>
+            <button type="button" onClick={cancelEditMode} disabled={saving}>Cancel</button>
           </div>
-
-          <div className={styles.field}>
-            <span className={styles.fieldLabel}>Last Name</span>
-            {editMode ? (
-              <input
-                className={styles.fieldInput}
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                type="text"
-              />
-            ) : (
-              <span className={styles.fieldValue}>{user.lastName}</span>
-            )}
-          </div>
-
-          <div className={styles.field}>
-            <span className={styles.fieldLabel}>Display Name</span>
-            {editMode ? (
-              <input
-                className={styles.fieldInput}
-                name="displayName"
-                value={formData.displayName}
-                onChange={handleChange}
-                type="text"
-              />
-            ) : (
-              <span className={styles.fieldValue}>{user.displayName}</span>
-            )}
-          </div>
-        </div>
-
-        <div className={styles.actions}>
-          {!editMode ? (
-            <>
-              <button type="button" onClick={handleLogout}>
-                Log out!
-              </button>
-              <button type="button" onClick={handleStartEdit}>
-                Edit Profile
-              </button>
-            </>
-          ) : (
-            <>
-              <button type="submit">Save</button>
-              <button type="button" onClick={handleCancelEdit}>
-                Cancel
-              </button>
-              <button type="button" onClick={handleDeleteAccount}>
-                Delete Account
-              </button>
-            </>
-          )}
-        </div>
-
-        <FriendsList />
-      </form>
+        </form>
+      )}
     </div>
   );
 }

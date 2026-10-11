@@ -656,7 +656,7 @@ export async function updateCurrentUser(req: Request, res: Response) {
       await unlink(oldImagePath).catch(() => null);
     }
 
-    const updatedUser = await prisma.user.update({
+    await prisma.user.update({
       where: { id: session.userId },
       data: {
         login: normalizedLogin,
@@ -667,7 +667,7 @@ export async function updateCurrentUser(req: Request, res: Response) {
       },
     });
 
-    return res.json({ user: updatedUser });
+    return res.json({ ok: true });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Could not update user' });

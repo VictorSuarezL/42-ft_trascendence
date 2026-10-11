@@ -1,25 +1,36 @@
-.publicProfilePage {
-  width: min(760px, 100%);
-  margin: 0 auto;
-  padding: 32px 20px 56px;
+.page {
+  min-height: 100vh;
+  background: #05070a;
+  color: #e8dfc5;
+  font-family: 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  padding: 32px 20px 60px;
+  box-sizing: border-box;
 }
 
+.back {
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: #aaa69b;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.back:hover { color: #d4a52c; }
+
 .userInfo {
-  width: 100%;
+  width: min(760px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
-  padding: 28px 24px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(12px);
+  gap: 28px;
 }
 
 .avatarSection {
@@ -30,57 +41,32 @@
 
 .avatarWrapper {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-}
-
-.profileImage,
-.profileFallback {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: grid;
-  place-items: center;
+  overflow: visible;
 }
 
 .profileImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
   border-radius: 50%;
-}
-
-.profileFallback {
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 185, 86, 0.24),
-    rgba(65, 92, 255, 0.22)
-  );
-  color: #fff;
-  font-size: 4rem;
-  font-weight: 800;
-  letter-spacing: -0.08em;
 }
 
 .presenceDot {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 4px;
+  bottom: 4px;
   width: 18px;
   height: 18px;
   border-radius: 999px;
-  border: 3px solid rgba(15, 15, 20, 0.95);
+  border: 3px solid #05070a;
 }
 
-.online {
-  background: #36d399;
-  box-shadow: 0 0 0 0 rgba(54, 211, 153, 0.6);
-}
-
-.offline {
-  background: #80889a;
-}
+.online { background: #36d399; }
+.offline { background: #80889a; }
 
 .presenceRow {
   display: flex;
@@ -88,11 +74,10 @@
 }
 
 .presenceBadge {
-  padding: 6px 12px;
+  padding: 4px 12px;
   border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .onlineBadge {
@@ -108,7 +93,7 @@
 .fields {
   width: 100%;
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .field {
@@ -122,59 +107,56 @@
 .fieldLabel {
   font-weight: 700;
   text-align: right;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .fieldValue {
+  width: 100%;
   min-height: 40px;
   padding: 8px 12px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8dfc5;
+  box-sizing: border-box;
 }
 
 .actions {
   display: flex;
+  gap: 12px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .actions button {
   min-width: 160px;
-  padding: 12px 18px;
-  border: 0;
-  border-radius: 999px;
-  font-weight: 700;
-  color: #10131c;
-  background: linear-gradient(135deg, #f8d36a, #7cf0c5);
+  padding: 10px 20px;
+  border: 1px solid rgba(212, 165, 44, 0.4);
+  border-radius: 8px;
+  background: transparent;
+  color: #d4a52c;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
   cursor: pointer;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    opacity 0.18s ease;
-  box-shadow: 0 18px 36px rgba(124, 240, 197, 0.22);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .actions button:hover:not(:disabled) {
-  transform: translateY(-1px);
+  background: rgba(212, 165, 44, 0.12);
 }
 
 .actions button:disabled {
-  cursor: not-allowed;
+  cursor: default;
   opacity: 0.55;
-  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #aaa69b;
 }
 
 @media (max-width: 640px) {
-  .userInfo {
-    padding: 22px 16px;
-  }
-
   .field {
     grid-template-columns: 1fr;
     gap: 6px;
   }
 
-  .fieldLabel {
-    text-align: left;
-  }
+  .fieldLabel { text-align: left; }
 }

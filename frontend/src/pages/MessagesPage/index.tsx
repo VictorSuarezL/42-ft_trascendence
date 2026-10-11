@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import styles from './MessagesPage.module.scss';
+import defaultProfileImage from '../../assets/defaultProfile.webp';
 
 type ChatUser = {
   id: number;
@@ -32,360 +33,308 @@ type MessageItem = {
   sender: ChatUser;
 };
 
-type ConversationsResponse = {
-  conversations: ConversationListItem[];
-};
-
+type ConversationsResponse = { conversations: ConversationListItem[] };
 type MessagesResponse = {
-  conversation: {
-    id: number;
-    friend: ChatUser;
-  };
+  conversation: { id: number; friend: ChatUser };
   messages: MessageItem[];
 };
 
-const getImageUrl = (image?: string | null) => {
-  if (!image) {
-    return null;
-  }
-
-  if (image.startsWith('http')) {
-    return image;
-  }
-
+const getImageUrl = (image?: string | null): string => {
+  if (!image) return defaultProfileImage;
+  if (image.startsWith('http')) return image;
   return `http://localhost:3000${image}`;
 };
 
-const SOCKET_EVENTS = {
-  SOCIAL: {
-    MESSAGE_RECEIVED: 'social.message.received',
-    PRESENCE_CHANGED: 'social.presence.changed',
-  },
-} as const;
+const friendName = (u: ChatUser) =>
+  u.displayName ?? u.login ?? 'Unknown';
 
 export function MessagesPage() {
   const { conversationId } = useParams<{ conversationId?: string }>();
   const navigate = useNavigate();
   const { socket, user } = useUser();
-  const [conversations, setConversations] = useState<ConversationListItem[]>(
-    [],
-  );
+
+  const [conversations, setConversations] = useState<ConversationListItem[]>([]);
   const [messages, setMessages] = useState<MessageItem[]>([]);
-  const [selectedConversationId, setSelectedConversationId] = useState<
-    number | null
-  >(conversationId ? Number(conversationId) : null);
+  const [selectedId, setSelectedId] = useState<number | null>(
+    conversationId ? Number(conversationId) : null,
+  );
   const [messageText, setMessageText] = useState('');
-  const [loadingConversations, setLoadingConversations] = useState(true);
-  const [loadingMessages, setLoadingMessages] = useState(true);
+  const [loadingConvs, setLoadingConvs] = useState(true);
+  const [loadingMsgs, setLoadingMsgs] = useState(false);
+
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const selectedConversation = useMemo(
-    () =>
-      conversations.find(
-        (conversation) => conversation.id === selectedConversationId,
-      ) ?? null,
-    [conversations, selectedConversationId],
+    () => conversations.find((c) => c.id === selectedId) ?? null,
+    [conversations, selectedId],
   );
+
+  // ── data loaders ──────────────────────────────────────────────────────────
 
   const loadConversations = async () => {
     try {
-      setLoadingConversations(true);
-      const response = await fetch('/api/conversations', {
-        credentials: 'include',
-      });
-
-      if (!response.ok) {
-        setConversations([]);
-        return;
-      }
-
-      const data = (await response.json()) as ConversationsResponse;
+      setLoadingConvs(true);
+      const res = await fetch('/api/conversations', { credentials: 'include' });
+      if (!res.ok) { setConversations([]); return; }
+      const data = (await res.json()) as ConversationsResponse;
       setConversations(data.conversations ?? []);
 
-      if (!selectedConversationId && data.conversations?.length) {
-        setSelectedConversationId(data.conversations[0].id);
-        navigate(`/messages/${data.conversations[0].id}`, { replace: true });
+      if (!selectedId && data.conversations?.length) {
+        const first = data.conversations[0].id;
+        setSelectedId(first);
+        navigate(`/messages/${first}`, { replace: true });
       }
-    } catch (error) {
-      console.error('Could not load conversations:', error);
+    } catch {
       setConversations([]);
     } finally {
-      setLoadingConversations(false);
+      setLoadingConvs(false);
     }
   };
 
-  const loadMessages = async (activeConversationId: number) => {
+  const loadMessages = async (convId: number) => {
     try {
-      setLoadingMessages(true);
-      const response = await fetch(
-        `/api/conversations/${activeConversationId}/messages`,
-        {
-          credentials: 'include',
-        },
-      );
-
-      if (!response.ok) {
-        setMessages([]);
-        return;
-      }
-
-      const data = (await response.json()) as MessagesResponse;
+      setLoadingMsgs(true);
+      const res = await fetch(`/api/conversations/${convId}/messages`, {
+        credentials: 'include',
+      });
+      if (!res.ok) { setMessages([]); return; }
+      const data = (await res.json()) as MessagesResponse;
       setMessages(data.messages ?? []);
-    } catch (error) {
-      console.error('Could not load messages:', error);
+    } catch {
       setMessages([]);
     } finally {
-      setLoadingMessages(false);
+      setLoadingMsgs(false);
     }
   };
 
-  useEffect(() => {
-    void loadConversations();
-  }, []);
+  // ── effects ───────────────────────────────────────────────────────────────
+
+  useEffect(() => { void loadConversations(); }, []);
 
   useEffect(() => {
     if (conversationId) {
-      const numericConversationId = Number(conversationId);
-      if (!Number.isNaN(numericConversationId)) {
-        setSelectedConversationId(numericConversationId);
-      }
+      const n = Number(conversationId);
+      if (!Number.isNaN(n)) setSelectedId(n);
     }
   }, [conversationId]);
 
   useEffect(() => {
-    if (!selectedConversationId) {
-      setMessages([]);
-      return;
-    }
+    if (!selectedId) { setMessages([]); return; }
+    void loadMessages(selectedId);
+  }, [selectedId]);
 
-    void loadMessages(selectedConversationId);
-  }, [selectedConversationId]);
-
+  // scroll to bottom whenever messages change
   useEffect(() => {
-    if (!socket || !selectedConversationId) {
-      return;
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
-    const handleIncomingMessage = ({
-      conversationId: incomingConversationId,
+  // incoming message socket
+  useEffect(() => {
+    if (!socket || !selectedId) return;
+
+    const handleIncoming = ({
+      conversationId: incomingId,
       message,
-    }: {
-      conversationId: number;
-      message: MessageItem;
-    }) => {
-      if (incomingConversationId !== selectedConversationId) {
+    }: { conversationId: number; message: MessageItem }) => {
+      if (incomingId !== selectedId) {
         void loadConversations();
         return;
       }
-
-      setMessages((current) => {
-        const alreadyExists = current.some((item) => item.id === message.id);
-        return alreadyExists ? current : [...current, message];
+      setMessages((prev) => {
+        if (prev.some((m) => m.id === message.id)) return prev;
+        return [...prev, message];
       });
-
       void loadConversations();
     };
 
-    socket.on(SOCKET_EVENTS.SOCIAL.MESSAGE_RECEIVED, handleIncomingMessage);
+    socket.on('social.message.received', handleIncoming);
+    return () => { socket.off('social.message.received', handleIncoming); };
+  }, [socket, selectedId]);
 
-    return () => {
-      socket.off(SOCKET_EVENTS.SOCIAL.MESSAGE_RECEIVED, handleIncomingMessage);
-    };
-  }, [socket, selectedConversationId]);
-
+  // presence socket
   useEffect(() => {
-    if (!socket) {
-      return;
-    }
+    if (!socket) return;
 
-    const handlePresenceChanged = ({
-      userId,
-      status,
-    }: {
-      userId: number;
-      status: 'online' | 'offline';
-    }) => {
-      setConversations((current) =>
-        current.map((conversation) =>
-          conversation.friend.id === userId
-            ? { ...conversation, isOnline: status === 'online' }
-            : conversation,
+    const handlePresence = ({ userId, status }: { userId: number; status: 'online' | 'offline' }) => {
+      setConversations((prev) =>
+        prev.map((c) =>
+          c.friend.id === userId ? { ...c, isOnline: status === 'online' } : c,
         ),
       );
     };
 
-    socket.on(SOCKET_EVENTS.SOCIAL.PRESENCE_CHANGED, handlePresenceChanged);
-
-    return () => {
-      socket.off(SOCKET_EVENTS.SOCIAL.PRESENCE_CHANGED, handlePresenceChanged);
-    };
+    socket.on('social.presence.changed', handlePresence);
+    return () => { socket.off('social.presence.changed', handlePresence); };
   }, [socket]);
 
+  // ── actions ───────────────────────────────────────────────────────────────
+
   const handleSelectConversation = (id: number) => {
-    setSelectedConversationId(id);
+    setSelectedId(id);
     navigate(`/messages/${id}`);
   };
 
   const handleSendMessage = async () => {
-    if (!selectedConversationId || !messageText.trim()) {
-      return;
-    }
+    if (!selectedId || !messageText.trim()) return;
 
     try {
-      const response = await fetch(
-        `/api/conversations/${selectedConversationId}/messages`,
-        {
-          method: 'POST',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ content: messageText.trim() }),
-        },
-      );
-
-      if (!response.ok) {
-        return;
-      }
-
-      const data = await response.json();
-      setMessages((current) => [...current, data.message]);
+      const res = await fetch(`/api/conversations/${selectedId}/messages`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: messageText.trim() }),
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      setMessages((prev) => [...prev, data.message]);
       setMessageText('');
       void loadConversations();
-    } catch (error) {
-      console.error('Could not send message:', error);
+    } catch {
+      // silent
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      void handleSendMessage();
+    }
+  };
+
+  // ── render ────────────────────────────────────────────────────────────────
+
   return (
-    <div className={styles.messagesPage}>
+    <div className={styles.page}>
+      {/* ── sidebar ── */}
       <aside className={styles.sidebar}>
-        <div className={styles.sidebarHeader}>
-          <h1>Messages</h1>
-          <span>{conversations.length}</span>
+        <div className={styles.sidebarTop}>
+          <button type="button" className={styles.back} onClick={() => navigate('/home')}>
+            ← Back
+          </button>
+          <h2 className={styles.sidebarTitle}>Messages</h2>
         </div>
 
-        {loadingConversations ? (
-          <p className={styles.emptyState}>Loading conversations...</p>
-        ) : conversations.length === 0 ? (
-          <p className={styles.emptyState}>No conversations yet.</p>
-        ) : (
-          <div className={styles.conversationList}>
-            {conversations.map((conversation) => {
-              const name =
-                conversation.friend.displayName ??
-                conversation.friend.login ??
-                'Unknown user';
-              const avatarUrl = getImageUrl(conversation.friend.image);
-              const isActive = conversation.id === selectedConversationId;
+        <div className={styles.convList}>
+          {loadingConvs ? (
+            <p className={styles.hint}>Loading…</p>
+          ) : conversations.length === 0 ? (
+            <p className={styles.hint}>No conversations yet.</p>
+          ) : (
+            conversations.map((conv) => {
+              const name = friendName(conv.friend);
+              const isActive = conv.id === selectedId;
+              const preview = conv.lastMessage?.content ?? 'No messages yet';
 
               return (
                 <button
-                  key={conversation.id}
+                  key={conv.id}
                   type="button"
-                  className={`${styles.conversationItem} ${isActive ? styles.active : ''}`}
-                  onClick={() => handleSelectConversation(conversation.id)}
+                  className={`${styles.convItem} ${isActive ? styles.convItemActive : ''}`}
+                  onClick={() => handleSelectConversation(conv.id)}
                 >
-                  <div className={styles.friendInfo}>
-                    <div className={styles.avatarWrapper}>
-                      {avatarUrl ? (
-                        <img
-                          src={avatarUrl}
-                          alt={name}
-                          className={styles.avatar}
-                        />
-                      ) : (
-                        <div className={styles.avatarFallback}>
-                          {name.slice(0, 1)}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={styles.friendMeta}>
-                      <strong>{name}</strong>
-                      <p>
-                        {conversation.lastMessage
-                          ? conversation.lastMessage.content
-                          : 'No messages yet'}
-                      </p>
-                    </div>
+                  <div className={styles.convAvatar}>
+                    <img
+                      src={getImageUrl(conv.friend.image)}
+                      alt={name}
+                      className={styles.convAvatarImg}
+                    />
+                    <span
+                      className={`${styles.onlineDot} ${conv.isOnline ? styles.dotOnline : styles.dotOffline}`}
+                    />
                   </div>
 
-                  <span
-                    className={`${styles.presenceDot} ${
-                      conversation.isOnline ? styles.online : styles.offline
-                    }`}
-                    aria-label={conversation.isOnline ? 'Online' : 'Offline'}
-                    title={conversation.isOnline ? 'Online' : 'Offline'}
-                  />
+                  <div className={styles.convMeta}>
+                    <span className={styles.convName}>{name}</span>
+                    <span className={styles.convPreview}>{preview}</span>
+                  </div>
                 </button>
               );
-            })}
-          </div>
-        )}
+            })
+          )}
+        </div>
       </aside>
 
+      {/* ── chat pane ── */}
       <section className={styles.chatPane}>
         {selectedConversation ? (
           <>
+            {/* header */}
             <header className={styles.chatHeader}>
-              <div>
-                <h2>
-                  {selectedConversation.friend.displayName ??
-                    selectedConversation.friend.login}
-                </h2>
-                <p>@{selectedConversation.friend.login}</p>
+              <div className={styles.chatHeaderAvatar}>
+                <img
+                  src={getImageUrl(selectedConversation.friend.image)}
+                  alt={friendName(selectedConversation.friend)}
+                  className={styles.convAvatarImg}
+                />
+                <span
+                  className={`${styles.onlineDot} ${selectedConversation.isOnline ? styles.dotOnline : styles.dotOffline}`}
+                />
               </div>
-              <span
-                className={`${styles.presenceBadge} ${
-                  selectedConversation.isOnline
-                    ? styles.onlineBadge
-                    : styles.offlineBadge
-                }`}
-              >
-                {selectedConversation.isOnline ? 'Online' : 'Offline'}
-              </span>
+              <div>
+                <p className={styles.chatHeaderName}>
+                  {friendName(selectedConversation.friend)}
+                </p>
+                <p className={styles.chatHeaderStatus}>
+                  {selectedConversation.isOnline ? 'Online' : 'Offline'}
+                </p>
+              </div>
             </header>
 
+            {/* messages */}
             <div className={styles.messagesList}>
-              {loadingMessages ? (
-                <p className={styles.emptyState}>Loading messages...</p>
+              {loadingMsgs ? (
+                <p className={styles.hint}>Loading messages…</p>
               ) : messages.length === 0 ? (
-                <p className={styles.emptyState}>No messages yet. Say hello.</p>
+                <p className={styles.hint}>No messages yet. Say hello!</p>
               ) : (
-                messages.map((message) => {
-                  const isMine = message.sender.id === user?.id;
+                messages.map((msg) => {
+                  const isMine = msg.sender.id === user?.id;
+                  const time = new Date(msg.createdAt).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  });
 
                   return (
-                    <article
-                      key={message.id}
-                      className={`${styles.messageBubble} ${isMine ? styles.mine : styles.theirs}`}
+                    <div
+                      key={msg.id}
+                      className={`${styles.bubble} ${isMine ? styles.bubbleMine : styles.bubbleTheirs}`}
                     >
-                      <p>{message.content}</p>
-                      <span>
-                        {new Date(message.createdAt).toLocaleTimeString()}
-                      </span>
-                    </article>
+                      <p className={styles.bubbleText}>{msg.content}</p>
+                      <span className={styles.bubbleTime}>{time}</span>
+                    </div>
                   );
                 })
               )}
+              <div ref={messagesEndRef} />
             </div>
 
+            {/* composer */}
             <div className={styles.composer}>
               <textarea
+                ref={textareaRef}
+                className={styles.composerInput}
                 value={messageText}
-                onChange={(event) => setMessageText(event.target.value)}
-                placeholder="Write a message..."
-                rows={3}
+                onChange={(e) => setMessageText(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Write a message… (Enter to send)"
+                rows={1}
               />
-              <button type="button" onClick={() => void handleSendMessage()}>
-                Send
+              <button
+                type="button"
+                className={styles.composerSend}
+                onClick={() => void handleSendMessage()}
+                disabled={!messageText.trim()}
+                aria-label="Send message"
+              >
+                ↑
               </button>
             </div>
           </>
         ) : (
-          <div className={styles.emptyChatState}>
-            <h2>Select a conversation</h2>
-            <p>Pick a friend on the left to start chatting.</p>
+          <div className={styles.emptyChat}>
+            <span className={styles.emptyChatIcon}>✦</span>
+            <p>Select a conversation to start chatting</p>
           </div>
         )}
       </section>

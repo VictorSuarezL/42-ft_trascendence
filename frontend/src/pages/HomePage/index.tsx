@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './HomePage.module.scss';
@@ -5,17 +6,53 @@ import styles from './HomePage.module.scss';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useUser } from '../../contexts/UserContext';
 import { HowToPlayCarousel } from '../../components/HowToPlayCarousel/HowToPlayCarousel';
+import defaultProfileImage from '../../assets/defaultProfile.webp';
+
+const getImageUrl = (image?: string | null): string => {
+  if (!image) return defaultProfileImage;
+  if (image.startsWith('http')) return image;
+  return `http://localhost:3000${image}`;
+};
 
 export function HomePage() {
   const navigate = useNavigate();
-
-  const { language } = useUser();
+  const { language, user, socket, logout } = useUser();
 
   const translations = useTranslation(language, 'homePage,cardTypes');
+
+  const [pendingCount, setPendingCount] = useState(0);
+
+  const loadPendingCount = async () => {
+    if (!user) { setPendingCount(0); return; }
+    try {
+      const res = await fetch('/api/users/friend-requests', { credentials: 'include' });
+      if (!res.ok) return;
+      const data = await res.json();
+      setPendingCount((data.requests ?? []).length);
+    } catch { /* ignore */ }
+  };
+
+  useEffect(() => {
+    void loadPendingCount();
+  }, [user]);
+
+  useEffect(() => {
+    if (!socket || !user) return;
+    const onRequest = () => void loadPendingCount();
+    socket.on('social.friend.requested', onRequest);
+    return () => { socket.off('social.friend.requested', onRequest); };
+  }, [socket, user]);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
 
   if (!translations) {
     return <p>...</p>;
   }
+
+  const displayName = user?.displayName ?? user?.login ?? 'Player';
 
   return (
     <div className={styles.home}>
@@ -29,27 +66,38 @@ export function HomePage() {
         </div>
 
         <div className={styles.profile}>
-          <div className={styles.profileImage}>👤</div>
+          <div className={styles.profileImage}>
+            <img
+              src={getImageUrl(user?.image)}
+              alt={displayName}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+            />
+          </div>
 
           <div>
-            <p className={styles.profileName}>SARA</p>
-
+            <p className={styles.profileName}>{displayName.toUpperCase()}</p>
             <p className={styles.profileStatus}>ONLINE</p>
           </div>
         </div>
 
         <nav className={styles.navigation}>
-          <button className={styles.navItem}>
+          <button className={`${styles.navItem} ${styles.active}`}>
             <span>♜</span>
             {translations.homePage.home}
           </button>
 
-          <button className={styles.navItem}>
+          <button
+            className={styles.navItem}
+            onClick={() => navigate('/friends')}
+          >
             <span>♟</span>
             {translations.homePage.friends}
           </button>
 
-          <button className={styles.navItem}>
+          <button
+            className={styles.navItem}
+            onClick={() => navigate('/messages')}
+          >
             <span>✉</span>
             {translations.homePage.chat}
           </button>
@@ -62,9 +110,13 @@ export function HomePage() {
             {translations.homePage.profile}
           </button>
 
-          <button className={styles.navItem}>
+          <button
+            className={styles.navItem}
+            onClick={() => navigate('/notifications')}
+          >
             <span>♢</span>
             {translations.homePage.notifications}
+            {pendingCount > 0 && <span className={styles.sideBadge}>{pendingCount}</span>}
           </button>
 
           <button className={styles.navItem}>
@@ -73,7 +125,7 @@ export function HomePage() {
           </button>
         </nav>
 
-        <button className={styles.logout}>
+        <button className={styles.logout} onClick={() => void handleLogout()}>
           <span>↪</span>
           {translations.homePage.logout}
         </button>
@@ -102,7 +154,7 @@ export function HomePage() {
                 <p className={styles.eyebrow}>THE REALM AWAITS</p>
 
                 <h1>
-                  WELCOME BACK, <span>SARA</span>
+                  WELCOME BACK, <span>{displayName.toUpperCase()}</span>
                 </h1>
 
                 <p className={styles.welcomeSubtitle}>
@@ -153,8 +205,6 @@ export function HomePage() {
 
         {/* =================================================
             CAROUSEL
-
-            Se mantiene exactamente como lo tienes.
         ================================================= */}
 
         <HowToPlayCarousel />
@@ -175,10 +225,6 @@ export function HomePage() {
           </div>
 
           <div className={styles.gameList}>
-            {/* BACKEND:
-                Estos datos son de prueba.
-            */}
-
             <article className={styles.game}>
               <div className={styles.gameIcon}>⚔</div>
 

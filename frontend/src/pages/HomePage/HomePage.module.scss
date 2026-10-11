@@ -45,6 +45,200 @@
   flex-direction: column;
 
   z-index: 20;
+
+  overflow-y: auto;
+}
+
+
+/* =====================================================
+   SIDEBAR BADGES / COUNTS
+===================================================== */
+
+.sideBadge {
+  margin-left: auto;
+  min-width: 1.3rem;
+  height: 1.3rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: #ff5b6e;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.sideCount {
+  margin-left: auto;
+  min-width: 1.3rem;
+  height: 1.3rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #aaa69b;
+  font-size: 0.75rem;
+  display: grid;
+  place-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* =====================================================
+   INLINE PANELS
+===================================================== */
+
+.panel {
+  margin-top: 6px;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+}
+
+.panelTitle {
+  margin: 0 0 4px;
+  padding: 0 4px;
+  color: #d4a52c;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.emptyState {
+  margin: 0;
+  padding: 0 4px;
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
+
+.requestCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.7rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.requesterInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.requesterInfo p {
+  margin: 0.1rem 0 0;
+  opacity: 0.7;
+  font-size: 0.78rem;
+}
+
+.requestActions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.acceptBtn,
+.rejectBtn {
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.5rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.acceptBtn {
+  background: linear-gradient(135deg, #f8d36a, #7cf0c5);
+  color: #10131c;
+}
+
+.rejectBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e8dfc5;
+}
+
+.friendCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.friendInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  min-width: 0;
+}
+
+.friendInfo p {
+  margin: 0.1rem 0 0;
+  opacity: 0.7;
+  font-size: 0.78rem;
+}
+
+.friendAvatarWrapper {
+  position: relative;
+  flex: 0 0 auto;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.miniAvatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.miniAvatarFallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(255, 185, 86, 0.24), rgba(65, 92, 255, 0.22));
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.presenceDot {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  border: 2px solid rgba(8, 13, 18, 0.95);
+}
+
+.online { background: #36d399; }
+.offline { background: #80889a; }
+
+.chatBtn {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f8d36a, #7cf0c5);
+  color: #10131c;
+  font-size: 0.85rem;
+  display: grid;
+  place-items: center;
 }
 
 

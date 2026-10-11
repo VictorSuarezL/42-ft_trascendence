@@ -1,0 +1,142 @@
+.page {
+  min-height: 100vh;
+  background: #05070a;
+  color: #e8dfc5;
+  font-family: 'Inter', sans-serif;
+  padding: 32px 38px 60px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.back {
+  border: none;
+  background: transparent;
+  color: #aaa69b;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+}
+
+.back:hover { color: #d4a52c; }
+
+.title {
+  margin: 0;
+  color: #e8dfc5;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.badge {
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: #ff5b6e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.section {
+  max-width: 640px;
+}
+
+.sectionLabel {
+  margin: 0 0 14px;
+  color: #d4a52c;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #0b1015, #080d12);
+  border: 1px solid rgba(212, 165, 44, 0.15);
+}
+
+.requesterInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+  border: 1px solid rgba(212, 165, 44, 0.3);
+}
+
+.name {
+  display: block;
+  color: #e8dfc5;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.login {
+  margin: 2px 0 0;
+  color: #aaa69b;
+  font-size: 0.82rem;
+}
+
+.cardActions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.acceptBtn,
+.rejectBtn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.acceptBtn {
+  background: linear-gradient(135deg, #f8d36a, #7cf0c5);
+  color: #10131c;
+}
+
+.rejectBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e8dfc5;
+}
+
+.empty {
+  margin: 0;
+  opacity: 0.6;
+}

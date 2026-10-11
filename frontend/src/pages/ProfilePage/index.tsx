@@ -8,11 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import styles from './ProfilePage.module.scss';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
+import { apiUrl, uploadUrl } from '../../lib/api';
 
 const getImageUrl = (image?: string | null): string => {
   if (!image) return defaultProfileImage;
-  if (image.startsWith('http')) return image;
-  return `http://localhost:3000${image}`;
+  return uploadUrl(image) ?? defaultProfileImage;
 };
 
 export function ProfilePage() {
@@ -70,7 +70,7 @@ export function ProfilePage() {
       const imageFile = fileInputRef.current?.files?.[0];
       if (imageFile) payload.append('image', imageFile);
 
-      const response = await fetch('/api/users/me', {
+      const response = await fetch(apiUrl('/api/users/me'), {
         method: 'PATCH',
         credentials: 'include',
         body: payload,
@@ -84,7 +84,7 @@ export function ProfilePage() {
       }
 
       // Re-fetch the full user
-      const meRes = await fetch('/api/auth/me', { credentials: 'include' });
+      const meRes = await fetch(apiUrl('/api/auth/me'), { credentials: 'include' });
       if (meRes.ok) {
         const meData = await meRes.json();
         setUser(meData.user);
@@ -106,7 +106,7 @@ export function ProfilePage() {
 
   const handleDeleteAccount = async () => {
     if (!window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) return;
-    const res = await fetch('/api/users/me', { method: 'DELETE', credentials: 'include' });
+    const res = await fetch(apiUrl('/api/users/me'), { method: 'DELETE', credentials: 'include' });
     if (!res.ok) return;
     await logout();
     navigate('/');

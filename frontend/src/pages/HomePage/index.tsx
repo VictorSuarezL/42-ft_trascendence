@@ -7,11 +7,11 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { useUser } from '../../contexts/UserContext';
 import { HowToPlayCarousel } from '../../components/HowToPlayCarousel/HowToPlayCarousel';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
+import { apiUrl, uploadUrl } from '../../lib/api';
 
 const getImageUrl = (image?: string | null): string => {
   if (!image) return defaultProfileImage;
-  if (image.startsWith('http')) return image;
-  return `http://localhost:3000${image}`;
+  return uploadUrl(image) ?? defaultProfileImage;
 };
 
 export function HomePage() {
@@ -25,7 +25,7 @@ export function HomePage() {
   const loadPendingCount = async () => {
     if (!user) { setPendingCount(0); return; }
     try {
-      const res = await fetch('/api/users/friend-requests', { credentials: 'include' });
+      const res = await fetch(apiUrl('/api/users/friend-requests'), { credentials: 'include' });
       if (!res.ok) return;
       const data = await res.json();
       setPendingCount((data.requests ?? []).length);

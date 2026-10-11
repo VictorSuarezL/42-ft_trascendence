@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../../../contexts/UserContext';
 import { useTranslation } from '../../../hooks/useTranslation';
+import { apiUrl } from '../../../lib/api';
 
 interface VillainImage {
   id: string;
@@ -22,7 +23,7 @@ export function BasicRules() {
   const translations = useTranslation(language, 'howToPage');
 
   useEffect(() => {
-    fetch(`/api/villains?lang=${language}`)
+    fetch(apiUrl(`/api/villains?lang=${language}`)
       .then((response) => response.json())
       .then((data: VillainListItem[]) => {
         setVillains(data);

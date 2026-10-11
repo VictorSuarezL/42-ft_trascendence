@@ -4,6 +4,7 @@ import { useUser } from '../../contexts/UserContext';
 import { useToast } from '../../contexts/ToastContext';
 import styles from './FriendsPage.module.scss';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
+import { apiUrl, uploadUrl } from '../../lib/api';
 
 type FriendUser = {
   id: number;
@@ -22,8 +23,7 @@ type FriendItem = {
 
 const getImageUrl = (image?: string | null): string => {
   if (!image) return defaultProfileImage;
-  if (image.startsWith('http')) return image;
-  return `http://localhost:3000${image}`;
+  return uploadUrl(image) ?? defaultProfileImage;
 };
 
 export function FriendsPage() {
@@ -36,7 +36,7 @@ export function FriendsPage() {
   const loadFriends = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/users/friends', { credentials: 'include' });
+      const res = await fetch(apiUrl('/api/users/friends'), { credentials: 'include' });
       if (!res.ok) { setFriends([]); return; }
       const data = await res.json();
       setFriends(data.friends ?? []);
@@ -74,7 +74,7 @@ export function FriendsPage() {
 
   const handleOpenChat = async (friendId: number) => {
     try {
-      const res = await fetch(`/api/conversations/with/${friendId}`, { method: 'POST', credentials: 'include' });
+      const res = await fetch(apiUrl(`/api/conversations/with/${friendId}`), { method: 'POST', credentials: 'include' });
       const data = await res.json().catch(() => null);
       if (!res.ok) { showToast({ message: data?.error ?? 'Could not open chat', type: 'error', location: 'TOP-RIGHT' }); return; }
       navigate(`/messages/${data.conversation.id}`);

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useUser } from '../../contexts/UserContext';
 import { useToast } from '../../contexts/ToastContext';
 import styles from './NotificationsBell.module.scss';
+import { apiUrl, uploadUrl } from '../../lib/api';
 
 type FriendRequester = {
   id: number;
@@ -22,17 +23,7 @@ type FriendRequestsResponse = {
   requests: FriendRequestItem[];
 };
 
-const getImageUrl = (image?: string | null) => {
-  if (!image) {
-    return null;
-  }
-
-  if (image.startsWith('http')) {
-    return image;
-  }
-
-  return `http://localhost:3000${image}`;
-};
+const getImageUrl = (image?: string | null) => uploadUrl(image);
 
 export function NotificationsBell() {
   const { socket, user } = useUser();
@@ -50,7 +41,7 @@ export function NotificationsBell() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/users/friend-requests', {
+      const response = await fetch(apiUrl('/api/users/friend-requests'), {
         credentials: 'include',
       });
 

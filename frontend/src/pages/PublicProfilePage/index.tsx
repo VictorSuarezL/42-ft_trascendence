@@ -4,6 +4,7 @@ import { useUser } from '../../contexts/UserContext';
 import { useToast } from '../../contexts/ToastContext';
 import styles from './PublicProfilePage.module.scss';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
+import { apiUrl, uploadUrl } from '../../lib/api';
 
 type PublicUser = {
   id: number;
@@ -22,8 +23,7 @@ type PublicProfileResponse = {
 
 const getImageUrl = (image?: string | null): string => {
   if (!image) return defaultProfileImage;
-  if (image.startsWith('http')) return image;
-  return `http://localhost:3000${image}`;
+  return uploadUrl(image) ?? defaultProfileImage;
 };
 
 export function PublicProfilePage() {
@@ -42,8 +42,8 @@ export function PublicProfilePage() {
     const fetchUser = async () => {
       try {
         const [profileRes, friendsRes] = await Promise.all([
-          fetch(`/api/users/${encodeURIComponent(profileLogin)}`),
-          fetch('/api/users/friends', { credentials: 'include' }),
+          fetch(apiUrl(`/api/users/${encodeURIComponent(profileLogin)}`)),
+          fetch(apiUrl('/api/users/friends'), { credentials: 'include' }),
         ]);
 
         if (!profileRes.ok) {
@@ -98,7 +98,7 @@ export function PublicProfilePage() {
     const sendFriendRequest = async () => {
       try {
         const response = await fetch(
-          `/api/users/${encodeURIComponent(profileLogin)}/friend-request`,
+          apiUrl(`/api/users/${encodeURIComponent(profileLogin)}/friend-request`),
           { method: 'POST', credentials: 'include' },
         );
 

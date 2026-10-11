@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../contexts/ToastContext';
 import { useUser } from '../../contexts/UserContext';
 import styles from './FriendsList.module.scss';
+import { apiUrl, uploadUrl } from '../../lib/api';
 
 type FriendUser = {
   id: number;
@@ -23,17 +24,7 @@ type FriendsResponse = {
   friends: FriendItem[];
 };
 
-const getImageUrl = (image?: string | null) => {
-  if (!image) {
-    return null;
-  }
-
-  if (image.startsWith('http')) {
-    return image;
-  }
-
-  return `http://localhost:3000${image}`;
-};
+const getImageUrl = (image?: string | null) => uploadUrl(image);
 
 export function FriendsList() {
   const { socket } = useUser();
@@ -45,7 +36,7 @@ export function FriendsList() {
   const loadFriends = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/users/friends', {
+      const response = await fetch(apiUrl('/api/users/friends'), {
         credentials: 'include',
       });
 
@@ -91,7 +82,7 @@ export function FriendsList() {
 
   const handleOpenChat = async (friendId: number) => {
     try {
-      const response = await fetch(`/api/conversations/with/${friendId}`, {
+      const response = await fetch(apiUrl(`/api/conversations/with/${friendId}`), {
         method: 'POST',
         credentials: 'include',
       });

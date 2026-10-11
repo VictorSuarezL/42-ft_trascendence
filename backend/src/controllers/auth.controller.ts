@@ -90,8 +90,8 @@ export async function fortyTwoCallback(req: Request, res: Response) {
     console.log('42 login successful');
     res.cookie('session', session.id, {
       httpOnly: true,
-      sameSite: 'lax',
-      secure: false,
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: process.env.NODE_ENV === 'production',
       expires: session.expiresAt,
     });
 
@@ -261,7 +261,7 @@ export async function forgotPassword(req: Request, res: Response) {
       },
     });
 
-    const resetUrl = `http://localhost:5173/reset-password?token=${token}`;
+    const resetUrl = `${FRONTEND_URL}/reset-password?token=${token}`;
 
     try {
       await sendPasswordResetEmail({

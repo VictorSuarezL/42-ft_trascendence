@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 import { io, type Socket } from 'socket.io-client';
+import { apiUrl } from '../lib/api';
 import type { Language } from '../hooks/useTranslation';
 import { useToast } from './ToastContext';
 
@@ -53,7 +54,7 @@ export function UserProvider({ children }: UserProviderProps) {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const response = await fetch('/api/auth/me', {
+        const response = await fetch(apiUrl('/api/auth/me'), {
           credentials: 'include',
         });
 
@@ -94,7 +95,7 @@ export function UserProvider({ children }: UserProviderProps) {
 
     console.log('[Socket] Creating connection...');
 
-    const newSocket = io({
+    const newSocket = io(import.meta.env.VITE_API_URL as string | undefined, {
       withCredentials: true,
     });
 
@@ -183,7 +184,7 @@ export function UserProvider({ children }: UserProviderProps) {
 
   const logout = async () => {
     try {
-      const response = await fetch('/api/auth/logout', {
+      const response = await fetch(apiUrl('/api/auth/logout'), {
         method: 'POST',
         credentials: 'include',
       });

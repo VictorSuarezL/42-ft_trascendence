@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import styles from './MessagesPage.module.scss';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
+import { apiUrl, uploadUrl } from '../../lib/api';
 
 type ChatUser = {
   id: number;
@@ -41,8 +42,7 @@ type MessagesResponse = {
 
 const getImageUrl = (image?: string | null): string => {
   if (!image) return defaultProfileImage;
-  if (image.startsWith('http')) return image;
-  return `http://localhost:3000${image}`;
+  return uploadUrl(image) ?? defaultProfileImage;
 };
 
 const friendName = (u: ChatUser) =>
@@ -75,7 +75,7 @@ export function MessagesPage() {
   const loadConversations = async () => {
     try {
       setLoadingConvs(true);
-      const res = await fetch('/api/conversations', { credentials: 'include' });
+      const res = await fetch(apiUrl('/api/conversations'), { credentials: 'include' });
       if (!res.ok) { setConversations([]); return; }
       const data = (await res.json()) as ConversationsResponse;
       setConversations(data.conversations ?? []);
@@ -95,7 +95,7 @@ export function MessagesPage() {
   const loadMessages = async (convId: number) => {
     try {
       setLoadingMsgs(true);
-      const res = await fetch(`/api/conversations/${convId}/messages`, {
+      const res = await fetch(apiUrl(`/api/conversations/${convId}/messages`), {
         credentials: 'include',
       });
       if (!res.ok) { setMessages([]); return; }
@@ -179,7 +179,7 @@ export function MessagesPage() {
     if (!selectedId || !messageText.trim()) return;
 
     try {
-      const res = await fetch(`/api/conversations/${selectedId}/messages`, {
+      const res = await fetch(apiUrl(`/api/conversations/${selectedId}/messages`), {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.scss';
 import { useState } from 'react';
 import { useUser } from '../../contexts/UserContext';
+import { apiUrl } from '../../lib/api';
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export function LoginPage() {
   const { setUser } = useUser();
   const handleLogin = async () => {
     try {
-      const response = await fetch('/api/users/login', {
+      const response = await fetch(apiUrl('/api/users/login'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ export function LoginPage() {
           <span>or</span>
         </div>
 
-        <a href="/api/auth/42" className={styles.fortyTwoButton}>
+        <a href={apiUrl('/api/auth/42')} className={styles.fortyTwoButton}>
           Continue with 42
         </a>
         <div className={styles.signupPrompt}>

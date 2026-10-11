@@ -4,6 +4,8 @@ import { prisma } from '../utils/prisma';
 import { sendVerificationEmail } from '../utils/emailUtil';
 import { generateToken, hashToken } from '../utils/tokenUtils';
 
+const FRONTEND_URL = process.env.FRONTEND_URL ?? 'http://localhost';
+
 export async function createUser(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
@@ -58,7 +60,7 @@ export async function createUser(req: Request, res: Response) {
       },
     });
 
-    const confirmationUrl = `http://localhost:5173/confirm-email?token=${token}`;
+    const confirmationUrl = `${FRONTEND_URL}/confirm-email?token=${token}`;
 
     try {
       await sendVerificationEmail({

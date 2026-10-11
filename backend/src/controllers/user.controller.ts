@@ -590,8 +590,8 @@ export async function loginUser(req: Request, res: Response) {
 
     res.cookie('session', session.id, {
       httpOnly: true,
-      sameSite: 'lax',
-      secure: false,
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: process.env.NODE_ENV === 'production',
       expires: session.expiresAt,
     });
 

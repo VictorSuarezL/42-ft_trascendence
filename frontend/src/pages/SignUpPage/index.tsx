@@ -1,5 +1,6 @@
 import { useState, type SubmitEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../lib/api';
 import styles from './SignUpPage.module.scss';
 
 export function SignUpPage() {
@@ -16,7 +17,7 @@ export function SignUpPage() {
     }
 
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch(apiUrl('/api/signup'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

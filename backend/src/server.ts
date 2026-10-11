@@ -26,9 +26,14 @@ import { CardPrismaModel } from './models/prisma/card.prisma.model';
 
 const app = express();
 
+const CORS_ORIGINS = (process.env.FRONTEND_URL ?? 'http://localhost')
+  .split(',')
+  .map((s) => s.trim())
+  .concat(['http://localhost', 'http://localhost:5173']);
+
 app.use(
   cors({
-    origin: ['http://localhost', 'http://localhost:5173'],
+    origin: CORS_ORIGINS,
     credentials: true,
   }),
 );
@@ -56,7 +61,7 @@ const PORT = Number(process.env.PORT) || 3000;
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: CORS_ORIGINS,
     credentials: true,
   },
 });

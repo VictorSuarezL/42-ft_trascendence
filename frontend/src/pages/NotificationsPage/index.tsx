@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import { useToast } from '../../contexts/ToastContext';
 import styles from './NotificationsPage.module.scss';
+import { apiUrl, uploadUrl } from '../../lib/api';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
 
 type FriendRequester = {
@@ -20,11 +21,8 @@ type FriendRequestItem = {
   createdAt: string;
 };
 
-const getImageUrl = (image?: string | null): string => {
-  if (!image) return defaultProfileImage;
-  if (image.startsWith('http')) return image;
-  return `http://localhost:3000${image}`;
-};
+const getImageUrl = (image?: string | null): string =>
+  uploadUrl(image) ?? defaultProfileImage;
 
 export function NotificationsPage() {
   const navigate = useNavigate();
@@ -39,7 +37,7 @@ export function NotificationsPage() {
     if (!user) { setRequests([]); return; }
     setLoading(true);
     try {
-      const res = await fetch('/api/users/friend-requests', { credentials: 'include' });
+      const res = await fetch(apiUrl('/api/users/friend-requests'), { credentials: 'include' });
       if (!res.ok) { setRequests([]); return; }
       const data = await res.json();
       setRequests(data.requests ?? []);
@@ -63,7 +61,7 @@ export function NotificationsPage() {
 
   const handleAccept = async (friendshipId: number) => {
     try {
-      const res = await fetch(`/api/users/friend-requests/${friendshipId}/accept`, { method: 'POST', credentials: 'include' });
+      const res = await fetch(apiUrl(`/api/users/friend-requests/${friendshipId}/accept`), { method: 'POST', credentials: 'include' });
       if (!res.ok) throw new Error((await res.json().catch(() => null))?.error ?? 'Could not accept');
       showToast({ message: 'Friend request accepted', type: 'success', location: 'TOP-RIGHT' });
       await loadRequests();
@@ -74,7 +72,7 @@ export function NotificationsPage() {
 
   const handleReject = async (friendshipId: number) => {
     try {
-      const res = await fetch(`/api/users/friend-requests/${friendshipId}/reject`, { method: 'POST', credentials: 'include' });
+      const res = await fetch(apiUrl(`/api/users/friend-requests/${friendshipId}/reject`), { method: 'POST', credentials: 'include' });
       if (!res.ok) throw new Error((await res.json().catch(() => null))?.error ?? 'Could not reject');
       showToast({ message: 'Friend request rejected', type: 'info', location: 'TOP-RIGHT' });
       await loadRequests();

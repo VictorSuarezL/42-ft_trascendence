@@ -1,57 +1,83 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './ForgotPasswordPage.module.scss';
+import { apiUrl } from '../../lib/api';
 
 export function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  async function handleSubmit() {
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
     try {
-      const response = await fetch(
-        'http://localhost:3000/auth/forgot-password',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
-        },
-      );
-
-      const data = await response.json();
-
-      console.log('Response:', data);
-
-      if (!response.ok) {
-        console.error('Failed:', data.error);
-        return;
-      }
-
-      navigate('/email-confirmation');
+      await fetch(apiUrl('/api/auth/forgot-password'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      setSent(true);
     } catch (error) {
       console.error('Request failed:', error);
+      setSent(true);
+    } finally {
+      setLoading(false);
     }
   }
+
   return (
-    <div>
-      <h1>Forgot Password</h1>
-      <p>Please enter your email address to reset your password.</p>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
-      >
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Reset Password</button>
-      </form>
-    </div>
+    <main className={styles.page}>
+      <div className={styles.card}>
+        <div className={styles.iconWrapper}>
+          <span className={styles.icon}>✉</span>
+        </div>
+
+        {sent ? (
+          <>
+            <h1 className={styles.title}>Check your inbox</h1>
+            <p className={styles.text}>
+              If an account exists for <strong>{email}</strong>, we sent a
+              password reset link.
+            </p>
+            <button className={styles.button} onClick={() => navigate('/')}>
+              Back to login
+            </button>
+          </>
+        ) : (
+          <>
+            <h1 className={styles.title}>Forgot password?</h1>
+            <p className={styles.text}>
+              Enter your email and we&apos;ll send you a reset link.
+            </p>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={styles.field}>
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
+                />
+              </div>
+              <button type="submit" className={styles.button} disabled={loading}>
+                {loading ? 'Sending…' : 'Send reset link'}
+              </button>
+            </form>
+            <button
+              type="button"
+              className={styles.backLink}
+              onClick={() => navigate('/')}
+            >
+              ← Back to login
+            </button>
+          </>
+        )}
+      </div>
+    </main>
   );
 }

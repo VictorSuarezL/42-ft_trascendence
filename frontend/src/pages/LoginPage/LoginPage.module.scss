@@ -1,239 +1,235 @@
+/* ── Layout ── */
 .page {
-  position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #000;
-}
-
-.backgroundVideo {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  z-index: 0;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.25),
-    rgba(0, 0, 0, 0.45)
-  );
-
-  z-index: 1;
-}
-
-.loginCard {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  background: #05070a url('/villains-bg.svg') center center / cover no-repeat;
+  color: #e8dfc5;
   position: relative;
-  z-index: 2;
 
-  width: min(90%, 420px);
-  padding: 2.5rem;
-
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-
-  backdrop-filter: blur(8px);
-
-  h1 {
-    margin: 0 0 0.5rem;
-
-    font-size: 2rem;
-    font-weight: 700;
-    color: #111;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 7, 10, 0.55);
+    pointer-events: none;
+    z-index: 0;
   }
 
-  > p {
-    margin: 0 0 2rem;
-
-    color: #666;
-    font-size: 0.95rem;
+  > * {
+    position: relative;
+    z-index: 1;
   }
+}
+
+/* ── Left: login card ── */
+.loginCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin: 48px 0 48px 64px;
+  padding: 48px 44px;
+  background: rgba(7, 9, 14, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.cardTitle {
+  margin: 0 0 36px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8dfc5;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 14px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #333;
-  }
-
-  input {
-    width: 100%;
-    box-sizing: border-box;
-
-    padding: 0.85rem 1rem;
-
-    border: 1px solid #d6d6d6;
-    border-radius: 10px;
-
-    background: #fff;
-    color: #111;
-
-    font-size: 1rem;
-
-    outline: none;
-
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
-
-    &::placeholder {
-      color: #aaa;
-    }
-
-    &:focus {
-      border-color: #111;
-      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
-    }
-  }
-}
-
-.loginButton,
-.fortyTwoButton {
+.field input {
   width: 100%;
   box-sizing: border-box;
-
-  padding: 0.9rem 1rem;
-
-  border-radius: 10px;
-
-  font-size: 1rem;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  text-align: center;
-  text-decoration: none;
-
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8dfc5;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
 }
+
+.field input::placeholder { color: #4b5563; }
+.field input:focus { border-color: rgba(212, 165, 44, 0.5); }
 
 .loginButton {
+  margin-top: 6px;
+  width: 100%;
+  padding: 12px;
   border: none;
-
-  background: #111;
-  color: #fff;
-
-  &:hover {
-    background: #292929;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  }
+  border-radius: 8px;
+  background: #d4a52c;
+  color: #05070a;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
 }
+.loginButton:hover { background: #e8b93a; transform: translateY(-1px); }
 
 .divider {
   display: flex;
   align-items: center;
-  gap: 1rem;
-
-  margin: 1.5rem 0;
-
-  color: #999;
-  font-size: 0.8rem;
+  gap: 12px;
+  margin: 22px 0;
+  color: #4b5563;
+  font-size: 0.78rem;
 
   &::before,
   &::after {
     content: '';
-
-    height: 1px;
     flex: 1;
-
-    background: #e5e5e5;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
   }
 }
 
 .fortyTwoButton {
   display: block;
-
-  border: 1px solid #d6d6d6;
-
-  background: #fff;
-  color: #111;
-
-  &:hover {
-    background: #f5f5f5;
-    border-color: #bbb;
-  }
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: #e8dfc5;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
 }
-
-@media (max-width: 480px) {
-  .loginCard {
-    padding: 2rem 1.5rem;
-    border-radius: 16px;
-
-    h1 {
-      font-size: 1.75rem;
-    }
-  }
-}
-
-.signupText {
-  margin: 1rem 0 0;
-
-  font-size: 0.875rem;
-  color: #555;
-
-  button {
-    background: none;
-    border: none;
-    padding: 0;
-
-    color: #111;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-      color 0.2s ease,
-      text-decoration 0.2s ease;
-
-    &:hover {
-      color: #000;
-      text-decoration: underline;
-    }
-  }
+.fortyTwoButton:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(212, 165, 44, 0.35);
 }
 
 .signupPrompt {
   display: flex;
   justify-content: center;
+  gap: 24px;
+  margin-top: 22px;
+}
+
+.signupText {
+  margin: 0;
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #aaa69b;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover { color: #d4a52c; }
+  }
+}
+
+/* ── Right: branding ── */
+.branding {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px;
+  text-align: center;
+}
+
+.welcomeTo {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #aaa69b;
+  text-transform: uppercase;
+}
+
+.gameTitle {
+  margin: 0;
+  font-family: 'Horror', sans-serif;
+  font-size: clamp(7.5rem, 22vw, 22rem);
+  font-weight: 400;
+  line-height: 0.85;
+  color: #e8dfc5;
+  text-shadow:
+    0 0 80px rgba(212, 165, 44, 0.22),
+    0 4px 40px rgba(0, 0, 0, 0.7);
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.errorMsg {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #ff5b6e;
+  background: rgba(255, 91, 110, 0.08);
+  border: 1px solid rgba(255, 91, 110, 0.2);
+}
+
+.hintMsg {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #d4a52c;
+  opacity: 0.85;
+}
+
+.tagline {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: #d4a52c;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .branding {
+    padding: 40px 24px;
+    order: -1;
+  }
+
+  .gameTitle { font-size: clamp(3rem, 14vw, 5rem); }
+
+  .loginCard {
+    margin: 24px 16px;
+    padding: 36px 24px;
+  }
 }

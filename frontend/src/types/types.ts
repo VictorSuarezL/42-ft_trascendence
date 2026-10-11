@@ -1,4 +1,34 @@
 export interface TranslationData {
+  loginPage: {
+    title: string;
+    emailPlaceholder: string;
+    passwordPlaceholder: string;
+    enterButton: string;
+    or: string;
+    continueWith42: string;
+    newHere: string;
+    forgotPassword: string;
+    signupTitle: string;
+    repeatPasswordPlaceholder: string;
+    passwordTooShort: string;
+    passwordMismatch: string;
+    createAccount: string;
+    alreadyHaveAccount: string;
+    welcomeTo: string;
+    tagline: string;
+    emailRequired: string;
+    invalidEmail: string;
+    passwordRequired: string;
+    repeatRequired: string;
+    loginNotFound: string;
+    loginWrongPassword: string;
+    loginVerifyEmail: string;
+    loginFailed: string;
+    signupEmailExists: string;
+    signupFailed: string;
+    networkError: string;
+  };
+
   homePage: {
     title: string;
     description: string;

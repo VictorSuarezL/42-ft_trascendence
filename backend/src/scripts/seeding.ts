@@ -100,6 +100,7 @@ async function seedSharedTranslations(filename: string) {
 
 async function main() {
   await seedSharedTranslations('translations/game.json');
+  await seedSharedTranslations('translations/loginPage.json');
   await seedSharedTranslations('content.json');
 
   const directoryUrl = new URL('../../json/villains/', import.meta.url);

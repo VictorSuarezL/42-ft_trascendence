@@ -1,0 +1,132 @@
+{
+  "loginPage.title": {
+    "en": "Login",
+    "es": "Iniciar sesión",
+    "fr": "Connexion"
+  },
+  "loginPage.emailPlaceholder": {
+    "en": "Email",
+    "es": "Correo electrónico",
+    "fr": "Adresse e-mail"
+  },
+  "loginPage.passwordPlaceholder": {
+    "en": "Password",
+    "es": "Contraseña",
+    "fr": "Mot de passe"
+  },
+  "loginPage.enterButton": {
+    "en": "Enter",
+    "es": "Entrar",
+    "fr": "Entrer"
+  },
+  "loginPage.or": {
+    "en": "or",
+    "es": "o",
+    "fr": "ou"
+  },
+  "loginPage.continueWith42": {
+    "en": "Continue with 42",
+    "es": "Continuar con 42",
+    "fr": "Continuer avec 42"
+  },
+  "loginPage.newHere": {
+    "en": "New here?",
+    "es": "¿Eres nuevo?",
+    "fr": "Nouveau ici ?"
+  },
+  "loginPage.forgotPassword": {
+    "en": "Forgot password?",
+    "es": "¿Olvidaste tu contraseña?",
+    "fr": "Mot de passe oublié ?"
+  },
+  "loginPage.signupTitle": {
+    "en": "Sign up",
+    "es": "Registrarse",
+    "fr": "S'inscrire"
+  },
+  "loginPage.repeatPasswordPlaceholder": {
+    "en": "Repeat password",
+    "es": "Repite la contraseña",
+    "fr": "Répéter le mot de passe"
+  },
+  "loginPage.passwordMismatch": {
+    "en": "Passwords do not match.",
+    "es": "Las contraseñas no coinciden.",
+    "fr": "Les mots de passe ne correspondent pas."
+  },
+  "loginPage.createAccount": {
+    "en": "Create account",
+    "es": "Crear cuenta",
+    "fr": "Créer un compte"
+  },
+  "loginPage.alreadyHaveAccount": {
+    "en": "Already have an account?",
+    "es": "¿Ya tienes una cuenta?",
+    "fr": "Vous avez déjà un compte ?"
+  },
+  "loginPage.welcomeTo": {
+    "en": "Welcome to",
+    "es": "Bienvenido a",
+    "fr": "Bienvenue dans"
+  },
+  "loginPage.tagline": {
+    "en": "It's good to be bad",
+    "es": "Es bueno ser malo",
+    "fr": "Il fait bon être méchant"
+  },
+  "loginPage.emailRequired": {
+    "en": "Email is required.",
+    "es": "El correo electrónico es obligatorio.",
+    "fr": "L'adresse e-mail est obligatoire."
+  },
+  "loginPage.invalidEmail": {
+    "en": "Enter a valid email address.",
+    "es": "Introduce una dirección de correo válida.",
+    "fr": "Entrez une adresse e-mail valide."
+  },
+  "loginPage.passwordRequired": {
+    "en": "Password is required.",
+    "es": "La contraseña es obligatoria.",
+    "fr": "Le mot de passe est obligatoire."
+  },
+  "loginPage.repeatRequired": {
+    "en": "Please repeat your password.",
+    "es": "Por favor, repite tu contraseña.",
+    "fr": "Veuillez répéter votre mot de passe."
+  },
+  "loginPage.loginNotFound": {
+    "en": "No account found with this email.",
+    "es": "No se encontró ninguna cuenta con este correo.",
+    "fr": "Aucun compte trouvé avec cet e-mail."
+  },
+  "loginPage.loginWrongPassword": {
+    "en": "Incorrect password. Please try again.",
+    "es": "Contraseña incorrecta. Inténtalo de nuevo.",
+    "fr": "Mot de passe incorrect. Veuillez réessayer."
+  },
+  "loginPage.loginVerifyEmail": {
+    "en": "Please verify your email before logging in.",
+    "es": "Por favor, verifica tu correo antes de iniciar sesión.",
+    "fr": "Veuillez vérifier votre e-mail avant de vous connecter."
+  },
+  "loginPage.loginFailed": {
+    "en": "Login failed. Please try again.",
+    "es": "Error al iniciar sesión. Inténtalo de nuevo.",
+    "fr": "Échec de la connexion. Veuillez réessayer."
+  },
+  "loginPage.signupEmailExists": {
+    "en": "An account with this email already exists.",
+    "es": "Ya existe una cuenta con este correo electrónico.",
+    "fr": "Un compte avec cet e-mail existe déjà."
+  },
+  "loginPage.signupFailed": {
+    "en": "Could not create account. Please try again.",
+    "es": "No se pudo crear la cuenta. Inténtalo de nuevo.",
+    "fr": "Impossible de créer le compte. Veuillez réessayer."
+  },
+  "loginPage.networkError": {
+    "en": "Network error. Please try again.",
+    "es": "Error de red. Inténtalo de nuevo.",
+    "fr": "Erreur réseau. Veuillez réessayer."
+  }
+}

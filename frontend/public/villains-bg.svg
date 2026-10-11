@@ -1,0 +1,385 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <!-- SCAR: deep crimson/amber -->
+  <radialGradient id="gScar" cx="50%" cy="55%" r="65%" gradientUnits="userSpaceOnUse"
+    fx="230" fy="500" x1="40" y1="60" x2="410" y2="840">
+    <stop offset="0%" stop-color="#d4631e"/>
+    <stop offset="45%" stop-color="#8b1a0a"/>
+    <stop offset="100%" stop-color="#2e0505"/>
+  </radialGradient>
+  <!-- HADES: cobalt/cyan -->
+  <radialGradient id="gHades" cx="50%" cy="40%" r="65%" gradientUnits="userSpaceOnUse"
+    fx="610" fy="350" x1="420" y1="60" x2="790" y2="840">
+    <stop offset="0%" stop-color="#1ebad4"/>
+    <stop offset="45%" stop-color="#0c4a7a"/>
+    <stop offset="100%" stop-color="#030d1e"/>
+  </radialGradient>
+  <!-- MALEFICENT: deep violet/emerald tinge -->
+  <radialGradient id="gMaleficent" cx="50%" cy="48%" r="65%" gradientUnits="userSpaceOnUse"
+    fx="990" fy="430" x1="800" y1="60" x2="1170" y2="840">
+    <stop offset="0%" stop-color="#8c3fb5"/>
+    <stop offset="45%" stop-color="#3a1260"/>
+    <stop offset="100%" stop-color="#0d0416"/>
+  </radialGradient>
+  <!-- HOOK: dark teal/gold -->
+  <radialGradient id="gHook" cx="50%" cy="50%" r="65%" gradientUnits="userSpaceOnUse"
+    fx="1370" fy="450" x1="1180" y1="60" x2="1550" y2="840">
+    <stop offset="0%" stop-color="#1aad6b"/>
+    <stop offset="45%" stop-color="#0a4a2e"/>
+    <stop offset="100%" stop-color="#020e08"/>
+  </radialGradient>
+
+  <!-- Glow filter -->
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="softglow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- Arch clip paths -->
+  <!-- P1: x=40, cx=230, y=55, h=790 → bottom=845 -->
+  <clipPath id="clip1">
+    <path d="M40,845 L40,430 C40,120 230,55 230,55 C230,55 420,120 420,430 L420,845 Z"/>
+  </clipPath>
+  <clipPath id="clip2">
+    <path d="M430,845 L430,430 C430,120 620,55 620,55 C620,55 810,120 810,430 L810,845 Z"/>
+  </clipPath>
+  <clipPath id="clip3">
+    <path d="M820,845 L820,430 C820,120 1010,55 1010,55 C1010,55 1200,120 1200,430 L1200,845 Z"/>
+  </clipPath>
+  <clipPath id="clip4">
+    <path d="M1210,845 L1210,430 C1210,120 1400,55 1400,55 C1400,55 1590,120 1590,430 L1590,845 Z"/>
+  </clipPath>
+</defs>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- OVERALL BACKGROUND -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<rect width="1600" height="900" fill="#05020a"/>
+
+<!-- Stone texture between panels -->
+<rect x="0" y="0" width="1600" height="900" fill="none" stroke="#1a1410" stroke-width="0"/>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- PANEL 1: SCAR -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<g clip-path="url(#clip1)">
+  <rect x="40" y="55" width="380" height="790" fill="url(#gScar)"/>
+
+  <!-- fire glow at bottom -->
+  <ellipse cx="230" cy="800" rx="160" ry="60" fill="#d4631e" opacity="0.3" filter="url(#glow)"/>
+
+  <!-- pride rock silhouette -->
+  <path d="M40,845 L40,740 L80,710 L110,730 L150,680 L185,700 L215,660 L230,668 L245,660 L275,700 L310,680 L350,730 L380,710 L420,740 L420,845 Z"
+        fill="#1a0503" opacity="0.85"/>
+
+  <!-- flame columns -->
+  <path d="M 130,845 C 120,790 105,750 118,700 C 126,665 145,648 138,610 C 148,638 158,652 152,692 C 146,733 158,778 160,845 Z"
+        fill="#f4a825" opacity="0.35"/>
+  <path d="M 310,845 C 318,780 335,745 322,695 C 313,660 295,645 303,607 C 314,636 323,651 318,690 C 313,732 326,778 325,845 Z"
+        fill="#f4a825" opacity="0.35"/>
+  <path d="M 175,845 C 165,800 148,768 162,720 C 171,688 190,672 182,635 C 193,660 202,676 196,715 C 190,754 202,795 200,845 Z"
+        fill="#e87020" opacity="0.25"/>
+
+  <!-- amber glow orb (sun of pride rock) -->
+  <circle cx="230" cy="230" r="52" fill="#f4a825" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="230" cy="230" r="32" fill="#f4a825" opacity="0.3" filter="url(#softglow)"/>
+  <circle cx="230" cy="230" r="16" fill="#ffd966" opacity="0.55"/>
+
+  <!-- decorative lead lines inside panel -->
+  <line x1="230" y1="55" x2="230" y2="210" stroke="#5a1a0a" stroke-width="2.5" opacity="0.7"/>
+  <line x1="140" y1="130" x2="320" y2="130" stroke="#5a1a0a" stroke-width="2" opacity="0.6"/>
+  <line x1="140" y1="130" x2="230" y2="55" stroke="#5a1a0a" stroke-width="2" opacity="0.6"/>
+  <line x1="320" y1="130" x2="230" y2="55" stroke="#5a1a0a" stroke-width="2" opacity="0.6"/>
+  <circle cx="230" cy="130" r="18" fill="none" stroke="#c04010" stroke-width="2.5" opacity="0.7"/>
+  <circle cx="230" cy="130" r="8" fill="#f4a825" opacity="0.5"/>
+  <!-- mid horizontal divider -->
+  <line x1="60" y1="440" x2="400" y2="440" stroke="#3a0e06" stroke-width="1.5" opacity="0.5"/>
+</g>
+
+<!-- SCAR SILHOUETTE — lion, facing left, bottom center -->
+<g transform="translate(232,715)" fill="black">
+  <!-- body -->
+  <ellipse cx="15" cy="-28" rx="92" ry="50"/>
+  <!-- neck + mane -->
+  <ellipse cx="-62" cy="-70" rx="56" ry="58"/>
+  <!-- head -->
+  <ellipse cx="-66" cy="-74" rx="38" ry="36"/>
+  <!-- snout protrusion -->
+  <ellipse cx="-96" cy="-66" rx="22" ry="14"/>
+  <!-- ears -->
+  <polygon points="-97,-107 -114,-134 -80,-108"/>
+  <polygon points="-48,-107 -44,-133 -28,-108"/>
+  <!-- front legs -->
+  <rect x="-78" y="-8" width="22" height="52" rx="7"/>
+  <rect x="-28" y="-8" width="22" height="52" rx="7"/>
+  <ellipse cx="-67" cy="46" rx="20" ry="11"/>
+  <ellipse cx="-17" cy="46" rx="20" ry="11"/>
+  <!-- back legs -->
+  <rect x="58" y="-30" width="26" height="72" rx="9"/>
+  <ellipse cx="71" cy="44" rx="22" ry="12"/>
+  <rect x="97" y="-22" width="26" height="64" rx="9"/>
+  <ellipse cx="110" cy="44" rx="22" ry="12"/>
+  <!-- tail -->
+  <path d="M 123,-12 C 155,-46 175,5 164,44" fill="none" stroke="black" stroke-width="11" stroke-linecap="round"/>
+  <ellipse cx="161" cy="52" rx="13" ry="17"/>
+</g>
+
+<!-- Panel 1 arch border -->
+<path d="M40,845 L40,430 C40,120 230,55 230,55 C230,55 420,120 420,430 L420,845"
+      fill="none" stroke="#0a0505" stroke-width="14"/>
+<path d="M47,845 L47,432 C47,132 230,64 230,64 C230,64 413,132 413,432 L413,845"
+      fill="none" stroke="#6b1a08" stroke-width="3"/>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- PANEL 2: HADES -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<g clip-path="url(#clip2)">
+  <rect x="430" y="55" width="380" height="790" fill="url(#gHades)"/>
+
+  <!-- underworld glow at bottom -->
+  <ellipse cx="620" cy="810" rx="160" ry="55" fill="#1ebad4" opacity="0.2" filter="url(#glow)"/>
+
+  <!-- blue flame columns -->
+  <path d="M 510,845 C 498,785 482,750 495,695 C 504,655 524,635 514,595 C 526,625 536,640 530,682 C 524,724 536,772 535,845 Z"
+        fill="#1ebad4" opacity="0.3"/>
+  <path d="M 720,845 C 730,778 748,745 734,690 C 724,652 704,636 714,595 C 726,626 734,643 728,685 C 722,728 736,776 734,845 Z"
+        fill="#1ebad4" opacity="0.3"/>
+
+  <!-- underworld portal/orb -->
+  <circle cx="620" cy="215" r="58" fill="#1ebad4" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="620" cy="215" r="36" fill="#0e7aaa" opacity="0.3" filter="url(#softglow)"/>
+  <circle cx="620" cy="215" r="18" fill="#7de8ff" opacity="0.5"/>
+
+  <!-- skull decoration in portal -->
+  <ellipse cx="620" cy="212" r="10" fill="none" stroke="#7de8ff" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- decorative lead lines -->
+  <line x1="620" y1="55" x2="620" y2="210" stroke="#0a2a4a" stroke-width="2.5" opacity="0.7"/>
+  <line x1="530" y1="130" x2="710" y2="130" stroke="#0a2a4a" stroke-width="2" opacity="0.6"/>
+  <line x1="530" y1="130" x2="620" y2="55" stroke="#0a2a4a" stroke-width="2" opacity="0.6"/>
+  <line x1="710" y1="130" x2="620" y2="55" stroke="#0a2a4a" stroke-width="2" opacity="0.6"/>
+  <circle cx="620" cy="130" r="18" fill="none" stroke="#1a6aaa" stroke-width="2.5" opacity="0.7"/>
+  <circle cx="620" cy="130" r="8" fill="#1ebad4" opacity="0.5"/>
+  <line x1="450" y1="440" x2="790" y2="440" stroke="#082244" stroke-width="1.5" opacity="0.5"/>
+</g>
+
+<!-- HADES SILHOUETTE — humanoid, robe, flame hair -->
+<g transform="translate(620,720)" fill="black">
+  <!-- flowing robe -->
+  <path d="M -36,-195 C -48,-175 -68,-115 -78,-55 C -88,5 -92,60 -90,120 C -87,160 -82,185 -75,200 L75,200 C 82,185 87,160 90,120 C 92,60 88,5 78,-55 C 68,-115 48,-175 36,-195 Z"/>
+  <!-- torso -->
+  <rect x="-30" y="-240" width="60" height="55" rx="5"/>
+  <!-- wide shoulders -->
+  <path d="M -30,-240 L -68,-232 C -76,-220 -78,-208 -72,-200 L -36,-195 Z"/>
+  <path d="M 30,-240 L 68,-232 C 76,-220 78,-208 72,-200 L 36,-195 Z"/>
+  <!-- neck -->
+  <rect x="-13" y="-275" width="26" height="40" rx="5"/>
+  <!-- head -->
+  <ellipse cx="0" cy="-300" rx="28" ry="33"/>
+  <!-- left arm raised dramatically -->
+  <path d="M -68,-228 L -108,-278 L -118,-318" fill="none" stroke="black" stroke-width="17" stroke-linecap="round"/>
+  <circle cx="-120" cy="-328" r="11"/>
+  <!-- right arm raised -->
+  <path d="M 68,-228 L 108,-278 L 118,-318" fill="none" stroke="black" stroke-width="17" stroke-linecap="round"/>
+  <circle cx="120" cy="-328" r="11"/>
+  <!-- FLAME HAIR — signature Hades feature, pointing up -->
+  <path d="M -26,-328 C -34,-368 -20,-415 -16,-455 C -8,-415 -2,-368 -10,-328 Z"/>
+  <path d="M 2,-332 C 4,-375 16,-418 8,-460 C 18,-418 23,-372 14,-332 Z"/>
+  <path d="M 22,-328 C 30,-366 24,-410 30,-448 C 38,-410 33,-364 26,-328 Z"/>
+  <path d="M -46,-318 C -54,-352 -50,-385 -58,-412 C -44,-385 -40,-350 -36,-318 Z"/>
+  <path d="M 42,-318 C 50,-352 46,-385 54,-412 C 40,-385 36,-350 32,-318 Z"/>
+</g>
+
+<!-- Panel 2 arch border -->
+<path d="M430,845 L430,430 C430,120 620,55 620,55 C620,55 810,120 810,430 L810,845"
+      fill="none" stroke="#030810" stroke-width="14"/>
+<path d="M437,845 L437,432 C437,132 620,64 620,64 C620,64 803,132 803,432 L803,845"
+      fill="none" stroke="#0e3a6a" stroke-width="3"/>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- PANEL 3: MALEFICENT -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<g clip-path="url(#clip3)">
+  <rect x="820" y="55" width="380" height="790" fill="url(#gMaleficent)"/>
+
+  <!-- purple mist at bottom -->
+  <ellipse cx="1010" cy="810" rx="165" ry="55" fill="#8c3fb5" opacity="0.2" filter="url(#glow)"/>
+
+  <!-- thorny vine tendrils -->
+  <path d="M 1010,845 C 1010,780 975,742 988,680 C 998,630 1028,598 1010,538 C 992,476 958,444 972,380 C 984,326 1012,296 1010,240"
+        fill="none" stroke="#2a6a38" stroke-width="3.5" opacity="0.45"/>
+  <path d="M 985,760 C 964,748 940,753 930,737" fill="none" stroke="#2a6a38" stroke-width="2.5" opacity="0.45"/>
+  <path d="M 988,680 C 964,670 938,676 926,658" fill="none" stroke="#2a6a38" stroke-width="2.5" opacity="0.45"/>
+  <path d="M 1000,610 C 978,594 952,600 938,582" fill="none" stroke="#2a6a38" stroke-width="2" opacity="0.45"/>
+  <path d="M 1035,760 C 1056,748 1080,753 1090,737" fill="none" stroke="#2a6a38" stroke-width="2.5" opacity="0.45"/>
+  <path d="M 1032,680 C 1056,670 1082,676 1094,658" fill="none" stroke="#2a6a38" stroke-width="2.5" opacity="0.45"/>
+
+  <!-- moon glow orb -->
+  <circle cx="1010" cy="215" r="58" fill="#b060e8" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="1010" cy="215" r="36" fill="#7a30aa" opacity="0.3" filter="url(#softglow)"/>
+  <circle cx="1010" cy="215" r="20" fill="#d4a8f8" opacity="0.45"/>
+  <!-- crescent moon -->
+  <circle cx="1010" cy="215" r="16" fill="#d4a8f8" opacity="0.6"/>
+  <circle cx="1022" cy="209" r="13" fill="#3a1260" opacity="0.85"/>
+
+  <!-- decorative lead lines -->
+  <line x1="1010" y1="55" x2="1010" y2="210" stroke="#2a0850" stroke-width="2.5" opacity="0.7"/>
+  <line x1="920" y1="130" x2="1100" y2="130" stroke="#2a0850" stroke-width="2" opacity="0.6"/>
+  <line x1="920" y1="130" x2="1010" y2="55" stroke="#2a0850" stroke-width="2" opacity="0.6"/>
+  <line x1="1100" y1="130" x2="1010" y2="55" stroke="#2a0850" stroke-width="2" opacity="0.6"/>
+  <circle cx="1010" cy="130" r="18" fill="none" stroke="#7a30aa" stroke-width="2.5" opacity="0.7"/>
+  <circle cx="1010" cy="130" r="8" fill="#b060e8" opacity="0.5"/>
+  <line x1="840" y1="440" x2="1180" y2="440" stroke="#1e0838" stroke-width="1.5" opacity="0.5"/>
+</g>
+
+<!-- MALEFICENT SILHOUETTE — tall, horns, spreading cape -->
+<g transform="translate(1010,720)" fill="black">
+  <!-- cape/wings spread wide -->
+  <path d="M 0,-310 C -32,-310 -90,-285 -145,-242 C -182,-210 -190,-165 -185,-108 C -180,-52 -165,8 -155,70 C -142,132 -132,168 -126,200 L126,200 C 132,168 142,132 155,70 C 165,8 180,-52 185,-108 C 190,-165 182,-210 145,-242 C 90,-285 32,-310 0,-310 Z"/>
+  <!-- inner body/dress (narrower) -->
+  <path d="M -38,-268 C -43,-225 -52,-155 -57,-85 C -62,-15 -52,55 -46,118 C -40,158 -38,180 -36,200 L36,200 C 38,180 40,158 46,118 C 52,55 62,-15 57,-85 C 52,-155 43,-225 38,-268 Z"/>
+  <!-- torso -->
+  <rect x="-20" y="-322" width="40" height="62" rx="5"/>
+  <!-- neck -->
+  <rect x="-10" y="-352" width="20" height="36" rx="4"/>
+  <!-- head -->
+  <ellipse cx="0" cy="-375" rx="26" ry="30"/>
+  <!-- HORNS — Maleficent's iconic feature -->
+  <path d="M -20,-398 C -28,-428 -34,-465 -26,-500 C -18,-483 -12,-452 -16,-428 C -12,-412 -4,-402 -20,-398 Z"/>
+  <path d="M 20,-398 C 28,-428 34,-465 26,-500 C 18,-483 12,-452 16,-428 C 12,-412 4,-402 20,-398 Z"/>
+  <!-- horn base joining head -->
+  <path d="M -30,-394 C -18,-384 0,-380 18,-384 C 30,-388 28,-398 20,-400 C 10,-402 -10,-402 -20,-400 C -30,-398 -30,-394 -30,-394 Z"/>
+  <!-- staff (held left) -->
+  <rect x="-92" y="-290" width="7" height="270" rx="3.5" transform="rotate(-12,-88,-155)"/>
+  <circle cx="-108" cy="-298" r="16"/>
+  <!-- collar detail -->
+  <path d="M -55,-308 C -38,-292 -18,-288 0,-288 C 18,-288 38,-292 55,-308 L 46,-326 C 32,-312 16,-308 0,-308 C -16,-308 -32,-312 -46,-326 Z"/>
+</g>
+
+<!-- Panel 3 arch border -->
+<path d="M820,845 L820,430 C820,120 1010,55 1010,55 C1010,55 1200,120 1200,430 L1200,845"
+      fill="none" stroke="#080210" stroke-width="14"/>
+<path d="M827,845 L827,432 C827,132 1010,64 1010,64 C1010,64 1193,132 1193,432 L1193,845"
+      fill="none" stroke="#4a1880" stroke-width="3"/>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- PANEL 4: CAPTAIN HOOK -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<g clip-path="url(#clip4)">
+  <rect x="1210" y="55" width="380" height="790" fill="url(#gHook)"/>
+
+  <!-- sea glow at bottom -->
+  <ellipse cx="1400" cy="815" rx="160" ry="50" fill="#1aad6b" opacity="0.2" filter="url(#glow)"/>
+
+  <!-- wave layers -->
+  <path d="M 1210,820 C 1240,802 1270,816 1300,802 C 1330,788 1360,802 1400,792 C 1440,782 1470,797 1500,788 C 1530,778 1560,790 1590,785 L1590,845 L1210,845 Z"
+        fill="#0a4a2e" opacity="0.55"/>
+  <path d="M 1210,845 C 1245,828 1278,842 1312,828 C 1346,814 1380,828 1415,818 C 1450,808 1482,824 1510,816 C 1540,808 1568,820 1590,815 L1590,845 Z"
+        fill="#0e5a38" opacity="0.55"/>
+
+  <!-- night sky / Neverland glow -->
+  <circle cx="1400" cy="215" r="52" fill="#1aad6b" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="1400" cy="215" r="32" fill="#0a7a48" opacity="0.3" filter="url(#softglow)"/>
+  <!-- crescent moon -->
+  <circle cx="1400" cy="215" r="24" fill="#d4e8c0" opacity="0.55"/>
+  <circle cx="1414" cy="208" r="20" fill="#0a4a2e" opacity="0.92"/>
+
+  <!-- stars -->
+  <circle cx="1250" cy="175" r="2.5" fill="#c8e8d4" opacity="0.8"/>
+  <circle cx="1285" cy="140" r="3.5" fill="#c8e8d4" opacity="0.7"/>
+  <circle cx="1318" cy="170" r="2" fill="#c8e8d4" opacity="0.9"/>
+  <circle cx="1338" cy="132" r="2.5" fill="#c8e8d4" opacity="0.65"/>
+  <circle cx="1458" cy="145" r="3.5" fill="#c8e8d4" opacity="0.7"/>
+  <circle cx="1488" cy="175" r="2.5" fill="#c8e8d4" opacity="0.8"/>
+  <circle cx="1518" cy="138" r="2" fill="#c8e8d4" opacity="0.9"/>
+  <circle cx="1542" cy="168" r="2.5" fill="#c8e8d4" opacity="0.65"/>
+
+  <!-- ship mast (right side silhouette) -->
+  <rect x="1555" y="360" width="5" height="320" fill="#000" opacity="0.5"/>
+  <path d="M1557,378 L1590,402 L1557,440 Z" fill="#000" opacity="0.4"/>
+
+  <!-- decorative lead lines -->
+  <line x1="1400" y1="55" x2="1400" y2="210" stroke="#082a18" stroke-width="2.5" opacity="0.7"/>
+  <line x1="1310" y1="130" x2="1490" y2="130" stroke="#082a18" stroke-width="2" opacity="0.6"/>
+  <line x1="1310" y1="130" x2="1400" y2="55" stroke="#082a18" stroke-width="2" opacity="0.6"/>
+  <line x1="1490" y1="130" x2="1400" y2="55" stroke="#082a18" stroke-width="2" opacity="0.6"/>
+  <circle cx="1400" cy="130" r="18" fill="none" stroke="#0e8048" stroke-width="2.5" opacity="0.7"/>
+  <circle cx="1400" cy="130" r="8" fill="#1aad6b" opacity="0.5"/>
+  <line x1="1230" y1="440" x2="1570" y2="440" stroke="#051a0e" stroke-width="1.5" opacity="0.5"/>
+</g>
+
+<!-- CAPTAIN HOOK SILHOUETTE -->
+<g transform="translate(1398,715)" fill="black">
+  <!-- coat body -->
+  <path d="M -34,-222 L -40,-162 C -42,-130 -56,-80 -66,-28 C -76,24 -80,72 -74,122 C -68,162 -62,182 -58,200 L68,200 C 72,182 78,162 84,122 C 90,72 86,24 76,-28 C 66,-80 52,-130 50,-162 L 44,-222 Z"/>
+  <!-- coat tails -->
+  <path d="M -58,118 C -68,150 -80,178 -84,200 L -58,200 C -52,175 -44,150 -38,118 Z"/>
+  <path d="M 58,118 C 68,150 80,178 84,200 L 58,200 C 52,175 44,150 38,118 Z"/>
+  <!-- neck -->
+  <rect x="-11" y="-258" width="22" height="42" rx="4"/>
+  <!-- head (slightly turned) -->
+  <ellipse cx="4" cy="-283" rx="28" ry="32"/>
+  <!-- TRICORN HAT — distinctive pirate hat -->
+  <ellipse cx="4" cy="-312" rx="52" ry="13"/><!-- brim -->
+  <path d="M -30,-312 C -28,-346 -18,-372 4,-382 C 26,-372 36,-346 38,-312 Z"/><!-- crown -->
+  <!-- tricorn sides turned up -->
+  <path d="M -52,-312 C -58,-298 -62,-280 -56,-268 C -46,-270 -36,-277 -30,-312 Z"/>
+  <path d="M 60,-312 C 66,-298 70,-280 64,-268 C 54,-270 44,-277 38,-312 Z"/>
+  <!-- feather in hat -->
+  <path d="M 34,-314 C 50,-336 72,-346 76,-368 C 64,-350 44,-340 38,-318 Z"/>
+  <!-- long hair curling below hat -->
+  <path d="M -30,-268 C -38,-250 -44,-235 -46,-218 C -38,-230 -32,-245 -28,-260 Z"/>
+  <path d="M 36,-268 C 44,-252 50,-238 52,-220 C 44,-232 38,-248 34,-262 Z"/>
+  <!-- left arm normal -->
+  <path d="M -40,-212 L -80,-244 L -94,-282" fill="none" stroke="black" stroke-width="17" stroke-linecap="round"/>
+  <ellipse cx="-97" cy="-290" rx="11" ry="9"/>
+  <!-- RIGHT ARM — THE HOOK -->
+  <path d="M 44,-212 L 86,-200 L 126,-182" fill="none" stroke="black" stroke-width="18" stroke-linecap="round"/>
+  <!-- Hook curve -->
+  <path d="M 126,-182 C 152,-182 163,-166 158,-148 C 152,-130 136,-126 120,-134"
+        fill="none" stroke="black" stroke-width="16" stroke-linecap="round"/>
+  <!-- ruffled collar -->
+  <path d="M -26,-236 C -18,-225 -8,-220 4,-220 C 14,-220 26,-225 32,-236 C 22,-244 12,-250 4,-252 C -6,-250 -16,-244 -26,-236 Z"/>
+  <!-- boot tops -->
+  <rect x="-28" y="178" width="24" height="48" rx="5"/>
+  <rect x="4" y="178" width="24" height="48" rx="5"/>
+  <rect x="-30" y="178" width="28" height="11" rx="4"/>
+  <rect x="2" y="178" width="28" height="11" rx="4"/>
+</g>
+
+<!-- Panel 4 arch border -->
+<path d="M1210,845 L1210,430 C1210,120 1400,55 1400,55 C1400,55 1590,120 1590,430 L1590,845"
+      fill="none" stroke="#020808" stroke-width="14"/>
+<path d="M1217,845 L1217,432 C1217,132 1400,64 1400,64 C1400,64 1583,132 1583,432 L1583,845"
+      fill="none" stroke="#0a5030" stroke-width="3"/>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- OVERALL FRAME + FINISHES -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+
+<!-- Vignette overlay for dramatic depth -->
+<radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+  <stop offset="0%" stop-color="transparent"/>
+  <stop offset="100%" stop-color="#000" stop-opacity="0.45"/>
+</radialGradient>
+<rect width="1600" height="900" fill="url(#vignette)"/>
+
+<!-- Top and bottom stone bars -->
+<rect x="0" y="0" width="1600" height="55" fill="#05020a"/>
+<rect x="0" y="845" width="1600" height="55" fill="#05020a"/>
+<!-- Side bars -->
+<rect x="0" y="0" width="40" height="900" fill="#05020a"/>
+<rect x="420" y="0" width="10" height="900" fill="#05020a"/>
+<rect x="810" y="0" width="10" height="900" fill="#05020a"/>
+<rect x="1200" y="0" width="10" height="900" fill="#05020a"/>
+<rect x="1590" y="0" width="10" height="900" fill="#05020a"/>
+
+<!-- Outer ornamental border -->
+<rect x="8" y="8" width="1584" height="884" fill="none" stroke="#1a1208" stroke-width="3"/>
+<rect x="14" y="14" width="1572" height="872" fill="none" stroke="#2e2010" stroke-width="1.5"/>
+
+</svg>

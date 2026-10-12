@@ -1,10 +1,170 @@
-.homeButton {
-  background-color: var(--primary-color);
-  color: var(--text-color);
+.page {
+  height: 100dvh;
+  min-height: 100vh;
+  background: #05070a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: 'Inter', sans-serif;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ── Villain background ── */
+.villainBg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  object-fit: contain;
+  object-position: bottom right;
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 75%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 75%
+  );
+  animation: drift 6s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ── Content ── */
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: center;
+  margin-right: auto;
+  padding-left: 4vw;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #d4a52c;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.errorCode {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(100px, 18vw, 180px);
+  font-weight: 700;
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(212, 165, 44, 0.3);
+  letter-spacing: -6px;
+  user-select: none;
+}
+
+.quote {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3.2vw, 32px);
+  font-weight: 500;
+  color: #e8dfc5;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.sub {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  max-width: 400px;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.homeBtn {
+  padding: 11px 24px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #d4a52c, #f8d36a);
+  color: #10131c;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  padding: var(--size-xs);
-  border: 1px solid var(--accent-border);
-  &:hover {
-    background-color: var(--primary-color-hover);
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 0.85; }
+}
+
+.backBtn {
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 165, 44, 0.25);
+  background: transparent;
+  color: #aaa69b;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+
+  &:hover { color: #e8dfc5; border-color: rgba(212, 165, 44, 0.5); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .page {
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+  }
+
+  /* Hide background villain on mobile — shown inline instead */
+  .villainBg {
+    display: none;
+  }
+
+  .content {
+    padding-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .errorCode {
+    font-size: 96px;
+  }
+
+  .quote {
+    font-size: 22px;
+  }
+
+  .sub {
+    max-width: 100%;
+  }
+
+  .actions {
+    justify-content: center;
   }
 }

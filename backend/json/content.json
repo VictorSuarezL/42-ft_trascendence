@@ -21,119 +21,148 @@
   },
   "homePage.home": {
     "en": "HOME",
-    "es": "INICIO"
+    "es": "INICIO",
+    "fr": "ACCUEIL"
   },
   "homePage.play": {
     "en": "PLAY",
-    "es": "JUGAR"
+    "es": "JUGAR",
+    "fr": "JOUER"
   },
   "homePage.friends": {
     "en": "FRIENDS",
-    "es": "AMIGOS"
+    "es": "AMIGOS",
+    "fr": "AMIS"
   },
   "homePage.chat": {
     "en": "CHAT",
-    "es": "CHAT"
+    "es": "CHAT",
+    "fr": "DISCUSSION"
   },
   "homePage.profile": {
     "en": "PROFILE",
-    "es": "PERFIL"
+    "es": "PERFIL",
+    "fr": "PROFIL"
   },
   "homePage.notifications": {
     "en": "NOTIFICATIONS",
-    "es": "NOTIFICACIONES"
+    "es": "NOTIFICACIONES",
+    "fr": "NOTIFICATIONS"
   },
   "homePage.myGames": {
     "en": "MY GAMES",
-    "es": "MIS PARTIDAS"
+    "es": "MIS PARTIDAS",
+    "fr": "MES PARTIES"
   },
   "homePage.settings": {
     "en": "SETTINGS",
-    "es": "AJUSTES"
+    "es": "AJUSTES",
+    "fr": "PARAMÈTRES"
   },
   "homePage.logout": {
     "en": "LOG OUT",
-    "es": "CERRAR SESIÓN"
+    "es": "CERRAR SESIÓN",
+    "fr": "SE DÉCONNECTER"
   },
   "homePage.realmAwaits": {
     "en": "THE REALM AWAITS",
-    "es": "EL REINO TE ESPERA"
+    "es": "EL REINO TE ESPERA",
+    "fr": "LE ROYAUME VOUS ATTEND"
   },
   "homePage.welcomeBack": {
     "en": "WELCOME BACK",
-    "es": "BIENVENIDO DE NUEVO"
+    "es": "BIENVENIDO DE NUEVO",
+    "fr": "HEUREUX DE VOUS REVOIR"
   },
   "homePage.destinyAwaits": {
     "en": "Your destiny awaits. Choose your next move.",
-    "es": "Tu destino te espera. Elige tu próximo movimiento."
+    "es": "Tu destino te espera. Elige tu próximo movimiento.",
+    "fr": "Votre destin vous attend. Choisissez votre prochaine action."
   },
   "homePage.createGame": {
     "en": "CREATE GAME",
-    "es": "CREAR PARTIDA"
+    "es": "CREAR PARTIDA",
+    "fr": "CRÉER UNE PARTIE"
   },
   "homePage.createGameDescription": {
     "en": "Start a new battle",
-    "es": "Comienza una nueva batalla"
+    "es": "Comienza una nueva batalla",
+    "fr": "Lancez une nouvelle bataille"
   },
   "homePage.joinGame": {
     "en": "JOIN GAME",
-    "es": "UNIRSE A UNA PARTIDA"
+    "es": "UNIRSE A UNA PARTIDA",
+    "fr": "REJOINDRE UNE PARTIE"
   },
   "homePage.joinGameDescription": {
     "en": "Enter an existing battle",
-    "es": "Entra en una partida existente"
+    "es": "Entra en una partida existente",
+    "fr": "Rejoignez une bataille en cours"
   },
   "homePage.yourBattles": {
     "en": "YOUR BATTLES",
-    "es": "TUS BATALLAS"
+    "es": "TUS BATALLAS",
+    "fr": "VOS BATAILLES"
   },
   "homePage.yourGames": {
     "en": "YOUR GAMES",
-    "es": "TUS PARTIDAS"
+    "es": "TUS PARTIDAS",
+    "fr": "VOS PARTIES"
   },
   "homePage.viewAll": {
     "en": "VIEW ALL",
-    "es": "VER TODAS"
+    "es": "VER TODAS",
+    "fr": "TOUT VOIR"
   },
   "homePage.playingAs": {
     "en": "Playing as",
-    "es": "Jugando como"
+    "es": "Jugando como",
+    "fr": "Vous incarnez"
   },
   "homePage.yourTurn": {
     "en": "YOUR TURN",
-    "es": "TU TURNO"
+    "es": "TU TURNO",
+    "fr": "À VOUS DE JOUER"
   },
   "homePage.waiting": {
     "en": "WAITING",
-    "es": "ESPERANDO"
+    "es": "ESPERANDO",
+    "fr": "EN ATTENTE"
   },
   "homePage.howToPlayTitle": {
     "en": "HOW TO PLAY",
-    "es": "CÓMO JUGAR"
+    "es": "CÓMO JUGAR",
+    "fr": "COMMENT JOUER"
   },
   "homePage.howToPlayDescription": {
     "en": "BASIC RULES",
-    "es": "REGLAS BÁSICAS"
+    "es": "REGLAS BÁSICAS",
+    "fr": "RÈGLES DE BASE"
   },
   "homePage.explore": {
     "en": "EXPLORE",
-    "es": "EXPLORAR"
+    "es": "EXPLORAR",
+    "fr": "EXPLORER"
   },
   "homePage.scarCarouselDescription": {
     "en": "...",
-    "es": "..."
+    "es": "...",
+    "fr": "..."
   },
   "homePage.maleficentCarouselDescription": {
     "en": "...",
-    "es": "..."
+    "es": "...",
+    "fr": "..."
   },
   "homePage.captain-hookCarouselDescription": {
     "en": "...",
-    "es": "..."
+    "es": "...",
+    "fr": "..."
   },
   "homePage.hadesCarouselDescription": {
     "en": "...",
-    "es": "..."
+    "es": "...",
+    "fr": "..."
   },
   "howToPage.scarSubtitle": {
     "en": "\"Long live the king.\"",

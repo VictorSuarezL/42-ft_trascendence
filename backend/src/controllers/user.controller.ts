@@ -18,12 +18,29 @@ const publicUserSelect = {
   image: true,
 } as const;
 
-export async function getUsers(_req: Request, res: Response) {
+export async function getUsers(req: Request, res: Response) {
   try {
+    const q = typeof req.query.q === 'string' ? req.query.q.trim() : '';
+
     const users = await prisma.user.findMany({
-      orderBy: {
-        createdAt: 'desc',
+      where: q
+        ? {
+            OR: [
+              { login: { contains: q, mode: 'insensitive' } },
+              { displayName: { contains: q, mode: 'insensitive' } },
+            ],
+          }
+        : undefined,
+      select: {
+        id: true,
+        login: true,
+        displayName: true,
+        firstName: true,
+        lastName: true,
+        image: true,
       },
+      orderBy: { createdAt: 'desc' },
+      take: q ? 20 : undefined,
     });
 
     return res.json(users);

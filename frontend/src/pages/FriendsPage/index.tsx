@@ -28,7 +28,7 @@ const getImageUrl = (image?: string | null): string => {
 
 export function FriendsPage() {
   const navigate = useNavigate();
-  const { socket, user } = useUser();
+  const { socket } = useUser();
   const { showToast } = useToast();
   const [friends, setFriends] = useState<FriendItem[]>([]);
   const [loading, setLoading] = useState(true);

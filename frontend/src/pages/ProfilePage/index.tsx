@@ -1,6 +1,8 @@
 import {
+  useEffect,
   useRef,
   useState,
+  useDeferredValue,
   type ChangeEvent,
   type FormEvent,
 } from 'react';
@@ -20,6 +22,14 @@ export function ProfilePage() {
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Search state
+  const [query, setQuery] = useState('');
+  const deferredQuery = useDeferredValue(query);
+  const [searchResults, setSearchResults] = useState<{ id: number; login: string | null; displayName: string | null; image: string | null }[]>([]);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchAbort = useRef<AbortController | null>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
+
   const [editMode, setEditMode] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [saveError, setSaveError] = useState('');
@@ -30,6 +40,37 @@ export function ProfilePage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [displayName, setDisplayName] = useState('');
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setSearchOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  // Fetch when deferred query changes
+  useEffect(() => {
+    const q = deferredQuery.trim();
+    if (!q) { setSearchResults([]); setSearchOpen(false); return; }
+
+    searchAbort.current?.abort();
+    const ctrl = new AbortController();
+    searchAbort.current = ctrl;
+
+    fetch(`/api/users?q=${encodeURIComponent(q)}`, { credentials: 'include', signal: ctrl.signal })
+      .then((r) => r.json())
+      .then((data) => {
+        setSearchResults(Array.isArray(data) ? data.slice(0, 6) : []);
+        setSearchOpen(true);
+      })
+      .catch((err) => { if ((err as Error).name !== 'AbortError') setSearchResults([]); });
+
+    return () => ctrl.abort();
+  }, [deferredQuery]);
 
   const enterEditMode = () => {
     if (!user) return;
@@ -120,6 +161,52 @@ export function ProfilePage() {
       <button type="button" className={styles.back} onClick={() => navigate('/home')}>
         ← Back
       </button>
+
+      {/* ── Player search ── */}
+      <div className={styles.searchSection} ref={searchRef}>
+        <label className={styles.searchLabel}>Find players</label>
+        <div className={styles.searchWrapper}>
+          <input
+            type="search"
+            className={styles.searchInput}
+            placeholder="Search by login or name…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onFocus={() => { if (searchResults.length > 0) setSearchOpen(true); }}
+            aria-label="Search players"
+            aria-autocomplete="list"
+            aria-expanded={searchOpen}
+          />
+          {query !== deferredQuery && <span className={styles.searchSpinner} aria-hidden="true" />}
+        </div>
+
+        {searchOpen && searchResults.length > 0 && (
+          <ul className={styles.dropdown} role="listbox">
+            {searchResults.filter((r) => r.id !== user.id).map((r) => {
+              const name = r.displayName ?? r.login ?? 'Unknown';
+              return (
+                <li
+                  key={r.id}
+                  className={styles.dropdownItem}
+                  role="option"
+                  aria-selected={false}
+                  onClick={() => { setSearchOpen(false); setQuery(''); navigate(`/profile/${r.login}`); }}
+                >
+                  <img src={getImageUrl(r.image)} alt={name} className={styles.dropdownAvatar} />
+                  <div className={styles.dropdownInfo}>
+                    <span className={styles.dropdownName}>{name}</span>
+                    <span className={styles.dropdownLogin}>@{r.login}</span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+
+        {searchOpen && deferredQuery.trim() && searchResults.filter((r) => r.id !== user.id).length === 0 && (
+          <p className={styles.dropdownEmpty}>No players found.</p>
+        )}
+      </div>
 
       {!editMode ? (
         /* ── VIEW MODE ── */

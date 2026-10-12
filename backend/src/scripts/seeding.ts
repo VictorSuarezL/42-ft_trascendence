@@ -1,4 +1,5 @@
 import { readFile, readdir } from 'node:fs/promises';
+import bcrypt from 'bcrypt';
 import { prisma } from '../utils/prisma';
 import { DeckType } from '@prisma/client';
 
@@ -98,7 +99,39 @@ async function seedSharedTranslations(filename: string) {
   }
 }
 
+const TEST_USERS = [
+  { email: 'a@a.com',   password: '123123123', login: 'player_one',   name: 'Alice Darkness',  firstName: 'Alice',   lastName: 'Darkness',  displayName: 'Alice' },
+  { email: 'b@b.com',   password: '123123123', login: 'player_two',   name: 'Bob Shadow',      firstName: 'Bob',     lastName: 'Shadow',    displayName: 'Bob' },
+  { email: 'c@c.com',   password: '123123123', login: 'player_three', name: 'Carol Grimm',     firstName: 'Carol',   lastName: 'Grimm',     displayName: 'Carol' },
+  { email: 'd@d.com',   password: '123123123', login: 'player_four',  name: 'Dave Vile',       firstName: 'Dave',    lastName: 'Vile',      displayName: 'Dave' },
+];
+
+async function seedTestUsers() {
+  const passwordHash = await bcrypt.hash('123123123', 12);
+
+  for (const u of TEST_USERS) {
+    await prisma.user.upsert({
+      where: { email: u.email },
+      update: {},
+      create: {
+        email: u.email,
+        name: u.name,
+        login: u.login,
+        firstName: u.firstName,
+        lastName: u.lastName,
+        displayName: u.displayName,
+        passwordHash,
+        emailVerified: true,
+      },
+    });
+
+    console.log(`Test user upserted: ${u.email} (${u.login})`);
+  }
+}
+
 async function main() {
+  await seedTestUsers();
+
   await seedSharedTranslations('translations/game.json');
   await seedSharedTranslations('translations/loginPage.json');
   await seedSharedTranslations('content.json');

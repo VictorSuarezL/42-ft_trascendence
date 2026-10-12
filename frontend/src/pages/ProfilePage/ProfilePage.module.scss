@@ -124,3 +124,132 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* ── Player search ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.searchSection {
+  position: relative;
+  width: min(760px, 100%);
+  margin-bottom: 20px;
+}
+
+.searchLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: #d4a52c;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 40px 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 165, 44, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8dfc5;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+
+  &::placeholder { color: #4b5563; }
+  &:focus { border-color: rgba(212, 165, 44, 0.55); }
+  &::-webkit-search-cancel-button { filter: invert(0.5); cursor: pointer; }
+}
+
+.searchSpinner {
+  position: absolute;
+  right: 12px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(212, 165, 44, 0.25);
+  border-top-color: #d4a52c;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  pointer-events: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  background: #0d1520;
+  border: 1px solid rgba(212, 165, 44, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover { background: rgba(212, 165, 44, 0.07); }
+}
+
+.dropdownAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.dropdownInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.dropdownName {
+  color: #e8dfc5;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdownLogin {
+  color: #aaa69b;
+  font-size: 0.75rem;
+}
+
+.dropdownEmpty {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 12px 14px;
+  background: #0d1520;
+  border: 1px solid rgba(212, 165, 44, 0.15);
+  border-radius: 10px;
+  color: #4b5563;
+  font-size: 0.85rem;
+  z-index: 50;
+}

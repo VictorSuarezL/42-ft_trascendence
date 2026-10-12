@@ -58,7 +58,7 @@ export async function createUser(req: Request, res: Response) {
       },
     });
 
-    const confirmationUrl = `${process.env.FRONTEND_URL}/confirm-email?token=${token}`;
+    const confirmationUrl = `${(process.env.FRONTEND_URL ?? '').replace(/\/+$/, '')}/confirm-email?token=${token}`;
 
     try {
       await sendVerificationEmail({

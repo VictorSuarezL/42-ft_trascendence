@@ -10,8 +10,9 @@ const {
   FORTYTWO_CLIENT_ID,
   FORTYTWO_CLIENT_SECRET,
   FORTYTWO_REDIRECT_URI,
-  FRONTEND_URL,
 } = process.env;
+
+const FRONTEND_URL = (process.env.FRONTEND_URL ?? '').replace(/\/+$/, '');
 
 export function loginWithFortyTwo(_req: Request, res: Response) {
   const params = new URLSearchParams({

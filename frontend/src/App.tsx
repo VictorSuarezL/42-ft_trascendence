@@ -6,7 +6,6 @@ import { HomePage } from './pages/HomePage';
 import { UserProvider } from './contexts/UserContext';
 import { ProfilePage } from './pages/ProfilePage';
 import { ProtectedRoute } from './components/ProtectedRoutes';
-import { SignUpPage } from './pages/SignUpPage';
 import { SignUpConfirmation } from './pages/SignUpConfirmation';
 import { GuestRoute } from './components/GuestRoute';
 import { ConfirmEmailPage } from './pages/ConfirmEmailPage';
@@ -36,7 +35,6 @@ function App() {
               <Routes>
                 <Route element={<GuestRoute />}>
                   <Route path="/" element={<LoginPage />} />
-                  <Route path="/signup" element={<SignUpPage />} />
                   <Route path="/confirm-email" element={<ConfirmEmailPage />} />
                   <Route
                     path="/email-confirmation"
@@ -70,7 +68,10 @@ function App() {
                     element={<MessagesPage />}
                   />
                   <Route path="/friends" element={<FriendsPage />} />
-                  <Route path="/notifications" element={<NotificationsPage />} />
+                  <Route
+                    path="/notifications"
+                    element={<NotificationsPage />}
+                  />
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

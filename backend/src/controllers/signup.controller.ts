@@ -39,7 +39,7 @@ export async function createUser(req: Request, res: Response) {
         email,
         name: email.split('@')[0],
         passwordHash,
-        emailVerified: true, // Set to true for testing purposes; in production, set to false and require email verification
+        emailVerified: false, // Set to true for testing purposes; in production, set to false and require email verification
       },
     });
 
@@ -58,7 +58,7 @@ export async function createUser(req: Request, res: Response) {
       },
     });
 
-    const confirmationUrl = `http://localhost:5173/confirm-email?token=${token}`;
+    const confirmationUrl = `${process.env.FRONTEND_URL}/confirm-email?token=${token}`;
 
     try {
       await sendVerificationEmail({

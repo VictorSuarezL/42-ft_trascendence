@@ -1,19 +1,23 @@
 {
   "homePage.viewprofile": {
     "en": "View Profile",
-    "es": "Ver perfil"
+    "es": "Ver perfil",
+    "fr": "Voir le profil"
   },
   "homePage.description": {
     "en": "This is the main content of the home page.",
-    "es": "Este es el contenido principal de la página de inicio."
+    "es": "Este es el contenido principal de la página de inicio.",
+    "fr": "Voici le contenu principal de la page d'accueil."
   },
   "homePage.login": {
     "en": "Login",
-    "es": "Iniciar sesión"
+    "es": "Iniciar sesión",
+    "fr": "Se connecter"
   },
   "homePage.title": {
     "en": "Welcome to the Home Page!",
-    "es": "Bienvenido a la página de inicio!"
+    "es": "Bienvenido a la página de inicio!",
+    "fr": "Bienvenue sur la page d'accueil !"
   },
   "homePage.home": {
     "en": "HOME",
@@ -133,139 +137,208 @@
   },
   "howToPage.scarSubtitle": {
     "en": "\"Long live the king.\"",
-    "es": "\"Larga vida al rey.\""
+    "es": "\"Larga vida al rey.\"",
+    "fr": "\"Longue vie au roi.\""
   },
   "howToPage.captain-hookSubtitle": {
     "en": "\"Double the powder and shorten the fuse!\"",
-    "es": "\"¡Doblen la pólvora y acorten las mechas!\""
+    "es": "\"¡Doblen la pólvora y acorten las mechas!\"",
+    "fr": "\"Doublez la poudre et raccourcissez la mèche !\""
   },
   "howToPage.maleficentSubtitle": {
     "en": "\"Now go with a curse and serve me well!\"",
-    "es": "\"Id con mi maldición y prestad bien vuestro servicio!\""
+    "es": "\"Id con mi maldición y prestad bien vuestro servicio!\"",
+    "fr": "\"Allez, avec ma malédiction, et servez-moi bien !\""
   },
   "howToPage.hadesSubtitle": {
     "en": "\"Everybody's got a weakness.\"",
-    "es": "\"Todo el mundo tiene flaquezas.\""
+    "es": "\"Todo el mundo tiene flaquezas.\"",
+    "fr": "\"Tout le monde a un point faible.\""
   },
   "howToPage.villainGuideTitle": {
     "en": "Villain Guide",
-    "es": "Guía del Villano"
+    "es": "Guía del Villano",
+    "fr": "Guide du Méchant"
   },
   "howToPage.scarGuide": {
     "en": "Scar is special, as throughout the game, the Heroes you defeat will be placed in a Succession pile instead of your Fate discard pile. If the Heroes in your Succession pile have a total Strength of 15 or more at the beginning of your turn, you have achieved your objective. However, you cannot place any Heroes in the Succession pile until you have defeated Mufasa.\n\nYou may defeat other Heroes before defeating Mufasa, but they will be placed in your Fate discard pile. Heroes you defeat after Mufasa will be placed in the Succession pile, which is kept face up below the board. Items that were attached to the Heroes when you defeated them are not added to the Succession pile.\n\nThe Succession pile is not considered to be in the Realm. Therefore, the abilities of Heroes in that pile are ignored.",
-    "es": "Scar es especial, ya que en el trascurso de la partida pondrás los Héroes que derrotes una pila de Sucesión en vez de en la pila de descartes de Destino. Si los Héroes de tu pila de Sucesión suman una Fuerza de 15 o más al inicio de tu turno, habrás ganado tu objetivo. Sin embargo, no podrás poner Héroes en la pila de Sucesión hasta que no derrotes a Mufasa.\n\nPuedes derrotar a otros Héroes antes que a Mufasa, pero se pondrán en tu pila de descartes de Destino. Los Héroes que derrotes a partir de Mufasa irán a la pila de Sucesión, que se encuentra bocarriba debajo del tablero. Los Objetos que los Héroes tuvieran añadidos al derrotarlos no se añaden a la pila de Sucesión.\n\nLa pila de Sucesión no se considera como que está en el Reino. Por tanto, las habilidades de los Héroes que están en dicha pila se ignoran."
+    "es": "Scar es especial, ya que en el trascurso de la partida pondrás los Héroes que derrotes una pila de Sucesión en vez de en la pila de descartes de Destino. Si los Héroes de tu pila de Sucesión suman una Fuerza de 15 o más al inicio de tu turno, habrás ganado tu objetivo. Sin embargo, no podrás poner Héroes en la pila de Sucesión hasta que no derrotes a Mufasa.\n\nPuedes derrotar a otros Héroes antes que a Mufasa, pero se pondrán en tu pila de descartes de Destino. Los Héroes que derrotes a partir de Mufasa irán a la pila de Sucesión, que se encuentra bocarriba debajo del tablero. Los Objetos que los Héroes tuvieran añadidos al derrotarlos no se añaden a la pila de Sucesión.\n\nLa pila de Sucesión no se considera como que está en el Reino. Por tanto, las habilidades de los Héroes que están en dicha pila se ignoran.",
+    "fr": "Scar est particulier : au cours de la partie, les Héros que vous éliminez sont placés dans une pile de Succession au lieu de votre défausse Fatalité. Si les Héros de votre pile de Succession totalisent une Force d'au moins 15 au début de votre tour, vous avez atteint votre objectif. Cependant, vous ne pouvez placer aucun Héros dans la pile de Succession avant d'avoir éliminé Mufasa.\n\nVous pouvez éliminer d'autres Héros avant Mufasa, mais ils seront placés dans votre défausse Fatalité. Les Héros éliminés après Mufasa sont placés dans la pile de Succession, face visible sous le plateau. Les Objets attachés à ces Héros au moment de leur élimination ne sont pas ajoutés à la pile de Succession.\n\nLa pile de Succession ne fait pas partie du Royaume. Les capacités des Héros qui s'y trouvent sont donc ignorées."
   },
   "howToPage.hadesGuide": {
     "en": "To achieve your objective, you must play at least three Titans in the Underworld and move them through the Realm to Mount Olympus.\n\nTitans are a card type exclusive to Hades and function as your Allies. They can be moved using the Move an Item or Ally action and can be used to defeat Heroes using the Vanquish action.\n\nDuring the game, Titans can become imprisoned as a result of certain cards from the Fate deck. An imprisoned Titan is turned 90 degrees, and while it remains in this state, its ability is ignored. It also cannot be moved or used to defeat Heroes. Imprisoned Titans do not count toward completing your Objective either.",
-    "es": "Para lograr tu objetivo, debes jugar al menos tres Titanes en el Inframundo y moverlos a través del Reino hasta el Monte Olimpo.\n\nLos Titanes son un tipo de carta exclusivo de Hades y funcionan como tus Aliados. Pueden moverse usando la acción Mover un Objeto o un Aliado y pueden usarse para derrotar Héroes usando la acción Vencer.\n\nDurante la partida, los Titanes pueden ser aprisionados como consecuencia de algunas cartas del mazo de Destino. Un Titán aprisionado se pondrá girado 90º y mientras dure este estado, se ignorará su habilidad. Tampoco podrá ser movido ni utilizado para derrotar Héroes. Los Titanes aprisionados tampoco cuentan para la consecución de tu Objetivo."
+    "es": "Para lograr tu objetivo, debes jugar al menos tres Titanes en el Inframundo y moverlos a través del Reino hasta el Monte Olimpo.\n\nLos Titanes son un tipo de carta exclusivo de Hades y funcionan como tus Aliados. Pueden moverse usando la acción Mover un Objeto o un Aliado y pueden usarse para derrotar Héroes usando la acción Vencer.\n\nDurante la partida, los Titanes pueden ser aprisionados como consecuencia de algunas cartas del mazo de Destino. Un Titán aprisionado se pondrá girado 90º y mientras dure este estado, se ignorará su habilidad. Tampoco podrá ser movido ni utilizado para derrotar Héroes. Los Titanes aprisionados tampoco cuentan para la consecución de tu Objetivo.",
+    "fr": "Pour atteindre votre objectif, vous devez jouer au moins trois Titans aux Enfers et les déplacer à travers le Royaume jusqu'au mont Olympe.\n\nLes Titans sont un type de carte propre à Hadès et fonctionnent comme vos Alliés. Vous pouvez les déplacer avec l'action Déplacer un Objet ou un Allié et les utiliser pour éliminer des Héros avec l'action Éliminer.\n\nAu cours de la partie, certaines cartes du paquet Fatalité peuvent emprisonner les Titans. Un Titan emprisonné est tourné de 90 degrés et sa capacité est ignorée tant qu'il reste dans cet état. Il ne peut ni être déplacé ni être utilisé pour éliminer des Héros. Les Titans emprisonnés ne comptent pas non plus pour atteindre votre objectif."
   },
   "howToPage.captain-hookGuide": {
     "en": "To achieve your objective, you must unlock the Jolly Roger location by playing the Never Land Map. Peter Pan, who is found in the Fate deck, must be played, either by you or an opponent, at the Jolly Roger. You must then move him through the Realm until he reaches the Jolly Roger, where you must defeat him to win the game.\n\nWhen Peter Pan is revealed, he must be played immediately, even if the Jolly Roger location is still locked. Peter Pan cannot be moved from this location until the location is unlocked.",
-    "es": "Para alcanzar tu objetivo, debes desbloquear la ubicación del Árbol del Ahorcado, jugando para ello el Mapa de Nunca Jamás. Peter Pan, que se encuentra en el mazo de Destino, debe ser jugado, ya sea por ti o por un oponente, en el Árbol del Ahorcado. Después deberás moverlo a través del Reino hasta llegar al Jolly Roger, donde deberás derrotarlo para ganar la partida.\n\nCuando Peter Pan es revelado, debe ser jugado inmediatamente, incluso aunque la ubicación del Árbol del Ahorcado esté todavía bloqueada. Peter Pan no puede ser movido de esta ubicación hasta que se desbloquee la ubicación."
+    "es": "Para alcanzar tu objetivo, debes desbloquear la ubicación del Árbol del Ahorcado, jugando para ello el Mapa de Nunca Jamás. Peter Pan, que se encuentra en el mazo de Destino, debe ser jugado, ya sea por ti o por un oponente, en el Árbol del Ahorcado. Después deberás moverlo a través del Reino hasta llegar al Jolly Roger, donde deberás derrotarlo para ganar la partida.\n\nCuando Peter Pan es revelado, debe ser jugado inmediatamente, incluso aunque la ubicación del Árbol del Ahorcado esté todavía bloqueada. Peter Pan no puede ser movido de esta ubicación hasta que se desbloquee la ubicación.",
+    "fr": "Pour atteindre votre objectif, vous devez déverrouiller l'Arbre du Pendu en jouant la Carte du Pays Imaginaire. Peter Pan, qui se trouve dans le paquet Fatalité, doit être joué à l'Arbre du Pendu, par vous ou par un adversaire. Vous devez ensuite le déplacer à travers le Royaume jusqu'au Jolly Roger, où vous devez l'éliminer pour remporter la partie.\n\nLorsque Peter Pan est révélé, il doit être joué immédiatement, même si l'Arbre du Pendu est encore verrouillé. Peter Pan ne peut pas quitter ce lieu tant qu'il n'est pas déverrouillé."
   },
   "howToPage.maleficentGuide": {
     "en": "Curses are a card type exclusive to Maleficent. They are played at Locations, and each one has a different ability. You may play Curses at any Location and move them using the Move an Item or Ally action.",
-    "es": "La Maldición es un tipo de carta exclusivo de Maléfica. Se juegan en las ubicaciones y cada una tiene una habilidad diferente. Puedes jugar las Maldiciones en cualquier ubicación y puedes moverlas utilizando la acción Mueve un Objeto o un Aliado."
+    "es": "La Maldición es un tipo de carta exclusivo de Maléfica. Se juegan en las ubicaciones y cada una tiene una habilidad diferente. Puedes jugar las Maldiciones en cualquier ubicación y puedes moverlas utilizando la acción Mueve un Objeto o un Aliado.",
+    "fr": "Les Malédictions sont un type de carte propre à Maléfique. Elles se jouent sur des lieux et chacune possède une capacité différente. Vous pouvez jouer des Malédictions sur n'importe quel lieu et les déplacer avec l'action Déplacer un Objet ou un Allié."
   },
   "howToPage.cardTypeALLY": {
     "en": "Allies",
-    "es": "Aliados"
+    "es": "Aliados",
+    "fr": "Alliés"
   },
   "howToPage.cardTypeEFFECT": {
     "en": "Efects",
-    "es": "Efectos"
+    "es": "Efectos",
+    "fr": "Effets"
   },
   "howToPage.cardTypeITEM": {
     "en": "Items",
-    "es": "Objetos"
+    "es": "Objetos",
+    "fr": "Objets"
   },
   "howToPage.cardTypeHERO": {
     "en": "Heroes",
-    "es": "Héroes"
+    "es": "Héroes",
+    "fr": "Héros"
   },
   "howToPage.cardTypeCONDITION": {
     "en": "Conditions",
-    "es": "Condiciones"
+    "es": "Condiciones",
+    "fr": "Conditions"
   },
   "howToPage.cardTypeCURSE": {
     "en": "Curses",
-    "es": "Maldiciones"
+    "es": "Maldiciones",
+    "fr": "Malédictions"
   },
   "howToPage.cardTypeTITAN": {
     "en": "Titans",
-    "es": "Titanes"
+    "es": "Titanes",
+    "fr": "Titans"
   },
   "howToPage.copyNumber": {
     "en": "copies",
-    "es": "copias"
+    "es": "copias",
+    "fr": "exemplaires"
+  },
+  "howToPage.backToHome": {
+    "en": "BACK TO HOME",
+    "es": "PÁGINA PRINCIPAL",
+    "fr": "RETOUR À L'ACCUEIL"
+  },
+  "howToPage.objective": {
+    "en": "Objective",
+    "es": "Objetivo",
+    "fr": "Objectif"
+  },
+  "howToPage.realmTitle": {
+    "en": "THE REALM",
+    "es": "EL REINO",
+    "fr": "LE ROYAUME"
+  },
+  "howToPage.locationOrder": {
+    "en": "From left to right:",
+    "es": "De izquierda a derecha:",
+    "fr": "De gauche à droite :"
+  },
+  "howToPage.portrait": {
+    "en": "Portrait of {name}",
+    "es": "Retrato de {name}",
+    "fr": "Portrait de {name}"
+  },
+  "howToPage.realmImage": {
+    "en": "{name} Realm",
+    "es": "Reino de {name}",
+    "fr": "Royaume de {name}"
+  },
+  "howToPage.loading": {
+    "en": "Loading...",
+    "es": "Cargando...",
+    "fr": "Chargement…"
   },
   "actions.PLAY_CARD": {
     "en": "Play a Card",
-    "es": "Jugar una carta"
+    "es": "Jugar una carta",
+    "fr": "Jouer une carte"
   },
   "actions.GAIN_POWER": {
     "en": "Gain {amount} Power",
-    "es": "Obtener {amount} de Poder"
+    "es": "Obtener {amount} de Poder",
+    "fr": "Gagner {amount} Pouvoir"
   },
   "actions.FATE": {
     "en": "Fate",
-    "es": "Destino"
+    "es": "Destino",
+    "fr": "Fatalité"
   },
   "actions.VANQUISH": {
     "en": "Vanquish",
-    "es": "Vencer"
+    "es": "Vencer",
+    "fr": "Éliminer"
   },
   "actions.DISCARD_CARDS": {
     "en": "Discard cards",
-    "es": "Descartar cartas"
+    "es": "Descartar cartas",
+    "fr": "Défausser des cartes"
   },
   "actions.MOVE_ITEM_OR_ALLY": {
     "en": "Move an Item or Ally",
-    "es": "Mover un Objeto o Aliado"
+    "es": "Mover un Objeto o Aliado",
+    "fr": "Déplacer un Objet ou un Allié"
   },
   "actions.MOVE_HERO": {
     "en": "Move a Hero",
-    "es": "Mover un Héroe"
+    "es": "Mover un Héroe",
+    "fr": "Déplacer un Héros"
   },
   "actions.ACTIVATE": {
     "en": "Activate",
-    "es": "Activar"
+    "es": "Activar",
+    "fr": "Activer"
   },
   "cardTypes.ALLY": {
     "en": "Ally",
-    "es": "Aliado"
+    "es": "Aliado",
+    "fr": "Allié"
   },
   "cardTypes.CONDITION": {
     "en": "Condition",
-    "es": "Condición"
+    "es": "Condición",
+    "fr": "Condition"
   },
   "cardTypes.CURSE": {
     "en": "Curse",
-    "es": "Maldición"
+    "es": "Maldición",
+    "fr": "Malédiction"
   },
   "cardTypes.EFFECT": {
     "en": "Effect",
-    "es": "Efecto"
+    "es": "Efecto",
+    "fr": "Effet"
   },
   "cardTypes.HERO": {
     "en": "Hero",
-    "es": "Héroe"
+    "es": "Héroe",
+    "fr": "Héros"
   },
   "cardTypes.ITEM": {
     "en": "Item",
-    "es": "Objeto"
+    "es": "Objeto",
+    "fr": "Objet"
   },
   "cardTypes.TITAN": {
     "en": "Titan",
-    "es": "Titán"
+    "es": "Titán",
+    "fr": "Titan"
   },
   "decks.VILLAIN": {
     "en": "Villain deck",
-    "es": "Mazo de Villano"
+    "es": "Mazo de Villano",
+    "fr": "Paquet Méchant"
   },
   "decks.FATE": {
     "en": "Fate deck",
-    "es": "Mazo de Destino"
+    "es": "Mazo de Destino",
+    "fr": "Paquet Fatalité"
   },
   "loginPage.title": {
     "en": "Login",

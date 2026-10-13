@@ -1,4 +1,59 @@
 {
+  "notFoundPage.eyebrow": {
+    "en": "— {villain} on the matter —",
+    "es": "— {villain} al respecto —",
+    "fr": "— {villain} à ce sujet —"
+  },
+  "notFoundPage.backToRealm": {
+    "en": "Back to the Realm",
+    "es": "Volver al Reino",
+    "fr": "Retour au Royaume"
+  },
+  "notFoundPage.goBack": {
+    "en": "← Go back",
+    "es": "← Volver",
+    "fr": "← Retour"
+  },
+  "notFoundPage.scar.line": {
+    "en": "I'm surrounded by idiots...",
+    "es": "Estoy rodeado de idiotas...",
+    "fr": "Je suis entouré d'idiots..."
+  },
+  "notFoundPage.scar.sub": {
+    "en": "Even Simba could find this page. And he ran away.",
+    "es": "Hasta Simba habría encontrado esta página. Y él huyó.",
+    "fr": "Même Simba aurait trouvé cette page. Et lui, il s'est enfui."
+  },
+  "notFoundPage.hades.line": {
+    "en": "WHAT?! This page doesn't EXIST?!",
+    "es": "¿QUÉ?! ¿Esta página no EXISTE?!",
+    "fr": "QUOI?! Cette page n'EXISTE pas?!"
+  },
+  "notFoundPage.hades.sub": {
+    "en": "Okay, okay, I'm calm. I am TOTALLY calm. Nobody panic.",
+    "es": "Bien, bien, estoy tranquilo. Estoy TOTALMENTE tranquilo. Nadie entre en pánico.",
+    "fr": "Ok, ok, je suis calme. Je suis TOTALEMENT calme. Personne ne panique."
+  },
+  "notFoundPage.maleficent.line": {
+    "en": "You dare wander where you don't belong.",
+    "es": "Te atreves a vagar donde no perteneces.",
+    "fr": "Tu oses errer là où tu n'as pas ta place."
+  },
+  "notFoundPage.maleficent.sub": {
+    "en": "This realm holds nothing for you. Turn back -- or don't. I'm not your fairy godmother.",
+    "es": "Este reino no tiene nada para ti. Da la vuelta... o no. No soy tu hada madrina.",
+    "fr": "Ce royaume n'a rien à t'offrir. Fais demi-tour -- ou pas. Je ne suis pas ta fée marraine."
+  },
+  "notFoundPage.captainhook.line": {
+    "en": "Blast! This page walked the plank!",
+    "es": "¡Maldición! ¡Esta página cayó por la tabla!",
+    "fr": "Tonnerre! Cette page a marché sur la planche!"
+  },
+  "notFoundPage.captainhook.sub": {
+    "en": "Even the crocodile couldn't find it, and that beast finds everything.",
+    "es": "Ni el cocodrilo pudo encontrarla, y esa bestia encuentra todo.",
+    "fr": "Même le crocodile ne pouvait pas la trouver, et cette bête trouve tout."
+  },
   "homePage.viewprofile": {
     "en": "View Profile",
     "es": "Ver perfil",

@@ -120,6 +120,13 @@ export interface TranslationData {
     VILLAIN: string;
     FATE: string;
   };
+
+  notFoundPage: {
+    eyebrow: string;
+    backToRealm: string;
+    goBack: string;
+    [key: string]: string;
+  };
 }
 
 export const SOCKET_EVENTS = {

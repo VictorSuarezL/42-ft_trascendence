@@ -49,7 +49,7 @@ app.use('/conversations', chatRoutes);
 app.use('/signup', createUserRoutes);
 app.use('/how-to-play', howToPlayRoutes);
 app.use('/translations', createTranslationsRouter(TranslationsJsonModel));
-app.use('/villains', createVillainRouter(VillainPrismaModel));
+app.use('/villains', createVillainRouter(VillainPrismaModel, CardPrismaModel));
 app.use('/cards', createCardRouter(CardPrismaModel));
 const PORT = Number(process.env.PORT) || 3000;
 

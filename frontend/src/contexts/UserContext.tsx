@@ -1,5 +1,6 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -29,6 +30,9 @@ interface UserContextValue {
   language: Language;
   setLanguage: React.Dispatch<React.SetStateAction<Language>>;
   socket: Socket | null;
+  unreadConvIds: Set<number>;
+  markConvRead: (convId: number) => void;
+  clearUnreadConvs: () => void;
 }
 
 const UserContext = createContext<UserContextValue | undefined>(undefined);
@@ -51,6 +55,7 @@ export function UserProvider({ children }: UserProviderProps) {
 
   const [socket, setSocket] = useState<Socket | null>(null);
   const socketRef = useRef<Socket | null>(null);
+  const [unreadConvIds, setUnreadConvIds] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -70,7 +75,6 @@ export function UserProvider({ children }: UserProviderProps) {
         }
 
         const data = await response.json();
-
         setUser(data.user);
       } catch (error) {
         console.error('Could not fetch user:', error);
@@ -83,14 +87,27 @@ export function UserProvider({ children }: UserProviderProps) {
     fetchUser();
   }, []);
 
+  // Seed unread conv IDs from persisted DB notifications on login
+  useEffect(() => {
+    if (!user) { setUnreadConvIds(new Set()); return; }
+    fetch('/api/users/notifications', { credentials: 'include' })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data) return;
+        const ids: number[] = (data.messageNotifications ?? []).map(
+          (n: { conversationId: number }) => n.conversationId,
+        );
+        if (ids.length) setUnreadConvIds(new Set(ids));
+      })
+      .catch(() => {});
+  }, [user?.id]);
+
   useEffect(() => {
     if (!user) {
       console.log('[Socket] No user, disconnecting');
-
       socketRef.current?.disconnect();
       socketRef.current = null;
       setSocket(null);
-
       return;
     }
 
@@ -122,9 +139,7 @@ export function UserProvider({ children }: UserProviderProps) {
 
     return () => {
       console.log('[Socket] Cleanup');
-
       newSocket.disconnect();
-
       if (socketRef.current === newSocket) {
         socketRef.current = null;
         setSocket(null);
@@ -133,9 +148,7 @@ export function UserProvider({ children }: UserProviderProps) {
   }, [user?.id]);
 
   useEffect(() => {
-    if (!socket || !user) {
-      return;
-    }
+    if (!socket || !user) return;
 
     const handleFriendRequested = ({
       senderName,
@@ -151,10 +164,7 @@ export function UserProvider({ children }: UserProviderProps) {
     };
 
     socket.on('social.friend.requested', handleFriendRequested);
-
-    return () => {
-      socket.off('social.friend.requested', handleFriendRequested);
-    };
+    return () => { socket.off('social.friend.requested', handleFriendRequested); };
   }, [socket, user, showToast]);
 
   useEffect(() => {
@@ -167,9 +177,10 @@ export function UserProvider({ children }: UserProviderProps) {
       conversationId: number;
       message: { sender: { displayName?: string | null; login?: string | null } };
     }) => {
-      // Don't toast if the user is already viewing that conversation
       const currentPath = window.location.pathname;
       if (currentPath === `/messages/${conversationId}`) return;
+
+      setUnreadConvIds(prev => new Set([...prev, conversationId]));
 
       const senderName =
         message.sender.displayName ?? message.sender.login ?? 'Someone';
@@ -182,10 +193,7 @@ export function UserProvider({ children }: UserProviderProps) {
     };
 
     socket.on('social.message.received', handleMessageReceived);
-
-    return () => {
-      socket.off('social.message.received', handleMessageReceived);
-    };
+    return () => { socket.off('social.message.received', handleMessageReceived); };
   }, [socket, user, showToast]);
 
   const logout = async () => {
@@ -195,15 +203,18 @@ export function UserProvider({ children }: UserProviderProps) {
         credentials: 'include',
       });
 
-      if (!response.ok) {
-        throw new Error('Logout failed');
-      }
-
+      if (!response.ok) throw new Error('Logout failed');
       setUser(null);
     } catch (error) {
       console.error('Could not logout:', error);
     }
   };
+
+  const markConvRead = useCallback((convId: number) => {
+    setUnreadConvIds(prev => { const next = new Set(prev); next.delete(convId); return next; });
+  }, []);
+
+  const clearUnreadConvs = useCallback(() => setUnreadConvIds(new Set()), []);
 
   const value = useMemo(
     () => ({
@@ -214,8 +225,11 @@ export function UserProvider({ children }: UserProviderProps) {
       language,
       setLanguage,
       socket,
+      unreadConvIds,
+      markConvRead,
+      clearUnreadConvs,
     }),
-    [user, loading, language, socket],
+    [user, loading, language, socket, unreadConvIds, markConvRead, clearUnreadConvs],
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

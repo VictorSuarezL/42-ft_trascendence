@@ -40,7 +40,13 @@ interface UserProviderProps {
 export function UserProvider({ children }: UserProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    try {
+      const saved = localStorage.getItem('language');
+      if (saved === 'en' || saved === 'es' || saved === 'fr') return saved;
+    } catch {}
+    return 'en';
+  });
   const { showToast } = useToast();
 
   const [socket, setSocket] = useState<Socket | null>(null);
@@ -48,6 +54,7 @@ export function UserProvider({ children }: UserProviderProps) {
 
   useEffect(() => {
     document.documentElement.lang = language;
+    try { localStorage.setItem('language', language); } catch {}
   }, [language]);
 
   useEffect(() => {

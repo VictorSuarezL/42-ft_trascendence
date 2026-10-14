@@ -48,7 +48,9 @@ export function UserProvider({ children }: UserProviderProps) {
     try {
       const saved = localStorage.getItem('language');
       if (saved === 'en' || saved === 'es' || saved === 'fr') return saved;
-    } catch {}
+    } catch {
+      console.log('Could not access localStorage for language');
+    }
     return 'en';
   });
   const { showToast } = useToast();
@@ -57,9 +59,15 @@ export function UserProvider({ children }: UserProviderProps) {
   const socketRef = useRef<Socket | null>(null);
   const [unreadConvIds, setUnreadConvIds] = useState<Set<number>>(new Set());
 
+  const userId = user?.id;
+
   useEffect(() => {
     document.documentElement.lang = language;
-    try { localStorage.setItem('language', language); } catch {}
+    try {
+      localStorage.setItem('language', language);
+    } catch {
+      console.log('Could not access localStorage for language');
+    }
   }, [language]);
 
   useEffect(() => {
@@ -89,25 +97,24 @@ export function UserProvider({ children }: UserProviderProps) {
 
   // Seed unread conv IDs from persisted DB notifications on login
   useEffect(() => {
-    if (!user) { setUnreadConvIds(new Set()); return; }
+    if (!userId) return;
     fetch('/api/users/notifications', { credentials: 'include' })
-      .then(r => r.ok ? r.json() : null)
-      .then(data => {
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
         if (!data) return;
         const ids: number[] = (data.messageNotifications ?? []).map(
           (n: { conversationId: number }) => n.conversationId,
         );
-        if (ids.length) setUnreadConvIds(new Set(ids));
+        setUnreadConvIds(ids.length ? new Set(ids) : new Set());
       })
       .catch(() => {});
-  }, [user?.id]);
+  }, [userId]);
 
   useEffect(() => {
-    if (!user) {
+    if (!userId) {
       console.log('[Socket] No user, disconnecting');
       socketRef.current?.disconnect();
       socketRef.current = null;
-      setSocket(null);
       return;
     }
 
@@ -118,9 +125,7 @@ export function UserProvider({ children }: UserProviderProps) {
 
     console.log('[Socket] Creating connection...');
 
-    const newSocket = io({
-      withCredentials: true,
-    });
+    const newSocket = io({ withCredentials: true });
 
     socketRef.current = newSocket;
     setSocket(newSocket);
@@ -145,7 +150,7 @@ export function UserProvider({ children }: UserProviderProps) {
         setSocket(null);
       }
     };
-  }, [user?.id]);
+  }, [userId]);
 
   useEffect(() => {
     if (!socket || !user) return;
@@ -164,7 +169,9 @@ export function UserProvider({ children }: UserProviderProps) {
     };
 
     socket.on('social.friend.requested', handleFriendRequested);
-    return () => { socket.off('social.friend.requested', handleFriendRequested); };
+    return () => {
+      socket.off('social.friend.requested', handleFriendRequested);
+    };
   }, [socket, user, showToast]);
 
   useEffect(() => {
@@ -175,12 +182,14 @@ export function UserProvider({ children }: UserProviderProps) {
       message,
     }: {
       conversationId: number;
-      message: { sender: { displayName?: string | null; login?: string | null } };
+      message: {
+        sender: { displayName?: string | null; login?: string | null };
+      };
     }) => {
       const currentPath = window.location.pathname;
       if (currentPath === `/messages/${conversationId}`) return;
 
-      setUnreadConvIds(prev => new Set([...prev, conversationId]));
+      setUnreadConvIds((prev) => new Set([...prev, conversationId]));
 
       const senderName =
         message.sender.displayName ?? message.sender.login ?? 'Someone';
@@ -193,7 +202,9 @@ export function UserProvider({ children }: UserProviderProps) {
     };
 
     socket.on('social.message.received', handleMessageReceived);
-    return () => { socket.off('social.message.received', handleMessageReceived); };
+    return () => {
+      socket.off('social.message.received', handleMessageReceived);
+    };
   }, [socket, user, showToast]);
 
   const logout = async () => {
@@ -211,7 +222,11 @@ export function UserProvider({ children }: UserProviderProps) {
   };
 
   const markConvRead = useCallback((convId: number) => {
-    setUnreadConvIds(prev => { const next = new Set(prev); next.delete(convId); return next; });
+    setUnreadConvIds((prev) => {
+      const next = new Set(prev);
+      next.delete(convId);
+      return next;
+    });
   }, []);
 
   const clearUnreadConvs = useCallback(() => setUnreadConvIds(new Set()), []);
@@ -224,17 +239,27 @@ export function UserProvider({ children }: UserProviderProps) {
       logout,
       language,
       setLanguage,
+      // Derive from user: when logged out these are null/empty without needing setState in effects
+      socket: user ? socket : null,
+      unreadConvIds: user ? unreadConvIds : (new Set<number>()),
+      markConvRead,
+      clearUnreadConvs,
+    }),
+    [
+      user,
+      loading,
+      language,
       socket,
       unreadConvIds,
       markConvRead,
       clearUnreadConvs,
-    }),
-    [user, loading, language, socket, unreadConvIds, markConvRead, clearUnreadConvs],
+    ],
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useUser() {
   const context = useContext(UserContext);
 

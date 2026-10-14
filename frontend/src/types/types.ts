@@ -72,6 +72,12 @@ export interface TranslationData {
   };
 
   howToPage: {
+    backToHome: string;
+    objectiveTitle: string;
+    realmTitle: string;
+    realmDescription: string;
+    realmLocationOrder: string;
+    successionPile: string;
     scarSubtitle: string;
     'captain-hookSubtitle': string;
     maleficentSubtitle: string;

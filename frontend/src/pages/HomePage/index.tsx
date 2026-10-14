@@ -16,20 +16,27 @@ const getImageUrl = (image?: string | null): string => {
 
 export function HomePage() {
   const navigate = useNavigate();
-  const { language, user, socket, logout } = useUser();
+  const { language, user, socket, logout, unreadConvIds } = useUser();
 
   const translations = useTranslation(language, 'homePage,cardTypes');
 
   const [pendingCount, setPendingCount] = useState(0);
 
   const loadPendingCount = async () => {
-    if (!user) { setPendingCount(0); return; }
+    if (!user) {
+      setPendingCount(0);
+      return;
+    }
     try {
-      const res = await fetch('/api/users/friend-requests', { credentials: 'include' });
+      const res = await fetch('/api/users/friend-requests', {
+        credentials: 'include',
+      });
       if (!res.ok) return;
       const data = await res.json();
       setPendingCount((data.requests ?? []).length);
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   };
 
   useEffect(() => {
@@ -40,7 +47,9 @@ export function HomePage() {
     if (!socket || !user) return;
     const onRequest = () => void loadPendingCount();
     socket.on('social.friend.requested', onRequest);
-    return () => { socket.off('social.friend.requested', onRequest); };
+    return () => {
+      socket.off('social.friend.requested', onRequest);
+    };
   }, [socket, user]);
 
   const handleLogout = async () => {
@@ -70,7 +79,12 @@ export function HomePage() {
             <img
               src={getImageUrl(user?.image)}
               alt={displayName}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '50%',
+              }}
             />
           </div>
 
@@ -100,6 +114,9 @@ export function HomePage() {
           >
             <span>✉</span>
             {translations.homePage.chat}
+            {unreadConvIds.size > 0 && (
+              <span className={styles.sideBadge}>{unreadConvIds.size}</span>
+            )}
           </button>
 
           <button
@@ -116,7 +133,9 @@ export function HomePage() {
           >
             <span>♢</span>
             {translations.homePage.notifications}
-            {pendingCount > 0 && <span className={styles.sideBadge}>{pendingCount}</span>}
+            {pendingCount > 0 && (
+              <span className={styles.sideBadge}>{pendingCount}</span>
+            )}
           </button>
 
           <button className={styles.navItem}>
@@ -141,7 +160,6 @@ export function HomePage() {
         ================================================= */}
 
         <section className={styles.hero}>
-
           <div className={styles.heroOverlay} />
 
           <div className={styles.heroContent}>

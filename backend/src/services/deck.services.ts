@@ -2,9 +2,7 @@ import { DeckPrismaModel } from '../models/prisma/deck.prisma.model';
 import type { CardInstance, PlayerCardsState } from '../types/game.types';
 import { randomInt } from 'node:crypto';
 
-function createCardInstances(
-  cards: { id: string; quantity: number }[],
-): CardInstance[] {
+function createCardInstances(cards: { id: string; quantity: number }[]): CardInstance[] {
   const instances: CardInstance[] = [];
   for (const card of cards) {
     for (let i = 0; i < card.quantity; i++) {
@@ -29,16 +27,32 @@ function shuffle(cards: CardInstance[]): CardInstance[] {
   return shuffled;
 }
 
-export async function buildPlayerDecks(
-  villainId: string,
-): Promise<PlayerCardsState> {
+export function drawVillainCards(state: PlayerCardsState, amount: number): CardInstance[] {
+  if (!Number.isInteger(amount) || amount <= 0) {
+    throw new Error('Amount must be a positive integer');
+  }
+
+  const drawPile = state.villainDeck.drawPile;
+
+  if (drawPile.length < amount) {
+    throw new Error('Not enough cards to draw');
+  }
+
+  const drawnCards = drawPile.splice(-amount).reverse();
+
+  state.hand.push(...drawnCards);
+
+  return drawnCards;
+}
+
+export async function buildPlayerDecks(villainId: string): Promise<PlayerCardsState> {
   const decks = await DeckPrismaModel.getByVillainId(villainId);
 
   const villainDeck = decks.find((deck) => deck.type === 'VILLAIN');
   const fateDeck = decks.find((deck) => deck.type === 'FATE');
 
   if (!villainDeck || !fateDeck) {
-    throw new Error(`Faltan mazos para el villano "${villainId}"`);
+    throw new Error(`Decks not found for villain "${villainId}"`);
   }
 
   return {

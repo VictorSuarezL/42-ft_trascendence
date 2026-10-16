@@ -13,6 +13,148 @@ import type {
 } from '../../../../backend/src/types/villains.types.ts';
 import styles from './TestPage.module.scss';
 import { useTranslation } from '../../hooks/useTranslation';
+import ActionButton from '../../components/ActionButton';
+import actionImage from '../../assets/realmComponents/scar/scar_1Power_button.webp';
+import LocationButton, { type LocationAction } from '../../components/LocationButton';
+import locationImage from '../../assets/realmComponents/scar/Location_1.webp';
+import fateImage from '../../assets/realmComponents/scar/scar_Fate_button.webp';
+import playCardImage from '../../assets/realmComponents/scar/scar_PlayCard_button.webp';
+import discardImage from '../../assets/realmComponents/scar/scar_Discard_button.webp';
+import Location, { type LocationCard } from '../../components/Location';
+
+const testFateCard: LocationCard = {
+  id: 'test-fate', name: 'Mufasa', text: 'Carta de prueba para comprobar la cascada superior.',
+  strength: 6, type: 'Héroe', typeKey: 'hero', deckType: 'FATE',
+  imagePath: '/api/assets/scar/cropped-images/fate/mufasa.webp',
+  bottomImage: '/api/assets/scar/cropped-images/scar-power-fate-clean.webp',
+};
+const testVillainCard: LocationCard = {
+  id: 'test-villain', name: 'Banzai', text: 'Carta de prueba para comprobar la cascada inferior.',
+  strength: 3, type: 'Aliado', typeKey: 'ally', deckType: 'VILLAIN',
+  imagePath: '/api/assets/scar/cropped-images/villain/banzai-the-hyena.webp',
+  bottomImage: '/api/assets/scar/cropped-images/scar-power-villain-clean.webp',
+};
+
+export function TestingLocationPage() {
+  const [fateCount, setFateCount] = useState(2);
+  const [villainCount, setVillainCount] = useState(2);
+  const [disabled, setDisabled] = useState(false);
+  const [lastAction, setLastAction] = useState('Ninguna');
+  const [clicks, setClicks] = useState(0);
+  const fateCards = Array.from({ length: fateCount }, (_, index) => ({
+    ...testFateCard, id: `fate-${index}`, name: `Mufasa ${index + 1}`,
+  }));
+  const villainCards = Array.from({ length: villainCount }, (_, index) => ({
+    ...testVillainCard, id: `villain-${index}`, name: `Banzai ${index + 1}`,
+  }));
+
+  return (
+    <main className={styles.actionButtonTestPage}>
+      <h1>Prueba de Location</h1>
+      <p>Las cartas de Fate cubren y desactivan las acciones superiores. Quítalas para habilitarlas.</p>
+      <div className={styles.locationTestControls}>
+        <label>
+          Cartas de Fate: {fateCount}
+          <input type="range" min="0" max="5" value={fateCount}
+            onChange={(event) => setFateCount(Number(event.target.value))} />
+        </label>
+        <label>
+          Cartas de villano: {villainCount}
+          <input type="range" min="0" max="5" value={villainCount}
+            onChange={(event) => setVillainCount(Number(event.target.value))} />
+        </label>
+        <label>
+          <input type="checkbox" checked={disabled}
+            onChange={(event) => setDisabled(event.target.checked)} />
+          Estado inactivo
+        </label>
+      </div>
+      <p role="status">Clics: {clicks} · Última acción: {lastAction}</p>
+      <div className={styles.locationButtonPreview}>
+        <Location
+          imagePath={locationImage}
+          label="Localización de prueba de Scar"
+          actions={testLocationActions}
+          fateCards={fateCards}
+          villainCards={villainCards}
+          disabled={disabled}
+          onAction={(action) => {
+            setLastAction(action.label);
+            setClicks((count) => count + 1);
+          }}
+        />
+      </div>
+    </main>
+  );
+}
+
+const testLocationActions: LocationAction[] = [
+  { area: 'TOP', position: 1, imagePath: actionImage, label: 'Ganar un punto de poder' },
+  { area: 'TOP', position: 2, imagePath: fateImage, label: 'Fate' },
+  { area: 'BOTTOM', position: 1, imagePath: playCardImage, label: 'Jugar una carta' },
+  { area: 'BOTTOM', position: 2, imagePath: discardImage, label: 'Descartar cartas' },
+];
+
+export function TestingLocationButtonPage() {
+  const [disabled, setDisabled] = useState(false);
+  const [clicks, setClicks] = useState(0);
+  const [lastAction, setLastAction] = useState('Ninguna');
+
+  return (
+    <main className={styles.actionButtonTestPage}>
+      <h1>Prueba de LocationButton</h1>
+      <p>Pasa el ratón por la localización para ver el brillo y el aumento de tamaño.</p>
+      <div className={styles.locationButtonPreview}>
+        <LocationButton
+          imagePath={locationImage}
+          label="Localización de prueba de Scar"
+          actions={testLocationActions}
+          disabled={disabled}
+          onAction={(action) => {
+            setLastAction(action.label);
+            setClicks((count) => count + 1);
+          }}
+        />
+      </div>
+      <label>
+        <input
+          type="checkbox"
+          checked={disabled}
+          onChange={(event) => setDisabled(event.target.checked)}
+        />
+        Estado inactivo
+      </label>
+      <p role="status">Clics: {clicks} · Última acción: {lastAction}</p>
+    </main>
+  );
+}
+
+export function TestingActionButtonPage() {
+  const [disabled, setDisabled] = useState(false);
+  const [clicks, setClicks] = useState(0);
+
+  return (
+    <main className={styles.actionButtonTestPage}>
+      <h1>Prueba de ActionButton</h1>
+      <p>Pasa el ratón por encima o usa Tab para ver el halo. Pulsa para contar clics.</p>
+      <ActionButton
+        imagePath={actionImage}
+        label="Ganar un punto de poder"
+        disabled={disabled}
+        onClick={() => setClicks((count) => count + 1)}
+      />
+      <label>
+        <input
+          type="checkbox"
+          checked={disabled}
+          onChange={(event) => setDisabled(event.target.checked)}
+        />
+        Estado inactivo
+      </label>
+      <p role="status">Clics: {clicks}</p>
+    </main>
+  );
+}
 // interface VillainImage {
 //   id: string;
 //   path: string;

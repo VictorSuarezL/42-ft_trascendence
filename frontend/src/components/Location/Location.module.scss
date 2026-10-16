@@ -1,0 +1,62 @@
+.location {
+  container-type: inline-size;
+  isolation: isolate;
+  width: 100%;
+  --card-height: calc(88cqw * 477 / 337.34);
+  --cascade-step: 22cqw;
+}
+
+.stack {
+  position: relative;
+  z-index: 1;
+  width: 88%;
+  height: calc(var(--card-height) + var(--extra-cards) * var(--cascade-step));
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  pointer-events: none;
+}
+
+.upper {
+  // Cover both top actions, including the small enlargement on hover.
+  margin-bottom: -34cqw;
+
+  .card {
+    bottom: calc(var(--card-index) * var(--cascade-step));
+  }
+}
+
+.lower {
+  margin-top: 3cqw;
+
+  .card {
+    top: calc(var(--card-index) * var(--cascade-step));
+  }
+}
+
+.center {
+  position: relative;
+  z-index: 0;
+}
+
+.card {
+  position: absolute;
+  z-index: var(--card-index);
+  width: 100%;
+  height: var(--card-height);
+  pointer-events: auto;
+}
+
+.cardContent {
+  width: 337.34px;
+  height: 477px;
+  transform: scale(var(--card-scale, 1));
+  transform-origin: top left;
+
+  // Preserve the same card dimensions at every screen breakpoint.
+  > article {
+    box-sizing: content-box;
+    width: 333.34px;
+    height: 473px;
+  }
+}

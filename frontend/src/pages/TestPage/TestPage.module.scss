@@ -1,3 +1,29 @@
+.locationTestControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.locationButtonPreview {
+  width: min(280px, 100%);
+  margin: 32px 0;
+}
+
+.actionButtonTestPage {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 32px 24px;
+  background: #000;
+  color: #fff;
+}
+
 .villainTestPage {
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;

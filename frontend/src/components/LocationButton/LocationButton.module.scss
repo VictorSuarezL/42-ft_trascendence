@@ -1,0 +1,53 @@
+.location {
+  position: relative;
+  width: 100%;
+  transition: transform 160ms ease;
+
+  &[data-disabled='false'] .image {
+    filter: drop-shadow(0 0 3px rgba(255, 240, 180, 0.85));
+  }
+
+  &[data-disabled='false']:hover,
+  &[data-disabled='false']:focus-within {
+    transform: scale(1.04);
+
+    .image {
+      filter: brightness(1.15) drop-shadow(0 0 7px rgba(255, 240, 180, 1));
+    }
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .location,
+  .image {
+    transition: none;
+  }
+}
+
+.action {
+  position: absolute;
+  width: 25%;
+
+  &[data-area='TOP'] {
+    top: 4.5%;
+  }
+
+  &[data-area='BOTTOM'] {
+    bottom: 4%;
+  }
+
+  &[data-position='1'] {
+    left: 18%;
+  }
+
+  &[data-position='2'] {
+    right: 18%;
+  }
+}

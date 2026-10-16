@@ -13,7 +13,7 @@ import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { HowToPlay } from './pages/HowToPlay';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
-import { TestingVillainPage, TestingCardPage } from './pages/TestPage';
+import { TestingVillainPage, TestingCardPage, TestingActionButtonPage, TestingLocationButtonPage, TestingLocationPage } from './pages/TestPage';
 import { ToastProvider } from './contexts/ToastContext';
 import { PublicProfilePage } from './pages/PublicProfilePage';
 import { MessagesPage } from './pages/MessagesPage';
@@ -59,6 +59,9 @@ function App() {
                     element={<TestingVillainPage />}
                   />
                   <Route path="/test/card/:id" element={<TestingCardPage />} />
+                  <Route path="/test/action-button" element={<TestingActionButtonPage />} />
+                  <Route path="/test/location-button" element={<TestingLocationButtonPage />} />
+                  <Route path="/test/location" element={<TestingLocationPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route
                     path="/profile/:login"

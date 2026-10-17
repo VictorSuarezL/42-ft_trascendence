@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import styles from './LobbyPage.module.scss';
@@ -56,7 +56,12 @@ interface VillainPickerProps {
   onClose: () => void;
 }
 
-function VillainPicker({ villains, takenIds, onSelect, onClose }: VillainPickerProps) {
+function VillainPicker({
+  villains,
+  takenIds,
+  onSelect,
+  onClose,
+}: VillainPickerProps) {
   return (
     <div className={styles.pickerOverlay} onClick={onClose}>
       <div className={styles.pickerModal} onClick={(e) => e.stopPropagation()}>
@@ -102,7 +107,9 @@ function JoinCodeInput({ onJoin, onCancel, error }: JoinCodeInputProps) {
     <div className={styles.pickerOverlay} onClick={onCancel}>
       <div className={styles.joinModal} onClick={(e) => e.stopPropagation()}>
         <h3 className={styles.pickerTitle}>JOIN GAME</h3>
-        <p className={styles.joinSubtitle}>Enter the 4-character code from the host</p>
+        <p className={styles.joinSubtitle}>
+          Enter the 4-character code from the host
+        </p>
         <input
           className={styles.codeInput}
           value={code}
@@ -110,7 +117,9 @@ function JoinCodeInput({ onJoin, onCancel, error }: JoinCodeInputProps) {
           placeholder="A72F"
           maxLength={4}
           autoFocus
-          onKeyDown={(e) => e.key === 'Enter' && code.length === 4 && onJoin(code)}
+          onKeyDown={(e) =>
+            e.key === 'Enter' && code.length === 4 && onJoin(code)
+          }
         />
         {error && <p className={styles.joinError}>{error}</p>}
         <div className={styles.joinActions}>
@@ -140,11 +149,14 @@ export function LobbyPage() {
   const [showPicker, setShowPicker] = useState(false);
   const [lobbyError, setLobbyError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const startedRef = useRef(false);
 
   useEffect(() => {
     fetch(`${BACKEND_URL}/villains?lang=en`, { credentials: 'include' })
-      .then((r) => r.ok ? r.json() : null)
-      .then((data: Villain[] | null) => { if (data) setVillains(data); })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: Villain[] | null) => {
+        if (data) setVillains(data);
+      })
       .catch(() => {});
   }, []);
 
@@ -152,11 +164,15 @@ export function LobbyPage() {
     if (!socket || !code) return;
 
     const joinLobby = () => {
-      socket.emit('game.lobby.join', { code: code.toUpperCase() }, (ack: { success: boolean; error?: string }) => {
-        if (!ack.success) {
-          setLobbyError(ack.error ?? 'Could not join lobby');
-        }
-      });
+      socket.emit(
+        'game.lobby.join',
+        { code: code.toUpperCase() },
+        (ack: { success: boolean; error?: string }) => {
+          if (!ack.success) {
+            setLobbyError(ack.error ?? 'Could not join lobby');
+          }
+        },
+      );
     };
 
     const onUpdated = (data: LobbyState) => {
@@ -173,8 +189,9 @@ export function LobbyPage() {
     };
 
     const onStarted = (data: LobbyState) => {
+      startedRef.current = true;
       setLobby(data);
-      // TODO: navigate to game page when implemented
+      navigate(`/game/${data.code}`);
     };
 
     socket.on('game.lobby.updated', onUpdated);
@@ -191,8 +208,8 @@ export function LobbyPage() {
       socket.off('game.lobby.error', onError);
       socket.off('game.match.started', onStarted);
       socket.off('reconnect', joinLobby);
-      // Explicitly leave when navigating away from the lobby page
-      socket.emit('game.lobby.leave');
+      // Going to the game page must keep the player in the lobby
+      if (!startedRef.current) socket.emit('game.lobby.leave');
     };
   }, [socket, code, navigate]);
 
@@ -201,20 +218,35 @@ export function LobbyPage() {
     navigate('/home');
   }, [socket, navigate]);
 
-  const handleKick = useCallback((userId: number) => {
-    socket?.emit('game.lobby.kick', { userId });
-  }, [socket]);
+  const handleKick = useCallback(
+    (userId: number) => {
+      socket?.emit('game.lobby.kick', { userId });
+    },
+    [socket],
+  );
 
-  const handleSelectVillain = useCallback((villainId: string) => {
-    socket?.emit('game.villain.select', { villainId });
-    setShowPicker(false);
-  }, [socket]);
+  const handleSelectVillain = useCallback(
+    (villainId: string) => {
+      socket?.emit('game.villain.select', { villainId });
+      setShowPicker(false);
+    },
+    [socket],
+  );
 
   const handleStartGame = useCallback(() => {
-    socket?.emit('game.match.start', {}, (ack: { success: boolean; error?: string }) => {
-      if (!ack.success) setLobbyError(ack.error ?? 'Could not start game');
-    });
-  }, [socket]);
+    socket?.emit(
+      'game.match.start',
+      {},
+      (ack: { success: boolean; error?: string }) => {
+        if (!ack.success) {
+          setLobbyError(ack.error ?? 'Could not start game');
+          return;
+        }
+        startedRef.current = true;
+        navigate(`/game/${code?.toUpperCase()}`);
+      },
+    );
+  }, [socket, navigate, code]);
 
   const handleCopyCode = useCallback(() => {
     if (!lobby) return;
@@ -253,7 +285,10 @@ export function LobbyPage() {
   const allHaveVillain = lobby.players.every((p) => p.villainId);
   const canStart = isHost && lobby.players.length >= 2 && allHaveVillain;
 
-  const slots = Array.from({ length: lobby.maxPlayers }, (_, i) => lobby.players[i] ?? null);
+  const slots = Array.from(
+    { length: lobby.maxPlayers },
+    (_, i) => lobby.players[i] ?? null,
+  );
 
   const villainMap = Object.fromEntries(villains.map((v) => [v.id, v]));
 
@@ -280,7 +315,10 @@ export function LobbyPage() {
             {slots.map((player, i) => {
               if (!player) {
                 return (
-                  <div key={`empty-${i}`} className={`${styles.playerSlot} ${styles.empty}`}>
+                  <div
+                    key={`empty-${i}`}
+                    className={`${styles.playerSlot} ${styles.empty}`}
+                  >
                     <span className={styles.emptyIcon}>👤</span>
                     <p className={styles.emptyText}>Waiting for player</p>
                     <p className={styles.emptySubtext}>OPEN SLOT</p>
@@ -289,7 +327,9 @@ export function LobbyPage() {
               }
 
               const isMe = player.userId === user.id;
-              const villain = player.villainId ? villainMap[player.villainId] : null;
+              const villain = player.villainId
+                ? villainMap[player.villainId]
+                : null;
               const villainImg = villain ? getVillainImage(villain) : null;
 
               return (
@@ -322,7 +362,9 @@ export function LobbyPage() {
                         <span className={styles.hostBadge}>HOST</span>
                       )}
                       {villain && (
-                        <span className={styles.villainBadge}>{villain.name}</span>
+                        <span className={styles.villainBadge}>
+                          {villain.name}
+                        </span>
                       )}
                     </div>
                     {isMe && (
@@ -359,9 +401,7 @@ export function LobbyPage() {
         </section>
 
         {/* ── Error ── */}
-        {lobbyError && (
-          <p className={styles.errorBanner}>{lobbyError}</p>
-        )}
+        {lobbyError && <p className={styles.errorBanner}>{lobbyError}</p>}
 
         {/* ── Start / Wait ── */}
         <div className={styles.footer}>

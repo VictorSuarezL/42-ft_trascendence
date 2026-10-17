@@ -47,7 +47,9 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 
   &:hover {
     background: rgba(212, 165, 44, 0.12);
@@ -442,7 +444,9 @@
   flex-direction: column;
   align-items: center;
   padding: 0;
-  transition: border-color 0.15s, background 0.15s;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
 
   &:hover:not(.taken) {
     border-color: rgba(212, 165, 44, 0.6);

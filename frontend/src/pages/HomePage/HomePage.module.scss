@@ -536,7 +536,7 @@
 
   margin-top: auto;
 
-  padding: 15px 14px;
+  padding: 15px 10px;
 
   border: none;
 
@@ -551,13 +551,16 @@
 
   align-items: center;
 
-  gap: 14px;
+  gap: 10px;
 
   font-family: 'Cormorant Garamond', serif;
 
   font-size: 17px;
 
   text-align: left;
+
+  // Long translations (e.g. "SE DÉCONNECTER") must stay on one line
+  white-space: nowrap;
 
   cursor: pointer;
 
@@ -1289,6 +1292,10 @@
 
   .logo {
     font-size: 23px;
+  }
+
+  .logout {
+    font-size: 15px;
   }
 
   .main {

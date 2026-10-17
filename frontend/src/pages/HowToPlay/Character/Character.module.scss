@@ -35,8 +35,11 @@
    VILLAIN
 ========================================= */
 
+// Long villain names in the huge display font can be wider than the screen
 .villain {
   position: relative;
+
+  overflow-x: clip;
 
   min-height: 1000px;
 
@@ -457,6 +460,8 @@
 .cardsSection {
   width: 100%;
 
+  box-sizing: border-box;
+
   max-width: 1600px;
 
   margin: 0 auto;
@@ -534,10 +539,11 @@
    CARDS GRID
 ========================================= */
 
+// Columns match the fixed Card width (333.34px) so cards don't overflow their cell
 .cards {
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+  grid-template-columns: repeat(auto-fit, 334px);
 
   justify-content: center;
 
@@ -604,7 +610,7 @@
   }
 
   .cards {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+    grid-template-columns: repeat(auto-fit, 334px);
   }
 }
 
@@ -722,4 +728,11 @@
   color: #ded6c0;
 
   text-align: center;
+}
+
+// Card is a fixed 333px wide: shrink it on very narrow phones
+@media (max-width: 400px) {
+  .cardWrapper > article {
+    zoom: 0.85;
+  }
 }

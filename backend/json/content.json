@@ -404,6 +404,36 @@
     "es": "Ver guía",
     "fr": "Voir le guide"
   },
+  "howToPage.villainNotFoundTitle": {
+    "en": "Villain not found",
+    "es": "Villano no encontrado",
+    "fr": "Méchant introuvable"
+  },
+  "howToPage.villainNotFoundText": {
+    "en": "There is no villain called \"{name}\" in this realm. Maybe they escaped… or the name is misspelled.",
+    "es": "No hay ningún villano llamado \"{name}\" en este reino. Quizá ha escapado… o el nombre está mal escrito.",
+    "fr": "Aucun méchant nommé « {name} » dans ce royaume. Peut-être s'est-il échappé… ou le nom est mal orthographié."
+  },
+  "howToPage.loadErrorTitle": {
+    "en": "Something went wrong",
+    "es": "Algo ha salido mal",
+    "fr": "Une erreur est survenue"
+  },
+  "howToPage.loadErrorText": {
+    "en": "We couldn't load this villain's guide. Please try again in a moment.",
+    "es": "No hemos podido cargar la guía de este villano. Inténtalo de nuevo en un momento.",
+    "fr": "Impossible de charger le guide de ce méchant. Réessayez dans un instant."
+  },
+  "howToPage.seeAllVillains": {
+    "en": "See all villains",
+    "es": "Ver todos los villanos",
+    "fr": "Voir tous les méchants"
+  },
+  "howToPage.retry": {
+    "en": "Try again",
+    "es": "Reintentar",
+    "fr": "Réessayer"
+  },
   "howToPage.realmImage": {
     "en": "{name} Realm",
     "es": "Reino de {name}",

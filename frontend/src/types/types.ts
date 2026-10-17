@@ -112,6 +112,12 @@ export interface TranslationData {
     stepDrawText: string;
     chooseVillain: string;
     viewGuide: string;
+    villainNotFoundTitle: string;
+    villainNotFoundText: string;
+    loadErrorTitle: string;
+    loadErrorText: string;
+    seeAllVillains: string;
+    retry: string;
   };
 
   actions: {

@@ -219,10 +219,11 @@ export function Character({ name }: CharacterProps) {
         <div className={styles.villainContent}>
           <div className={styles.villainInfo}>
             <button
+              type="button"
               onClick={() => navigate('/home')}
-              className={styles.customButton}
+              className={styles.back}
             >
-              {translations.howToPage.backToHome}
+              ← {translations.howToPage.backToHome}
             </button>
 
             <h1 className={styles.villainName}>{guide.name}</h1>

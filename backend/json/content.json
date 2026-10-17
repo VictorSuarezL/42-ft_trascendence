@@ -54,6 +54,74 @@
     "es": "Ni el cocodrilo pudo encontrarla, y esa bestia encuentra todo.",
     "fr": "Même le crocodile ne pouvait pas la trouver, et cette bête trouve tout."
   },
+  "myGamesPage.title": {
+    "en": "My games",
+    "es": "Mis partidas",
+    "fr": "Mes parties"
+  },
+  "myGamesPage.back": { "en": "← Back", "es": "← Volver", "fr": "← Retour" },
+  "myGamesPage.filterAll": { "en": "All", "es": "Todas", "fr": "Toutes" },
+  "myGamesPage.filterInProgress": {
+    "en": "In progress",
+    "es": "En curso",
+    "fr": "En cours"
+  },
+  "myGamesPage.filterFinished": {
+    "en": "Finished",
+    "es": "Terminadas",
+    "fr": "Terminées"
+  },
+  "myGamesPage.statusInProgress": {
+    "en": "In progress",
+    "es": "En curso",
+    "fr": "En cours"
+  },
+  "myGamesPage.statusFinished": {
+    "en": "Finished",
+    "es": "Terminada",
+    "fr": "Terminée"
+  },
+  "myGamesPage.won": { "en": "Victory", "es": "Victoria", "fr": "Victoire" },
+  "myGamesPage.lost": { "en": "Defeat", "es": "Derrota", "fr": "Défaite" },
+  "myGamesPage.you": { "en": "You", "es": "Tú", "fr": "Vous" },
+  "myGamesPage.gameCode": { "en": "Game #{code}", "es": "Partida #{code}", "fr": "Partie #{code}" },
+  "myGamesPage.playingAs": { "en": "Playing as {villain}", "es": "Jugando como {villain}", "fr": "En tant que {villain}" },
+  "myGamesPage.against": { "en": "vs {names}", "es": "vs {names}", "fr": "contre {names}" },
+  "myGamesPage.deletedUser": {
+    "en": "Deleted user",
+    "es": "Usuario eliminado",
+    "fr": "Utilisateur supprimé"
+  },
+  "myGamesPage.emptyTitle": {
+    "en": "No games yet",
+    "es": "Aún no hay partidas",
+    "fr": "Aucune partie pour l'instant"
+  },
+  "myGamesPage.emptyText": {
+    "en": "Your villainous deeds will be recorded here. Create a lobby from the home page to start your first game.",
+    "es": "Aquí quedarán registradas tus fechorías. Crea un lobby desde el inicio para empezar tu primera partida.",
+    "fr": "Vos méfaits seront consignés ici. Créez un salon depuis l'accueil pour lancer votre première partie."
+  },
+  "myGamesPage.emptyCta": {
+    "en": "Go to home",
+    "es": "Ir al inicio",
+    "fr": "Aller à l'accueil"
+  },
+  "myGamesPage.loadMore": {
+    "en": "Load more",
+    "es": "Cargar más",
+    "fr": "Charger plus"
+  },
+  "myGamesPage.loadError": {
+    "en": "We couldn't load your games.",
+    "es": "No hemos podido cargar tus partidas.",
+    "fr": "Impossible de charger vos parties."
+  },
+  "myGamesPage.retry": {
+    "en": "Try again",
+    "es": "Reintentar",
+    "fr": "Réessayer"
+  },
   "homePage.viewprofile": {
     "en": "View Profile",
     "es": "Ver perfil",

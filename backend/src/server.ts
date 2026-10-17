@@ -9,6 +9,7 @@ import { Server, type Socket } from 'socket.io';
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import chatRoutes from './routes/chat.routes';
+import matchRoutes from './routes/match.routes';
 import createUserRoutes from './routes/createUser.routes';
 import howToPlayRoutes from './routes/howToPlay.routes';
 import { createTranslationsRouter } from './routes/translations.routes';
@@ -47,6 +48,7 @@ app.get('/health', (_req, res) => {
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/conversations', chatRoutes);
+app.use('/matches', matchRoutes);
 app.use('/signup', createUserRoutes);
 app.use('/how-to-play', howToPlayRoutes);
 app.use('/translations', createTranslationsRouter(TranslationsJsonModel));

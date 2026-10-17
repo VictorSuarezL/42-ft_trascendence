@@ -21,30 +21,30 @@ model User {
   displayName String?
   image       String?
 
-  createdAt               DateTime                 @default(now())
-  updatedAt               DateTime                 @updatedAt
-  sessions                Session[]
-  emailVerificationTokens EmailVerificationToken[]
-  passwordResetTokens     PasswordResetToken[]
-  friendshipsAsUserOne    Friendship[]             @relation("FriendshipUserOne")
-  friendshipsAsUserTwo    Friendship[]             @relation("FriendshipUserTwo")
-  friendshipsRequested    Friendship[]             @relation("FriendshipRequester")
-  conversationsAsUserOne  Conversation[]           @relation("ConversationUserOne")
-  conversationsAsUserTwo  Conversation[]           @relation("ConversationUserTwo")
-  messagesSent            Message[]
-  messageNotificationsReceived MessageNotification[] @relation("MessageNotificationRecipient")
-  messageNotificationsSent     MessageNotification[] @relation("MessageNotificationSender")
+  createdAt                    DateTime                 @default(now())
+  updatedAt                    DateTime                 @updatedAt
+  sessions                     Session[]
+  emailVerificationTokens      EmailVerificationToken[]
+  passwordResetTokens          PasswordResetToken[]
+  friendshipsAsUserOne         Friendship[]             @relation("FriendshipUserOne")
+  friendshipsAsUserTwo         Friendship[]             @relation("FriendshipUserTwo")
+  friendshipsRequested         Friendship[]             @relation("FriendshipRequester")
+  conversationsAsUserOne       Conversation[]           @relation("ConversationUserOne")
+  conversationsAsUserTwo       Conversation[]           @relation("ConversationUserTwo")
+  messagesSent                 Message[]
+  messageNotificationsReceived MessageNotification[]    @relation("MessageNotificationRecipient")
+  messageNotificationsSent     MessageNotification[]    @relation("MessageNotificationSender")
 }
 
 model Friendship {
   id          Int      @id @default(autoincrement())
-  userOneId    Int
-  userTwoId    Int
-  requesterId  Int
-  isAccepted   Boolean  @default(false)
-  isBlocked    Boolean  @default(false)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  userOneId   Int
+  userTwoId   Int
+  requesterId Int
+  isAccepted  Boolean  @default(false)
+  isBlocked   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   userOne   User @relation("FriendshipUserOne", fields: [userOneId], references: [id], onDelete: Cascade)
   userTwo   User @relation("FriendshipUserTwo", fields: [userTwoId], references: [id], onDelete: Cascade)
@@ -62,11 +62,12 @@ model Conversation {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  userOne User     @relation("ConversationUserOne", fields: [userOneId], references: [id], onDelete: Cascade)
-  userTwo User     @relation("ConversationUserTwo", fields: [userTwoId], references: [id], onDelete: Cascade)
+  userOne  User      @relation("ConversationUserOne", fields: [userOneId], references: [id], onDelete: Cascade)
+  userTwo  User      @relation("ConversationUserTwo", fields: [userTwoId], references: [id], onDelete: Cascade)
   messages Message[]
 
   messageNotifications MessageNotification[]
+
   @@unique([userOneId, userTwoId])
   @@index([userOneId])
   @@index([userTwoId])
@@ -88,16 +89,16 @@ model Message {
 }
 
 model MessageNotification {
-  id            Int      @id @default(autoincrement())
-  recipientId   Int
-  senderId      Int
+  id             Int      @id @default(autoincrement())
+  recipientId    Int
+  senderId       Int
   conversationId Int
-  preview       String
-  isRead        Boolean  @default(false)
-  createdAt     DateTime @default(now())
+  preview        String
+  isRead         Boolean  @default(false)
+  createdAt      DateTime @default(now())
 
-  recipient    User @relation("MessageNotificationRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
-  sender       User @relation("MessageNotificationSender", fields: [senderId], references: [id], onDelete: Cascade)
+  recipient    User         @relation("MessageNotificationRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  sender       User         @relation("MessageNotificationSender", fields: [senderId], references: [id], onDelete: Cascade)
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 
   @@index([recipientId, isRead])
@@ -270,4 +271,28 @@ model CardTranslation {
 
   @@id([cardId, language])
   @@index([language])
+}
+
+enum MatchStatus {
+  IN_PROGRESS
+  FINISHED
+}
+
+// playerIds and villainIds are parallel arrays: playerIds[i] plays villainIds[i] (seat i + 1)
+model Match {
+  id         Int         @id @default(autoincrement())
+  code       String
+  status     MatchStatus @default(IN_PROGRESS)
+  hostId     Int
+  playerIds  Int[]
+  villainIds String[]
+  winnerId   Int?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  finishedAt DateTime?
+
+  // Lists ("latest games", "in progress") and "games where user X played"
+  @@index([status, createdAt])
+  @@index([playerIds], type: Gin)
+  @@index([code])
 }

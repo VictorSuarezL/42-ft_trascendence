@@ -133,6 +133,29 @@ export interface TranslationData {
     goBack: string;
     [key: string]: string;
   };
+
+  myGamesPage: {
+    title: string;
+    back: string;
+    filterAll: string;
+    filterInProgress: string;
+    filterFinished: string;
+    statusInProgress: string;
+    statusFinished: string;
+    won: string;
+    lost: string;
+    you: string;
+    gameCode: string;
+    playingAs: string;
+    against: string;
+    deletedUser: string;
+    emptyTitle: string;
+    emptyText: string;
+    emptyCta: string;
+    loadMore: string;
+    loadError: string;
+    retry: string;
+  };
 }
 
 export const SOCKET_EVENTS = {

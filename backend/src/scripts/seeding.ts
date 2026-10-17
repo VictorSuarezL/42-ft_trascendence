@@ -129,8 +129,74 @@ async function seedTestUsers() {
   }
 }
 
+const DAY = 24 * 60 * 60 * 1000;
+const MINUTE = 60 * 1000;
+
+// players are indexes into TEST_USERS; winner is an index into players
+const TEST_MATCHES: {
+  code: string;
+  status: 'IN_PROGRESS' | 'FINISHED';
+  players: number[];
+  villains: string[];
+  winner?: number;
+  daysAgo: number;
+  durationMinutes?: number;
+}[] = [
+  { code: 'SD01', status: 'IN_PROGRESS', players: [0, 1], villains: ['scar', 'hades'], daysAgo: 0 },
+  { code: 'SD02', status: 'IN_PROGRESS', players: [2, 0, 3], villains: ['maleficent', 'captain-hook', 'scar'], daysAgo: 0 },
+  { code: 'SD03', status: 'FINISHED', players: [0, 1, 2, 3], villains: ['captain-hook', 'scar', 'hades', 'maleficent'], winner: 0, daysAgo: 1, durationMinutes: 52 },
+  { code: 'SD04', status: 'FINISHED', players: [1, 0], villains: ['hades', 'maleficent'], winner: 1, daysAgo: 2, durationMinutes: 38 },
+  { code: 'SD05', status: 'FINISHED', players: [0, 2], villains: ['scar', 'captain-hook'], winner: 1, daysAgo: 3, durationMinutes: 45 },
+  { code: 'SD06', status: 'FINISHED', players: [3, 1, 2], villains: ['scar', 'maleficent', 'hades'], winner: 2, daysAgo: 4, durationMinutes: 61 },
+  { code: 'SD07', status: 'FINISHED', players: [0, 3], villains: ['hades', 'scar'], winner: 1, daysAgo: 5, durationMinutes: 34 },
+  { code: 'SD08', status: 'FINISHED', players: [2, 3], villains: ['captain-hook', 'hades'], winner: 0, daysAgo: 7, durationMinutes: 40 },
+  { code: 'SD09', status: 'FINISHED', players: [0, 1, 3], villains: ['maleficent', 'captain-hook', 'hades'], winner: 2, daysAgo: 9, durationMinutes: 57 },
+  { code: 'SD10', status: 'FINISHED', players: [1, 2], villains: ['scar', 'hades'], winner: 0, daysAgo: 12, durationMinutes: 48 },
+];
+
+async function seedTestMatches() {
+  const users = await prisma.user.findMany({
+    where: { email: { in: TEST_USERS.map((u) => u.email) } },
+    select: { id: true, email: true },
+  });
+  const idByEmail = new Map(users.map((u) => [u.email, u.id]));
+  const userId = (index: number) => {
+    const id = idByEmail.get(TEST_USERS[index].email);
+    if (id === undefined) throw new Error(`Test user ${TEST_USERS[index].email} not found`);
+    return id;
+  };
+
+  // Re-running the seed replaces these matches instead of duplicating them
+  await prisma.match.deleteMany({ where: { code: { in: TEST_MATCHES.map((m) => m.code) } } });
+
+  const now = Date.now();
+
+  await prisma.match.createMany({
+    data: TEST_MATCHES.map((m) => {
+      const playerIds = m.players.map(userId);
+      const createdAt = new Date(now - m.daysAgo * DAY - (m.durationMinutes ?? 20) * MINUTE);
+      const finishedAt =
+        m.status === 'IN_PROGRESS' ? null : new Date(createdAt.getTime() + (m.durationMinutes ?? 0) * MINUTE);
+
+      return {
+        code: m.code,
+        status: m.status,
+        hostId: playerIds[0],
+        playerIds,
+        villainIds: m.villains,
+        winnerId: m.winner === undefined ? null : playerIds[m.winner],
+        createdAt,
+        finishedAt,
+      };
+    }),
+  });
+
+  console.log(`Test matches seeded: ${TEST_MATCHES.length}`);
+}
+
 async function main() {
   await seedTestUsers();
+  await seedTestMatches();
 
   await seedSharedTranslations('translations/game.json');
   await seedSharedTranslations('translations/loginPage.json');

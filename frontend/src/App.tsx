@@ -19,6 +19,7 @@ import { PublicProfilePage } from './pages/PublicProfilePage';
 import { MessagesPage } from './pages/MessagesPage';
 import { FriendsPage } from './pages/FriendsPage';
 import { NotificationsPage } from './pages/NotificationsPage';
+import { MyGamesPage } from './pages/MyGamesPage';
 import { LobbyPage } from './pages/LobbyPage';
 import { GamePage } from './pages/GamePage';
 
@@ -74,6 +75,7 @@ function App() {
                     path="/notifications"
                     element={<NotificationsPage />}
                   />
+                  <Route path="/my-games" element={<MyGamesPage />} />
                   <Route path="/lobby/:code" element={<LobbyPage />} />
                   <Route path="/game/:code" element={<GamePage />} />
                 </Route>

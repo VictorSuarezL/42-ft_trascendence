@@ -6,6 +6,7 @@ import styles from './HomePage.module.scss';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useUser } from '../../contexts/UserContext';
 import { HowToPlayCarousel } from '../../components/HowToPlayCarousel/HowToPlayCarousel';
+import { RecentGames } from './RecentGames';
 import defaultProfileImage from '../../assets/defaultProfile.webp';
 
 const getImageUrl = (image?: string | null): string => {
@@ -18,7 +19,10 @@ export function HomePage() {
   const navigate = useNavigate();
   const { language, user, socket, logout, unreadConvIds } = useUser();
 
-  const translations = useTranslation(language, 'homePage,cardTypes');
+  const translations = useTranslation(
+    language,
+    'homePage,cardTypes,myGamesPage',
+  );
 
   const [pendingCount, setPendingCount] = useState(0);
   const [showJoinModal, setShowJoinModal] = useState(false);
@@ -167,7 +171,10 @@ export function HomePage() {
             )}
           </button>
 
-          <button className={styles.navItem}>
+          <button
+            className={styles.navItem}
+            onClick={() => navigate('/my-games')}
+          >
             <span>♛</span>
             {translations.homePage.myGames}
           </button>
@@ -268,52 +275,19 @@ export function HomePage() {
               <h2>YOUR GAMES</h2>
             </div>
 
-            <button className={styles.viewAll}>VIEW ALL →</button>
+            <button
+              className={styles.viewAll}
+              onClick={() => navigate('/my-games')}
+            >
+              VIEW ALL →
+            </button>
           </div>
 
-          <div className={styles.gameList}>
-            <article className={styles.game}>
-              <div className={styles.gameIcon}>⚔</div>
-
-              <div className={styles.gameInfo}>
-                <h3>The Dark Realm</h3>
-
-                <p>Playing as Scar</p>
-              </div>
-
-              <div className={styles.status}>YOUR TURN</div>
-
-              <button className={styles.continue}>→</button>
-            </article>
-
-            <article className={styles.game}>
-              <div className={styles.gameIcon}>♛</div>
-
-              <div className={styles.gameInfo}>
-                <h3>Villainous Battle</h3>
-
-                <p>Playing as Maleficent</p>
-              </div>
-
-              <div className={styles.status}>WAITING</div>
-
-              <button className={styles.continue}>→</button>
-            </article>
-
-            <article className={styles.game}>
-              <div className={styles.gameIcon}>⌛</div>
-
-              <div className={styles.gameInfo}>
-                <h3>The Underworld</h3>
-
-                <p>Playing as Hades</p>
-              </div>
-
-              <div className={styles.status}>WAITING</div>
-
-              <button className={styles.continue}>→</button>
-            </article>
-          </div>
+          <RecentGames
+            userId={user?.id}
+            language={language}
+            t={translations.myGamesPage}
+          />
         </section>
       </main>
 
